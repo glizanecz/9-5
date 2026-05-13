@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>9/5 Simulator</title>
+
+  <style>
+    button {
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  background-color: rgb(212, 187, 198);
+  border-radius: 5px;
+}
+
+h1 {
+  padding: 0px;
+  font-size: 20px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:rgb(0, 0, 0);
+  width: 50px;
+  white-space: nowrap;
+}
+
+h2 {
+  padding: 0px;
+  font-size: 12px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:rgb(0, 0, 0);
+}
+
+h3 {
+  padding: 0px;
+  font-size: 10px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: rgb(255, 220, 252);
+}
+
+h4 {
+  padding: 0px;
+  font-size: 10px;
+  background-color: rgb(255, 220, 252);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:rgb(0, 0, 0);
+}
+
+button2 {
+  padding:10px;
+  font-size:15px;
+  cursor: pointer;
+  background-color: rgb(92, 67, 102);
+}
+
+button3 {
+  padding:10px;
+  font-size:10px;
+  cursor: pointer;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+button4 {
+  padding:10px;
+  font-size:10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+label {
+  padding:10px;
+  font-size:10px;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+h5 {
+  padding:10px;
+  font-size:10px;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+h6 {
+  padding:10px;
+  font-size:10px;
+  background-color: cornflowerblue;
+  border-radius: 5px;
+}
+
+button5 {
+  padding:10px;
+  font-size:10px;
+  cursor: pointer;
+  visibility: visible;
+  background-color: rgb(212, 187, 198);
+  border-radius: 5px;
+  border: 2px black;
+  row-gap: 10;
+}
+
+button6 {
+  padding:10px;
+  width: 100;
+  height: 100;
+  font-size: 10px;
+  cursor: pointer;
+  flex-wrap: nowrap;
+  row-gap: 10;
+  display: inline-block;
+  background-color: lightskyblue;
+  border-radius: 5px;
+  column-gap: 15;
+}
+
+saveAndMoreDis {
+  display: block;
+  padding: 10;
+  column-gap: 10;
+  margin-top: 10;
+}
+
+button7 {
+  padding:0px;
+  width: 100;
+  height: 100;
+  font-size: auto;
+  cursor: pointer;
+}
+
+#mainGameDis {
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+#saveAndMoreDis {
+  background-color: #fcfcfc !important;
+  background-repeat: repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+input {
+  background: linear-gradient(white,gray);
+  border-radius: 5px;
+}
+
+.luckInput {
+  background: linear-gradient(lightpink,white);
+  border-radius: 5px;
+}
+
+
+button9 {
+  padding:10px;
+  font-size:10px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: purple;
+}
+
+label2 {
+  padding:10px;
+  font-size:10px;
+  background-color: purple;
+  border-radius: 5px;
+}
+
+label3 {
+  column-gap: 10;
+  padding:15px;
+  font-size:15px;
+  background-color: papayawhip;
+  border-radius: 5px;
+}
+
+.payDebtInput {
+  background: linear-gradient(lightpink,white);
+  border-radius: 5px;
+}
+
+h11 {
+  padding: 0px;
+  font-size: 20px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:rgb(0, 0, 0);
+  width: 30px;
+}
+
+body {
+	background-color: pink;
+}
+
+  </style>
+
+  
+</head>
+<body>
+  <h2>-~-~ 💼 ((9/5 Simulator V1.50)) ☕ -~-~</h1>
+<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Manage Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="saveAndMoreBtn">Save & More...</button5>
+<h4>-----------------</h4>
+<label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
+<div id="mainGameDis">
+  <h1 id="money">Money: $0</h1>
+  <h1 id="highscore">Highscore: $0</h1>
+  <h4 id="MultiplierMoney">Multiplier: 1x</h1>
+  <h1 id="papers">Papers Written: 0</h1>
+  <h4 id="MultiplierPaper">Multiplier: 1x</h1>
+  <button id="btn">Click To Write</button>
+  <button id="multBtn">Get Promotion: 50 Papers.</button>
+  <h4>-----------------</h4>
+  <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Cost: $30</button>
+  <h4>-----------------</h4>
+  <button id="autoClick">Hire Worker: $200</button>
+  <h4>-----------------</h4>
+  <button id="cofBtn">Coffee +1.5x Money: $5</button><button id="energyBtn">Energy Drink +3x Papers: $30</button>
+  <button id="workCofBtn">Worker Coffee +1.5x Money For Workers: $10</button>
+  <h4>-----------------</h4>
+  <button2 id="modMenu">MODERATOR (OPERATOR STATUS REQUIRED)</button2>
+  <h4>-----------------</h4>
+</div>
+
+<div id="skillTreeDis">
+  <h6 id="skillPointsCurrency">Skill Points: 0 | Total Skill Points (These will be awarded to you when you save): 0</h6>
+  <button6 id="startSkillTree">Start Skill Tree: 0 Points</button6>
+  <h4>-----------------</h4>
+  <button6 id="moneyMultPlusSkillI">Multiplier I | +.5 Multiplier For Money and Paper: 2 Points</button6>
+  <button6 id="moneyMultPlusSkillII">Multiplier II | +1 Multiplier For Money and Paper: 5 Points</button6>
+  <button6 id="moneyMultPlusSkillIII">Multiplier III | +1.5 Multiplier For Money and Paper: 10 Points</button6>
+  <button6 id="moneyMultPlusSkillIV">Multiplier IV | +2 Multiplier For Money and Paper: 16 Points</button6>
+  <h4>-----------------</h4>
+  <button6 id="cheaperPricesI">Cheaper Prices I | 5% Off: 3 Points</button6>
+  <button6 id="cheaperPricesII">Cheaper Prices II | 10% Off: 7 Points</button6>
+  <button6 id="cheaperPricesIII">Cheaper Prices III | 15% Off: 18 Points</button6>
+  <button6 id="cheaperPricesIV">Cheaper Prices IV | 20% Off: 25 Points</button6>
+  <h4>-----------------</h4>
+  <button6 id="workerEffI">Worker Efficiency I | 
+</div>
+
+<div id="luckMenuDis">
+  <h1 id="moneyLuckMenu">Money: $0</h1>
+  <h4>-----------------</h4>
+  <h10 id="betDisplay">Set Your Bet To Begin!</h10>
+  <h4>-----------------</h4>
+  <label2 for="inputBet">Bet Size:</label2>
+  <input type="number" id="inputBet" class="luckInput">
+  <button9 id="sbmtBet">Set Bet</button9>
+  <h4>Simple Chance:</h4>
+  <h10 id="outcomeDisplay">No Chances Have Been Taken</h10>
+  <h4>-----------------</h4>
+  <button9 id="doubleONothin">Double or Nothing Your Bet.</button9>
+  <h4>-----------------</h4>
+  <button9 id="luckWorker">Hire Chance Manager: $200,000</button9>
+  <h4>-----------------</h4>
+  <label for="luckWorkerStrat">Choose Worker Strategy</label>
+  <select id="luckWorkerStrat">
+    <option value="martingaleStrat">Martingale / Double Down If You Lose</option>
+    <option value="fivePercentStrat">Bet 50% Of Money At A Time</option>
+  </select> <button9 id="toggleAutoLuck">Toggle On</button9>
+</div>
+
+<div id="taxMenuSwitch">
+  <h4>-----------------</h4>
+  <h1 id="debtDisplay">Debt: $0</h1>
+  <h4>-----------------</h4>
+  <label2 for="payDebt">Pay Off Debt</label2>
+  <input type="number" id="payDebt" class="payDebtInput"> <button9 id="sbmtPayOff">Submit Money</button9>
+  <h4>-----------------</h4>
+  <button9 id="hireTaxManagerBtn">Hire Tax Manager: $50,000</button9> <h10 id="transTaxDis">Last Auto Tax Transaction: $0</h10>
+  <h4>ENABLE/DISABLE IRS:</h4>
+  <button9 id="toggleIRSExperiment">The IRS: Experimental | Toggle On</button9>
+</div>
+
+<div id="saveAndMoreDis">
+  <h4>-----------------</h4>
+  <h4>Don't save in debt, unless your illegal money exceeds or is equal to your IRS debt, progress will be lost.</h4>
+  <button9 id="loadMethod">Load With Local Storage</button9>
+  <button3 id="saveBtn">SAVE GAME</button3>
+  <label for="loadInp">Load Game<label> <input type="text" id="loadInp"></input>
+  <button4 id="sbmtBtn">LOAD</button4>
+  <h4>-----------------</h4>
+  <h5 id="copAPaste">Copy and Paste This Code: </h5>
+  <h4>-----------------</h4>
+  <h5 id="moneyPerSecond">Auto Cash Per Sec: $0</h5> 
+  <h5 id="paperPerClickDisplay">Paper Per Click: 0</h5>
+</div>
+
+<div id="moneyPrintMenuDis">
+  <h1 id="illMoneyDisplay">Illegal Printed Money: $0</h1>
+  <h4>-----------------</h4>
+  <button id="decreasePrintDelayBtn">Print Delay Down .15 Sec | $200</button>
+  <button id="increaseBillBtn">Print $10-20 Bills | $500
+</div>
+
+  <script>
+    /// 0 - Disabled For Website
+// 1 - Custom Amounts
+// 2 - 200,000 For Each
+// 3 - Custom Skill Points
+// 4 - 20,000 Skill Points
+// 5 - Custom All
+// 6 - 200,000 For All
+// 7 - Gambler's Dream
+
+let modMenuVal = 0;
+let savePlayer = 0;
+
+//Constants Below:
+
+// Luck Menu
+const biggestWinDis = document.getElementById("biggestWin");
+//<h10 id="biggestWinLuck">Biggest Win: $0</h10>//
+const toggleAutoLuckBtn = document.getElementById("toggleAutoLuck");
+const luckMenuDis = document.getElementById("luckMenuDis");
+const highscoreDis = document.getElementById("highscore");
+const luckMenuSwitch = document.getElementById("chanceMenuSwitch");
+const sbmtBet = document.getElementById("sbmtBet");
+const inputBet = document.getElementById("inputBet");
+const doubleONothin = document.getElementById("doubleONothin");
+const betDisplay = document.getElementById("betDisplay");
+const outcomeDisplay = document.getElementById("outcomeDisplay");
+const moneyLuckMenu = document.getElementById("moneyLuckMenu");
+const luckWorkerBtn = document.getElementById("luckWorker");
+const luckWorkerStrat = document.getElementById("luckWorkerStrat");
+
+//Tax Menu
+const taxMenu = document.getElementById("taxMenuSwitch");
+const taxMenuBtn = document.getElementById("taxMenuSwitchBtn");
+const taxNoti = document.getElementById("taxNoti");
+const debtDisplay = document.getElementById("debtDisplay");
+const payDebtInput = document.getElementById("payDebt");
+const sbmtPayOff = document.getElementById("sbmtPayOff");
+const hireTaxManagerBtn = document.getElementById("hireTaxManagerBtn");
+const transTaxDis = document.getElementById("transTaxDis");
+const toggleIRSExperiment = document.getElementById("toggleIRSExperiment");
+
+//Money Printing Menu
+//Switch to money print menu:
+const moneyPrintMenuSwitcher = document.getElementById("moneyPrintBtnSwitch");
+//Entire Menu Display:
+const moneyPrintMenuDis = document.getElementById("moneyPrintMenuDis");
+//IllMoney Display:
+const illMoneyDisplay = document.getElementById("illMoneyDisplay");
+//Decrease Time Between Prints
+const decreasePrintDelayBtn = document.getElementById("decreasePrintDelayBtn");
+//Increase bill Amounts
+const increaseBillBtn = document.getElementById("increaseBillBtn");
+
+
+//Save and More
+const saveAndMoreDis = document.getElementById("saveAndMoreDis");
+const loadMethod = document.getElementById("loadMethod");
+
+//Skill Tree
+const skillTreeDis = document.getElementById("skillTreeDis");
+
+//Main Branch
+const startSkillTree = document.getElementById("startSkillTree");
+
+//Money Multiplier Branch
+const moneyMultSkillI = document.getElementById("moneyMultPlusSkillI");
+const moneyMultSkillII = document.getElementById("moneyMultPlusSkillII");
+const moneyMultSkillIII = document.getElementById("moneyMultPlusSkillIII");
+const moneyMultSkillIV = document.getElementById("moneyMultPlusSkillIV");
+
+//Cheaper Prices Branch
+const cheaperPricesIBtn = document.getElementById("cheaperPricesI");
+const cheaperPricesIIBtn = document.getElementById("cheaperPricesII");
+const cheaperPricesIIIBtn = document.getElementById("cheaperPricesIII");
+const cheaperPricesIVBtn = document.getElementById("cheaperPricesIV");
+
+//Basic Definitions
+const skillPointsDisplay = document.getElementById("skillPointsCurrency");
+//Main Game
+const mainGameDis = document.getElementById("mainGameDis");
+
+const button = document.getElementById("btn");
+const workCofBtn = document.getElementById("workCofBtn");
+
+const moneyPerSec = document.getElementById("moneyPerSecond");
+const papPerClickDisplay = document.getElementById("paperPerClickDisplay");
+
+const money = document.getElementById("money");
+const papers = document.getElementById("papers");
+const multBtn = document.getElementById("multBtn");
+const cofBtn = document.getElementById("cofBtn");
+const energyBtn = document.getElementById("energyBtn");
+const multi = document.getElementById("MultiplierMoney");
+const multiPaper = document.getElementById("MultiplierPaper");
+const workerBtn = document.getElementById("autoClick");
+const writingTool = document.getElementById("paperPerClick");
+const modMenuBtn = document.getElementById("modMenu");
+const saveBtn = document.getElementById("saveBtn");
+const loadInput = document.getElementById("loadInp");
+const copAPaste = document.getElementById("copAPaste");
+const sbmtBtn = document.getElementById("sbmtBtn");
+const skillTreeBtn = document.getElementById("skillTree");
+const mainGameBtn = document.getElementById("mainGame");
+const saveAndMoreBtn = document.getElementById("saveAndMoreBtn");
+const tool = [
+  "Pencil ✏️",
+  "Pen 🖊️",
+  "Sharpie 🖋️",
+  "Typewriter ⌨️",
+  "Army of Typers 👨⌨️",
+  "Computer 💻",
+  "AI Model 👨‍💻",
+  "LLM Model 👨‍💻➕",
+  "LLM Army 👨‍💻👩‍💻",
+  "Global Writing Force 🌎✍️",
+  "Space Powered LLM 🚀",
+  "Intergalatic Alien Writing Software 👾",
+  "Galaxy Auto-Write LLM 🌌",
+  "JavaScript Writing God 🟨✝️",
+  "Writing God ✝️",
+  "All In One God ✝️🟨🌌💻",
+  "The Final Semicolon; 🏁",
+];
+//sleep promise below is not mine//
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+//Definitions Below:
+
+let loadInProgress = 0;
+
+//Skill Menus
+let skillPoints = 0;
+let monMultSkllI = 1;
+let monMultSkllII = 1;
+let monMultSkllIII = 1;
+let monMultSkllIV = 1;
+let startSkillTreeLock = 0;
+let cheaperPricesILock = 1;
+let cheaperPricesIILock = 1;
+let cheaperPricesIIILock = 1;
+let cheaperPricesIVLock = 1;
+let genPriceReducer = 1;
+let totalSkillPoints = 0;
+
+//Bet Size:
+let bet = 0;
+//Base Numbers:
+let paperswrote = 0;
+let moneyearned = 0;
+//Paper Per Click
+let paperPC = 1;
+let paperPCPrice = 30;
+let moneyPerPaper = 0.5;
+//Multipliers
+let promotion = 50;
+let multiplier = 1;
+let multiplierPaper = 1;
+let energyDrinkMultBonus = 1;
+//Boosts
+let cofPrice = 5;
+let clicksForCof = 0;
+let energyDrinkPrice = 30;
+let clicksForEnergyDrink = 0;
+//Workers
+let workCofPrice = 10;
+let workCofClicks = 0;
+let workersHired = 0;
+let workerPrice = 200;
+//Unsorted
+let modCash = 0;
+let toolCount = 0;
+let autoWorkerFuncUsed = 0;
+let moneyPerSecond1 = 0;
+let luckWorkerPrice = 200000;
+let safetyNetLock = 0;
+let highScoreMoney = 0;
+let luckWorkerBtnBought = 0;
+let currentBet = 0;
+let biggestWin = 0;
+let toggleAutoLuck = "Off";
+let irsDebt = 0;
+let irsVisits = 11;
+let irsLock = 0;
+let taxWorkerBtnBought = 0;
+let writingToolsBought = 0;
+let illBucksPerSec = 0;
+let illMoney = 0;
+let illBucksPerSecPrice = 500;
+let illPrintDelayPrice = 200;
+let illBucksPerSecDisplayRandom = "1-5";
+let toggleIRS = "Off";
+let illDelay = 1;
+
+//Menu Tab Functions:
+function getTaxMenu() {
+  skillTreeDis.style.display = "none";
+  mainGameDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  taxMenu.style.display = "block";
+  luckMenuDis.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+}
+
+function getSkillTree() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "block";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+}
+
+function getMainGame() {
+  mainGameDis.style.display = "block";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+}
+
+function getSaveAndMore() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "block";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+}
+
+function getLuckMenu() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "block";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+}
+
+function getMoneyPrint() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "block";
+}
+
+//Get Tabs:
+
+getMainGame();
+taxNoti.style.display = "none";
+
+skillTreeBtn.onclick = function () {
+  getSkillTree();
+};
+
+mainGameBtn.onclick = function () {
+  getMainGame();
+};
+
+luckMenuSwitch.onclick = function () {
+  getLuckMenu();
+};
+
+saveAndMoreBtn.onclick = function () {
+  getSaveAndMore();
+};
+
+taxMenuBtn.onclick = function () {
+  getTaxMenu();
+};
+
+moneyPrintMenuSwitcher.onclick = function () {
+  getMoneyPrint();
+}
+
+//Opacity setters
+moneyMultSkillI.style.opacity = ".3";
+moneyMultSkillII.style.opacity = ".3";
+moneyMultSkillIII.style.opacity = ".3";
+moneyMultSkillIV.style.opacity = ".3";
+cheaperPricesIBtn.style.opacity = ".3";
+cheaperPricesIIBtn.style.opacity = ".3";
+cheaperPricesIIIBtn.style.opacity = ".3";
+cheaperPricesIVBtn.style.opacity = ".3";
+
+//Skill Tree Click Detectors:
+startSkillTree.onclick = function () {
+  if (startSkillTreeLock === 0) {
+    moneyMultSkillI.style.opacity = "1";
+    cheaperPricesIBtn.style.opacity = "1";
+    startSkillTree.innerText = "S̶t̶a̶r̶t̶ ̶S̶k̶i̶l̶l̶ ̶T̶r̶e̶e̶:̶ ̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    startSkillTreeLock = 1;
+    monMultSkllI = 0;
+    cheaperPricesILock = 0;
+  }
+};
+
+cheaperPricesIBtn.onclick = function () {
+  if (skillPoints >= 3 && cheaperPricesILock === 0) {
+    cheaperPricesILock = 1;
+    cheaperPricesIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶ ̶|̶ ̶5̶%̶ ̶O̶f̶f̶:̶ ̶3̶ ̶P̶o̶i̶n̶t̶s̶";
+    genPriceReducer = 0.95;
+    cheaperPricesIILock = 0;
+    cheaperPricesIIBtn.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 3;
+    skillPoints = skillPoints - 3;
+  }
+};
+
+cheaperPricesIIBtn.onclick = function () {
+  if (skillPoints >= 7 && cheaperPricesIILock === 0) {
+    cheaperPricesIILock = 1;
+    cheaperPricesIIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶I̶ ̶|̶ ̶1̶0̶%̶ ̶O̶f̶f̶:̶ ̶7̶ ̶P̶o̶i̶n̶t̶s̶";
+    genPriceReducer = 0.9;
+    cheaperPricesIIILock = 0;
+    cheaperPricesIIIBtn.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 7;
+    skillPoints = skillPoints - 7;
+  }
+};
+
+cheaperPricesIIIBtn.onclick = function () {
+  if (skillPoints >= 18 && cheaperPricesIIILock === 0) {
+    cheaperPricesIIILock = 1;
+    cheaperPricesIIIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶I̶I̶ ̶|̶ ̶1̶5̶%̶ ̶O̶f̶f̶:̶ ̶1̶8̶ ̶P̶o̶i̶n̶t̶s̶";
+    genPriceReducer = 0.85;
+    cheaperPricesIVLock = 0;
+    cheaperPricesIVBtn.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 18;
+    skillPoints = skillPoints - 18;
+  }
+};
+
+cheaperPricesIVBtn.onclick = function () {
+  if (skillPoints >= 25 && cheaperPricesIVLock === 0) {
+    cheaperPricesIVLock = 1;
+    cheaperPricesIVBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶V̶ ̶|̶ ̶2̶0̶%̶ ̶O̶f̶f̶:̶ ̶2̶5̶ ̶P̶o̶i̶n̶t̶s̶";
+    genPriceReducer = 0.8;
+    totalSkillPoints = totalSkillPoints + 25;
+    skillPoints = skillPoints - 25;
+  }
+};
+
+moneyMultSkillI.onclick = function () {
+  if (skillPoints >= 2 && monMultSkllI === 0) {
+    moneyMultSkillI.innerText =
+      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶ ̶|̶ ̶+̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶2̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPoints = skillPoints - 2;
+    multiplier = multiplier + 0.5;
+    multiplierPaper += 0.5;
+    multi.innerText = "Multiplier: " + multiplier + "x";
+    moneyMultSkillII.style.opacity = "1";
+    monMultSkllI = 1;
+    monMultSkllII = 0;
+    totalSkillPoints = totalSkillPoints + 2;
+  }
+};
+
+moneyMultSkillII.onclick = function () {
+  if (skillPoints >= 5 && monMultSkllII === 0) {
+    moneyMultSkillII.innerText =
+      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶ ̶|̶ ̶+̶1̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPoints = skillPoints - 5;
+    multiplier = multiplier + 1;
+    multiplierPaper += 1;
+    multi.innerText = "Multiplier: " + multiplier + "x";
+    monMultSkllII = 1;
+    monMultSkllIII = 0;
+    moneyMultSkillIII.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 5;
+  }
+};
+
+moneyMultSkillIII.onclick = function () {
+  if (skillPoints >= 10 && monMultSkllIII === 0) {
+    moneyMultSkillIII.innerText =
+      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶I̶ ̶|̶ ̶+̶1̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPoints = skillPoints - 10;
+    multiplier = multiplier + 1.5;
+    multiplierPaper += 1.5;
+    multi.innerText = "Multiplier: " + multiplier + "x";
+    monMultSkllIII = 1;
+    monMultSkllIV = 0;
+    moneyMultSkillIV.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 10;
+  }
+};
+
+moneyMultSkillIV.onclick = function () {
+  if (skillPoints >= 16 && monMultSkllIV === 0) {
+    moneyMultSkillIV.innerText =
+      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶V̶ ̶|̶ ̶+̶2̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPoints = skillPoints - 16;
+    multiplier = multiplier + 2;
+    multiplierPaper += 2;
+    multi.innerText = "Multiplier: " + multiplier + "x";
+    monMultSkllIV = 1;
+    totalSkillPoints = totalSkillPoints + 16;
+  }
+};
+
+workCofBtn.onclick = function () {
+  if (workCofPrice <= moneyearned) {
+    skillPoints = skillPoints + 0.75;
+    moneyearned = moneyearned - workCofPrice;
+    workCofPrice = Math.floor(workCofPrice * 2 * genPriceReducer);
+    workCofClicks = workCofClicks + 30;
+    workCofBtn.innerText =
+      "Worker Coffee +1.5x Money For Workers: $" + workCofPrice;
+    money.innerText = "Money: " + moneyearned;
+  }
+};
+
+modMenuBtn.onclick = function () {
+  if (modMenuVal === 1) {
+    let input = prompt("How much money would you like?");
+    moneyearned = Number(input);
+    money.innerText = "Money: $" + moneyearned;
+    input = prompt("How much paper would you like?");
+    paperswrote = Number(input);
+    papers.innerText = "Papers Written: " + paperswrote;
+  } else if (modMenuVal === 2) {
+    moneyearned = 200000;
+    paperswrote = 200000;
+    illMoney = 200000;
+    money.innerText = "Money: $" + moneyearned;
+    papers.innerText = "Papers Written: " + paperswrote;
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + 200000
+  } else if (modMenuVal === 3) {
+    let input = prompt("How much skill points would you like?");
+    skillPoints = Number(input);
+    skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
+  } else if (modMenuVal === 4) {
+    skillPoints = 20000;
+    skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
+  } else if (modMenuVal === 5) {
+    let input = prompt("How much money would you like?");
+    moneyearned = Number(input);
+    money.innerText = "Money: $" + moneyearned;
+    input = prompt("How much paper would you like?");
+    paperswrote = Number(input);
+    papers.innerText = "Papers Written: " + paperswrote;
+    input = prompt("How much skill points would you like?");
+    skillPoints = Number(input);
+    skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
+  } else if (modMenuVal === 6) {
+    moneyearned = 200000;
+    paperswrote = 200000;
+    money.innerText = "Money: $" + moneyearned;
+    papers.innerText = "Papers Written: " + paperswrote;
+    skillPoints = 200000;
+    skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
+  } else if (modMenuVal === 7) {
+    moneyearned = 200000000;
+    paperswrote = 200000000;
+    illMoney = 200000000;
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + 200000
+    money.innerText = "Money: $" + moneyearned;
+    papers.innerText = "Papers Written: " + paperswrote;
+    skillPoints = 200000000;
+    skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
+  }
+};
+
+button.onclick = function () {
+  if (irsLock === 0) {
+    if (clicksForCof > 0) {
+      clicksForCof = clicksForCof - 1;
+      moneyearned = moneyearned + moneyPerPaper * (multiplier + 1.5);
+      money.innerText = "Money: $" + moneyearned;
+      paperswrote =
+        paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus);
+      papers.innerText = "Papers Written: " + paperswrote;
+      multi.innerText =
+        "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+      if (clicksForEnergyDrink > 0) {
+        multiPaper.innerText =
+          "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+        energyDrinkMultBonus = 3;
+        clicksForEnergyDrink = clicksForEnergyDrink - 1;
+      } else {
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x";
+      }
+    } else {
+      moneyearned = moneyearned + moneyPerPaper * multiplier;
+      money.innerText = "Money: $" + moneyearned;
+      paperswrote =
+        paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus);
+      papers.innerText = "Papers Written: " + paperswrote;
+      multi.innerText = "Multiplier: " + multiplier + "x";
+      if (clicksForEnergyDrink > 0) {
+        multiPaper.innerText =
+          "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+        energyDrinkMultBonus = 3;
+        clicksForEnergyDrink = clicksForEnergyDrink - 1;
+      } else {
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x";
+      }
+    }
+  }
+};
+
+multBtn.onclick = function () {
+  if (paperswrote >= promotion) {
+    skillPoints = skillPoints + 0.5;
+    paperswrote = paperswrote - promotion;
+    papers.innerText = "Papers Written: " + paperswrote;
+    promotion = Math.floor(promotion * 1.5 * genPriceReducer);
+    multiplier = multiplier + 0.5;
+    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
+    multi.innerText = "Multiplier: " + multiplier;
+  }
+};
+
+cofBtn.onclick = function () {
+  if (moneyearned >= cofPrice) {
+    skillPoints = skillPoints + 0.25;
+    moneyearned = moneyearned - cofPrice;
+    money.innerText = "Money: $" + moneyearned;
+    cofPrice = Math.floor(cofPrice * 1.2 * genPriceReducer);
+    cofBtn.innerText = "Coffee +1.5x Money: $" + cofPrice;
+    clicksForCof = clicksForCof + 30;
+    multi.innerText =
+      "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+  }
+};
+
+energyBtn.onclick = function () {
+  if (moneyearned >= energyDrinkPrice) {
+    skillPoints = skillPoints + 0.5;
+    energyDrinkMultBonus = 3;
+    moneyearned = moneyearned - energyDrinkPrice;
+    money.innerText = "Money: $" + moneyearned;
+    energyDrinkPrice = Math.floor(energyDrinkPrice * 1.5 * genPriceReducer);
+    energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
+    clicksForEnergyDrink = clicksForEnergyDrink + 30;
+    multiPaper.innerText =
+      "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+  }
+};
+
+writingTool.onclick = function () {
+  if (moneyearned >= paperPCPrice) {
+    skillPoints = skillPoints + 0.5;
+    moneyearned = moneyearned - paperPCPrice;
+    writingToolsBought += 1;
+    paperPC = Math.floor(paperPC * 3);
+    papPerClickDisplay.innerText = "Paper Per Click: " + paperPC;
+    paperPCPrice = Math.floor(paperPCPrice * 3 * genPriceReducer);
+    if (toolCount < 16) {
+      toolCount = toolCount + 1;
+    }
+    writingTool.innerText =
+      "Upgrade Writing Tool | Current Tool: " +
+      tool[toolCount] +
+      " | Cost: $" +
+      paperPCPrice;
+    money.innerText = "Money: $" + moneyearned;
+  }
+};
+
+workerBtn.onclick = function () {
+  if (moneyearned >= workerPrice) {
+    skillPoints = skillPoints + 1;
+    workersHired = workersHired + 1;
+    moneyearned = moneyearned - workerPrice;
+    workerPrice = Math.floor(workerPrice * 1.5 * genPriceReducer);
+    workerBtn.innerText = "Hire Worker: $" + workerPrice;
+    money.innerText = "Money: $" + moneyearned;
+    if (autoWorkerFuncUsed === 0) {
+      autoWorker(1000);
+      autoWorkerFuncUsed = 1;
+    }
+  }
+};
+
+async function autoWorker(waittime) {
+  while (true) {
+    await sleep(waittime);
+    if (irsLock === 0) {
+      if (workCofClicks > 0) {
+        moneyPerSecond1 = 10 * (workersHired / 2) * workersHired * 1.5;
+        moneyPerSec.innerText =
+          "Auto Cash Per Second: $" +
+          moneyPerSecond1 +
+          " ($" +
+          10 * (workersHired / 2) * workersHired +
+          " without 1.5x coffee bonus)";
+        workCofClicks = workCofClicks - 1;
+      } else {
+        moneyPerSecond1 = 10 * (workersHired / 2) * workersHired;
+        moneyPerSec.innerText = "Auto Cash Per Second: $" + moneyPerSecond1;
+      }
+      paperswrote += 10 * (workersHired / 2) * workersHired;
+      papers.innerText = "Papers Written: " + paperswrote;
+      money.innerText = "Money: $" + moneyearned;
+      moneyearned = moneyearned + moneyPerSecond1;
+    }
+  }
+}
+
+async function autoChecks() {
+  while (true) {
+    await sleep(200);
+    if (loadInProgress === 0) {
+      if (moneyearned >= currentBet) {
+        safetyNetLock = 0;
+      }
+      if (toggleIRS === "Off") {
+        taxNoti.style.display = "none";
+        taxNoti.style.opacity = "0";
+      }
+      if (
+        betDisplay.innerText === "Player needs money to bet!" &&
+        moneyearned >= bet
+      ) {
+        betDisplay.innerText = "Bet Set To: $" + bet;
+      }
+      if (highScoreMoney < moneyearned) {
+        highScoreMoney = moneyearned;
+        highscoreDis.innerText = "Highscore: $" + highScoreMoney;
+      }
+      moneyLuckMenu.innerText = "Money: $" + moneyearned;
+      skillPointsDisplay.innerText =
+        "Skill Points: " +
+        skillPoints +
+        " | Total Skill Points (These will be awarded to you when you save): " +
+        totalSkillPoints;
+      if (clicksForEnergyDrink > 0) {
+        papPerClickDisplay.innerText =
+          "Paper Per Click: " +
+          (paperPC * multiplierPaper + energyDrinkMultBonus) +
+          "(" +
+          paperPC +
+          " without 3x energy drink bonus)";
+      } else {
+        papPerClickDisplay.innerText = "Paper Per Click: " + paperPC;
+        energyDrinkMultBonus = 1;
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x";
+      }
+    }
+  }
+}
+
+autoChecks();
+
+//Save and Load:
+
+sbmtBtn.onclick = function () {
+  if (savePlayer === 0) {
+    loadInProgress = 1;
+    let loadCode = loadInput.value;
+    let loadArray = loadCode.split("|").map(Number);
+    loadInput.value = "";
+    //Input Values
+    //console.log(loadArray);
+    moneyPerPaper = loadArray[0]; //No Visual
+    if (loadArray[0] === undefined) {
+      moneyPerPaper = 0.5;
+    }
+    //console.log('moneyPerPaper1: ' + moneyPerPaper);
+    moneyearned = loadArray[1]; //Visual Below
+    if (loadArray[1] === undefined) {
+      moneyearned = 0;
+    }
+    //console.log('moneyEarned2: ' + moneyearned);
+    money.innerText = "Money: $" + moneyearned;
+    multiplier = loadArray[2]; //Multiplier defined below (AFTER CLICKSFORCOF)
+    if (loadArray[2] === undefined) {
+      multiplier = 1;
+    }
+    // console.log('multiplier3: ' + multiplier);
+    paperPCPrice = loadArray[3]; //Defined below (AFTER PROMOTION)
+    if (loadArray[3] === undefined) {
+      paperPCPrice = 30;
+    }
+    // console.log('paperPerClickPrice4: ' + paperPCPrice);
+    paperPC = loadArray[4]; //No visual
+    if (loadArray[4] === undefined) {
+      paperPC = 1;
+    }
+    // console.log('paperPerClick5: ' + paperPC);
+    paperswrote = loadArray[5]; //Visual Below
+    if (loadArray[5] === undefined) {
+      paperswrote = 0;
+    }
+    //console.log('papersWrote6: ' + paperswrote);
+    papers.innerText = "Papers Written: " + paperswrote;
+    cofPrice = loadArray[6];
+    if (loadArray[6] === undefined) {
+      cofPrice = 5;
+    }
+    // console.log('cofPrice7: ' + cofPrice);
+    cofBtn.innerText = "Coffee: +1.5x Money: " + cofPrice;
+    workerPrice = loadArray[7]; //Visual Below
+    if (loadArray[7] === undefined) {
+      workerPrice = 200;
+    }
+    // console.log('workerPrice8: ' + workerPrice);
+    workerBtn.innerText = "Hire Worker: $" + workerPrice;
+    workersHired = loadArray[8]; //No visual
+    if (loadArray[8] === undefined) {
+      workersHired = 0;
+    }
+    if (workersHired > 0 && autoWorkerFuncUsed !== 1) {
+      autoWorker(1000);
+      autoWorkerFuncUsed = 1;
+    }
+    // console.log('workersHired9: ' + workersHired);
+    promotion = loadArray[9]; //Visual Below
+    if (loadArray[9] === undefined) {
+      promotion = 50;
+    }
+    // console.log('promotion10: ' + promotion);
+    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
+    toolCount = loadArray[10]; //No Visual
+    if (loadArray[10] === undefined) {
+      toolCount = 1;
+    }
+    // console.log('Tool Counter 11: ' + toolCount);
+    clicksForCof = loadArray[11]; //Visual Below
+    if (loadArray[11] === undefined) {
+      clicksForCof = 0;
+    }
+    //checkforclicksforcof
+    // console.log('Clicks For Cof 12: ' + clicksForCof);
+    if (clicksForCof > 0) {
+      multi.innerText =
+        "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+    } else {
+      multi.innerText = "Multiplier: " + multiplier;
+    }
+    writingTool.innerText =
+      "Upgrade Writing Tool | Current Tool: " +
+      tool[toolCount] +
+      " | Cost: $" +
+      paperPCPrice;
+
+    energyDrinkPrice = loadArray[12];
+    if (loadArray[12] === undefined) {
+      energyDrinkPrice = 30;
+    }
+    energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
+    clicksForEnergyDrink = loadArray[13];
+    if (loadArray[13] === undefined) {
+      clicksForEnergyDrink = 0;
+    }
+    totalSkillPoints = loadArray[15];
+    if (loadArray[15] === undefined) {
+      totalSkillPoints = 0;
+    }
+    skillPoints = loadArray[14] + 1 + totalSkillPoints;
+    if (loadArray[14] === undefined) {
+      skillPoints = 0;
+    }
+    loadInProgress = 0;
+    safetyNetLock = loadArray[16];
+    if (loadArray[16] === undefined) {
+      safetyNetLock = 0;
+    }
+    irsDebt = loadArray[17];
+    if (loadArray[17] === undefined) {
+      irsDebt = 0;
+    }
+    irsLock = loadArray[18];
+    if (loadArray[18] === undefined) {
+      irsLock = 0;
+    }
+    bet = loadArray[19];
+    if (loadArray[19] === undefined) {
+      bet = 0;
+    }
+    currentBet = loadArray[20];
+    if (loadArray[20] === undefined) {
+      currentBet = bet;
+    }
+    luckWorkerBtnBought = loadArray[21];
+    if (loadArray[21] === undefined) {
+      luckWorkerBtnBought = 0;
+    }
+    if (luckWorkerBtnBought === 1) {
+      luckWorkerBtn.innerText = "H̶i̶r̶e̶ ̶C̶h̶a̶n̶c̶e̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶2̶0̶0̶,̶0̶0̶0̶";
+      autoLuckWorker();
+    } else {
+      luckWorkerBtn.innerText = "Hire Chance Manager: $200,000";
+    }
+    taxWorkerBtnBought = loadArray[22];
+    if (loadArray[22] === undefined) {
+      taxWorkerBtnBought = 0;
+    }
+    if (taxWorkerBtnBought === 1) {
+      hireTaxManagerBtn.innerText = "H̶i̶r̶e̶ ̶T̶a̶x̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶5̶0̶,̶0̶0̶0̶";
+      autoTaxWorker();
+    } else {
+      hireTaxManagerBtn.innerText = "Hire Tax Manager: $50,000";
+    }
+    toggleAutoLuck = loadArray[23];
+    if (loadArray[23] === undefined) {
+      toggleAutoLuck = "Off";
+    }
+    if (toggleAutoLuck === "On") {
+      toggleAutoLuckBtn.innerText = "Toggle Off";
+    } else {
+      toggleAutoLuckBtn.innerText = "Toggle On";
+    }
+    highScoreMoney = loadArray[24];
+    if (loadArray[24] === undefined) {
+      highScoreMoney = moneyearned;
+    }
+    highscoreDis.innerText = "Highscore: $" + highScoreMoney;
+    writingToolsBought = loadArray[25];
+    if (loadArray[25] === undefined) {
+      writingToolsBought = toolCount;
+    }
+    illBucksPerSecDisplayRandom = loadArray[26];
+    if (loadArray[26] === undefined) {
+      illBucksPerSecDisplayRandom = "1-5";
+    }
+    illMoney = loadArray[27];
+    if (loadArray[27] === undefined) {
+      illMoney = 0;
+    }
+    illPrintDelayPrice = loadArray[28];
+    if (loadArray[28] === undefined) {
+      illPrintDelayPrice = 500;
+    }
+    illBucksPerSecPrice = loadArray[29];
+    if (loadArray[29] === undefined) {
+      illBucksPerSecPrice = 200;
+    }
+    toggleIRS = loadArray[30];
+    if (loadArray[30] === undefined) {
+      toggleIRS = "Off";
+    }
+    illDelay = loadArray[31];
+    if (loadArray[31] === undefined) {
+      illDelay === 1;
+    }
+  }
+};
+
+saveBtn.onclick = saveGame;
+
+function saveGame() {
+  let saveCode = [
+    moneyPerPaper, //0
+    moneyearned, //1
+    multiplier, //2
+    paperPCPrice, //3
+    paperPC, //4
+    paperswrote, //5
+    cofPrice, //6
+    workerPrice, //7
+    workersHired, //8
+    promotion, //9
+    toolCount, //10
+    clicksForCof, //11
+    energyDrinkPrice, //12
+    clicksForEnergyDrink, //13
+    skillPoints, //14
+    totalSkillPoints, //15
+    safetyNetLock, //16
+    irsDebt, //17
+    irsLock, //18
+    bet, //19
+    currentBet, //20
+    luckWorkerBtnBought, //21
+    taxWorkerBtnBought, //22
+    toggleAutoLuck, //23
+    highScoreMoney, //24
+    writingToolsBought, //25
+    illBucksPerSecDisplayRandom, //26
+    illMoney, //27
+    illPrintDelayPrice, //28
+    illBucksPerSecPrice, //29
+    toggleIRS, //30
+    illDelay, //31
+  ];
+  let saveCodeSeperated = saveCode.join("|");
+  copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
+  localStorage.setItem("9to5Save", JSON.stringify(saveCodeSeperated));
+};
+
+window.addEventListener("pagehide", function () {
+  saveGame();
+});
+
+async function taxVisit() {
+  await sleep(Math.random(Math.floor()));
+}
+
+//Luck Menu:
+sbmtBet.onclick = function () {
+  if (inputBet.value === "") {
+    betDisplay.innerText = "Invalid Bet!";
+    inputBet.value = "";
+  } else if (Number(inputBet.value) > moneyearned) {
+    betDisplay.innerText = "Invalid Bet! Bet > Money!";
+    inputBet.value = "";
+  } else if (bet < 0) {
+    betDisplay.innerText = "Invalid Bet! Bet < 0!";
+    inputBet.value = "";
+  } else {
+    bet = Number(inputBet.value);
+    inputBet.value = "";
+    betDisplay.innerText = "Bet Set To: $" + bet;
+    currentBet = bet;
+  }
+};
+
+doubleONothin.onclick = function () {
+  if (irsLock === 0) {
+    if (bet === 0 || bet > moneyearned) {
+      betDisplay.innerText = "Player needs money to bet!";
+    } else {
+      let outcomeRandom = Math.floor(Math.random() * 4) + 1;
+      if (outcomeRandom === 1) {
+        moneyearned = moneyearned + bet * 2;
+        outcomeDisplay.innerText = "You Won: $" + bet * 2;
+        money.innerText = "Money: $" + moneyearned;
+      } else {
+        outcomeDisplay.innerText = "You Lost!";
+        moneyearned = moneyearned - bet;
+        money.innerText = "Money: $" + moneyearned;
+      }
+    }
+  }
+};
+
+luckWorkerBtn.onclick = function () {
+  if (isNaN(bet) || bet <= 0) {
+    outcomeDisplay.innerText = "Bet Is Invalid!";
+  } else {
+    if (moneyearned >= luckWorkerPrice && luckWorkerBtnBought === 0) {
+      moneyearned -= luckWorkerPrice;
+      money.innerText = "Money: $" + moneyearned;
+      luckWorkerBtn.innerText = "H̶i̶r̶e̶ ̶C̶h̶a̶n̶c̶e̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶2̶0̶0̶,̶0̶0̶0̶";
+      luckWorkerBtnBought = 1;
+      currentBet = bet;
+      autoLuckWorker();
+    }
+  }
+};
+
+toggleAutoLuckBtn.onclick = function () {
+  if (toggleAutoLuck === "Off") {
+    toggleAutoLuck = "On";
+    toggleAutoLuckBtn.innerText = "Toggle Off";
+  } else {
+    toggleAutoLuck = "Off";
+    toggleAutoLuckBtn.innerText = "Toggle On";
+  }
+};
+
+toggleIRSExperiment.onclick = function () {
+  if (toggleIRS === "Off") {
+    toggleIRS = "On";
+    toggleIRSExperiment.innerText = "The IRS: Experimental | Toggle Off";
+  } else {
+    toggleIRS = "Off";
+    toggleIRSExperiment.innerText = "The IRS: Experimental | Toggle On";
+  }
+};
+
+async function autoLuckWorker() {
+  while (true) {
+    await sleep(500);
+    if (irsLock === 0) {
+      let strat = luckWorkerStrat.value;
+      const canWork =
+        moneyearned >= currentBet &&
+        luckWorkerBtnBought === 1 &&
+        safetyNetLock === 0 &&
+        toggleAutoLuck === "On";
+      outcomeRandom = Math.floor(Math.random() * 3) + 1;
+      if (canWork) {
+        if (strat === "fivePercentStrat") {
+          currentBet = Math.floor(moneyearned * 0.5);
+          if (outcomeRandom === 1) {
+            moneyearned += currentBet * 2;
+            outcomeDisplay.innerText = "You Won: $" + currentBet * 2;
+          } else {
+            moneyearned -= currentBet;
+            outcomeDisplay.innerText = "You Lost: $" + currentBet;
+          }
+        } else if (strat === "martingaleStrat") {
+          currentBet = Math.floor(currentBet * 2);
+          if (outcomeRandom === 1) {
+            moneyearned += currentBet; //*2 was here
+            outcomeDisplay.innerText = "You Won: $" + currentBet; //*2 was here
+            currentBet = bet / 2;
+          } else {
+            moneyearned -= currentBet; //*2 was here
+            outcomeDisplay.innerText = "You Lost: $" + currentBet; //*2 was here
+          }
+        }
+      } else {
+        currentBet = bet / 2;
+        continue;
+      }
+      money.innerText = "Money: $" + Math.floor(moneyearned);
+      moneyLuckMenu.innerText = "Money: $" + Math.floor(moneyearned);
+    }
+  }
+}
+
+async function autoTaxer() {
+  while (true) {
+    await sleep(50000);
+    if (toggleIRS === "On") {
+      if (moneyearned > 0) {
+        irsDebt += Math.floor(
+          (Math.floor(Math.random() * 3) + 1) * (moneyearned / 6),
+        );
+        if (taxWorkerBtnBought === 0) {
+          taxNoti.style.display = "block";
+          taxNoti.style.opacity = "1";
+          debtDisplay.innerText = "Debt: $" + irsDebt;
+          irsVisits -= 1;
+          taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
+          if (irsVisits === 0) {
+            irsLock = 1;
+            taxNoti.innerText =
+              "You Owe The IRS $" +
+              irsDebt +
+              " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
+            moneyPrintOperation();
+            while (irsVisits === 0) {
+              await sleep(200);
+            }
+            irsLock = 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+autoTaxer();
+
+sbmtPayOff.onclick = function () {
+  if (toggleIRS === "On") {
+    const canPayDebt = Number(payDebtInput.value) > 0 && moneyearned >= Number(payDebtInput.value) && Number(payDebtInput.value) <= irsDebt
+    const canPayDebtIll = irsLock === 1 && Number(payDebtInput.value) > 0 && illMoney >= Number(payDebtInput.value) && Number(payDebtInput.value) <= irsDebt;
+    if (canPayDebt) {
+      irsDebt -= Number(payDebtInput.value);
+      moneyearned -= Number(payDebtInput.value);
+      if (Number(payDebtInput.value) >= irsDebt * 0.5 && irsVisits > 0) {
+        irsVisits = 10;
+        taxNoti.innerText =
+          "You Owe The IRS $" +
+          irsDebt +
+          " | " +
+          irsVisits +
+          " Visits Until Your Assets Are Frozen.";
+        money.innerText = "Money: $" + moneyearned;
+        taxNoti.style.display = "none";
+        irsLock == 0;
+      } else if (irsLock === 1) {
+        taxNoti.innerText =
+          "You Owe The IRS $" +
+          irsDebt +
+          " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
+        money.innerText = "Money: $" + moneyearned;
+      }
+      debtDisplay.innerText = "Debt: $" + irsDebt;
+      payDebtInput.value = "";
+    } else if (canPayDebtIll) {
+      irsDebt -= Number(payDebtInput.value);
+      illMoney -= Number(payDebtInput.value);
+      if (Number(payDebtInput.value) >= irsDebt * 0.5 && irsVisits === 0) {
+        irsVisits = 10;
+        taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
+        illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+        irsLock == 0;
+      } else if (Number(payDebtInput.value) < irsDebt * 0.5 && irsVisits === 0) {
+        taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
+        illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      }
+      debtDisplay.innerText = "Debt: $" + irsDebt;
+      payDebtInput.value = "";
+    }
+  }
+};
+
+hireTaxManagerBtn.onclick = function () {
+  if (toggleIRS === "On") {
+    if (moneyearned >= 50000 && taxWorkerBtnBought === 0) {
+      moneyearned -= 50000;
+      money.innerText = "Money: $" + moneyearned;
+      autoTaxWorker();
+      hireTaxManagerBtn.innerText = "̶H̶i̶r̶e̶ ̶T̶a̶x̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶5̶0̶,̶0̶0̶0̶";
+      taxNoti.style.display = "none";
+      taxNoti.style.opacity = "0";
+      taxWorkerBtnBought = 1;
+    }
+  }
+};
+
+async function autoTaxWorker() {
+  while (true) {
+    await sleep(100);
+    if (toggleIRS === "On") {
+      if (irsLock === 0) {
+        if (irsDebt > 0 && moneyearned >= irsDebt) {
+          moneyearned -= irsDebt;
+          transTaxDis.innerText = "Last Auto Tax Transaction: -$" + irsDebt;
+          irsDebt -= irsDebt;
+          irsVisits = 10;
+          taxNoti.innerText =
+            "You Owe The IRS $" +
+            irsDebt +
+            " | " +
+            irsVisits +
+            " Visits Until Your Assets Are Frozen.";
+          money.innerText = "Money: $" + moneyearned;
+          debtDisplay.innerText = "Debt: $" + irsDebt;
+        }
+      }
+    }
+  }
+}
+
+async function moneyPrintOperation() {
+  while (irsLock === 1) {
+    await sleep(illDelay * 1000);
+    if (illBucksPerSecDisplayRandom === "1-5") {
+      if (Math.floor(Math.random() * 2) + 1 === 1) {
+        illMoney += 1;
+      } else {
+        illMoney += 5;
+      }
+    } else if (illBucksPerSecDisplayRandom === "10-20") {
+      if (Math.floor(Math.random() * 2) + 1 === 1) {
+        illMoney += 10;
+      } else {
+        illMoney += 20;
+      }
+    } else if (illBucksPerSecDisplayRandom === "50-100") {
+      if (Math.floor(Math.random() * 2) + 1 === 1) {
+        illMoney += 50;
+      } else {
+        illMoney += 100;
+      }
+    } else if (illBucksPerSecDisplayRandom === "500-1000") {
+      if (Math.floor(Math.random() * 2) + 1 === 1) {
+        illMoney += 500;
+      } else {
+        illMoney += 1000;
+      }
+    } else if (illBucksPerSecDisplayRandom === "5000-10000") {
+      if (Math.floor(Math.random() * 2) + 1 === 1) {
+        illMoney += 5000;
+      } else {
+        illMoney += 10000;
+      }
+    } else if (illBucksPerSecDisplayRandom === "50000-100000") {
+      if (Math.floor(Math.random() * 2) + 1 === 1) {
+        illMoney += 50000;
+      } else {
+        illMoney += 100000;
+      }
+    } else if (illBucksPerSecDisplayRandom === "500000-1000000") {
+      if (Math.floor(Math.random() * 2) + 1 === 1) {
+        illMoney += 500000;
+      } else {
+        illMoney += 1000000;
+      }     
+    }
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+  }
+}
+
+increaseBillBtn.onclick = function() {
+  if (illMoney >= illBucksPerSecPrice && illBucksPerSecDisplayRandom != "500000-1000000") {
+    if (illBucksPerSecDisplayRandom === "1-5") {
+      illBucksPerSecDisplayRandom = "10-20";
+      illMoney -= illBucksPerSecPrice;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illBucksPerSecPrice = 750;
+      increaseBillBtn.innerText = "Print $50-100 Bills | $1,000"
+    } else if (illBucksPerSecDisplayRandom === "10-20") {
+      illBucksPerSecDisplayRandom = "50-100";
+      illMoney -= illBucksPerSecPrice;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illBucksPerSecPrice = 1750;
+      increaseBillBtn.innerText = "Print $500-1000 Bills | $1,750"
+    } else if (illBucksPerSecDisplayRandom === "50-100") {
+      illBucksPerSecDisplayRandom = "500-1000";
+      illMoney -= illBucksPerSecPrice;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illBucksPerSecPrice = 10000;
+      increaseBillBtn.innerText = "Print $5000-10000 Bills | $10,000"
+    } else if (illBucksPerSecDisplayRandom === "500-1000") {
+      illBucksPerSecDisplayRandom = "5000-10000";
+      illMoney -= illBucksPerSecPrice;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illBucksPerSecPrice = 50000;
+      increaseBillBtn.innerText = "Print $50000-100000 Bills | $50,000"
+    } else if (illBucksPerSecDisplayRandom === "5000-10000") {
+      illBucksPerSecDisplayRandom = "50000-100000";
+      illMoney -= illBucksPerSecPrice;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illBucksPerSecPrice = 1000000;
+      increaseBillBtn.innerText = "Print $500000-1000000 Bills | $1,000,000"
+    } else if (illBucksPerSecDisplayRandom === "50000-100000") {
+      increaseBillBtn.innerText = "Printing $500,000-1,000,000 | MAXED"
+      illBucksPerSecDisplayRandom = "500000-1000000";
+      illMoney -= illBucksPerSecPrice;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+    }
+  }
+}
+
+decreasePrintDelayBtn.onclick = function() {
+  if (illPrintDelayPrice <= illMoney && illDelay - .15 > 0) {
+    illDelay -= .15;
+    illMoney -= illPrintDelayPrice;
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+    illPrintDelayPrice += 20000;
+    decreasePrintDelayBtn.innerText = "Print Delay Down .15 Sec | $" + illPrintDelayPrice;
+  } else if (illDelay - .15 <= 0) {
+    decreasePrintDelayBtn.innerText = "Print Delay Minimum Reached";
+  }
+}
+
+loadMethod.onclick = function() {
+  if (savePlayer === 0) {
+    loadInProgress = 1;
+    let loadArray = JSON.parse(localStorage.getItem("9to5Save")).split("|").map(Number);
+    loadInput.value = "";
+    //Input Values
+    //console.log(loadArray);
+    moneyPerPaper = loadArray[0]; //No Visual
+    if (loadArray[0] === undefined) {
+      moneyPerPaper = 0.5;
+    }
+    //console.log('moneyPerPaper1: ' + moneyPerPaper);
+    moneyearned = loadArray[1]; //Visual Below
+    if (loadArray[1] === undefined) {
+      moneyearned = 0;
+    }
+    //console.log('moneyEarned2: ' + moneyearned);
+    money.innerText = "Money: $" + moneyearned;
+    multiplier = loadArray[2]; //Multiplier defined below (AFTER CLICKSFORCOF)
+    if (loadArray[2] === undefined) {
+      multiplier = 1;
+    }
+    // console.log('multiplier3: ' + multiplier);
+    paperPCPrice = loadArray[3]; //Defined below (AFTER PROMOTION)
+    if (loadArray[3] === undefined) {
+      paperPCPrice = 30;
+    }
+    // console.log('paperPerClickPrice4: ' + paperPCPrice);
+    paperPC = loadArray[4]; //No visual
+    if (loadArray[4] === undefined) {
+      paperPC = 1;
+    }
+    // console.log('paperPerClick5: ' + paperPC);
+    paperswrote = loadArray[5]; //Visual Below
+    if (loadArray[5] === undefined) {
+      paperswrote = 0;
+    }
+    //console.log('papersWrote6: ' + paperswrote);
+    papers.innerText = "Papers Written: " + paperswrote;
+    cofPrice = loadArray[6];
+    if (loadArray[6] === undefined) {
+      cofPrice = 5;
+    }
+    // console.log('cofPrice7: ' + cofPrice);
+    cofBtn.innerText = "Coffee: +1.5x Money: " + cofPrice;
+    workerPrice = loadArray[7]; //Visual Below
+    if (loadArray[7] === undefined) {
+      workerPrice = 200;
+    }
+    // console.log('workerPrice8: ' + workerPrice);
+    workerBtn.innerText = "Hire Worker: $" + workerPrice;
+    workersHired = loadArray[8]; //No visual
+    if (loadArray[8] === undefined) {
+      workersHired = 0;
+    }
+    if (workersHired > 0 && autoWorkerFuncUsed !== 1) {
+      autoWorker(1000);
+      autoWorkerFuncUsed = 1;
+    }
+    // console.log('workersHired9: ' + workersHired);
+    promotion = loadArray[9]; //Visual Below
+    if (loadArray[9] === undefined) {
+      promotion = 50;
+    }
+    // console.log('promotion10: ' + promotion);
+    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
+    toolCount = loadArray[10]; //No Visual
+    if (loadArray[10] === undefined) {
+      toolCount = 1;
+    }
+    // console.log('Tool Counter 11: ' + toolCount);
+    clicksForCof = loadArray[11]; //Visual Below
+    if (loadArray[11] === undefined) {
+      clicksForCof = 0;
+    }
+    //checkforclicksforcof
+    // console.log('Clicks For Cof 12: ' + clicksForCof);
+    if (clicksForCof > 0) {
+      multi.innerText =
+        "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+    } else {
+      multi.innerText = "Multiplier: " + multiplier;
+    }
+    writingTool.innerText =
+      "Upgrade Writing Tool | Current Tool: " +
+      tool[toolCount] +
+      " | Cost: $" +
+      paperPCPrice;
+
+    energyDrinkPrice = loadArray[12];
+    if (loadArray[12] === undefined) {
+      energyDrinkPrice = 30;
+    }
+    energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
+    clicksForEnergyDrink = loadArray[13];
+    if (loadArray[13] === undefined) {
+      clicksForEnergyDrink = 0;
+    }
+    totalSkillPoints = loadArray[15];
+    if (loadArray[15] === undefined) {
+      totalSkillPoints = 0;
+    }
+    skillPoints = loadArray[14] + 1 + totalSkillPoints;
+    if (loadArray[14] === undefined) {
+      skillPoints = 0;
+    }
+    loadInProgress = 0;
+    safetyNetLock = loadArray[16];
+    if (loadArray[16] === undefined) {
+      safetyNetLock = 0;
+    }
+    irsDebt = loadArray[17];
+    if (loadArray[17] === undefined) {
+      irsDebt = 0;
+    }
+    irsLock = loadArray[18];
+    if (loadArray[18] === undefined) {
+      irsLock = 0;
+    }
+    bet = loadArray[19];
+    if (loadArray[19] === undefined) {
+      bet = 0;
+    }
+    currentBet = loadArray[20];
+    if (loadArray[20] === undefined) {
+      currentBet = bet;
+    }
+    luckWorkerBtnBought = loadArray[21];
+    if (loadArray[21] === undefined) {
+      luckWorkerBtnBought = 0;
+    }
+    if (luckWorkerBtnBought === 1) {
+      luckWorkerBtn.innerText = "H̶i̶r̶e̶ ̶C̶h̶a̶n̶c̶e̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶2̶0̶0̶,̶0̶0̶0̶";
+      autoLuckWorker();
+    } else {
+      luckWorkerBtn.innerText = "Hire Chance Manager: $200,000";
+    }
+    taxWorkerBtnBought = loadArray[22];
+    if (loadArray[22] === undefined) {
+      taxWorkerBtnBought = 0;
+    }
+    if (taxWorkerBtnBought === 1) {
+      hireTaxManagerBtn.innerText = "H̶i̶r̶e̶ ̶T̶a̶x̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶5̶0̶,̶0̶0̶0̶";
+      autoTaxWorker();
+    } else {
+      hireTaxManagerBtn.innerText = "Hire Tax Manager: $50,000";
+    }
+    toggleAutoLuck = loadArray[23];
+    if (loadArray[23] === undefined) {
+      toggleAutoLuck = "Off";
+    }
+    if (toggleAutoLuck === "On") {
+      toggleAutoLuckBtn.innerText = "Toggle Off";
+    } else {
+      toggleAutoLuckBtn.innerText = "Toggle On";
+    }
+    highScoreMoney = loadArray[24];
+    if (loadArray[24] === undefined) {
+      highScoreMoney = moneyearned;
+    }
+    highscoreDis.innerText = "Highscore: $" + highScoreMoney;
+    writingToolsBought = loadArray[25];
+    if (loadArray[25] === undefined) {
+      writingToolsBought = toolCount;
+    }
+    illBucksPerSecDisplayRandom = loadArray[26];
+    if (loadArray[26] === undefined) {
+      illBucksPerSecDisplayRandom = "1-5";
+    }
+    illMoney = loadArray[27];
+    if (loadArray[27] === undefined) {
+      illMoney = 0;
+    }
+    illPrintDelayPrice = loadArray[28];
+    if (loadArray[28] === undefined) {
+      illPrintDelayPrice = 500;
+    }
+    illBucksPerSecPrice = loadArray[29];
+    if (loadArray[29] === undefined) {
+      illBucksPerSecPrice = 200;
+    }
+    toggleIRS = loadArray[30];
+    if (loadArray[30] === undefined) {
+      toggleIRS = "Off";
+    }
+    illDelay = loadArray[31];
+    if (loadArray[31] === undefined) {
+      illDelay === 1;
+    }
+  }
+}
+  </script>
+</body>
+</html>
