@@ -1669,7 +1669,9 @@ decreasePrintDelayBtn.onclick = function() {
   }
 }
 
-loadMethod.onclick = function() {
+loadMethod.onclick = loadWLocalStorage;
+  
+function loadWLocalStorage() {
   if (savePlayer === 0) {
     loadInProgress = 1;
     let loadArray = JSON.parse(localStorage.getItem("9to5Save")).split("|").map(Number);
@@ -1860,6 +1862,8 @@ loadMethod.onclick = function() {
     }
   }
 }
+
+loadWLocalStorage();
 
 window.addEventListener("pagehide", function () {
   saveGame();
