@@ -1,14 +1,26 @@
+
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>9/5 Simulator</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>9/5 Simulator</title>
 
-  <style>
-    button {
+
+    <script
+      type="text/javascript"
+      src="/js/lib/dummy.js"
+      
+    ></script>
+
+
+
+    <style id="compiled-css" type="text/css">
+      button {
   padding: 10px;
   font-size: 15px;
   cursor: pointer;
@@ -194,16 +206,97 @@ h11 {
   width: 30px;
 }
 
-body {
-	background-color: pink;
-}
 
-  </style>
+      /* EOS */
+    </style>
 
-  
-</head>
-<body>
-  <h2>-~-~ 💼 ((9/5 Simulator V1.55)) ☕ -~-~</h1>
+    <style type="text/css">
+      :root {
+        color-scheme: light;
+      }
+    </style>
+
+    <script id="insert"></script>
+
+      <script src="/js/stringify.js?d84cc0291bd0a061c28604ca3f1ea29e2a03af4f" charset="utf-8"></script>
+      <script>
+        const customConsole = (w) => {
+          const pushToConsole = (payload, type) => {
+            w.parent.postMessage({
+              console: {
+                payload: stringify(payload),
+                type:    type
+              }
+            }, "*")
+          }
+
+          w.onerror = (message, url, line, column) => {
+            // IMPORTANT: the line needs to correspond with the REF:LINE
+            // unfortunately this number needs to be altered every time this view is changed
+            line = line - 117
+            if (line < 0){
+              pushToConsole(message, "error")
+            } else {
+              pushToConsole(`[Line ${line}] ${message}`, "error")
+              // pushToConsole(`[${line}:${column}] ${message}`, "error")
+            }
+          }
+
+          let console = (function(systemConsole){
+            return {
+              log: function(){
+                let args = Array.from(arguments)
+                pushToConsole(args, "log")
+                systemConsole.log.apply(this, args)
+              },
+              info: function(){
+                let args = Array.from(arguments)
+                pushToConsole(args, "info")
+                systemConsole.info.apply(this, args)
+              },
+              warn: function(){
+                let args = Array.from(arguments)
+                pushToConsole(args, "warn")
+                systemConsole.warn.apply(this, args)
+              },
+              error: function(){
+                let args = Array.from(arguments) // REF:LINE
+                pushToConsole(args, "error")
+                systemConsole.error.apply(this, args)
+              },
+              system: function(arg){
+                pushToConsole(arg, "system")
+              },
+              clear: function(){
+                systemConsole.clear.apply(this, {})
+              },
+              time: function(){
+                let args = Array.from(arguments)
+                systemConsole.time.apply(this, args)
+              },
+              assert: function(assertion, label){
+                if (!assertion){
+                  pushToConsole(label, "log")
+                }
+
+                let args = Array.from(arguments)
+                systemConsole.assert.apply(this, args)
+              }
+            }
+          }(window.console))
+
+          window.console = { ...window.console, ...console }
+
+          console.system("Running fiddle")
+        }
+
+        if (window.parent){
+          customConsole(window)
+        }
+      </script>
+  </head>
+  <body>
+    <h2>-~-~ 💼 ((9/5 Simulator V1.50)) ☕ -~-~</h1>
 <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Manage Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="saveAndMoreBtn">Save & More...</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
@@ -241,7 +334,9 @@ body {
   <button6 id="cheaperPricesIII">Cheaper Prices III | 15% Off: 18 Points</button6>
   <button6 id="cheaperPricesIV">Cheaper Prices IV | 20% Off: 25 Points</button6>
   <h4>-----------------</h4>
-  <button6 id="workerEffI">Worker Efficiency I | 
+  <button6 id="workerEffI">Worker Efficiency I | -.1 Seconds Per Action: 5 Points</button6>
+  <button6 id="workerEffII">Worker Efficiency II | -.25 Seconds Per Action: 10 Points</button6>
+  <button6 id="workerEffIII">Worker Efficiency III | -.5 Seconds Per Action: 16 Points</button6>
 </div>
 
 <div id="luckMenuDis">
@@ -298,9 +393,12 @@ body {
   <button id="decreasePrintDelayBtn">Print Delay Down .15 Sec | $200</button>
   <button id="increaseBillBtn">Print $10-20 Bills | $500
 </div>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fb10b4fac29fca8',t:'MTc3ODY2ODgxNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"95d4af946c9a4d229ea725f950960b54","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
 
-  <script>
-    /// 0 - Disabled For Website
+    <script type="text/javascript">
+
+/// 0 - Disabled For Website
 // 1 - Custom Amounts
 // 2 - 200,000 For Each
 // 3 - Custom Skill Points
@@ -311,7 +409,7 @@ body {
 
 let modMenuVal = 0;
 let savePlayer = 0;
-
+let workerEffDec = 0;
 //Constants Below:
 
 // Luck Menu
@@ -375,6 +473,11 @@ const cheaperPricesIBtn = document.getElementById("cheaperPricesI");
 const cheaperPricesIIBtn = document.getElementById("cheaperPricesII");
 const cheaperPricesIIIBtn = document.getElementById("cheaperPricesIII");
 const cheaperPricesIVBtn = document.getElementById("cheaperPricesIV");
+
+//Worker Efficiency Branch
+const workerEffI = document.getElementById("workerEffI");
+const workerEffII = document.getElementById("workerEffII");
+const workerEffIII = document.getElementById("workerEffIII");
 
 //Basic Definitions
 const skillPointsDisplay = document.getElementById("skillPointsCurrency");
@@ -441,6 +544,9 @@ let cheaperPricesILock = 1;
 let cheaperPricesIILock = 1;
 let cheaperPricesIIILock = 1;
 let cheaperPricesIVLock = 1;
+let workerEffILock = 1;
+let workerEffIILock = 1;
+let workerEffIIILock = 1;
 let genPriceReducer = 1;
 let totalSkillPoints = 0;
 
@@ -586,18 +692,57 @@ cheaperPricesIBtn.style.opacity = ".3";
 cheaperPricesIIBtn.style.opacity = ".3";
 cheaperPricesIIIBtn.style.opacity = ".3";
 cheaperPricesIVBtn.style.opacity = ".3";
+workerEffI.style.opacity = ".3";
+workerEffII.style.opacity = ".3";
+workerEffIII.style.opacity = ".3";
 
 //Skill Tree Click Detectors:
 startSkillTree.onclick = function () {
   if (startSkillTreeLock === 0) {
     moneyMultSkillI.style.opacity = "1";
     cheaperPricesIBtn.style.opacity = "1";
+    workerEffI.style.opacity = "1";
     startSkillTree.innerText = "S̶t̶a̶r̶t̶ ̶S̶k̶i̶l̶l̶ ̶T̶r̶e̶e̶:̶ ̶0̶ ̶P̶o̶i̶n̶t̶s̶";
     startSkillTreeLock = 1;
     monMultSkllI = 0;
     cheaperPricesILock = 0;
+    workerEffILock = 0;
   }
 };
+
+workerEffI.onclick = function () {
+  if (skillPoints >= 5 && workerEffILock === 0) {
+    workerEffILock = 1;
+    workerEffDec = 100;
+    workerEffI.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶ ̶|̶ ̶-̶.̶1̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
+    workerEffIILock = 0;
+    workerEffII.style.opacity = "1";
+    totalSkillPoints += 5;
+    skillPoints -= 5;
+  }
+}
+
+workerEffII.onclick = function () {
+  if (skillPoints >= 10 && workerEffIILock === 0) {
+    workerEffIILock = 1;
+    workerEffDec = 350;
+    workerEffII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶ ̶|̶ ̶-̶.̶2̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    workerEffIIILock = 0;
+    workerEffIII.style.opacity = "1";
+    totalSkillPoints += 10;
+    skillPoints -= 10;
+  }
+}
+
+workerEffIII.onclick = function () {
+  if (skillPoints >= 16 && workerEffIIILock === 0) {
+    workerEffIIILock = 1;
+    workerEffDec = 850;
+    workerEffIII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶I̶ ̶|̶ ̶-̶.̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
+    totalSkillPoints += 16;
+    skillPoints -= 16;
+  }
+}
 
 cheaperPricesIBtn.onclick = function () {
   if (skillPoints >= 3 && cheaperPricesILock === 0) {
@@ -880,7 +1025,7 @@ workerBtn.onclick = function () {
 
 async function autoWorker(waittime) {
   while (true) {
-    await sleep(waittime);
+    await sleep(waittime - workerEffDec);
     if (irsLock === 0) {
       if (workCofClicks > 0) {
         moneyPerSecond1 = 10 * (workersHired / 2) * workersHired * 1.5;
@@ -1184,10 +1329,6 @@ function saveGame() {
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
   localStorage.setItem("9to5Save", JSON.stringify(saveCodeSeperated));
 };
-
-window.addEventListener("pagehide", function () {
-  saveGame();
-});
 
 async function taxVisit() {
   await sleep(Math.random(Math.floor()));
@@ -1719,6 +1860,53 @@ loadMethod.onclick = function() {
     }
   }
 }
+
+window.addEventListener("pagehide", function () {
+  saveGame();
+});
+
   </script>
-</body>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: ""
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+  <script>
+    const allLines = []
+    const cssElement = document.querySelector("#compiled-css")
+
+    window.addEventListener("message", (message) => {
+        if (message.data.console){
+          let insert = document.querySelector("#insert")
+          allLines.push(message.data.console.payload)
+          insert.innerHTML = allLines.join(";\r")
+
+          let result = eval.call(null, message.data.console.payload)
+          if (result !== undefined){
+            console.log(result)
+          }
+        }
+
+      if (message.data.css){
+        cssElement.textContent = message.data.css.payload
+      }
+
+      if (message.data.html){
+        document.body.innerHTML = message.data.html.payload
+      }
+    })
+
+    if (window.parent){
+      window.parent.postMessage({loaded: true}, "*")
+    }
+  </script>
 </html>
