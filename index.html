@@ -20,7 +20,7 @@
 
 
     <style id="compiled-css" type="text/css">
-      button {
+button {
   padding: 10px;
   font-size: 15px;
   cursor: pointer;
@@ -207,6 +207,8 @@ h11 {
 }
 
 
+
+
       /* EOS */
     </style>
 
@@ -296,7 +298,7 @@ h11 {
       </script>
   </head>
   <body>
-    <h2>-~-~ 💼 ((9/5 Simulator V1.50)) ☕ -~-~</h1>
+<h2>-~-~ 💼 ((9/5 Simulator V1.55)) ☕ -~-~</h1>
 <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Manage Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="saveAndMoreBtn">Save & More...</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
@@ -383,6 +385,11 @@ h11 {
   <h4>-----------------</h4>
   <h5 id="copAPaste">Copy and Paste This Code: </h5>
   <h4>-----------------</h4>
+  <h4 id="saveSlotLabel"> Save Slots: </h4>
+  <button id="firstSaveSlot">Save #1</button>
+  <button id="secondSaveSlot">Save #2</button>
+  <button id="thirdSaveSlot">Save #3</button>
+  <h4>-----------------</h4>
   <h5 id="moneyPerSecond">Auto Cash Per Sec: $0</h5> 
   <h5 id="paperPerClickDisplay">Paper Per Click: 0</h5>
 </div>
@@ -398,7 +405,7 @@ h11 {
 
     <script type="text/javascript">
 
-/// 0 - Disabled For Website
+// 0 - Disabled For Website
 // 1 - Custom Amounts
 // 2 - 200,000 For Each
 // 3 - Custom Skill Points
@@ -410,6 +417,7 @@ h11 {
 let modMenuVal = 0;
 let savePlayer = 0;
 let workerEffDec = 0;
+let saveSlot = 1;
 //Constants Below:
 
 // Luck Menu
@@ -455,6 +463,10 @@ const increaseBillBtn = document.getElementById("increaseBillBtn");
 //Save and More
 const saveAndMoreDis = document.getElementById("saveAndMoreDis");
 const loadMethod = document.getElementById("loadMethod");
+const firstSaveSlot = document.getElementById("firstSaveSlot");
+const secondSaveSlot = document.getElementById("secondSaveSlot");
+const thirdSaveSlot = document.getElementById("thirdSaveSlot");
+const saveSlotLabel = document.getElementById("saveSlotLabel");
 
 //Skill Tree
 const skillTreeDis = document.getElementById("skillTreeDis");
@@ -860,6 +872,21 @@ workCofBtn.onclick = function () {
   }
 };
 
+firstSaveSlot.onclick = function() {
+  saveGame();
+  saveSlot = 1;
+  loadWLocalStorage();
+}
+secondSaveSlot.onclick = function() {
+  saveGame();
+  saveSlot = 2;
+  loadWLocalStorage();
+}
+thirdSaveSlot.onclick = function() {
+  saveGame();
+  saveSlot = 3;
+  loadWLocalStorage();
+}
 modMenuBtn.onclick = function () {
   if (modMenuVal === 1) {
     let input = prompt("How much money would you like?");
@@ -1327,7 +1354,9 @@ function saveGame() {
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
-  localStorage.setItem("9to5Save", JSON.stringify(saveCodeSeperated));
+  if (saveSlot === 1) localStorage.setItem("9to5Save", JSON.stringify(saveCodeSeperated));
+  if (saveSlot === 2) localStorage.setItem("9to5Save2", JSON.stringify(saveCodeSeperated));
+  if (saveSlot === 3) localStorage.setItem("9to5Save3", JSON.stringify(saveCodeSeperated));
 };
 
 async function taxVisit() {
@@ -1670,11 +1699,17 @@ decreasePrintDelayBtn.onclick = function() {
 }
 
 loadMethod.onclick = loadWLocalStorage;
-  
+
 function loadWLocalStorage() {
   if (savePlayer === 0) {
+    let loadArray;
     loadInProgress = 1;
-    let loadArray = JSON.parse(localStorage.getItem("9to5Save")).split("|").map(Number);
+    if (saveSlot === 1 && localStorage.getItem("9to5Save") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save")).split("|").map(Number);
+    if (saveSlot === 1 && localStorage.getItem("9to5Save") === null) loadArray = [];
+    if (saveSlot === 2 && localStorage.getItem("9to5Save2") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save2")).split("|").map(Number);
+    if (saveSlot === 2 && localStorage.getItem("9to5Save2") === null) loadArray = [];
+    if (saveSlot === 3 && localStorage.getItem("9to5Save3") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save3")).split("|").map(Number);
+    if (saveSlot === 3 && localStorage.getItem("9to5Save3") === null) loadArray = [];
     loadInput.value = "";
     //Input Values
     //console.log(loadArray);
@@ -1863,11 +1898,11 @@ function loadWLocalStorage() {
   }
 }
 
-loadWLocalStorage();
-
 window.addEventListener("pagehide", function () {
   saveGame();
 });
+
+loadWLocalStorage();
 
   </script>
 
