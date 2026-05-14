@@ -125,6 +125,51 @@ HTML:
     <br>---</br>
     <span> Cost: $1m & 100 Skill Points </span>
   </button>
+  <button id="upgradeButton10" class="upgradeButtons10"> 
+    <span> Title 10 Blah Blah: </span>
+    <br>---</br>
+    <span> Produces Something and Something </span>
+    <br>
+    <span class="specify"> +$xxx & xx,xxx </span>
+    <br>---</br>
+    <span> Cost: </span>
+  </button>
+  <button id="upgradeButton11" class="upgradeButtons11"> 
+    <span> Title 11 Blah Blah: </span>
+    <br>---</br>
+    <span> Produces Something and Something </span>
+    <br>
+    <span class="specify"> +$xxx & xx,xxx </span>
+    <br>---</br>
+    <span> Cost: </span>
+  </button>
+  <button id="upgradeButton12" class="upgradeButtons12"> 
+    <span> Title 12 Blah Blah: </span>
+    <br>---</br>
+    <span> Produces Something and Something </span>
+    <br>
+    <span class="specify"> +$xxx & xx,xxx </span>
+    <br>---</br>
+    <span> Cost: </span>
+  </button>
+  <button id="upgradeButton13" class="upgradeButtons13"> 
+    <span> Title 13 Blah Blah: </span>
+    <br>---</br>
+    <span> Produces Something and Something </span>
+    <br>
+    <span class="specify"> +$xxx & xx,xxx </span>
+    <br>---</br>
+    <span> Cost: </span>
+  </button>
+  <button id="upgradeButton14" class="upgradeButtons14"> 
+    <span> Title 14 Blah Blah: </span>
+    <br>---</br>
+    <span> Produces Something and Something </span>
+    <br>
+    <span class="specify"> +$xxx & xx,xxx </span>
+    <br>---</br>
+    <span> Cost: </span>
+  </button>
 </div>
 
 <div id="luckMenuDis">
@@ -329,7 +374,8 @@ const secondSaveSlot = document.getElementById("secondSaveSlot");
 const thirdSaveSlot = document.getElementById("thirdSaveSlot");
 const saveSlotLabel = document.getElementById("saveSlotLabel");
 //Upgrades Menu
-let upgradesBought = new Array(50).fill(0)
+let upgradesBought = new Array(50).fill(0);
+let skillTreeBought = new Array(50).fill(0);
 const upgradeMenu = document.getElementById("upgradeMenuDis");
 const upgradeMenuBtn = document.getElementById("upgradeMenu");
 const unlockPaperMineUp = document.getElementById("unlockPaperMineUp");
@@ -347,29 +393,40 @@ const lessPaperCuts = document.getElementById("lessPaperCuts");
 lessPaperCuts.style.opacity = ".3";
 const moneyGrowsOnTrees = document.getElementById("moneyGrowsOnTrees");
 moneyGrowsOnTrees.style.opacity = ".3";
+const upgrade10 = document.getElementById("upgradeButton10");
+upgrade10.style.opacity = ".3";
+const upgrade11 = document.getElementById("upgradeButton11");
+upgrade11.style.opacity = ".3";
+const upgrade12 = document.getElementById("upgradeButton12");
+upgrade12.style.opacity = ".3";
+const upgrade13 = document.getElementById("upgradeButton13");
+upgrade13.style.opacity = ".3";
+const upgrade14 = document.getElementById("upgradeButton14");
+upgrade14.style.opacity = ".3";
 
 //Skill Tree
 const skillTreeDis = document.getElementById("skillTreeDis");
 
 //Main Branch
-const startSkillTree = document.getElementById("startSkillTree");
+const startSkillTree = document.getElementById("startSkillTree"); //0
 
 //Money Multiplier Branch
-const moneyMultSkillI = document.getElementById("moneyMultPlusSkillI");
-const moneyMultSkillII = document.getElementById("moneyMultPlusSkillII");
-const moneyMultSkillIII = document.getElementById("moneyMultPlusSkillIII");
-const moneyMultSkillIV = document.getElementById("moneyMultPlusSkillIV");
+const moneyMultSkillI = document.getElementById("moneyMultPlusSkillI"); //1
+const moneyMultSkillII = document.getElementById("moneyMultPlusSkillII"); //2
+const moneyMultSkillIII = document.getElementById("moneyMultPlusSkillIII"); //3
+const moneyMultSkillIV = document.getElementById("moneyMultPlusSkillIV"); //4
+
 
 //Cheaper Prices Branch
-const cheaperPricesIBtn = document.getElementById("cheaperPricesI");
-const cheaperPricesIIBtn = document.getElementById("cheaperPricesII");
-const cheaperPricesIIIBtn = document.getElementById("cheaperPricesIII");
-const cheaperPricesIVBtn = document.getElementById("cheaperPricesIV");
+const cheaperPricesIBtn = document.getElementById("cheaperPricesI"); //5
+const cheaperPricesIIBtn = document.getElementById("cheaperPricesII"); //6
+const cheaperPricesIIIBtn = document.getElementById("cheaperPricesIII"); //7
+const cheaperPricesIVBtn = document.getElementById("cheaperPricesIV"); //8
 
 //Worker Efficiency Branch
-const workerEffI = document.getElementById("workerEffI");
-const workerEffII = document.getElementById("workerEffII");
-const workerEffIII = document.getElementById("workerEffIII");
+const workerEffI = document.getElementById("workerEffI"); //9
+const workerEffII = document.getElementById("workerEffII"); //10
+const workerEffIII = document.getElementById("workerEffIII"); //11
 
 //Basic Definitions
 const skillPointsDisplay = document.getElementById("skillPointsCurrency");
@@ -609,8 +666,10 @@ workerEffII.style.opacity = ".3";
 workerEffIII.style.opacity = ".3";
 
 //Skill Tree Click Detectors:
-startSkillTree.onclick = function () {
-  if (startSkillTreeLock === 0) {
+startSkillTree.onclick = skillPointBuy0;
+function skillPointBuy0(bypass) {
+  if (startSkillTreeLock === 0 || bypass === 1) {
+    skillTreeBought[0] = 1;
     moneyMultSkillI.style.opacity = "1";
     cheaperPricesIBtn.style.opacity = "1";
     workerEffI.style.opacity = "1";
@@ -622,88 +681,11 @@ startSkillTree.onclick = function () {
   }
 };
 
-workerEffI.onclick = function () {
-  if (skillPoints >= 5 && workerEffILock === 0) {
-    workerEffILock = 1;
-    workerEffDec = 100;
-    workerEffI.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶ ̶|̶ ̶-̶.̶1̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
-    workerEffIILock = 0;
-    workerEffII.style.opacity = "1";
-    totalSkillPoints += 5;
-    skillPoints -= 5;
-  }
-}
+moneyMultSkillI.onclick = skillPointBuy1;
 
-workerEffII.onclick = function () {
-  if (skillPoints >= 10 && workerEffIILock === 0) {
-    workerEffIILock = 1;
-    workerEffDec = 350;
-    workerEffII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶ ̶|̶ ̶-̶.̶2̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
-    workerEffIIILock = 0;
-    workerEffIII.style.opacity = "1";
-    totalSkillPoints += 10;
-    skillPoints -= 10;
-  }
-}
-
-workerEffIII.onclick = function () {
-  if (skillPoints >= 16 && workerEffIIILock === 0) {
-    workerEffIIILock = 1;
-    workerEffDec = 850;
-    workerEffIII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶I̶ ̶|̶ ̶-̶.̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
-    totalSkillPoints += 16;
-    skillPoints -= 16;
-  }
-}
-
-cheaperPricesIBtn.onclick = function () {
-  if (skillPoints >= 3 && cheaperPricesILock === 0) {
-    cheaperPricesILock = 1;
-    cheaperPricesIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶ ̶|̶ ̶5̶%̶ ̶O̶f̶f̶:̶ ̶3̶ ̶P̶o̶i̶n̶t̶s̶";
-    genPriceReducer = 0.95;
-    cheaperPricesIILock = 0;
-    cheaperPricesIIBtn.style.opacity = "1";
-    totalSkillPoints = totalSkillPoints + 3;
-    skillPoints = skillPoints - 3;
-  }
-};
-
-cheaperPricesIIBtn.onclick = function () {
-  if (skillPoints >= 7 && cheaperPricesIILock === 0) {
-    cheaperPricesIILock = 1;
-    cheaperPricesIIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶I̶ ̶|̶ ̶1̶0̶%̶ ̶O̶f̶f̶:̶ ̶7̶ ̶P̶o̶i̶n̶t̶s̶";
-    genPriceReducer = 0.9;
-    cheaperPricesIIILock = 0;
-    cheaperPricesIIIBtn.style.opacity = "1";
-    totalSkillPoints = totalSkillPoints + 7;
-    skillPoints = skillPoints - 7;
-  }
-};
-
-cheaperPricesIIIBtn.onclick = function () {
-  if (skillPoints >= 18 && cheaperPricesIIILock === 0) {
-    cheaperPricesIIILock = 1;
-    cheaperPricesIIIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶I̶I̶ ̶|̶ ̶1̶5̶%̶ ̶O̶f̶f̶:̶ ̶1̶8̶ ̶P̶o̶i̶n̶t̶s̶";
-    genPriceReducer = 0.85;
-    cheaperPricesIVLock = 0;
-    cheaperPricesIVBtn.style.opacity = "1";
-    totalSkillPoints = totalSkillPoints + 18;
-    skillPoints = skillPoints - 18;
-  }
-};
-
-cheaperPricesIVBtn.onclick = function () {
-  if (skillPoints >= 25 && cheaperPricesIVLock === 0) {
-    cheaperPricesIVLock = 1;
-    cheaperPricesIVBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶V̶ ̶|̶ ̶2̶0̶%̶ ̶O̶f̶f̶:̶ ̶2̶5̶ ̶P̶o̶i̶n̶t̶s̶";
-    genPriceReducer = 0.8;
-    totalSkillPoints = totalSkillPoints + 25;
-    skillPoints = skillPoints - 25;
-  }
-};
-
-moneyMultSkillI.onclick = function () {
-  if (skillPoints >= 2 && monMultSkllI === 0) {
+function skillPointBuy1(bypass) {
+  if (skillPoints >= 2 && monMultSkllI === 0 || bypass === 1) {
+    skillTreeBought[1] = 1;
     moneyMultSkillI.innerText =
       "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶ ̶|̶ ̶+̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶2̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPoints = skillPoints - 2;
@@ -717,8 +699,10 @@ moneyMultSkillI.onclick = function () {
   }
 };
 
-moneyMultSkillII.onclick = function () {
-  if (skillPoints >= 5 && monMultSkllII === 0) {
+moneyMultSkillII.onclick = skillPointBuy2;
+function skillPointBuy2(bypass) {
+  if (skillPoints >= 5 && monMultSkllII === 0 || bypass === 1) {
+    skillTreeBought[2] = 1;
     moneyMultSkillII.innerText =
       "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶ ̶|̶ ̶+̶1̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPoints = skillPoints - 5;
@@ -732,8 +716,10 @@ moneyMultSkillII.onclick = function () {
   }
 };
 
-moneyMultSkillIII.onclick = function () {
-  if (skillPoints >= 10 && monMultSkllIII === 0) {
+moneyMultSkillIII.onclick = skillPointBuy3;
+function skillPointBuy3(bypass) {
+  if (skillPoints >= 10 && monMultSkllIII === 0 || bypass === 1) {
+    skillTreeBought[3] = 1;
     moneyMultSkillIII.innerText =
       "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶I̶ ̶|̶ ̶+̶1̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPoints = skillPoints - 10;
@@ -747,8 +733,10 @@ moneyMultSkillIII.onclick = function () {
   }
 };
 
-moneyMultSkillIV.onclick = function () {
-  if (skillPoints >= 16 && monMultSkllIV === 0) {
+moneyMultSkillIV.onclick = skillPointBuy4;
+function skillPointBuy4(bypass) {
+  if (skillPoints >= 16 && monMultSkllIV === 0 || bypass === 1) {
+    skillTreeBought[4] = 1;
     moneyMultSkillIV.innerText =
       "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶V̶ ̶|̶ ̶+̶2̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPoints = skillPoints - 16;
@@ -759,6 +747,141 @@ moneyMultSkillIV.onclick = function () {
     totalSkillPoints = totalSkillPoints + 16;
   }
 };
+
+workerEffI.onclick = skillPointBuy8;
+function skillPointBuy8(bypass) {
+  if (skillPoints >= 5 && workerEffILock === 0 || bypass === 1) {
+    skillTreeBought[9] = 1;
+    workerEffILock = 1;
+    workerEffDec = 100;
+    workerEffI.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶ ̶|̶ ̶-̶.̶1̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
+    workerEffIILock = 0;
+    workerEffII.style.opacity = "1";
+    totalSkillPoints += 5;
+    skillPoints -= 5;
+  }
+}
+
+workerEffII.onclick = skillPointBuy9;
+function skillPointBuy9(bypass) {
+  if (skillPoints >= 10 && workerEffIILock === 0 || bypass === 1) {
+    skillTreeBought[10] = 1;
+    workerEffIILock = 1;
+    workerEffDec = 350;
+    workerEffII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶ ̶|̶ ̶-̶.̶2̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    workerEffIIILock = 0;
+    workerEffIII.style.opacity = "1";
+    totalSkillPoints += 10;
+    skillPoints -= 10;
+  }
+}
+
+workerEffIII.onclick = skillPointBuy10;
+function skillPointBuy10(bypass) {
+  if (skillPoints >= 16 && workerEffIIILock === 0 || bypass === 1) {
+    skillTreeBought[11] = 1;
+    workerEffIIILock = 1;
+    workerEffDec = 850;
+    workerEffIII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶I̶ ̶|̶ ̶-̶.̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
+    totalSkillPoints += 16;
+    skillPoints -= 16;
+  }
+}
+
+cheaperPricesIBtn.onclick = skillPointBuy5;
+function skillPointBuy5(bypass) {
+  if (skillPoints >= 3 && cheaperPricesILock === 0 || bypass === 1) {
+    skillTreeBought[5] = 1;
+    cheaperPricesILock = 1;
+    cheaperPricesIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶ ̶|̶ ̶5̶%̶ ̶O̶f̶f̶:̶ ̶3̶ ̶P̶o̶i̶n̶t̶s̶";
+    genPriceReducer = 0.95;
+    cheaperPricesIILock = 0;
+    cheaperPricesIIBtn.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 3;
+    skillPoints = skillPoints - 3;
+  }
+};
+
+cheaperPricesIIBtn.onclick = skillPointBuy6;
+function skillPointBuy6(bypass) {
+  if (skillPoints >= 7 && cheaperPricesIILock === 0 || bypass === 1) {
+    skillTreeBought[6] = 1;
+    cheaperPricesIILock = 1;
+    cheaperPricesIIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶I̶ ̶|̶ ̶1̶0̶%̶ ̶O̶f̶f̶:̶ ̶7̶ ̶P̶o̶i̶n̶t̶s̶";
+    genPriceReducer = 0.9;
+    cheaperPricesIIILock = 0;
+    cheaperPricesIIIBtn.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 7;
+    skillPoints = skillPoints - 7;
+  }
+};
+
+cheaperPricesIIIBtn.onclick = skillPointBuy7;
+function skillPointBuy7(bypass) {
+  if (skillPoints >= 18 && cheaperPricesIIILock === 0 || bypass === 1) {
+    skillTreeBought[7] = 1;
+    cheaperPricesIIILock = 1;
+    cheaperPricesIIIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶I̶I̶ ̶|̶ ̶1̶5̶%̶ ̶O̶f̶f̶:̶ ̶1̶8̶ ̶P̶o̶i̶n̶t̶s̶";
+    genPriceReducer = 0.85;
+    cheaperPricesIVLock = 0;
+    cheaperPricesIVBtn.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 18;
+    skillPoints = skillPoints - 18;
+  }
+};
+
+cheaperPricesIVBtn.onclick = skillPointBuy8;
+function skillPointBuy8(bypass) {
+  if (skillPoints >= 25 && cheaperPricesIVLock === 0 || bypass === 1) {
+    skillTreeBought[7] = 1;
+    cheaperPricesIVLock = 1;
+    cheaperPricesIVBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶V̶ ̶|̶ ̶2̶0̶%̶ ̶O̶f̶f̶:̶ ̶2̶5̶ ̶P̶o̶i̶n̶t̶s̶";
+    genPriceReducer = 0.8;
+    totalSkillPoints = totalSkillPoints + 25;
+    skillPoints = skillPoints - 25;
+  }
+};
+
+workerEffI.onclick = skillPointBuy9;
+function skillPointBuy9(bypass) {
+  if (skillPoints >= 5 && workerEffILock === 0 || bypass === 1) {
+    skillTreeBought[9] = 1;
+    workerEffILock = 1;
+    workerEffDec = 100;
+    workerEffI.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶ ̶|̶ ̶-̶.̶1̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
+    workerEffIILock = 0;
+    workerEffII.style.opacity = "1";
+    totalSkillPoints += 5;
+    skillPoints -= 5;
+  }
+}
+
+workerEffII.onclick = skillPointBuy10;
+function skillPointBuy10(bypass) {
+  if (skillPoints >= 10 && workerEffIILock === 0 || bypass === 1) {
+    skillTreeBought[10] = 1;
+    workerEffIILock = 1;
+    workerEffDec = 350;
+    workerEffII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶ ̶|̶ ̶-̶.̶2̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    workerEffIIILock = 0;
+    workerEffIII.style.opacity = "1";
+    totalSkillPoints += 10;
+    skillPoints -= 10;
+  }
+}
+
+workerEffIII.onclick = skillPointBuy11;
+function skillPointBuy11(bypass) {
+  if (skillPoints >= 16 && workerEffIIILock === 0 || bypass === 1) {
+    skillTreeBought[11] = 1;
+    workerEffIIILock = 1;
+    workerEffDec = 850;
+    workerEffIII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶I̶ ̶|̶ ̶-̶.̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
+    totalSkillPoints += 16;
+    skillPoints -= 16;
+  }
+}
+
 
 workCofBtn.onclick = function () {
   if (workCofPrice <= moneyearned) {
@@ -1212,6 +1335,18 @@ sbmtBtn.onclick = function () {
     if (loadArray[31] === undefined) {
       illDelay === 1;
     }
+    skillTreeBought = loadArray[32] || new Array(50).fill(0);
+    if (skillTreeBought[0] === 1) skillPointBuy0();
+    if (skillTreeBought[1] === 1) skillPointBuy1();
+    if (skillTreeBought[2] === 1) skillPointBuy2();
+    if (skillTreeBought[3] === 1) skillPointBuy3();
+    if (skillTreeBought[4] === 1) skillPointBuy4();
+    if (skillTreeBought[5] === 1) skillPointBuy5();
+    if (skillTreeBought[6] === 1) skillPointBuy6();
+    if (skillTreeBought[7] === 1) skillPointBuy7();
+    if (skillTreeBought[8] === 1) skillPointBuy8();
+    if (skillTreeBought[9] === 1) skillPointBuy10();
+    if (skillTreeBought[10] === 1) skillPointBuy11();
   }
 };
 
@@ -1251,6 +1386,7 @@ function saveGame() {
     illBucksPerSecPrice, //29
     toggleIRS, //30
     illDelay, //31
+    skillTreeBought, //32
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -1795,6 +1931,18 @@ function loadWLocalStorage() {
     if (loadArray[31] === undefined) {
       illDelay === 1;
     }
+    skillTreeBought = loadArray[32] || new Array(50).fill(0);
+    if (skillTreeBought[0] === 1) skillPointBuy0(1);
+    if (skillTreeBought[1] === 1) skillPointBuy1(1);
+    if (skillTreeBought[2] === 1) skillPointBuy2(1);
+    if (skillTreeBought[3] === 1) skillPointBuy3(1);
+    if (skillTreeBought[4] === 1) skillPointBuy4(1);
+    if (skillTreeBought[5] === 1) skillPointBuy5(1);
+    if (skillTreeBought[6] === 1) skillPointBuy6(1);
+    if (skillTreeBought[7] === 1) skillPointBuy7(1);
+    if (skillTreeBought[8] === 1) skillPointBuy8(1);
+    if (skillTreeBought[9] === 1) skillPointBuy10(1);
+    if (skillTreeBought[10] === 1) skillPointBuy11(1);
   }
 }
 
@@ -1802,8 +1950,11 @@ window.addEventListener("pagehide", function () {
   saveGame();
 });
 
-loadWLocalStorage();
-
+async function loadOnStart(waitTime) {
+  await sleep(500)
+  loadWLocalStorage();
+}
+loadOnStart();
 
 
 
@@ -2055,7 +2206,7 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 200px;
+  left: 215px;
 }
 
 .upgradeButtons3 {
@@ -2090,14 +2241,14 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 390px;
+  left: 415px;
 }
 
 .upgradeButtons9 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 615px;
+  left: 650px;
   white-space: nowrap;
 }
 
@@ -2106,6 +2257,46 @@ h11 {
   position: absolute;
   top: 725px;
   left: 10px;
+}
+
+.upgradeButtons10 {
+  font-size: x-small;
+  position: absolute;
+  top: 100px;
+  left: 835px;
+  white-space: nowrap;
+}
+
+.upgradeButtons11 {
+  font-size: x-small;
+  position: absolute;
+  top: 100px;
+  left: 1055px;
+  white-space: nowrap;
+}
+
+.upgradeButtons12 {
+  font-size: x-small;
+  position: absolute;
+  top: 100px;
+  left: 835px;
+  white-space: nowrap;
+}
+
+.upgradeButtons13 {
+  font-size: x-small;
+  position: absolute;
+  top: 100px;
+  left: 835px;
+  white-space: nowrap;
+}
+
+.upgradeButtons14 {
+  font-size: x-small;
+  position: absolute;
+  top: 100px;
+  left: 835px;
+  white-space: nowrap;
 }
 
 .specify {
