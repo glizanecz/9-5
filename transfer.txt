@@ -24,7 +24,7 @@ HTML:
 </div>
 
 <div id="skillTreeDis">
-  <h6 id="skillPointsCurrency">Skill Points: 0 | Total Skill Points (These will be awarded to you when you save): 0</h6>
+  <h6 id="skillPointsCurrency">Skill Points: 0</h6>
   <button6 id="startSkillTree">Start Skill Tree: 0 Points</button6>
   <h4>-----------------</h4>
   <button6 id="moneyMultPlusSkillI">Multiplier I | +.5 Multiplier For Money and Paper: 2 Points</button6>
@@ -126,49 +126,49 @@ HTML:
     <span> Cost: $1m & 100 Skill Points </span>
   </button>
   <button id="upgradeButton10" class="upgradeButtons10"> 
-    <span> Title 10 Blah Blah: </span>
+    <span> More Skill Point Deposits: </span>
     <br>---</br>
-    <span> Produces Something and Something </span>
+    <span> Produces More Skill Points </span>
     <br>
-    <span class="specify"> +$xxx & xx,xxx </span>
+    <span class="specify"> +.5 Skill Points Per Action </span>
     <br>---</br>
-    <span> Cost: </span>
+    <span> Cost: $12m & 150 Skill Points</span>
   </button>
   <button id="upgradeButton11" class="upgradeButtons11"> 
-    <span> Title 11 Blah Blah: </span>
+    <span> Skill Points River Stream: </span>
     <br>---</br>
-    <span> Produces Something and Something </span>
+    <span> Produces More Skill Points </span>
     <br>
-    <span class="specify"> +$xxx & xx,xxx </span>
+    <span class="specify"> +.3 Skill Points Per Action </span>
     <br>---</br>
-    <span> Cost: </span>
+    <span> Cost: $2bil & 250 Skill Points</span>
   </button>
   <button id="upgradeButton12" class="upgradeButtons12"> 
-    <span> Title 12 Blah Blah: </span>
+    <span> Money Tree Forests: </span>
     <br>---</br>
-    <span> Produces Something and Something </span>
+    <span> Produces More Money & Paper </span>
     <br>
-    <span class="specify"> +$xxx & xx,xxx </span>
+    <span class="specify"> +$1mil & 500,000 Paper Per Action </span>
     <br>---</br>
-    <span> Cost: </span>
+    <span> Cost: $100mil & 75 Skill Points</span>
   </button>
   <button id="upgradeButton13" class="upgradeButtons13"> 
-    <span> Title 13 Blah Blah: </span>
+    <span> Faster Chopping: </span>
     <br>---</br>
-    <span> Produces Something and Something </span>
+    <span> Produces More Money & Paper </span>
     <br>
-    <span class="specify"> +$xxx & xx,xxx </span>
+    <span class="specify"> +$1mil & 500,000 Paper Per Action </span>
     <br>---</br>
-    <span> Cost: </span>
+    <span> Cost: $100mil & 50 Skill Points</span>
   </button>
   <button id="upgradeButton14" class="upgradeButtons14"> 
-    <span> Title 14 Blah Blah: </span>
+    <span> Efficient Extraction: </span>
     <br>---</br>
-    <span> Produces Something and Something </span>
+    <span> Produces More Money & Paper </span>
     <br>
-    <span class="specify"> +$xxx & xx,xxx </span>
+    <span class="specify"> +$1mil & 750,000 Paper Per Action </span>
     <br>---</br>
-    <span> Cost: </span>
+    <span> Cost: $50mil & 25 Skill Points</span>
   </button>
 </div>
 
@@ -393,6 +393,8 @@ const lessPaperCuts = document.getElementById("lessPaperCuts");
 lessPaperCuts.style.opacity = ".3";
 const moneyGrowsOnTrees = document.getElementById("moneyGrowsOnTrees");
 moneyGrowsOnTrees.style.opacity = ".3";
+const skillPointDeposits = document.getElementById("skillPointDeposits")
+skillPointDeposits.style.opacity = ".3";
 const upgrade10 = document.getElementById("upgradeButton10");
 upgrade10.style.opacity = ".3";
 const upgrade11 = document.getElementById("upgradeButton11");
@@ -665,6 +667,66 @@ workerEffI.style.opacity = ".3";
 workerEffII.style.opacity = ".3";
 workerEffIII.style.opacity = ".3";
 
+async function definingBuys(index) {
+  if (index === 0) {
+    //startSkillTree.innerText = "S̶t̶a̶r̶t̶ ̶S̶k̶i̶l̶l̶ ̶T̶r̶e̶e̶:̶ ̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPointBuy0(1);
+    skillPoints += 0;
+  }
+  if (index === 1) {
+    //moneyMultSkillI.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶ ̶|̶ ̶+̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶2̶ ̶P̶o̶i̶n̶t̶s̶"
+    moneyMultSkillII.style.opacity = "1"
+    skillPointBuy1(1)
+    skillPoints += 2;
+  }
+  if (index === 2) {
+    //moneyMultSkillII.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶ ̶|̶ ̶+̶1̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶"
+    moneyMultSkillIII.style.opacity = "1"
+    skillPointBuy2(1)
+    skillPoints += 5;
+  }
+  if (index === 3) {
+    //moneyMultSkillIII.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶I̶ ̶|̶ ̶+̶1̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    moneyMultSkillIV.style.opacity = "1"
+    skillPointBuy3(1)
+    skillPoints += 10;
+  }
+  if (index === 4) {
+    //moneyMultSkillIV.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶V̶ ̶|̶ ̶+̶2̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPointBuy4(1)
+    skillPoints += 16;
+  }
+  if (index === 5) {
+    //cheaperPricesIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶ ̶|̶ ̶5̶%̶ ̶O̶f̶f̶:̶ ̶3̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPointBuy5(1);
+    skillPoints += 3;
+  }
+  if (index === 6) {
+    skillPointBuy6(1)
+    skillPoints += 7;
+  }
+  if (index === 7) {
+    skillPointBuy7(1);
+    skillPoints += 18;
+  }
+  if (index === 8) {
+    skillPointBuy8(1);
+    skillPoints += 25;
+  }
+  if (index === 9) {
+    skillPointBuy9(1);
+    skillPoints += 5;
+  }
+  if (index === 10) {
+    skillPointBuy10(1);
+    skillPoints += 10
+  }
+  if (index === 11) {
+    skillPointBuy11(1);
+    skillPoints += 16;
+  }
+}
+
 //Skill Tree Click Detectors:
 startSkillTree.onclick = skillPointBuy0;
 function skillPointBuy0(bypass) {
@@ -748,8 +810,8 @@ function skillPointBuy4(bypass) {
   }
 };
 
-workerEffI.onclick = skillPointBuy8;
-function skillPointBuy8(bypass) {
+workerEffI.onclick = skillPointBuy9;
+function skillPointBuy9(bypass) {
   if (skillPoints >= 5 && workerEffILock === 0 || bypass === 1) {
     skillTreeBought[9] = 1;
     workerEffILock = 1;
@@ -833,7 +895,7 @@ function skillPointBuy7(bypass) {
 cheaperPricesIVBtn.onclick = skillPointBuy8;
 function skillPointBuy8(bypass) {
   if (skillPoints >= 25 && cheaperPricesIVLock === 0 || bypass === 1) {
-    skillTreeBought[7] = 1;
+    skillTreeBought[8] = 1;
     cheaperPricesIVLock = 1;
     cheaperPricesIVBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶V̶ ̶|̶ ̶2̶0̶%̶ ̶O̶f̶f̶:̶ ̶2̶5̶ ̶P̶o̶i̶n̶t̶s̶";
     genPriceReducer = 0.8;
@@ -1122,9 +1184,7 @@ async function autoChecks() {
       moneyLuckMenu.innerText = "Money: $" + moneyearned;
       skillPointsDisplay.innerText =
         "Skill Points: " +
-        skillPoints +
-        " | Total Skill Points (These will be awarded to you when you save): " +
-        totalSkillPoints;
+        skillPoints;
       if (clicksForEnergyDrink > 0) {
         papPerClickDisplay.innerText =
           "Paper Per Click: " +
@@ -1353,6 +1413,7 @@ sbmtBtn.onclick = function () {
 saveBtn.onclick = saveGame;
 
 function saveGame() {
+  let skillTreeSave = skillTreeBought.toString();
   let saveCode = [
     moneyPerPaper, //0
     moneyearned, //1
@@ -1386,7 +1447,7 @@ function saveGame() {
     illBucksPerSecPrice, //29
     toggleIRS, //30
     illDelay, //31
-    skillTreeBought, //32
+    skillTreeSave, //32
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -1740,61 +1801,61 @@ function loadWLocalStorage() {
   if (savePlayer === 0) {
     let loadArray;
     loadInProgress = 1;
-    if (saveSlot === 1 && localStorage.getItem("9to5Save") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save")).split("|").map(Number);
+    if (saveSlot === 1 && localStorage.getItem("9to5Save") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save")).split("|");
     if (saveSlot === 1 && localStorage.getItem("9to5Save") === null) loadArray = [];
-    if (saveSlot === 2 && localStorage.getItem("9to5Save2") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save2")).split("|").map(Number);
+    if (saveSlot === 2 && localStorage.getItem("9to5Save2") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save2")).split("|");
     if (saveSlot === 2 && localStorage.getItem("9to5Save2") === null) loadArray = [];
-    if (saveSlot === 3 && localStorage.getItem("9to5Save3") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save3")).split("|").map(Number);
+    if (saveSlot === 3 && localStorage.getItem("9to5Save3") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save3")).split("|");
     if (saveSlot === 3 && localStorage.getItem("9to5Save3") === null) loadArray = [];
     loadInput.value = "";
     //Input Values
     //console.log(loadArray);
-    moneyPerPaper = loadArray[0]; //No Visual
-    if (loadArray[0] === undefined) {
+    moneyPerPaper = Number(loadArray[0]); //No Visual
+    if (loadArray[0] === undefined || isNaN(loadArray[0]) || loadArray[0] === "") {
       moneyPerPaper = 0.5;
     }
     //console.log('moneyPerPaper1: ' + moneyPerPaper);
-    moneyearned = loadArray[1]; //Visual Below
-    if (loadArray[1] === undefined) {
+    moneyearned = Number(loadArray[1]); //Visual Below
+    if (loadArray[1] === undefined || isNaN(loadArray[1]) || loadArray[1] === "") {
       moneyearned = 0;
     }
     //console.log('moneyEarned2: ' + moneyearned);
     money.innerText = "Money: $" + moneyearned;
-    multiplier = loadArray[2]; //Multiplier defined below (AFTER CLICKSFORCOF)
-    if (loadArray[2] === undefined) {
+    multiplier = Number(loadArray[2]); //Multiplier defined below (AFTER CLICKSFORCOF)
+    if (loadArray[2] === undefined || isNaN(loadArray[2]) || loadArray[2] === "") {
       multiplier = 1;
     }
     // console.log('multiplier3: ' + multiplier);
-    paperPCPrice = loadArray[3]; //Defined below (AFTER PROMOTION)
-    if (loadArray[3] === undefined) {
+    paperPCPrice = Number(loadArray[3]); //Defined below (AFTER PROMOTION)
+    if (loadArray[3] === undefined || isNaN(loadArray[3]) || loadArray[3] === "") {
       paperPCPrice = 30;
     }
     // console.log('paperPerClickPrice4: ' + paperPCPrice);
-    paperPC = loadArray[4]; //No visual
-    if (loadArray[4] === undefined) {
+    paperPC = Number(loadArray[4]); //No visual
+    if (loadArray[4] === undefined || isNaN(loadArray[4]) || loadArray[4] === "") {
       paperPC = 1;
     }
     // console.log('paperPerClick5: ' + paperPC);
-    paperswrote = loadArray[5]; //Visual Below
-    if (loadArray[5] === undefined) {
+    paperswrote = Number(loadArray[5]); //Visual Below
+    if (loadArray[5] === undefined || isNaN(loadArray[5]) || loadArray[5] === "") {
       paperswrote = 0;
     }
     //console.log('papersWrote6: ' + paperswrote);
     papers.innerText = "Papers Written: " + paperswrote;
-    cofPrice = loadArray[6];
-    if (loadArray[6] === undefined) {
+    cofPrice = Number(loadArray[6]);
+    if (loadArray[6] === undefined || isNaN(loadArray[6]) || loadArray[6] === "") {
       cofPrice = 5;
     }
     // console.log('cofPrice7: ' + cofPrice);
     cofBtn.innerText = "Coffee: +1.5x Money: " + cofPrice;
-    workerPrice = loadArray[7]; //Visual Below
-    if (loadArray[7] === undefined) {
+    workerPrice = Number(loadArray[7]); //Visual Below
+    if (loadArray[7] === undefined || isNaN(loadArray[7]) || loadArray[7] === "") {
       workerPrice = 200;
     }
     // console.log('workerPrice8: ' + workerPrice);
     workerBtn.innerText = "Hire Worker: $" + workerPrice;
-    workersHired = loadArray[8]; //No visual
-    if (loadArray[8] === undefined) {
+    workersHired = Number(loadArray[8]); //No visual
+    if (loadArray[8] === undefined || isNaN(loadArray[8]) || loadArray[8] === "") {
       workersHired = 0;
     }
     if (workersHired > 0 && autoWorkerFuncUsed !== 1) {
@@ -1802,19 +1863,19 @@ function loadWLocalStorage() {
       autoWorkerFuncUsed = 1;
     }
     // console.log('workersHired9: ' + workersHired);
-    promotion = loadArray[9]; //Visual Below
-    if (loadArray[9] === undefined) {
+    promotion = Number(loadArray[9]); //Visual Below
+    if (loadArray[9] === undefined || isNaN(loadArray[9]) || loadArray[9] === "") {
       promotion = 50;
     }
     // console.log('promotion10: ' + promotion);
     multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
-    toolCount = loadArray[10]; //No Visual
-    if (loadArray[10] === undefined) {
+    toolCount = Number(loadArray[10]); //No Visual
+    if (loadArray[10] === undefined || isNaN(loadArray[10]) || loadArray[10] === "") {
       toolCount = 1;
     }
     // console.log('Tool Counter 11: ' + toolCount);
-    clicksForCof = loadArray[11]; //Visual Below
-    if (loadArray[11] === undefined) {
+    clicksForCof = Number(loadArray[11]); //Visual Below
+    if (loadArray[11] === undefined || isNaN(loadArray[11]) || loadArray[11] === "") {
       clicksForCof = 0;
     }
     //checkforclicksforcof
@@ -1831,46 +1892,47 @@ function loadWLocalStorage() {
       " | Cost: $" +
       paperPCPrice;
 
-    energyDrinkPrice = loadArray[12];
-    if (loadArray[12] === undefined) {
+    energyDrinkPrice = Number(loadArray[12]);
+    if (loadArray[12] === undefined || isNaN(loadArray[12]) || loadArray[12] === "") {
       energyDrinkPrice = 30;
     }
     energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
-    clicksForEnergyDrink = loadArray[13];
-    if (loadArray[13] === undefined) {
+    clicksForEnergyDrink = Number(loadArray[13]);
+    if (loadArray[13] === undefined || isNaN(loadArray[13]) || loadArray[13] === "") {
       clicksForEnergyDrink = 0;
     }
-    totalSkillPoints = loadArray[15];
-    if (loadArray[15] === undefined) {
-      totalSkillPoints = 0;
-    }
-    skillPoints = loadArray[14] + 1 + totalSkillPoints;
-    if (loadArray[14] === undefined) {
+    //totalSkillPoints = loadArray[15];
+    //if (loadArray[15] === undefined) {
+      //totalSkillPoints = 0;
+    //}
+    //skillPoints = loadArray[14] + 1 + totalSkillPoints;
+    skillPoints = Number(loadArray[14]);
+    if (loadArray[14] === undefined || isNaN(loadArray[14]) || loadArray[14] === "") {
       skillPoints = 0;
     }
     loadInProgress = 0;
-    safetyNetLock = loadArray[16];
-    if (loadArray[16] === undefined) {
+    safetyNetLock = Number(loadArray[16]);
+    if (loadArray[16] === undefined || isNaN(loadArray[16]) || loadArray[16] === "") {
       safetyNetLock = 0;
     }
-    irsDebt = loadArray[17];
-    if (loadArray[17] === undefined) {
+    irsDebt = Number(loadArray[17]);
+    if (loadArray[17] === undefined || isNaN(loadArray[17]) || loadArray[17] === "") {
       irsDebt = 0;
     }
-    irsLock = loadArray[18];
-    if (loadArray[18] === undefined) {
+    irsLock = Number(loadArray[18]);
+    if (loadArray[18] === undefined || isNaN(loadArray[18]) || loadArray[18] === "") {
       irsLock = 0;
     }
-    bet = loadArray[19];
-    if (loadArray[19] === undefined) {
+    bet = Number(loadArray[19]);
+    if (loadArray[19] === undefined || isNaN(loadArray[19]) || loadArray[19] === "") {
       bet = 0;
     }
-    currentBet = loadArray[20];
-    if (loadArray[20] === undefined) {
+    currentBet = Number(loadArray[20]);
+    if (loadArray[20] === undefined || isNaN(loadArray[20]) || loadArray[20] === "") {
       currentBet = bet;
     }
-    luckWorkerBtnBought = loadArray[21];
-    if (loadArray[21] === undefined) {
+    luckWorkerBtnBought = Number(loadArray[21]);
+    if (loadArray[21] === undefined || isNaN(loadArray[21]) || loadArray[21] === "") {
       luckWorkerBtnBought = 0;
     }
     if (luckWorkerBtnBought === 1) {
@@ -1879,8 +1941,8 @@ function loadWLocalStorage() {
     } else {
       luckWorkerBtn.innerText = "Hire Chance Manager: $200,000";
     }
-    taxWorkerBtnBought = loadArray[22];
-    if (loadArray[22] === undefined) {
+    taxWorkerBtnBought = Number(loadArray[22]);
+    if (loadArray[22] === undefined || isNaN(loadArray[22]) || loadArray[22] === "") {
       taxWorkerBtnBought = 0;
     }
     if (taxWorkerBtnBought === 1) {
@@ -1890,7 +1952,7 @@ function loadWLocalStorage() {
       hireTaxManagerBtn.innerText = "Hire Tax Manager: $50,000";
     }
     toggleAutoLuck = loadArray[23];
-    if (loadArray[23] === undefined) {
+    if (loadArray[23] === undefined || isNaN(loadArray[23]) || loadArray[23] === "") {
       toggleAutoLuck = "Off";
     }
     if (toggleAutoLuck === "On") {
@@ -1898,51 +1960,57 @@ function loadWLocalStorage() {
     } else {
       toggleAutoLuckBtn.innerText = "Toggle On";
     }
-    highScoreMoney = loadArray[24];
-    if (loadArray[24] === undefined) {
+    highScoreMoney = Number(loadArray[24]);
+    if (loadArray[24] === undefined || isNaN(loadArray[24]) || loadArray[24] === "") {
       highScoreMoney = moneyearned;
     }
     highscoreDis.innerText = "Highscore: $" + highScoreMoney;
-    writingToolsBought = loadArray[25];
-    if (loadArray[25] === undefined) {
+    writingToolsBought = Number(loadArray[25]);
+    if (loadArray[25] === undefined || isNaN(loadArray[25]) || loadArray[25] === "") {
       writingToolsBought = toolCount;
     }
     illBucksPerSecDisplayRandom = loadArray[26];
-    if (loadArray[26] === undefined) {
+    if (loadArray[26] === undefined || isNaN(loadArray[26]) || loadArray[26] === "") {
       illBucksPerSecDisplayRandom = "1-5";
     }
-    illMoney = loadArray[27];
-    if (loadArray[27] === undefined) {
+    illMoney = Number(loadArray[27]);
+    if (loadArray[27] === undefined || isNaN(loadArray[27]) || loadArray[27] === "") {
       illMoney = 0;
     }
-    illPrintDelayPrice = loadArray[28];
-    if (loadArray[28] === undefined) {
+    illPrintDelayPrice = Number(loadArray[28]);
+    if (loadArray[28] === undefined || isNaN(loadArray[28]) || loadArray[28] === "") {
       illPrintDelayPrice = 500;
     }
-    illBucksPerSecPrice = loadArray[29];
-    if (loadArray[29] === undefined) {
+    illBucksPerSecPrice = Number(loadArray[29]);
+    if (loadArray[29] === undefined || isNaN(loadArray[29]) || loadArray[29] === "") {
       illBucksPerSecPrice = 200;
     }
     toggleIRS = loadArray[30];
-    if (loadArray[30] === undefined) {
+    if (loadArray[30] === undefined || isNaN(loadArray[30]) || loadArray[30] === "") {
       toggleIRS = "Off";
     }
-    illDelay = loadArray[31];
-    if (loadArray[31] === undefined) {
+    illDelay = Number(loadArray[31]);
+    if (loadArray[31] === undefined || isNaN(loadArray[31]) || loadArray[31] === "") {
       illDelay === 1;
     }
-    skillTreeBought = loadArray[32] || new Array(50).fill(0);
-    if (skillTreeBought[0] === 1) skillPointBuy0(1);
-    if (skillTreeBought[1] === 1) skillPointBuy1(1);
-    if (skillTreeBought[2] === 1) skillPointBuy2(1);
-    if (skillTreeBought[3] === 1) skillPointBuy3(1);
-    if (skillTreeBought[4] === 1) skillPointBuy4(1);
-    if (skillTreeBought[5] === 1) skillPointBuy5(1);
-    if (skillTreeBought[6] === 1) skillPointBuy6(1);
-    if (skillTreeBought[7] === 1) skillPointBuy7(1);
-    if (skillTreeBought[8] === 1) skillPointBuy8(1);
-    if (skillTreeBought[9] === 1) skillPointBuy10(1);
-    if (skillTreeBought[10] === 1) skillPointBuy11(1);
+    resetSkillTree();
+    if (loadArray[32]) {
+      skillTreeBought = loadArray[32].split(",").map(Number) || new Array(50).fill(0);
+    } else {
+      skillTreeBought = new Array(50).fill(0);
+    }
+    if (skillTreeBought[0] === 1) definingBuys(0);
+    if (skillTreeBought[1] === 1) definingBuys(1);
+    if (skillTreeBought[2] === 1) definingBuys(2);
+    if (skillTreeBought[3] === 1) definingBuys(3);
+    if (skillTreeBought[4] === 1) definingBuys(4);
+    if (skillTreeBought[5] === 1) definingBuys(5);
+    if (skillTreeBought[6] === 1) definingBuys(6);
+    if (skillTreeBought[7] === 1) definingBuys(7);
+    if (skillTreeBought[8] === 1) definingBuys(8);
+    if (skillTreeBought[9] === 1) definingBuys(9);
+    if (skillTreeBought[10] === 1) definingBuys(10);
+    if (skillTreeBought[11] === 1) definingBuys(11);
   }
 }
 
@@ -1955,6 +2023,61 @@ async function loadOnStart(waitTime) {
   loadWLocalStorage();
 }
 loadOnStart();
+
+function resetSkillTree() {
+  skillTreeBought = new Array(50).fill(0);
+  
+  startSkillTreeLock = 0;
+
+  monMultSkllI = 1;
+  monMultSkllII = 1;
+  monMultSkllIII = 1;
+  monMultSkllIV = 1;
+
+  cheaperPricesILock = 1;
+  cheaperPricesIILock = 1;
+  cheaperPricesIIILock = 1;
+  cheaperPricesIVLock = 1;
+
+  workerEffILock = 1;
+  workerEffIILock = 1;
+  workerEffIIILock = 1;
+
+  genPriceReducer = 1;
+  workerEffDec = 0;
+
+  startSkillTree.innerText = "Start Skill Tree: 0 Points";
+
+  moneyMultSkillI.innerText = "Multiplier I | +.5 Multiplier For Money and Paper: 2 Points";
+  moneyMultSkillII.innerText = "Multiplier II | +1 Multiplier For Money and Paper: 5 Points";
+  moneyMultSkillIII.innerText = "Multiplier III | +1.5 Multiplier For Money and Paper: 10 Points";
+  moneyMultSkillIV.innerText = "Multiplier IV | +2 Multiplier For Money and Paper: 16 Points";
+
+  cheaperPricesIBtn.innerText = "Cheaper Prices I | 5% Off: 3 Points";
+  cheaperPricesIIBtn.innerText = "Cheaper Prices II | 10% Off: 7 Points";
+  cheaperPricesIIIBtn.innerText = "Cheaper Prices III | 15% Off: 18 Points";
+  cheaperPricesIVBtn.innerText = "Cheaper Prices IV | 20% Off: 25 Points";
+
+  workerEffI.innerText = "Worker Efficiency I | -.1 Seconds Per Action: 5 Points";
+  workerEffII.innerText = "Worker Efficiency II | -.25 Seconds Per Action: 10 Points";
+  workerEffIII.innerText = "Worker Efficiency III | -.5 Seconds Per Action: 16 Points";
+
+  moneyMultSkillI.style.opacity = ".3";
+  moneyMultSkillII.style.opacity = ".3";
+  moneyMultSkillIII.style.opacity = ".3";
+  moneyMultSkillIV.style.opacity = ".3";
+
+  cheaperPricesIBtn.style.opacity = ".3";
+  cheaperPricesIIBtn.style.opacity = ".3";
+  cheaperPricesIIIBtn.style.opacity = ".3";
+  cheaperPricesIVBtn.style.opacity = ".3";
+
+  workerEffI.style.opacity = ".3";
+  workerEffII.style.opacity = ".3";
+  workerEffIII.style.opacity = ".3";
+}
+
+
 
 
 
@@ -2206,7 +2329,7 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 215px;
+  left: 205px;
 }
 
 .upgradeButtons3 {
@@ -2241,14 +2364,14 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 415px;
+  left: 395px;
 }
 
 .upgradeButtons9 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 650px;
+  left: 625px;
   white-space: nowrap;
 }
 
@@ -2263,7 +2386,7 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 835px;
+  left: 805px;
   white-space: nowrap;
 }
 
@@ -2271,7 +2394,7 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 1055px;
+  left: 990px;
   white-space: nowrap;
 }
 
@@ -2279,7 +2402,7 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 835px;
+  left: 1170px;
   white-space: nowrap;
 }
 
@@ -2287,7 +2410,7 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 835px;
+  left: 1365px;
   white-space: nowrap;
 }
 
@@ -2295,7 +2418,7 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
-  left: 835px;
+  left: 1560px;
   white-space: nowrap;
 }
 
