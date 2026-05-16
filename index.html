@@ -268,6 +268,26 @@ h11 {
   white-space: nowrap;
 }
 
+.upgradeButtons15 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.upgradeButtons16 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.upgradeButtons17 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.upgradeButtons18 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
 .specify {
   font-size: xx-small;
 }
@@ -294,6 +314,14 @@ h11 {
 
 .bought {
   text-decoration: line-through;
+}
+
+.emailBoxText {
+  font-size: 10px;
+  background-color: whitesmoke;
+  border: 2px solid black;
+  height: 20px;
+  width: 95vw;
 }
 
 
@@ -388,8 +416,8 @@ h11 {
       </script>
   </head>
   <body>
-<h2>-~-~ 💼 ((9/5 Simulator V1.65)) ☕ -~-~</h1>
-<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Manage Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="saveAndMoreBtn">Save & More...</button5>
+<h2>-~-~ 💼 ((9/5 Simulator V1.68)) ☕ -~-~</h1>
+<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
 <div id="mainGameDis">
@@ -429,6 +457,10 @@ h11 {
   <button6 id="workerEffI">Worker Efficiency I | -.1 Seconds Per Action: 5 Points</button6>
   <button6 id="workerEffII">Worker Efficiency II | -.25 Seconds Per Action: 10 Points</button6>
   <button6 id="workerEffIII">Worker Efficiency III | -.5 Seconds Per Action: 16 Points</button6>
+  <h4>-----------------</h4>
+  <button6 id="playLaborI">Manual Labor I | Earn 25% of Worker Income Per Click: 20 Points</button6>
+  <button6 id="playLaborII">Manual Labor II | Earn 50% of Worker Income Per Click: 50 Points</button6>
+  <button6 id="playLaborIII">Manual Labor III | Earn 100% of Worker Income Per Click: 100 Points</button6>
 </div>
 
 <div id="upgradeMenuDis">
@@ -665,12 +697,14 @@ const luckWorkerStrat = document.getElementById("luckWorkerStrat");
 const taxMenu = document.getElementById("taxMenuSwitch");
 const taxMenuBtn = document.getElementById("taxMenuSwitchBtn");
 const taxNoti = document.getElementById("taxNoti");
+taxNoti.style.display = "none";
 const debtDisplay = document.getElementById("debtDisplay");
 const payDebtInput = document.getElementById("payDebt");
 const sbmtPayOff = document.getElementById("sbmtPayOff");
 const hireTaxManagerBtn = document.getElementById("hireTaxManagerBtn");
 const transTaxDis = document.getElementById("transTaxDis");
 const toggleIRSExperiment = document.getElementById("toggleIRSExperiment");
+
 
 //Money Printing Menu
 //Switch to money print menu:
@@ -767,6 +801,11 @@ const workerEffI = document.getElementById("workerEffI"); //9
 const workerEffII = document.getElementById("workerEffII"); //10
 const workerEffIII = document.getElementById("workerEffIII"); //11
 
+//Manual Labor Branch
+const manualLaborI = document.getElementById("playLaborI"); //12
+const manualLaborII = document.getElementById("playLaborII"); //13
+const manualLaborIII = document.getElementById("playLaborIII"); //14
+
 //Basic Definitions
 const skillPointsDisplay = document.getElementById("skillPointsCurrency");
 //Main Game
@@ -835,6 +874,10 @@ let cheaperPricesIVLock = 1;
 let workerEffILock = 1;
 let workerEffIILock = 1;
 let workerEffIIILock = 1;
+let manLaborILock = 1;
+let manLaborIILock = 1;
+let manLaborIIILock = 1;
+let percentWorkerPerClick = 0;
 let genPriceReducer = 1;
 let totalSkillPoints = 0;
 
@@ -867,6 +910,7 @@ let modCash = 0;
 let toolCount = 0;
 let autoWorkerFuncUsed = 0;
 let moneyPerSecond1 = 0;
+let paperPerSecond1 = 0;
 let luckWorkerPrice = 200000;
 let safetyNetLock = 0;
 let highScoreMoney = 0;
@@ -886,6 +930,18 @@ let illPrintDelayPrice = 200;
 let illBucksPerSecDisplayRandom = "1-5";
 let toggleIRS = "Off";
 let illDelay = 1;
+
+//Menu Tab Handlers:
+skillTreeBtn.style.opacity = ".3"
+let skillTreeUnlocked = 1;
+upgradeMenuBtn.style.opacity = ".3"
+let upgradeMenuUnlocked = 1;
+moneyPrintMenuSwitcher.style.opacity = ".3"
+let moneyPrintMenuUnlocked = 1;
+luckMenuSwitch.style.opacity = ".3"
+let luckMenuUnlocked = 1;
+taxMenuBtn.style.opacity = ".3"
+let taxMenuUnlocked = 1;
 
 //Menu Tab Functions:
 function getTaxMenu() {
@@ -958,17 +1014,50 @@ function getUpgradeMenu() {
   upgradeMenu.style.display = "flex";
 }
 
+async function menuHandling() {
+  while (true) {
+    await sleep(1000)
+    if ((moneyearned >= 1500) || skillTreeUnlocked === 0) {
+      skillTreeBtn.style.opacity = "1";
+      skillTreeUnlocked = 0;
+    }
+    if ((moneyearned >= 10_000 && paperswrote >= 1000 && skillPoints >= 5) || upgradeMenuUnlocked === 0) {
+      upgradeMenuBtn.style.opacity = "1"
+      upgradeMenuUnlocked = 0;
+    }
+    if ((moneyearned >= 100_000 && paperswrote >= 500_000) || luckMenuUnlocked === 0) {
+      luckMenuSwitch.style.opacity = "1"
+      luckMenuUnlocked = 0;
+    }
+    if (moneyearned >= 1_500_000 || taxMenuUnlocked === 0) {
+      taxMenuBtn.style.opacity = "1"
+      taxMenuUnlocked = 0;
+    }
+    if (moneyearned < 0 && toggleIRS === "On") {
+      moneyPrintMenuSwitcher.style.opacity = "1"
+      moneyPrintMenuUnlocked = 0;
+    } else if (toggleIRS === "On") {
+      moneyPrintMenuSwitcher.style.opacity = ".3"
+      moneyPrintMenuUnlocked = 1;
+    } else {
+      moneyPrintMenuSwitcher.style.opacity = ".3"
+      moneyPrintMenuUnlocked = 1; 
+    }
+  }
+}
+menuHandling();
+
 //Get Tabs:
 
 getMainGame();
 taxNoti.style.display = "none";
 
 skillTreeBtn.onclick = function () {
-  getSkillTree();
+  if (skillTreeUnlocked === 0) getSkillTree();
 };
 
 upgradeMenuBtn.onclick = function () {
-  getUpgradeMenu();
+  if (upgradeMenuUnlocked === 0) getUpgradeMenu();
 }
 
 mainGameBtn.onclick = function () {
@@ -976,7 +1065,7 @@ mainGameBtn.onclick = function () {
 };
 
 luckMenuSwitch.onclick = function () {
-  getLuckMenu();
+  if (luckMenuUnlocked === 0) getLuckMenu();
 };
 
 saveAndMoreBtn.onclick = function () {
@@ -984,11 +1073,11 @@ saveAndMoreBtn.onclick = function () {
 };
 
 taxMenuBtn.onclick = function () {
-  getTaxMenu();
+  if (taxMenuUnlocked === 0) getTaxMenu();
 };
 
 moneyPrintMenuSwitcher.onclick = function () {
-  getMoneyPrint();
+  if (moneyPrintMenuUnlocked === 0) getMoneyPrint();
 }
 
 //Opacity setters
@@ -1003,6 +1092,9 @@ cheaperPricesIVBtn.style.opacity = ".3";
 workerEffI.style.opacity = ".3";
 workerEffII.style.opacity = ".3";
 workerEffIII.style.opacity = ".3";
+manualLaborI.style.opacity = ".3";
+manualLaborII.style.opacity = ".3";
+manualLaborIII.style.opacity = ".3";
 
 async function definingBuys(index) {
   if (index === 0) {
@@ -1061,6 +1153,18 @@ async function definingBuys(index) {
   if (index === 11) {
     skillPointBuy11(1);
     skillPoints += 16;
+  }
+  if (index === 12) {
+    skillPointBuy12(1);
+    skillPoints += 20;
+  }
+  if (index === 13) {
+    skillPointBuy13(1);
+    skillPoints += 50;
+  }
+  if (index === 14) {
+    skillPointBuy14(1);
+    skillPoints += 100;
   }
 }
 
@@ -1144,11 +1248,13 @@ function skillPointBuy0(bypass) {
     moneyMultSkillI.style.opacity = "1";
     cheaperPricesIBtn.style.opacity = "1";
     workerEffI.style.opacity = "1";
+    manualLaborI.style.opacity = "1";
     startSkillTree.innerText = "S̶t̶a̶r̶t̶ ̶S̶k̶i̶l̶l̶ ̶T̶r̶e̶e̶:̶ ̶0̶ ̶P̶o̶i̶n̶t̶s̶";
     startSkillTreeLock = 1;
     monMultSkllI = 0;
     cheaperPricesILock = 0;
     workerEffILock = 0;
+    manLaborILock = 0;
   }
 };
 
@@ -1360,6 +1466,47 @@ function skillPointBuy11(bypass) {
     skillPoints -= 16;
   }
 }
+
+manualLaborI.onclick = skillPointBuy12;
+function skillPointBuy12(bypass) {
+  if (skillPoints >= 20 && manLaborILock === 0 || bypass === 1) {
+    skillTreeBought[12] = 1;
+    manLaborILock = 1;
+    manualLaborI.classList.add("bought");
+    manualLaborII.style.opacity = "1"
+    manLaborIILock = 0
+    percentWorkerPerClick = .25;
+    totalSkillPoints += 20;
+    skillPoints -= 20;
+  }
+}
+
+manualLaborII.onclick = skillPointBuy13;
+function skillPointBuy13(bypass) {
+  if (skillPoints >= 50 && manLaborIILock === 0 || bypass === 1) {
+    skillTreeBought[13] = 1;
+    manLaborIILock = 1;
+    manualLaborII.classList.add("bought");
+    manualLaborIII.style.opacity = "1"
+    manLaborIIILock = 0
+    percentWorkerPerClick = .50;
+    totalSkillPoints += 50;
+    skillPoints -= 50;
+  }
+}
+
+manualLaborIII.onclick = skillPointBuy14;
+function skillPointBuy14(bypass) {
+  if (skillPoints >= 100 && manLaborIIILock === 0 || bypass === 1) {
+    skillTreeBought[14] = 1;
+    manLaborIIILock = 1;
+    manualLaborIII.classList.add("bought");
+    percentWorkerPerClick = 1;
+    totalSkillPoints += 100;
+    skillPoints -= 100;
+  }
+}
+
 
 //Upgrade Buys
 
@@ -1612,16 +1759,46 @@ workCofBtn.onclick = function () {
 
 firstSaveSlot.onclick = function() {
   saveGame();
+  skillTreeBtn.style.opacity = ".3"
+  let skillTreeUnlocked = 1;
+  upgradeMenuBtn.style.opacity = ".3"
+  let upgradeMenuUnlocked = 1;
+  moneyPrintMenuSwitcher.style.opacity = ".3"
+  let moneyPrintMenuUnlocked = 1;
+  luckMenuSwitch.style.opacity = ".3"
+  let luckMenuUnlocked = 1;
+  taxMenuBtn.style.opacity = ".3"
+  let taxMenuUnlocked = 1;
   saveSlot = 1;
   loadWLocalStorage();
 }
 secondSaveSlot.onclick = function() {
   saveGame();
+  skillTreeBtn.style.opacity = ".3"
+  let skillTreeUnlocked = 1;
+  upgradeMenuBtn.style.opacity = ".3"
+  let upgradeMenuUnlocked = 1;
+  moneyPrintMenuSwitcher.style.opacity = ".3"
+  let moneyPrintMenuUnlocked = 1;
+  luckMenuSwitch.style.opacity = ".3"
+  let luckMenuUnlocked = 1;
+  taxMenuBtn.style.opacity = ".3"
+  let taxMenuUnlocked = 1;
   saveSlot = 2;
   loadWLocalStorage();
 }
 thirdSaveSlot.onclick = function() {
   saveGame();
+  skillTreeBtn.style.opacity = ".3"
+  let skillTreeUnlocked = 1;
+  upgradeMenuBtn.style.opacity = ".3"
+  let upgradeMenuUnlocked = 1;
+  moneyPrintMenuSwitcher.style.opacity = ".3"
+  let moneyPrintMenuUnlocked = 1;
+  luckMenuSwitch.style.opacity = ".3"
+  let luckMenuUnlocked = 1;
+  taxMenuBtn.style.opacity = ".3"
+  let taxMenuUnlocked = 1;
   saveSlot = 3;
   loadWLocalStorage();
 }
@@ -1680,31 +1857,26 @@ button.onclick = function () {
   if (irsLock === 0) {
     if (clicksForCof > 0) {
       clicksForCof = clicksForCof - 1;
-      moneyearned = moneyearned + moneyPerPaper * (multiplier + 1.5);
+      moneyearned = moneyearned + moneyPerPaper * (multiplier + 1.5) + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp));
       money.innerText = "Money: $" + moneyearned;
-      paperswrote =
-        paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus);
+      paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
       papers.innerText = "Papers Written: " + paperswrote;
-      multi.innerText =
-        "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+      multi.innerText = "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText =
-          "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
         multiPaper.innerText = "Multiplier: " + multiplierPaper + "x";
       }
     } else {
-      moneyearned = moneyearned + moneyPerPaper * multiplier;
+      moneyearned = moneyearned + moneyPerPaper * multiplier + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp));
       money.innerText = "Money: $" + moneyearned;
-      paperswrote =
-        paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus);
+      paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
       papers.innerText = "Papers Written: " + paperswrote;
       multi.innerText = "Multiplier: " + multiplier + "x";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText =
-          "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
@@ -1805,6 +1977,7 @@ async function autoWorker(waittime) {
         moneyPerSecond1 = 10 * (workersHired / 2) * workersHired;
         moneyPerSec.innerText = "Auto Cash Per Second: $" + moneyPerSecond1;
       }
+      paperPerSecond1 = 10 * (workersHired / 2) * workersHired;
       paperswrote += 10 * (workersHired / 2) * workersHired;
       papers.innerText = "Papers Written: " + paperswrote;
       money.innerText = "Money: $" + moneyearned;
@@ -1899,8 +2072,8 @@ sbmtBtn.onclick = function () {
     illBucksPerSecDisplayRandom = loadValueHelper(loadArray[26], "1-5", "text");
 
     illMoney = loadValueHelper(loadArray[27], 0, "num");
-    illPrintDelayPrice = loadValueHelper(loadArray[28], 500, "num");
-    illBucksPerSecPrice = loadValueHelper(loadArray[29], 200, "num");
+    illPrintDelayPrice = loadValueHelper(loadArray[28], 200, "num");
+    illBucksPerSecPrice = loadValueHelper(loadArray[29], 500, "num");
 
     toggleIRS = loadValueHelper(loadArray[30], "Off", "text");
 
@@ -1925,17 +2098,21 @@ sbmtBtn.onclick = function () {
     } else {
       upgradesBought = new Array(50).fill(0);
     }
-    if (skillTreeBought[0] === 1) skillPointBuy0();
-    if (skillTreeBought[1] === 1) skillPointBuy1();
-    if (skillTreeBought[2] === 1) skillPointBuy2();
-    if (skillTreeBought[3] === 1) skillPointBuy3();
-    if (skillTreeBought[4] === 1) skillPointBuy4();
-    if (skillTreeBought[5] === 1) skillPointBuy5();
-    if (skillTreeBought[6] === 1) skillPointBuy6();
-    if (skillTreeBought[7] === 1) skillPointBuy7();
-    if (skillTreeBought[8] === 1) skillPointBuy8();
-    if (skillTreeBought[9] === 1) skillPointBuy10();
-    if (skillTreeBought[10] === 1) skillPointBuy11();
+    if (skillTreeBought[0] === 1) definingBuys(0);
+    if (skillTreeBought[1] === 1) definingBuys(1);
+    if (skillTreeBought[2] === 1) definingBuys(2);
+    if (skillTreeBought[3] === 1) definingBuys(3);
+    if (skillTreeBought[4] === 1) definingBuys(4);
+    if (skillTreeBought[5] === 1) definingBuys(5);
+    if (skillTreeBought[6] === 1) definingBuys(6);
+    if (skillTreeBought[7] === 1) definingBuys(7);
+    if (skillTreeBought[8] === 1) definingBuys(8);
+    if (skillTreeBought[9] === 1) definingBuys(9);
+    if (skillTreeBought[10] === 1) definingBuys(10);
+    if (skillTreeBought[11] === 1) definingBuys(11);
+    if (skillTreeBought[12] === 1) definingBuys(12);
+    if (skillTreeBought[13] === 1) definingBuys(13);
+    if (skillTreeBought[14] === 1) definingBuys(14);
     if (upgradesBought[0] === 1) definingUpgrades(0);
     if (upgradesBought[1] === 1) definingUpgrades(1);
     if (upgradesBought[2] === 1) definingUpgrades(2);
@@ -1950,6 +2127,10 @@ sbmtBtn.onclick = function () {
     if (upgradesBought[11] === 1) definingUpgrades(11);
     if (upgradesBought[12] === 1) definingUpgrades(12);
     if (upgradesBought[13] === 1) definingUpgrades(13);
+    skillTreeUnlocked = loadValueHelper(loadArray[34], 1, "num");
+    upgradeMenuUnlocked = loadValueHelper(loadArray[35], 1, "num");
+    luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
+    taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
   }
 };
 
@@ -1993,6 +2174,10 @@ function saveGame() {
     illDelay, //31
     skillTreeSave, //32
     upgradeSave, //33
+    skillTreeUnlocked, //34
+    upgradeMenuUnlocked, //35
+    luckMenuUnlocked, //36
+    taxMenuUnlocked, //37
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -2387,8 +2572,8 @@ function loadWLocalStorage() {
     illBucksPerSecDisplayRandom = loadValueHelper(loadArray[26], "1-5", "text");
 
     illMoney = loadValueHelper(loadArray[27], 0, "num");
-    illPrintDelayPrice = loadValueHelper(loadArray[28], 500, "num");
-    illBucksPerSecPrice = loadValueHelper(loadArray[29], 200, "num");
+    illPrintDelayPrice = loadValueHelper(loadArray[28], 200, "num");
+    illBucksPerSecPrice = loadValueHelper(loadArray[29], 500, "num");
 
     toggleIRS = loadValueHelper(loadArray[30], "Off", "text");
 
@@ -2425,6 +2610,9 @@ function loadWLocalStorage() {
     if (skillTreeBought[9] === 1) definingBuys(9);
     if (skillTreeBought[10] === 1) definingBuys(10);
     if (skillTreeBought[11] === 1) definingBuys(11);
+    if (skillTreeBought[12] === 1) definingBuys(12);
+    if (skillTreeBought[13] === 1) definingBuys(13);
+    if (skillTreeBought[14] === 1) definingBuys(14);
     if (upgradesBought[0] === 1) definingUpgrades(0);
     if (upgradesBought[1] === 1) definingUpgrades(1);
     if (upgradesBought[2] === 1) definingUpgrades(2);
@@ -2439,6 +2627,10 @@ function loadWLocalStorage() {
     if (upgradesBought[11] === 1) definingUpgrades(11);
     if (upgradesBought[12] === 1) definingUpgrades(12);
     if (upgradesBought[13] === 1) definingUpgrades(13);
+    skillTreeUnlocked = loadValueHelper(loadArray[34], 1, "num");
+    upgradeMenuUnlocked = loadValueHelper(loadArray[35], 1, "num");
+    luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
+    taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
     loadInProgress = 0;
   }
 }
@@ -2493,8 +2685,13 @@ function resetSkillTree() {
   workerEffIILock = 1;
   workerEffIIILock = 1;
 
+  manLaborILock = 1;
+  manLaborIILock = 1;
+  manLaborIIILock = 1;
+
   genPriceReducer = 1;
   workerEffDec = 0;
+  percentWorkerPerClick = 0;
 
   startSkillTree.innerText = "Start Skill Tree: 0 Points";
 
@@ -2512,6 +2709,10 @@ function resetSkillTree() {
   workerEffII.innerText = "Worker Efficiency II | -.25 Seconds Per Action: 10 Points";
   workerEffIII.innerText = "Worker Efficiency III | -.5 Seconds Per Action: 16 Points";
 
+  manualLaborI.classList.remove("bought");
+  manualLaborII.classList.remove("bought");
+  manualLaborIII.classList.remove("bought");
+
   moneyMultSkillI.style.opacity = ".3";
   moneyMultSkillII.style.opacity = ".3";
   moneyMultSkillIII.style.opacity = ".3";
@@ -2525,6 +2726,10 @@ function resetSkillTree() {
   workerEffI.style.opacity = ".3";
   workerEffII.style.opacity = ".3";
   workerEffIII.style.opacity = ".3";
+
+  manualLaborI.style.opacity = ".3";
+  manualLaborII.style.opacity = ".3";
+  manualLaborIII.style.opacity = ".3";
 }
 
 function resetUpgradeMenu() {
@@ -2583,6 +2788,7 @@ function resetUpgradeMenu() {
 
 autoUpgradeWorker();
 autoWorker(1000 - workerEffDec);
+autoWorkerFuncUsed = 1;
 
   </script>
 
