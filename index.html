@@ -206,6 +206,96 @@ h11 {
   width: 30px;
 }
 
+.upgradeButtons1 {
+  font-size: x-small;
+}
+
+.upgradeButtons2 {
+  font-size: x-small;
+}
+
+.upgradeButtons3 {
+  font-size: x-small;
+}
+
+.upgradeButtons4 {
+  font-size: x-small;
+}
+
+.upgradeButtons5 {
+  font-size: x-small;
+}
+
+.upgradeButtons6 {
+  font-size: x-small;
+}
+
+.upgradeButtons7 {
+  font-size: x-small;
+}
+
+.upgradeButtons9 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.upgradeButtons8 {
+  font-size: x-small;
+}
+
+.upgradeButtons10 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.upgradeButtons11 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.upgradeButtons12 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.upgradeButtons13 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.upgradeButtons14 {
+  font-size: x-small;
+  white-space: nowrap;
+}
+
+.specify {
+  font-size: xx-small;
+}
+
+.flexRowColumn {
+  display: flex;
+  white-space: nowrap;
+  gap: 15px;
+  width: 300px;
+  height: 120px;
+}
+
+.verticalUp {
+  display: flex;
+  flex-direction: column;
+  white-space: wrap;
+  column-gap: 15px;
+  margin-top: 135px;
+  gap: 15px;
+  height: 150px;
+  width: 190px;
+  position: absolute;
+}
+
+.bought {
+  text-decoration: line-through;
+}
+
 
 
 
@@ -298,8 +388,8 @@ h11 {
       </script>
   </head>
   <body>
-<h2>-~-~ 💼 ((9/5 Simulator V1.55)) ☕ -~-~</h1>
-<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Manage Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="saveAndMoreBtn">Save & More...</button5>
+<h2>-~-~ 💼 ((9/5 Simulator V1.65)) ☕ -~-~</h1>
+<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Manage Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="saveAndMoreBtn">Save & More...</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
 <div id="mainGameDis">
@@ -323,7 +413,7 @@ h11 {
 </div>
 
 <div id="skillTreeDis">
-  <h6 id="skillPointsCurrency">Skill Points: 0 | Total Skill Points (These will be awarded to you when you save): 0</h6>
+  <h6 id="skillPointsCurrency">Skill Points: 0</h6>
   <button6 id="startSkillTree">Start Skill Tree: 0 Points</button6>
   <h4>-----------------</h4>
   <button6 id="moneyMultPlusSkillI">Multiplier I | +.5 Multiplier For Money and Paper: 2 Points</button6>
@@ -339,6 +429,140 @@ h11 {
   <button6 id="workerEffI">Worker Efficiency I | -.1 Seconds Per Action: 5 Points</button6>
   <button6 id="workerEffII">Worker Efficiency II | -.25 Seconds Per Action: 10 Points</button6>
   <button6 id="workerEffIII">Worker Efficiency III | -.5 Seconds Per Action: 16 Points</button6>
+</div>
+
+<div id="upgradeMenuDis">
+  <div class="flexRowColumn">
+    <button id="unlockPaperMineUp" class="upgradeButtons1"> 
+      <span> Unlock Worker Upgrades: </span>
+      <br>---</br>
+      <span> Produces Passive Paper & Money </span>
+      <br>
+      <span class="specify"> Makes $25 & 100 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $200 & 1000 Paper </span>
+    </button>
+    <button id="unlockWoodToPaperUp" class="upgradeButtons2"> 
+      <span> Wood to Paper: </span>
+      <br>---</br>
+      <span> Increases Paper Production </span>
+      <br>
+      <span class="specify"> Makes $50 & 500 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $2,000 & 10,000 Paper </span>
+    </button>
+    <button id="moneyGrowsOnTrees" class="upgradeButtons7"> 
+      <span> Money Grows on Trees!: </span>
+      <br>---</br>
+      <span> Produces More Passive Paper & Money </span>
+      <br>
+      <span class="specify"> Makes $200,000 & 10,000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: 200,000 Paper & 25 Skill Points </span>
+    </button>
+    <button id="upgradeButton12" class="upgradeButtons12"> 
+      <span> Money Tree Forests: </span>
+      <br>---</br>
+      <span> Produces More Money & Paper </span>
+      <br>
+      <span class="specify"> +$1mil & 500,000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $100mil & 75 Skill Points</span>
+    </button>
+    <button id="upgradeButton13" class="upgradeButtons13"> 
+      <span> Faster Chopping: </span>
+      <br>---</br>
+      <span> Produces More Money & Paper </span>
+      <br>
+      <span class="specify"> +$10mil & 1,000,000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $1bil & 100 Skill Points</span>
+    </button>
+    <button id="upgradeButton14" class="upgradeButtons14"> 
+      <span> Efficient Extraction: </span>
+      <br>---</br>
+      <span> Produces More Money & Paper </span>
+      <br>
+      <span class="specify"> +$100mil & 10,000,000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $50bil & 400 Skill Points</span>
+    </button>
+  </div>
+  <div class="verticalUp">
+    <button id="unlockFasterPixUp" class="upgradeButtons3"> 
+      <span> Faster Pickaxes: </span>
+      <br>---</br>
+      <span> Produces More Passive Paper & Money </span>
+      <br>
+      <span class="specify"> Makes $450 & 5000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $2,000 & 10,000 Paper </span>
+    </button>
+    <button id="unlockMorePaperDepUp" class="upgradeButtons4"> 
+      <span> More Paper Deposits: </span>
+      <br>---</br>
+      <span> Produces More Passive Paper & Money </span>
+      <br>
+      <span class="specify"> Makes $30,000 & 100,000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $100,000 & 20 Skill Points </span>
+    </button>
+
+    <button id="inkDeposits" class="upgradeButtons5"> 
+      <span> More Ink Deposits: </span>
+      <br>---</br>
+      <span> Produces More Passive Paper & Money </span>
+      <br>
+      <span class="specify"> Makes $50,000 & 70,000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $100,000 & 20 Skill Points </span>
+    </button>
+    <button id="betterTorches" class="upgradeButtons6"> 
+      <span> Better Torches: </span>
+      <br>---</br>
+      <span> Produces More Passive Paper & Money </span>
+      <br>
+      <span class="specify"> Makes $50,000 & 40,000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $180,000 & 45 Skill Points </span>
+    </button>
+    <button id="lessPaperCuts" class="upgradeButtons8"> 
+      <span> Less Paper Cuts: </span>
+      <br>---</br>
+      <span> Produces More Passive Paper & Money </span>
+      <br>
+      <span class="specify"> Makes $50,000 & 60,000 Paper Per Action </span>
+      <br>---</br>
+      <span> Cost: $50,000 & 200,000 Paper </span>
+    </button>
+    <button id="skillPointDeposits" class="upgradeButtons9"> 
+      <span> Skill Point Deposits: </span>
+      <br>---</br>
+      <span> Produces Passive Skill Points </span>
+      <br>
+      <span class="specify"> Makes .01 Skill Points Per Action </span>
+      <br>---</br>
+      <span> Cost: $1m & 100 Skill Points </span>
+    </button>
+    <button id="upgradeButton10" class="upgradeButtons10"> 
+      <span> More Skill Point Deposits: </span>
+      <br>---</br>
+      <span> Produces More Skill Points </span>
+      <br>
+      <span class="specify"> +.5 Skill Points Per Action </span>
+      <br>---</br>
+      <span> Cost: $12m & 150 Skill Points</span>
+    </button>
+    <button id="upgradeButton11" class="upgradeButtons11"> 
+      <span> Skill Points River Stream: </span>
+      <br>---</br>
+      <span> Produces More Skill Points </span>
+      <br>
+      <span class="specify"> +1 Skill Points Per Action </span>
+      <br>---</br>
+      <span> Cost: $2bil & 250 Skill Points</span>
+    </button>
+  </div>
 </div>
 
 <div id="luckMenuDis">
@@ -398,7 +622,7 @@ h11 {
   <h1 id="illMoneyDisplay">Illegal Printed Money: $0</h1>
   <h4>-----------------</h4>
   <button id="decreasePrintDelayBtn">Print Delay Down .15 Sec | $200</button>
-  <button id="increaseBillBtn">Print $10-20 Bills | $500
+  <button id="increaseBillBtn">Print $10-20 Bills | $500</button>
 </div>
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fb10b4fac29fca8',t:'MTc3ODY2ODgxNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"95d4af946c9a4d229ea725f950960b54","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
@@ -468,29 +692,80 @@ const firstSaveSlot = document.getElementById("firstSaveSlot");
 const secondSaveSlot = document.getElementById("secondSaveSlot");
 const thirdSaveSlot = document.getElementById("thirdSaveSlot");
 const saveSlotLabel = document.getElementById("saveSlotLabel");
+//Upgrades Menu
+let upgradesBought = new Array(50).fill(0);
+let skillTreeBought = new Array(50).fill(0);
+let moneyChangeUp = 0;
+let paperChangeUp = 0;
+let skillPointChangeUp = 0;
+let waitTimeChangeUp = 1000;
+const upgradeMenu = document.getElementById("upgradeMenuDis");
+const upgradeMenuBtn = document.getElementById("upgradeMenu");
+const unlockPaperMineUp = document.getElementById("unlockPaperMineUp");
+let unlockPaperMineLock = 0;
+const unlockWoodToPaperUp = document.getElementById("unlockWoodToPaperUp");
+let unlockWoodToPaperLock = 1;
+unlockWoodToPaperUp.style.opacity = ".3";
+const unlockFasterPixUp = document.getElementById("unlockFasterPixUp");
+let fasterPickaxeLock = 1;
+unlockFasterPixUp.style.opacity = ".3";
+const unlockMorePaperDepUp = document.getElementById("unlockMorePaperDepUp");
+let morePaperDepLock = 1;
+unlockMorePaperDepUp.style.opacity = ".3";
+const inkDeposits = document.getElementById("inkDeposits");
+let inkDepositLock = 1;
+inkDeposits.style.opacity = ".3";
+const betterTorches = document.getElementById("betterTorches");
+let betterTorchesLock = 1;
+betterTorches.style.opacity = ".3";
+const lessPaperCuts = document.getElementById("lessPaperCuts");
+let lessPaperCutLock = 1
+lessPaperCuts.style.opacity = ".3";
+const moneyGrowsOnTrees = document.getElementById("moneyGrowsOnTrees");
+let moneyTreesLock = 1;
+moneyGrowsOnTrees.style.opacity = ".3";
+const skillPointDeposits = document.getElementById("skillPointDeposits");
+let spDepositsLock = 1;
+skillPointDeposits.style.opacity = ".3";
+const moreSPDeposits = document.getElementById("upgradeButton10");
+let moreSPDepositsLock = 1;
+moreSPDeposits.style.opacity = ".3";
+const skillPointRiver = document.getElementById("upgradeButton11");
+let spRiverLock = 1;
+skillPointRiver.style.opacity = ".3";
+const moneyTreeForests = document.getElementById("upgradeButton12");
+let moneyTreeForestLock = 1;
+moneyTreeForests.style.opacity = ".3";
+const fasterChopping = document.getElementById("upgradeButton13");
+let fasterChoppingLock = 1;
+fasterChopping.style.opacity = ".3";
+const effExtraction = document.getElementById("upgradeButton14");
+let effExtractLock = 1;
+effExtraction.style.opacity = ".3";
 
 //Skill Tree
 const skillTreeDis = document.getElementById("skillTreeDis");
 
 //Main Branch
-const startSkillTree = document.getElementById("startSkillTree");
+const startSkillTree = document.getElementById("startSkillTree"); //0
 
 //Money Multiplier Branch
-const moneyMultSkillI = document.getElementById("moneyMultPlusSkillI");
-const moneyMultSkillII = document.getElementById("moneyMultPlusSkillII");
-const moneyMultSkillIII = document.getElementById("moneyMultPlusSkillIII");
-const moneyMultSkillIV = document.getElementById("moneyMultPlusSkillIV");
+const moneyMultSkillI = document.getElementById("moneyMultPlusSkillI"); //1
+const moneyMultSkillII = document.getElementById("moneyMultPlusSkillII"); //2
+const moneyMultSkillIII = document.getElementById("moneyMultPlusSkillIII"); //3
+const moneyMultSkillIV = document.getElementById("moneyMultPlusSkillIV"); //4
+
 
 //Cheaper Prices Branch
-const cheaperPricesIBtn = document.getElementById("cheaperPricesI");
-const cheaperPricesIIBtn = document.getElementById("cheaperPricesII");
-const cheaperPricesIIIBtn = document.getElementById("cheaperPricesIII");
-const cheaperPricesIVBtn = document.getElementById("cheaperPricesIV");
+const cheaperPricesIBtn = document.getElementById("cheaperPricesI"); //5
+const cheaperPricesIIBtn = document.getElementById("cheaperPricesII"); //6
+const cheaperPricesIIIBtn = document.getElementById("cheaperPricesIII"); //7
+const cheaperPricesIVBtn = document.getElementById("cheaperPricesIV"); //8
 
 //Worker Efficiency Branch
-const workerEffI = document.getElementById("workerEffI");
-const workerEffII = document.getElementById("workerEffII");
-const workerEffIII = document.getElementById("workerEffIII");
+const workerEffI = document.getElementById("workerEffI"); //9
+const workerEffII = document.getElementById("workerEffII"); //10
+const workerEffIII = document.getElementById("workerEffIII"); //11
 
 //Basic Definitions
 const skillPointsDisplay = document.getElementById("skillPointsCurrency");
@@ -620,6 +895,7 @@ function getTaxMenu() {
   taxMenu.style.display = "block";
   luckMenuDis.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
 }
 
 function getSkillTree() {
@@ -629,6 +905,7 @@ function getSkillTree() {
   luckMenuDis.style.display = "none";
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
 }
 
 function getMainGame() {
@@ -638,6 +915,7 @@ function getMainGame() {
   luckMenuDis.style.display = "none";
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
 }
 
 function getSaveAndMore() {
@@ -647,6 +925,7 @@ function getSaveAndMore() {
   luckMenuDis.style.display = "none";
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
 }
 
 function getLuckMenu() {
@@ -656,6 +935,7 @@ function getLuckMenu() {
   luckMenuDis.style.display = "block";
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
 }
 
 function getMoneyPrint() {
@@ -665,6 +945,17 @@ function getMoneyPrint() {
   luckMenuDis.style.display = "none";
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "block";
+  upgradeMenu.style.display = "none";
+}
+
+function getUpgradeMenu() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "flex";
 }
 
 //Get Tabs:
@@ -675,6 +966,10 @@ taxNoti.style.display = "none";
 skillTreeBtn.onclick = function () {
   getSkillTree();
 };
+
+upgradeMenuBtn.onclick = function () {
+  getUpgradeMenu();
+}
 
 mainGameBtn.onclick = function () {
   getMainGame();
@@ -709,9 +1004,143 @@ workerEffI.style.opacity = ".3";
 workerEffII.style.opacity = ".3";
 workerEffIII.style.opacity = ".3";
 
+async function definingBuys(index) {
+  if (index === 0) {
+    //startSkillTree.innerText = "S̶t̶a̶r̶t̶ ̶S̶k̶i̶l̶l̶ ̶T̶r̶e̶e̶:̶ ̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPointBuy0(1);
+    skillPoints += 0;
+  }
+  if (index === 1) {
+    //moneyMultSkillI.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶ ̶|̶ ̶+̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶2̶ ̶P̶o̶i̶n̶t̶s̶"
+    moneyMultSkillII.style.opacity = "1"
+    skillPointBuy1(1)
+    skillPoints += 2;
+  }
+  if (index === 2) {
+    //moneyMultSkillII.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶ ̶|̶ ̶+̶1̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶"
+    moneyMultSkillIII.style.opacity = "1"
+    skillPointBuy2(1)
+    skillPoints += 5;
+  }
+  if (index === 3) {
+    //moneyMultSkillIII.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶I̶ ̶|̶ ̶+̶1̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    moneyMultSkillIV.style.opacity = "1"
+    skillPointBuy3(1)
+    skillPoints += 10;
+  }
+  if (index === 4) {
+    //moneyMultSkillIV.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶V̶ ̶|̶ ̶+̶2̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPointBuy4(1)
+    skillPoints += 16;
+  }
+  if (index === 5) {
+    //cheaperPricesIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶ ̶|̶ ̶5̶%̶ ̶O̶f̶f̶:̶ ̶3̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPointBuy5(1);
+    skillPoints += 3;
+  }
+  if (index === 6) {
+    skillPointBuy6(1)
+    skillPoints += 7;
+  }
+  if (index === 7) {
+    skillPointBuy7(1);
+    skillPoints += 18;
+  }
+  if (index === 8) {
+    skillPointBuy8(1);
+    skillPoints += 25;
+  }
+  if (index === 9) {
+    skillPointBuy9(1);
+    skillPoints += 5;
+  }
+  if (index === 10) {
+    skillPointBuy10(1);
+    skillPoints += 10
+  }
+  if (index === 11) {
+    skillPointBuy11(1);
+    skillPoints += 16;
+  }
+}
+
+async function definingUpgrades(index) {
+  if (index === 0) {
+    unlockPaperMine(1)
+    moneyearned += 200;
+    paperswrote += 1000;
+  }
+  if (index === 1) {
+    unlockFasterPixUpFunc(1)
+    moneyearned += 2_000;
+    paperswrote + 10_000;
+  }
+  if (index === 2) {
+    morePaperDepUpFunc(1)
+    moneyearned += 100_000;
+    skillPoints += 20;
+  }
+  if (index === 3) {
+    moreInkDepFunc(1)
+    moneyearned += 100_000;
+    skillPoints += 20;
+  }
+  if (index === 4) {
+    betterTorchesFunc(1)
+    moneyearned += 180_000;
+    skillPoints += 45;
+  }
+  if (index === 5) {
+    lessPaperCutsFunc(1)
+    moneyearned += 50_000;
+    paperswrote += 200_000;
+  }
+  if (index === 6) {
+    skillPointDepositsFunc(1)
+    moneyearned += 1_000_000;
+    skillPoints += 100;
+  }
+  if (index === 7) {
+    moreSkillPointDepFunc(1)
+    moneyearned += 12_000_000;
+    skillPoints += 150;
+  }
+  if (index === 8) {
+    skillPointRiverFunc(1)
+    moneyearned += 2_000_000_000;
+    skillPoints += 250;
+  }
+  if (index === 9) {
+    woodToPaperUpFunc(1)
+    moneyearned += 2000
+    paperswrote += 10_000;
+  }
+  if (index === 10) {
+    monGrowsOnTreesFunc(1)
+    paperswrote += 200_000;
+    skillPoints += 25;
+  }
+  if (index === 11) {
+    monTreeForestFunc(1)
+    moneyearned += 100_000_000;
+    skillPoints += 75;
+  }
+  if (index === 12) {
+    fasterChopFunc(1)
+    moneyearned += 1_000_000_000;
+    skillPoints += 100;
+  }
+  if (index === 13) {
+    effExtFunc(1)
+    moneyearned += 50_000_000_000;
+    skillPoints += 400;
+  }
+}
 //Skill Tree Click Detectors:
-startSkillTree.onclick = function () {
-  if (startSkillTreeLock === 0) {
+startSkillTree.onclick = skillPointBuy0;
+function skillPointBuy0(bypass) {
+  if (startSkillTreeLock === 0 || bypass === 1) {
+    skillTreeBought[0] = 1;
     moneyMultSkillI.style.opacity = "1";
     cheaperPricesIBtn.style.opacity = "1";
     workerEffI.style.opacity = "1";
@@ -723,8 +1152,85 @@ startSkillTree.onclick = function () {
   }
 };
 
-workerEffI.onclick = function () {
-  if (skillPoints >= 5 && workerEffILock === 0) {
+moneyMultSkillI.onclick = skillPointBuy1;
+
+function skillPointBuy1(bypass) {
+  if (skillPoints >= 2 && monMultSkllI === 0 || bypass === 1) {
+    skillTreeBought[1] = 1;
+    moneyMultSkillI.innerText =
+      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶ ̶|̶ ̶+̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶2̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPoints = skillPoints - 2;
+    if (bypass != 1) {
+      multiplier = multiplier + 0.5;
+      multiplierPaper += 0.5;
+    }
+    multi.innerText = "Multiplier: " + multiplier + "x";
+    moneyMultSkillII.style.opacity = "1";
+    monMultSkllI = 1;
+    monMultSkllII = 0;
+    totalSkillPoints = totalSkillPoints + 2;
+  }
+};
+
+moneyMultSkillII.onclick = skillPointBuy2;
+function skillPointBuy2(bypass) {
+  if (skillPoints >= 5 && monMultSkllII === 0 || bypass === 1) {
+    skillTreeBought[2] = 1;
+    moneyMultSkillII.innerText =
+      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶ ̶|̶ ̶+̶1̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPoints = skillPoints - 5;
+    if (bypass != 1) {
+      multiplier = multiplier + 1;
+      multiplierPaper += 1;
+    }
+    multi.innerText = "Multiplier: " + multiplier + "x";
+    monMultSkllII = 1;
+    monMultSkllIII = 0;
+    moneyMultSkillIII.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 5;
+  }
+};
+
+moneyMultSkillIII.onclick = skillPointBuy3;
+function skillPointBuy3(bypass) {
+  if (skillPoints >= 10 && monMultSkllIII === 0 || bypass === 1) {
+    skillTreeBought[3] = 1;
+    moneyMultSkillIII.innerText =
+      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶I̶ ̶|̶ ̶+̶1̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPoints = skillPoints - 10;
+    if (bypass != 1) {
+      multiplier = multiplier + 1.5;
+      multiplierPaper += 1.5;
+    }
+    multi.innerText = "Multiplier: " + multiplier + "x";
+    monMultSkllIII = 1;
+    monMultSkllIV = 0;
+    moneyMultSkillIV.style.opacity = "1";
+    totalSkillPoints = totalSkillPoints + 10;
+  }
+};
+
+moneyMultSkillIV.onclick = skillPointBuy4;
+function skillPointBuy4(bypass) {
+  if (skillPoints >= 16 && monMultSkllIV === 0 || bypass === 1) {
+    skillTreeBought[4] = 1;
+    moneyMultSkillIV.innerText =
+      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶V̶ ̶|̶ ̶+̶2̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
+    skillPoints = skillPoints - 16;
+    if (bypass != 1) {
+      multiplier = multiplier + 2;
+      multiplierPaper += 2;
+    }
+    multi.innerText = "Multiplier: " + multiplier + "x";
+    monMultSkllIV = 1;
+    totalSkillPoints = totalSkillPoints + 16;
+  }
+};
+
+workerEffI.onclick = skillPointBuy9;
+function skillPointBuy9(bypass) {
+  if (skillPoints >= 5 && workerEffILock === 0 || bypass === 1) {
+    skillTreeBought[9] = 1;
     workerEffILock = 1;
     workerEffDec = 100;
     workerEffI.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶ ̶|̶ ̶-̶.̶1̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
@@ -735,8 +1241,10 @@ workerEffI.onclick = function () {
   }
 }
 
-workerEffII.onclick = function () {
-  if (skillPoints >= 10 && workerEffIILock === 0) {
+workerEffII.onclick = skillPointBuy9;
+function skillPointBuy9(bypass) {
+  if (skillPoints >= 10 && workerEffIILock === 0 || bypass === 1) {
+    skillTreeBought[10] = 1;
     workerEffIILock = 1;
     workerEffDec = 350;
     workerEffII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶ ̶|̶ ̶-̶.̶2̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
@@ -747,8 +1255,10 @@ workerEffII.onclick = function () {
   }
 }
 
-workerEffIII.onclick = function () {
-  if (skillPoints >= 16 && workerEffIIILock === 0) {
+workerEffIII.onclick = skillPointBuy10;
+function skillPointBuy10(bypass) {
+  if (skillPoints >= 16 && workerEffIIILock === 0 || bypass === 1) {
+    skillTreeBought[11] = 1;
     workerEffIIILock = 1;
     workerEffDec = 850;
     workerEffIII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶I̶ ̶|̶ ̶-̶.̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
@@ -757,8 +1267,10 @@ workerEffIII.onclick = function () {
   }
 }
 
-cheaperPricesIBtn.onclick = function () {
-  if (skillPoints >= 3 && cheaperPricesILock === 0) {
+cheaperPricesIBtn.onclick = skillPointBuy5;
+function skillPointBuy5(bypass) {
+  if (skillPoints >= 3 && cheaperPricesILock === 0 || bypass === 1) {
+    skillTreeBought[5] = 1;
     cheaperPricesILock = 1;
     cheaperPricesIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶ ̶|̶ ̶5̶%̶ ̶O̶f̶f̶:̶ ̶3̶ ̶P̶o̶i̶n̶t̶s̶";
     genPriceReducer = 0.95;
@@ -769,8 +1281,10 @@ cheaperPricesIBtn.onclick = function () {
   }
 };
 
-cheaperPricesIIBtn.onclick = function () {
-  if (skillPoints >= 7 && cheaperPricesIILock === 0) {
+cheaperPricesIIBtn.onclick = skillPointBuy6;
+function skillPointBuy6(bypass) {
+  if (skillPoints >= 7 && cheaperPricesIILock === 0 || bypass === 1) {
+    skillTreeBought[6] = 1;
     cheaperPricesIILock = 1;
     cheaperPricesIIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶I̶ ̶|̶ ̶1̶0̶%̶ ̶O̶f̶f̶:̶ ̶7̶ ̶P̶o̶i̶n̶t̶s̶";
     genPriceReducer = 0.9;
@@ -781,8 +1295,10 @@ cheaperPricesIIBtn.onclick = function () {
   }
 };
 
-cheaperPricesIIIBtn.onclick = function () {
-  if (skillPoints >= 18 && cheaperPricesIIILock === 0) {
+cheaperPricesIIIBtn.onclick = skillPointBuy7;
+function skillPointBuy7(bypass) {
+  if (skillPoints >= 18 && cheaperPricesIIILock === 0 || bypass === 1) {
+    skillTreeBought[7] = 1;
     cheaperPricesIIILock = 1;
     cheaperPricesIIIBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶I̶I̶ ̶|̶ ̶1̶5̶%̶ ̶O̶f̶f̶:̶ ̶1̶8̶ ̶P̶o̶i̶n̶t̶s̶";
     genPriceReducer = 0.85;
@@ -793,8 +1309,10 @@ cheaperPricesIIIBtn.onclick = function () {
   }
 };
 
-cheaperPricesIVBtn.onclick = function () {
-  if (skillPoints >= 25 && cheaperPricesIVLock === 0) {
+cheaperPricesIVBtn.onclick = skillPointBuy8;
+function skillPointBuy8(bypass) {
+  if (skillPoints >= 25 && cheaperPricesIVLock === 0 || bypass === 1) {
+    skillTreeBought[8] = 1;
     cheaperPricesIVLock = 1;
     cheaperPricesIVBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶V̶ ̶|̶ ̶2̶0̶%̶ ̶O̶f̶f̶:̶ ̶2̶5̶ ̶P̶o̶i̶n̶t̶s̶";
     genPriceReducer = 0.8;
@@ -803,63 +1321,282 @@ cheaperPricesIVBtn.onclick = function () {
   }
 };
 
-moneyMultSkillI.onclick = function () {
-  if (skillPoints >= 2 && monMultSkllI === 0) {
-    moneyMultSkillI.innerText =
-      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶ ̶|̶ ̶+̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶2̶ ̶P̶o̶i̶n̶t̶s̶";
-    skillPoints = skillPoints - 2;
-    multiplier = multiplier + 0.5;
-    multiplierPaper += 0.5;
-    multi.innerText = "Multiplier: " + multiplier + "x";
-    moneyMultSkillII.style.opacity = "1";
-    monMultSkllI = 1;
-    monMultSkllII = 0;
-    totalSkillPoints = totalSkillPoints + 2;
+workerEffI.onclick = skillPointBuy9;
+function skillPointBuy9(bypass) {
+  if (skillPoints >= 5 && workerEffILock === 0 || bypass === 1) {
+    skillTreeBought[9] = 1;
+    workerEffILock = 1;
+    workerEffDec = 100;
+    workerEffI.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶ ̶|̶ ̶-̶.̶1̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
+    workerEffIILock = 0;
+    workerEffII.style.opacity = "1";
+    totalSkillPoints += 5;
+    skillPoints -= 5;
   }
-};
+}
 
-moneyMultSkillII.onclick = function () {
-  if (skillPoints >= 5 && monMultSkllII === 0) {
-    moneyMultSkillII.innerText =
-      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶ ̶|̶ ̶+̶1̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
-    skillPoints = skillPoints - 5;
-    multiplier = multiplier + 1;
-    multiplierPaper += 1;
-    multi.innerText = "Multiplier: " + multiplier + "x";
-    monMultSkllII = 1;
-    monMultSkllIII = 0;
-    moneyMultSkillIII.style.opacity = "1";
-    totalSkillPoints = totalSkillPoints + 5;
+workerEffII.onclick = skillPointBuy10;
+function skillPointBuy10(bypass) {
+  if (skillPoints >= 10 && workerEffIILock === 0 || bypass === 1) {
+    skillTreeBought[10] = 1;
+    workerEffIILock = 1;
+    workerEffDec = 350;
+    workerEffII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶ ̶|̶ ̶-̶.̶2̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
+    workerEffIIILock = 0;
+    workerEffIII.style.opacity = "1";
+    totalSkillPoints += 10;
+    skillPoints -= 10;
   }
-};
+}
 
-moneyMultSkillIII.onclick = function () {
-  if (skillPoints >= 10 && monMultSkllIII === 0) {
-    moneyMultSkillIII.innerText =
-      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶I̶ ̶|̶ ̶+̶1̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
-    skillPoints = skillPoints - 10;
-    multiplier = multiplier + 1.5;
-    multiplierPaper += 1.5;
-    multi.innerText = "Multiplier: " + multiplier + "x";
-    monMultSkllIII = 1;
-    monMultSkllIV = 0;
-    moneyMultSkillIV.style.opacity = "1";
-    totalSkillPoints = totalSkillPoints + 10;
+workerEffIII.onclick = skillPointBuy11;
+function skillPointBuy11(bypass) {
+  if (skillPoints >= 16 && workerEffIIILock === 0 || bypass === 1) {
+    skillTreeBought[11] = 1;
+    workerEffIIILock = 1;
+    workerEffDec = 850;
+    workerEffIII.innerText = "W̶o̶r̶k̶e̶r̶ ̶E̶f̶f̶i̶c̶i̶e̶n̶c̶y̶ ̶I̶I̶I̶ ̶|̶ ̶-̶.̶5̶ ̶S̶e̶c̶o̶n̶d̶s̶ ̶P̶e̶r̶ ̶A̶c̶t̶i̶o̶n̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
+    totalSkillPoints += 16;
+    skillPoints -= 16;
   }
-};
+}
 
-moneyMultSkillIV.onclick = function () {
-  if (skillPoints >= 16 && monMultSkllIV === 0) {
-    moneyMultSkillIV.innerText =
-      "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶V̶ ̶|̶ ̶+̶2̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
-    skillPoints = skillPoints - 16;
-    multiplier = multiplier + 2;
-    multiplierPaper += 2;
-    multi.innerText = "Multiplier: " + multiplier + "x";
-    monMultSkllIV = 1;
-    totalSkillPoints = totalSkillPoints + 16;
+//Upgrade Buys
+
+unlockPaperMineUp.onclick = unlockPaperMine;
+function unlockPaperMine(bypass) {
+  if ((moneyearned >= 200 && paperswrote >= 1000 && unlockPaperMineLock === 0) || bypass === 1) {
+    upgradesBought[0] = 1;
+    moneyearned -= 200;
+    paperswrote -= 1000;
+    moneyChangeUp += 25;
+    paperChangeUp += 100;
+    autoUpgradeWorker();
+    unlockPaperMineLock = 1;
+    unlockWoodToPaperUp.style.opacity = "1";
+    unlockWoodToPaperLock = 0;
+    unlockFasterPixUp.style.opacity = "1";
+    fasterPickaxeLock = 0;
+    unlockPaperMineUp.classList.add("bought");
   }
-};
+}
+
+unlockFasterPixUp.onclick = unlockFasterPixUpFunc;
+function unlockFasterPixUpFunc (bypass) {
+  if ((moneyearned >= 2_000 && paperswrote >= 10_000 && fasterPickaxeLock === 0) || bypass === 1) {
+    upgradesBought[1] = 1;
+    moneyearned -= 10_000;
+    paperswrote -= 100_000;
+    moneyChangeUp += 450;
+    paperChangeUp += 5000;
+    fasterPickaxeLock = 1;
+    unlockMorePaperDepUp.style.opacity = "1"
+    morePaperDepLock = 0;
+    unlockFasterPixUp.classList.add("bought");
+  }
+}
+
+unlockMorePaperDepUp.onclick = morePaperDepUpFunc;
+function morePaperDepUpFunc(bypass) {
+  if ((moneyearned >= 100_000 && skillPoints >= 20 && morePaperDepLock === 0) || bypass === 1) {
+    upgradesBought[2] = 1;
+    moneyearned -= 100_000;
+    skillPoints -= 20;
+    moneyChangeUp += 30_000
+    paperChangeUp += 100_000
+    morePaperDepLock = 1;
+    inkDeposits.style.opacity = "1";
+    inkDepositLock = 0;
+    unlockMorePaperDepUp.classList.add("bought");
+  }
+}
+
+inkDeposits.onclick = moreInkDepFunc;
+function moreInkDepFunc(bypass) {
+  if ((moneyearned >= 100_000 && skillPoints >= 20 && inkDepositLock === 0) || bypass === 1) {
+    upgradesBought[3] = 1;
+    moneyearned -= 100_000;
+    skillPoints -= 20;
+    moneyChangeUp += 50_000
+    paperChangeUp += 70_000
+    inkDepositLock = 1;
+    betterTorches.style.opacity = "1";
+    betterTorchesLock = 0;
+    inkDeposits.classList.add("bought");
+  }
+}
+
+betterTorches.onclick = betterTorchesFunc;
+function betterTorchesFunc(bypass) {
+  if ((moneyearned >= 180_000 && skillPoints >= 45 && betterTorchesLock === 0) || bypass === 1) {
+    upgradesBought[4] = 1;
+    moneyearned -= 180_000;
+    skillPoints -= 45;
+    moneyChangeUp += 50_000
+    paperChangeUp += 40_000
+    betterTorchesLock = 1;
+    lessPaperCuts.style.opacity = "1";
+    lessPaperCutLock = 0;
+    betterTorches.classList.add("bought");
+  }
+}
+
+lessPaperCuts.onclick = lessPaperCutsFunc;
+function lessPaperCutsFunc(bypass) {
+  if ((moneyearned >= 50_000 && paperswrote >= 200_000 && lessPaperCutLock === 0) || bypass === 1) {
+    upgradesBought[5] = 1;
+    moneyearned -= 50_000;
+    paperswrote -= 200_000
+    moneyChangeUp += 50_000
+    paperChangeUp += 60_000
+    lessPaperCutLock = 1;
+    skillPointDeposits.style.opacity = "1";
+    spDepositsLock = 0;
+    lessPaperCuts.classList.add("bought");
+  }
+}
+
+skillPointDeposits.onclick = skillPointDepositsFunc;
+function skillPointDepositsFunc(bypass) {
+  if ((moneyearned >= 1_000_000 && skillPoints >= 100 && spDepositsLock === 0) || bypass === 1) {
+    upgradesBought[6] = 1;
+    moneyearned -= 1_000_000;
+    skillPoints -= 100;
+    skillPointChangeUp += .01;
+    spDepositsLock = 1;
+    moreSPDeposits.style.opacity = "1";
+    moreSPDepositsLock = 0;
+    skillPointDeposits.classList.add("bought");
+  }
+}
+
+moreSPDeposits.onclick = moreSkillPointDepFunc;
+function moreSkillPointDepFunc(bypass) {
+  if ((moneyearned >= 12_000_000 && skillPoints >= 150 && moreSPDepositsLock === 0) || bypass === 1) {
+    upgradesBought[7] = 1;
+    moneyearned -= 12_000_000;
+    skillPoints -= 150;
+    skillPointChangeUp += .5;
+    moreSPDepositsLock = 1;
+    skillPointRiver.style.opacity = "1";
+    spRiverLock = 0;
+    moreSPDeposits.classList.add("bought");
+  }
+}
+
+skillPointRiver.onclick = skillPointRiverFunc;
+function skillPointRiverFunc(bypass) {
+  if ((moneyearned >= 2_000_000_000 && skillPoints >= 250 && spRiverLock === 0) || bypass === 1) {
+    upgradesBought[8] = 1;
+    moneyearned -= 2_000_000_000;
+    skillPoints -= 250;
+    skillPointChangeUp += 1;
+    spRiverLock = 1;
+    skillPointRiver.classList.add("bought");
+  }
+}
+
+
+
+
+unlockWoodToPaperUp.onclick = woodToPaperUpFunc;
+function woodToPaperUpFunc(bypass) {
+  if ((moneyearned >= 2_000 && paperswrote >= 10_000 && unlockWoodToPaperLock === 0) || bypass === 1) {
+    upgradesBought[9] = 1;
+    moneyearned -= 2_000;
+    paperswrote -= 10_000
+    moneyChangeUp += 50;
+    paperChangeUp += 500;
+    unlockWoodToPaperLock = 1;
+    moneyGrowsOnTrees.style.opacity = "1";
+    moneyTreesLock = 0;
+    unlockWoodToPaperUp.classList.add("bought");
+  }
+}
+
+moneyGrowsOnTrees.onclick = monGrowsOnTreesFunc;
+function monGrowsOnTreesFunc(bypass) {
+  if ((skillPoints >= 25 && paperswrote >= 200_000 && moneyTreesLock === 0) || bypass === 1) {
+    upgradesBought[10] = 1;
+    paperswrote -= 200_000;
+    skillPoints -= 25;
+    moneyChangeUp += 200_000;
+    paperChangeUp += 10_000;
+    moneyTreesLock = 1;
+    moneyTreeForests.style.opacity = "1";
+    moneyTreeForestLock = 0;
+    moneyGrowsOnTrees.classList.add("bought");
+  }
+}
+
+moneyTreeForests.onclick = monTreeForestFunc;
+function monTreeForestFunc(bypass) {
+  if ((skillPoints >= 75 && moneyearned >= 100_000_000 && moneyTreeForestLock === 0) || bypass === 1) {
+    upgradesBought[11] = 1;
+    moneyearned -= 100_000_000;
+    skillPoints -= 75;
+    moneyChangeUp += 1_000_000;
+    paperChangeUp += 500_000;
+    moneyTreeForestLock = 1;
+    fasterChopping.style.opacity = "1";
+    fasterChoppingLock = 0;
+    moneyTreeForests.classList.add("bought");
+  }
+}
+
+fasterChopping.onclick = fasterChopFunc;
+function fasterChopFunc(bypass) {
+  if ((skillPoints >= 100 && moneyearned >= 1_000_000_000 && fasterChoppingLock === 0) || bypass === 1) {
+    upgradesBought[12] = 1;
+    moneyearned -= 1_000_000_000;
+    skillPoints -= 100;
+    moneyChangeUp += 10_000_000;
+    paperChangeUp += 1_000_000;
+    fasterChoppingLock = 1;
+    effExtraction.style.opacity = "1";
+    effExtractLock = 0;
+    fasterChopping.classList.add("bought");
+  }
+}
+
+effExtraction.onclick = effExtFunc;
+function effExtFunc(bypass) {
+  if ((skillPoints >= 400 && moneyearned >= 50_000_000_000 && effExtractLock === 0) || bypass === 1) {
+    upgradesBought[13] = 1;
+    moneyearned -= 50_000_000_000;
+    skillPoints -= 400;
+    moneyChangeUp += 100_000_000;
+    paperChangeUp += 10_000_000;
+    effExtractLock = 1;
+    effExtraction.classList.add("bought");
+  }
+}
+
+
+async function autoUpgradeWorker() {
+  while (true) {
+    await sleep(waitTimeChangeUp)
+    moneyearned += moneyChangeUp;
+    paperswrote += paperChangeUp;
+    skillPoints += skillPointChangeUp;
+    money.innerText = "Money: $" + moneyearned;
+    papers.innerText = "Papers Written: " + paperswrote;
+    skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 workCofBtn.onclick = function () {
   if (workCofPrice <= moneyearned) {
@@ -1078,6 +1815,7 @@ async function autoWorker(waittime) {
 
 async function autoChecks() {
   while (true) {
+    skillPoints = Math.round(skillPoints * 100) / 100
     await sleep(200);
     if (loadInProgress === 0) {
       if (moneyearned >= currentBet) {
@@ -1100,9 +1838,7 @@ async function autoChecks() {
       moneyLuckMenu.innerText = "Money: $" + moneyearned;
       skillPointsDisplay.innerText =
         "Skill Points: " +
-        skillPoints +
-        " | Total Skill Points (These will be awarded to you when you save): " +
-        totalSkillPoints;
+        skillPoints;
       if (clicksForEnergyDrink > 0) {
         papPerClickDisplay.innerText =
           "Paper Per Click: " +
@@ -1127,198 +1863,101 @@ sbmtBtn.onclick = function () {
   if (savePlayer === 0) {
     loadInProgress = 1;
     let loadCode = loadInput.value;
-    let loadArray = loadCode.split("|").map(Number);
+    let loadArray = loadCode.split("|");
     loadInput.value = "";
     //Input Values
     //console.log(loadArray);
-    moneyPerPaper = loadArray[0]; //No Visual
-    if (loadArray[0] === undefined) {
-      moneyPerPaper = 0.5;
-    }
-    //console.log('moneyPerPaper1: ' + moneyPerPaper);
-    moneyearned = loadArray[1]; //Visual Below
-    if (loadArray[1] === undefined) {
-      moneyearned = 0;
-    }
-    //console.log('moneyEarned2: ' + moneyearned);
-    money.innerText = "Money: $" + moneyearned;
-    multiplier = loadArray[2]; //Multiplier defined below (AFTER CLICKSFORCOF)
-    if (loadArray[2] === undefined) {
-      multiplier = 1;
-    }
-    // console.log('multiplier3: ' + multiplier);
-    paperPCPrice = loadArray[3]; //Defined below (AFTER PROMOTION)
-    if (loadArray[3] === undefined) {
-      paperPCPrice = 30;
-    }
-    // console.log('paperPerClickPrice4: ' + paperPCPrice);
-    paperPC = loadArray[4]; //No visual
-    if (loadArray[4] === undefined) {
-      paperPC = 1;
-    }
-    // console.log('paperPerClick5: ' + paperPC);
-    paperswrote = loadArray[5]; //Visual Below
-    if (loadArray[5] === undefined) {
-      paperswrote = 0;
-    }
-    //console.log('papersWrote6: ' + paperswrote);
-    papers.innerText = "Papers Written: " + paperswrote;
-    cofPrice = loadArray[6];
-    if (loadArray[6] === undefined) {
-      cofPrice = 5;
-    }
-    // console.log('cofPrice7: ' + cofPrice);
-    cofBtn.innerText = "Coffee: +1.5x Money: " + cofPrice;
-    workerPrice = loadArray[7]; //Visual Below
-    if (loadArray[7] === undefined) {
-      workerPrice = 200;
-    }
-    // console.log('workerPrice8: ' + workerPrice);
-    workerBtn.innerText = "Hire Worker: $" + workerPrice;
-    workersHired = loadArray[8]; //No visual
-    if (loadArray[8] === undefined) {
-      workersHired = 0;
-    }
-    if (workersHired > 0 && autoWorkerFuncUsed !== 1) {
-      autoWorker(1000);
-      autoWorkerFuncUsed = 1;
-    }
-    // console.log('workersHired9: ' + workersHired);
-    promotion = loadArray[9]; //Visual Below
-    if (loadArray[9] === undefined) {
-      promotion = 50;
-    }
-    // console.log('promotion10: ' + promotion);
-    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
-    toolCount = loadArray[10]; //No Visual
-    if (loadArray[10] === undefined) {
-      toolCount = 1;
-    }
-    // console.log('Tool Counter 11: ' + toolCount);
-    clicksForCof = loadArray[11]; //Visual Below
-    if (loadArray[11] === undefined) {
-      clicksForCof = 0;
-    }
-    //checkforclicksforcof
-    // console.log('Clicks For Cof 12: ' + clicksForCof);
-    if (clicksForCof > 0) {
-      multi.innerText =
-        "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
-    } else {
-      multi.innerText = "Multiplier: " + multiplier;
-    }
-    writingTool.innerText =
-      "Upgrade Writing Tool | Current Tool: " +
-      tool[toolCount] +
-      " | Cost: $" +
-      paperPCPrice;
+    moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
+    moneyearned = loadValueHelper(loadArray[1], 0, "num");
+    multiplier = loadValueHelper(loadArray[2], 1, "num");
+    paperPCPrice = loadValueHelper(loadArray[3], 30, "num");
+    paperPC = loadValueHelper(loadArray[4], 1, "num");
+    paperswrote = loadValueHelper(loadArray[5], 0, "num");
+    cofPrice = loadValueHelper(loadArray[6], 5, "num");
+    workerPrice = loadValueHelper(loadArray[7], 200, "num");
+    workersHired = loadValueHelper(loadArray[8], 0, "num");
+    promotion = loadValueHelper(loadArray[9], 50, "num");
+    toolCount = loadValueHelper(loadArray[10], 0, "num");
+    clicksForCof = loadValueHelper(loadArray[11], 0, "num");
+    energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
+    clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
+    skillPoints = loadValueHelper(loadArray[14], 0, "num");
+    totalSkillPoints = loadValueHelper(loadArray[15], 0, "num");
+    safetyNetLock = loadValueHelper(loadArray[16], 0, "num");
+    irsDebt = loadValueHelper(loadArray[17], 0, "num");
+    irsLock = loadValueHelper(loadArray[18], 0, "num");
+    bet = loadValueHelper(loadArray[19], 0, "num");
+    currentBet = loadValueHelper(loadArray[20], bet, "num");
+    luckWorkerBtnBought = loadValueHelper(loadArray[21], 0, "num");
+    taxWorkerBtnBought = loadValueHelper(loadArray[22], 0, "num");
 
-    energyDrinkPrice = loadArray[12];
-    if (loadArray[12] === undefined) {
-      energyDrinkPrice = 30;
-    }
+    toggleAutoLuck = loadValueHelper(loadArray[23], "Off", "text");
+
+    highScoreMoney = loadValueHelper(loadArray[24], moneyearned, "num");
+    writingToolsBought = loadValueHelper(loadArray[25], toolCount, "num");
+
+    illBucksPerSecDisplayRandom = loadValueHelper(loadArray[26], "1-5", "text");
+
+    illMoney = loadValueHelper(loadArray[27], 0, "num");
+    illPrintDelayPrice = loadValueHelper(loadArray[28], 500, "num");
+    illBucksPerSecPrice = loadValueHelper(loadArray[29], 200, "num");
+
+    toggleIRS = loadValueHelper(loadArray[30], "Off", "text");
+
+    illDelay = loadValueHelper(loadArray[31], 1, "num");
+    money.innerText = "Money: $" + moneyearned;
+    papers.innerText = "Papers Written: " + paperswrote;
+    workerBtn.innerText = "Hire Worker: $" + workerPrice;
+    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
+    cofBtn.innerText = "Coffee +1.5x Money: $" + cofPrice;
     energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
-    clicksForEnergyDrink = loadArray[13];
-    if (loadArray[13] === undefined) {
-      clicksForEnergyDrink = 0;
-    }
-    totalSkillPoints = loadArray[15];
-    if (loadArray[15] === undefined) {
-      totalSkillPoints = 0;
-    }
-    skillPoints = loadArray[14] + 1 + totalSkillPoints;
-    if (loadArray[14] === undefined) {
-      skillPoints = 0;
-    }
-    loadInProgress = 0;
-    safetyNetLock = loadArray[16];
-    if (loadArray[16] === undefined) {
-      safetyNetLock = 0;
-    }
-    irsDebt = loadArray[17];
-    if (loadArray[17] === undefined) {
-      irsDebt = 0;
-    }
-    irsLock = loadArray[18];
-    if (loadArray[18] === undefined) {
-      irsLock = 0;
-    }
-    bet = loadArray[19];
-    if (loadArray[19] === undefined) {
-      bet = 0;
-    }
-    currentBet = loadArray[20];
-    if (loadArray[20] === undefined) {
-      currentBet = bet;
-    }
-    luckWorkerBtnBought = loadArray[21];
-    if (loadArray[21] === undefined) {
-      luckWorkerBtnBought = 0;
-    }
-    if (luckWorkerBtnBought === 1) {
-      luckWorkerBtn.innerText = "H̶i̶r̶e̶ ̶C̶h̶a̶n̶c̶e̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶2̶0̶0̶,̶0̶0̶0̶";
-      autoLuckWorker();
-    } else {
-      luckWorkerBtn.innerText = "Hire Chance Manager: $200,000";
-    }
-    taxWorkerBtnBought = loadArray[22];
-    if (loadArray[22] === undefined) {
-      taxWorkerBtnBought = 0;
-    }
-    if (taxWorkerBtnBought === 1) {
-      hireTaxManagerBtn.innerText = "H̶i̶r̶e̶ ̶T̶a̶x̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶5̶0̶,̶0̶0̶0̶";
-      autoTaxWorker();
-    } else {
-      hireTaxManagerBtn.innerText = "Hire Tax Manager: $50,000";
-    }
-    toggleAutoLuck = loadArray[23];
-    if (loadArray[23] === undefined) {
-      toggleAutoLuck = "Off";
-    }
-    if (toggleAutoLuck === "On") {
-      toggleAutoLuckBtn.innerText = "Toggle Off";
-    } else {
-      toggleAutoLuckBtn.innerText = "Toggle On";
-    }
-    highScoreMoney = loadArray[24];
-    if (loadArray[24] === undefined) {
-      highScoreMoney = moneyearned;
-    }
     highscoreDis.innerText = "Highscore: $" + highScoreMoney;
-    writingToolsBought = loadArray[25];
-    if (loadArray[25] === undefined) {
-      writingToolsBought = toolCount;
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+    resetSkillTree();
+    resetUpgradeMenu();
+    if (loadArray[32]) {
+      skillTreeBought = loadArray[32].split(",").map(Number) || new Array(50).fill(0);
+    } else {
+      skillTreeBought = new Array(50).fill(0);
     }
-    illBucksPerSecDisplayRandom = loadArray[26];
-    if (loadArray[26] === undefined) {
-      illBucksPerSecDisplayRandom = "1-5";
+    if (loadArray[33]) {
+      upgradesBought = loadArray[33].split(",").map(Number) || new Array(50).fill(0);
+    } else {
+      upgradesBought = new Array(50).fill(0);
     }
-    illMoney = loadArray[27];
-    if (loadArray[27] === undefined) {
-      illMoney = 0;
-    }
-    illPrintDelayPrice = loadArray[28];
-    if (loadArray[28] === undefined) {
-      illPrintDelayPrice = 500;
-    }
-    illBucksPerSecPrice = loadArray[29];
-    if (loadArray[29] === undefined) {
-      illBucksPerSecPrice = 200;
-    }
-    toggleIRS = loadArray[30];
-    if (loadArray[30] === undefined) {
-      toggleIRS = "Off";
-    }
-    illDelay = loadArray[31];
-    if (loadArray[31] === undefined) {
-      illDelay === 1;
-    }
+    if (skillTreeBought[0] === 1) skillPointBuy0();
+    if (skillTreeBought[1] === 1) skillPointBuy1();
+    if (skillTreeBought[2] === 1) skillPointBuy2();
+    if (skillTreeBought[3] === 1) skillPointBuy3();
+    if (skillTreeBought[4] === 1) skillPointBuy4();
+    if (skillTreeBought[5] === 1) skillPointBuy5();
+    if (skillTreeBought[6] === 1) skillPointBuy6();
+    if (skillTreeBought[7] === 1) skillPointBuy7();
+    if (skillTreeBought[8] === 1) skillPointBuy8();
+    if (skillTreeBought[9] === 1) skillPointBuy10();
+    if (skillTreeBought[10] === 1) skillPointBuy11();
+    if (upgradesBought[0] === 1) definingUpgrades(0);
+    if (upgradesBought[1] === 1) definingUpgrades(1);
+    if (upgradesBought[2] === 1) definingUpgrades(2);
+    if (upgradesBought[3] === 1) definingUpgrades(3);
+    if (upgradesBought[4] === 1) definingUpgrades(4);
+    if (upgradesBought[5] === 1) definingUpgrades(5);
+    if (upgradesBought[6] === 1) definingUpgrades(6);
+    if (upgradesBought[7] === 1) definingUpgrades(7);
+    if (upgradesBought[8] === 1) definingUpgrades(8);
+    if (upgradesBought[9] === 1) definingUpgrades(9);
+    if (upgradesBought[10] === 1) definingUpgrades(10);
+    if (upgradesBought[11] === 1) definingUpgrades(11);
+    if (upgradesBought[12] === 1) definingUpgrades(12);
+    if (upgradesBought[13] === 1) definingUpgrades(13);
   }
 };
 
 saveBtn.onclick = saveGame;
 
 function saveGame() {
+  let skillTreeSave = skillTreeBought.toString();
+  let upgradeSave = upgradesBought.toString();
   let saveCode = [
     moneyPerPaper, //0
     moneyearned, //1
@@ -1352,6 +1991,8 @@ function saveGame() {
     illBucksPerSecPrice, //29
     toggleIRS, //30
     illDelay, //31
+    skillTreeSave, //32
+    upgradeSave, //33
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -1705,205 +2346,243 @@ function loadWLocalStorage() {
   if (savePlayer === 0) {
     let loadArray;
     loadInProgress = 1;
-    if (saveSlot === 1 && localStorage.getItem("9to5Save") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save")).split("|").map(Number);
+    if (saveSlot === 1 && localStorage.getItem("9to5Save") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save")).split("|");
     if (saveSlot === 1 && localStorage.getItem("9to5Save") === null) loadArray = [];
-    if (saveSlot === 2 && localStorage.getItem("9to5Save2") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save2")).split("|").map(Number);
+    if (saveSlot === 2 && localStorage.getItem("9to5Save2") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save2")).split("|");
     if (saveSlot === 2 && localStorage.getItem("9to5Save2") === null) loadArray = [];
-    if (saveSlot === 3 && localStorage.getItem("9to5Save3") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save3")).split("|").map(Number);
+    if (saveSlot === 3 && localStorage.getItem("9to5Save3") != null) loadArray = JSON.parse(localStorage.getItem("9to5Save3")).split("|");
     if (saveSlot === 3 && localStorage.getItem("9to5Save3") === null) loadArray = [];
     loadInput.value = "";
     //Input Values
     //console.log(loadArray);
-    moneyPerPaper = loadArray[0]; //No Visual
-    if (loadArray[0] === undefined) {
-      moneyPerPaper = 0.5;
-    }
-    //console.log('moneyPerPaper1: ' + moneyPerPaper);
-    moneyearned = loadArray[1]; //Visual Below
-    if (loadArray[1] === undefined) {
-      moneyearned = 0;
-    }
-    //console.log('moneyEarned2: ' + moneyearned);
-    money.innerText = "Money: $" + moneyearned;
-    multiplier = loadArray[2]; //Multiplier defined below (AFTER CLICKSFORCOF)
-    if (loadArray[2] === undefined) {
-      multiplier = 1;
-    }
-    // console.log('multiplier3: ' + multiplier);
-    paperPCPrice = loadArray[3]; //Defined below (AFTER PROMOTION)
-    if (loadArray[3] === undefined) {
-      paperPCPrice = 30;
-    }
-    // console.log('paperPerClickPrice4: ' + paperPCPrice);
-    paperPC = loadArray[4]; //No visual
-    if (loadArray[4] === undefined) {
-      paperPC = 1;
-    }
-    // console.log('paperPerClick5: ' + paperPC);
-    paperswrote = loadArray[5]; //Visual Below
-    if (loadArray[5] === undefined) {
-      paperswrote = 0;
-    }
-    //console.log('papersWrote6: ' + paperswrote);
-    papers.innerText = "Papers Written: " + paperswrote;
-    cofPrice = loadArray[6];
-    if (loadArray[6] === undefined) {
-      cofPrice = 5;
-    }
-    // console.log('cofPrice7: ' + cofPrice);
-    cofBtn.innerText = "Coffee: +1.5x Money: " + cofPrice;
-    workerPrice = loadArray[7]; //Visual Below
-    if (loadArray[7] === undefined) {
-      workerPrice = 200;
-    }
-    // console.log('workerPrice8: ' + workerPrice);
-    workerBtn.innerText = "Hire Worker: $" + workerPrice;
-    workersHired = loadArray[8]; //No visual
-    if (loadArray[8] === undefined) {
-      workersHired = 0;
-    }
-    if (workersHired > 0 && autoWorkerFuncUsed !== 1) {
-      autoWorker(1000);
-      autoWorkerFuncUsed = 1;
-    }
-    // console.log('workersHired9: ' + workersHired);
-    promotion = loadArray[9]; //Visual Below
-    if (loadArray[9] === undefined) {
-      promotion = 50;
-    }
-    // console.log('promotion10: ' + promotion);
-    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
-    toolCount = loadArray[10]; //No Visual
-    if (loadArray[10] === undefined) {
-      toolCount = 1;
-    }
-    // console.log('Tool Counter 11: ' + toolCount);
-    clicksForCof = loadArray[11]; //Visual Below
-    if (loadArray[11] === undefined) {
-      clicksForCof = 0;
-    }
-    //checkforclicksforcof
-    // console.log('Clicks For Cof 12: ' + clicksForCof);
-    if (clicksForCof > 0) {
-      multi.innerText =
-        "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
-    } else {
-      multi.innerText = "Multiplier: " + multiplier;
-    }
-    writingTool.innerText =
-      "Upgrade Writing Tool | Current Tool: " +
-      tool[toolCount] +
-      " | Cost: $" +
-      paperPCPrice;
+    moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
+    moneyearned = loadValueHelper(loadArray[1], 0, "num");
+    multiplier = loadValueHelper(loadArray[2], 1, "num");
+    paperPCPrice = loadValueHelper(loadArray[3], 30, "num");
+    paperPC = loadValueHelper(loadArray[4], 1, "num");
+    paperswrote = loadValueHelper(loadArray[5], 0, "num");
+    cofPrice = loadValueHelper(loadArray[6], 5, "num");
+    workerPrice = loadValueHelper(loadArray[7], 200, "num");
+    workersHired = loadValueHelper(loadArray[8], 0, "num");
+    promotion = loadValueHelper(loadArray[9], 50, "num");
+    toolCount = loadValueHelper(loadArray[10], 0, "num");
+    clicksForCof = loadValueHelper(loadArray[11], 0, "num");
+    energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
+    clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
+    skillPoints = loadValueHelper(loadArray[14], 0, "num");
+    totalSkillPoints = loadValueHelper(loadArray[15], 0, "num");
+    safetyNetLock = loadValueHelper(loadArray[16], 0, "num");
+    irsDebt = loadValueHelper(loadArray[17], 0, "num");
+    irsLock = loadValueHelper(loadArray[18], 0, "num");
+    bet = loadValueHelper(loadArray[19], 0, "num");
+    currentBet = loadValueHelper(loadArray[20], bet, "num");
+    luckWorkerBtnBought = loadValueHelper(loadArray[21], 0, "num");
+    taxWorkerBtnBought = loadValueHelper(loadArray[22], 0, "num");
 
-    energyDrinkPrice = loadArray[12];
-    if (loadArray[12] === undefined) {
-      energyDrinkPrice = 30;
-    }
+    toggleAutoLuck = loadValueHelper(loadArray[23], "Off", "text");
+
+    highScoreMoney = loadValueHelper(loadArray[24], moneyearned, "num");
+    writingToolsBought = loadValueHelper(loadArray[25], toolCount, "num");
+
+    illBucksPerSecDisplayRandom = loadValueHelper(loadArray[26], "1-5", "text");
+
+    illMoney = loadValueHelper(loadArray[27], 0, "num");
+    illPrintDelayPrice = loadValueHelper(loadArray[28], 500, "num");
+    illBucksPerSecPrice = loadValueHelper(loadArray[29], 200, "num");
+
+    toggleIRS = loadValueHelper(loadArray[30], "Off", "text");
+
+    illDelay = loadValueHelper(loadArray[31], 1, "num");
+    money.innerText = "Money: $" + moneyearned;
+    papers.innerText = "Papers Written: " + paperswrote;
+    workerBtn.innerText = "Hire Worker: $" + workerPrice;
+    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
+    cofBtn.innerText = "Coffee +1.5x Money: $" + cofPrice;
     energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
-    clicksForEnergyDrink = loadArray[13];
-    if (loadArray[13] === undefined) {
-      clicksForEnergyDrink = 0;
-    }
-    totalSkillPoints = loadArray[15];
-    if (loadArray[15] === undefined) {
-      totalSkillPoints = 0;
-    }
-    skillPoints = loadArray[14] + 1 + totalSkillPoints;
-    if (loadArray[14] === undefined) {
-      skillPoints = 0;
-    }
-    loadInProgress = 0;
-    safetyNetLock = loadArray[16];
-    if (loadArray[16] === undefined) {
-      safetyNetLock = 0;
-    }
-    irsDebt = loadArray[17];
-    if (loadArray[17] === undefined) {
-      irsDebt = 0;
-    }
-    irsLock = loadArray[18];
-    if (loadArray[18] === undefined) {
-      irsLock = 0;
-    }
-    bet = loadArray[19];
-    if (loadArray[19] === undefined) {
-      bet = 0;
-    }
-    currentBet = loadArray[20];
-    if (loadArray[20] === undefined) {
-      currentBet = bet;
-    }
-    luckWorkerBtnBought = loadArray[21];
-    if (loadArray[21] === undefined) {
-      luckWorkerBtnBought = 0;
-    }
-    if (luckWorkerBtnBought === 1) {
-      luckWorkerBtn.innerText = "H̶i̶r̶e̶ ̶C̶h̶a̶n̶c̶e̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶2̶0̶0̶,̶0̶0̶0̶";
-      autoLuckWorker();
-    } else {
-      luckWorkerBtn.innerText = "Hire Chance Manager: $200,000";
-    }
-    taxWorkerBtnBought = loadArray[22];
-    if (loadArray[22] === undefined) {
-      taxWorkerBtnBought = 0;
-    }
-    if (taxWorkerBtnBought === 1) {
-      hireTaxManagerBtn.innerText = "H̶i̶r̶e̶ ̶T̶a̶x̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶5̶0̶,̶0̶0̶0̶";
-      autoTaxWorker();
-    } else {
-      hireTaxManagerBtn.innerText = "Hire Tax Manager: $50,000";
-    }
-    toggleAutoLuck = loadArray[23];
-    if (loadArray[23] === undefined) {
-      toggleAutoLuck = "Off";
-    }
-    if (toggleAutoLuck === "On") {
-      toggleAutoLuckBtn.innerText = "Toggle Off";
-    } else {
-      toggleAutoLuckBtn.innerText = "Toggle On";
-    }
-    highScoreMoney = loadArray[24];
-    if (loadArray[24] === undefined) {
-      highScoreMoney = moneyearned;
-    }
     highscoreDis.innerText = "Highscore: $" + highScoreMoney;
-    writingToolsBought = loadArray[25];
-    if (loadArray[25] === undefined) {
-      writingToolsBought = toolCount;
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+    resetSkillTree();
+    resetUpgradeMenu();
+    if (loadArray[32]) {
+      skillTreeBought = loadArray[32].split(",").map(Number) || new Array(50).fill(0);
+    } else {
+      skillTreeBought = new Array(50).fill(0);
     }
-    illBucksPerSecDisplayRandom = loadArray[26];
-    if (loadArray[26] === undefined) {
-      illBucksPerSecDisplayRandom = "1-5";
+    if (loadArray[33]) {
+      upgradesBought = loadArray[33].split(",").map(Number) || new Array(50).fill(0);
+    } else {
+      upgradesBought = new Array(50).fill(0);
     }
-    illMoney = loadArray[27];
-    if (loadArray[27] === undefined) {
-      illMoney = 0;
-    }
-    illPrintDelayPrice = loadArray[28];
-    if (loadArray[28] === undefined) {
-      illPrintDelayPrice = 500;
-    }
-    illBucksPerSecPrice = loadArray[29];
-    if (loadArray[29] === undefined) {
-      illBucksPerSecPrice = 200;
-    }
-    toggleIRS = loadArray[30];
-    if (loadArray[30] === undefined) {
-      toggleIRS = "Off";
-    }
-    illDelay = loadArray[31];
-    if (loadArray[31] === undefined) {
-      illDelay === 1;
-    }
+    if (skillTreeBought[0] === 1) definingBuys(0);
+    if (skillTreeBought[1] === 1) definingBuys(1);
+    if (skillTreeBought[2] === 1) definingBuys(2);
+    if (skillTreeBought[3] === 1) definingBuys(3);
+    if (skillTreeBought[4] === 1) definingBuys(4);
+    if (skillTreeBought[5] === 1) definingBuys(5);
+    if (skillTreeBought[6] === 1) definingBuys(6);
+    if (skillTreeBought[7] === 1) definingBuys(7);
+    if (skillTreeBought[8] === 1) definingBuys(8);
+    if (skillTreeBought[9] === 1) definingBuys(9);
+    if (skillTreeBought[10] === 1) definingBuys(10);
+    if (skillTreeBought[11] === 1) definingBuys(11);
+    if (upgradesBought[0] === 1) definingUpgrades(0);
+    if (upgradesBought[1] === 1) definingUpgrades(1);
+    if (upgradesBought[2] === 1) definingUpgrades(2);
+    if (upgradesBought[3] === 1) definingUpgrades(3);
+    if (upgradesBought[4] === 1) definingUpgrades(4);
+    if (upgradesBought[5] === 1) definingUpgrades(5);
+    if (upgradesBought[6] === 1) definingUpgrades(6);
+    if (upgradesBought[7] === 1) definingUpgrades(7);
+    if (upgradesBought[8] === 1) definingUpgrades(8);
+    if (upgradesBought[9] === 1) definingUpgrades(9);
+    if (upgradesBought[10] === 1) definingUpgrades(10);
+    if (upgradesBought[11] === 1) definingUpgrades(11);
+    if (upgradesBought[12] === 1) definingUpgrades(12);
+    if (upgradesBought[13] === 1) definingUpgrades(13);
+    loadInProgress = 0;
   }
 }
 
+function loadValueHelper(value,backup,textOrNum) {
+  if (value === null || value === undefined || value === "undefined" || value === "null" || value === "NaN" || value === "") {
+    return backup
+  }
+  if (textOrNum === "num") {
+    value = Number(value)
+    if (isNaN(value)) {
+      return backup
+    }
+  }
+
+  return value
+}
+
+let saveLockING = 0;
+
 window.addEventListener("pagehide", function () {
-  saveGame();
+  if (saveLockING === 0) saveGame();
+  if (saveLockING === 1) {
+    localStorage.clear("9to5Save")
+    localStorage.clear("9to5Save2")
+    localStorage.clear("9to5Save3")
+  }
 });
 
-loadWLocalStorage();
+async function loadOnStart(waitTime) {
+  await sleep(500)
+  loadWLocalStorage();
+}
+loadOnStart();
+
+function resetSkillTree() {
+  skillTreeBought = new Array(50).fill(0);
+  
+  startSkillTreeLock = 0;
+
+  monMultSkllI = 1;
+  monMultSkllII = 1;
+  monMultSkllIII = 1;
+  monMultSkllIV = 1;
+
+  cheaperPricesILock = 1;
+  cheaperPricesIILock = 1;
+  cheaperPricesIIILock = 1;
+  cheaperPricesIVLock = 1;
+
+  workerEffILock = 1;
+  workerEffIILock = 1;
+  workerEffIIILock = 1;
+
+  genPriceReducer = 1;
+  workerEffDec = 0;
+
+  startSkillTree.innerText = "Start Skill Tree: 0 Points";
+
+  moneyMultSkillI.innerText = "Multiplier I | +.5 Multiplier For Money and Paper: 2 Points";
+  moneyMultSkillII.innerText = "Multiplier II | +1 Multiplier For Money and Paper: 5 Points";
+  moneyMultSkillIII.innerText = "Multiplier III | +1.5 Multiplier For Money and Paper: 10 Points";
+  moneyMultSkillIV.innerText = "Multiplier IV | +2 Multiplier For Money and Paper: 16 Points";
+
+  cheaperPricesIBtn.innerText = "Cheaper Prices I | 5% Off: 3 Points";
+  cheaperPricesIIBtn.innerText = "Cheaper Prices II | 10% Off: 7 Points";
+  cheaperPricesIIIBtn.innerText = "Cheaper Prices III | 15% Off: 18 Points";
+  cheaperPricesIVBtn.innerText = "Cheaper Prices IV | 20% Off: 25 Points";
+
+  workerEffI.innerText = "Worker Efficiency I | -.1 Seconds Per Action: 5 Points";
+  workerEffII.innerText = "Worker Efficiency II | -.25 Seconds Per Action: 10 Points";
+  workerEffIII.innerText = "Worker Efficiency III | -.5 Seconds Per Action: 16 Points";
+
+  moneyMultSkillI.style.opacity = ".3";
+  moneyMultSkillII.style.opacity = ".3";
+  moneyMultSkillIII.style.opacity = ".3";
+  moneyMultSkillIV.style.opacity = ".3";
+
+  cheaperPricesIBtn.style.opacity = ".3";
+  cheaperPricesIIBtn.style.opacity = ".3";
+  cheaperPricesIIIBtn.style.opacity = ".3";
+  cheaperPricesIVBtn.style.opacity = ".3";
+
+  workerEffI.style.opacity = ".3";
+  workerEffII.style.opacity = ".3";
+  workerEffIII.style.opacity = ".3";
+}
+
+function resetUpgradeMenu() {
+  upgradesBought = new Array(50).fill(0);
+
+  moneyChangeUp = 0;
+  paperChangeUp = 0;
+  skillPointChangeUp = 0;
+  waitTimeChangeUp = 1000;
+
+  unlockPaperMineLock = 0;
+  unlockWoodToPaperLock = 1;
+  fasterPickaxeLock = 1;
+  morePaperDepLock = 1;
+  inkDepositLock = 1;
+  betterTorchesLock = 1;
+  lessPaperCutLock = 1;
+  moneyTreesLock = 1;
+  spDepositsLock = 1;
+  moreSPDepositsLock = 1;
+  spRiverLock = 1;
+  moneyTreeForestLock = 1;
+  fasterChoppingLock = 1;
+  effExtractLock = 1;
+
+  unlockPaperMineUp.style.opacity = "1";
+  unlockWoodToPaperUp.style.opacity = ".3";
+  unlockFasterPixUp.style.opacity = ".3";
+  unlockMorePaperDepUp.style.opacity = ".3";
+  inkDeposits.style.opacity = ".3";
+  betterTorches.style.opacity = ".3";
+  lessPaperCuts.style.opacity = ".3";
+  moneyGrowsOnTrees.style.opacity = ".3";
+  skillPointDeposits.style.opacity = ".3";
+  moreSPDeposits.style.opacity = ".3";
+  skillPointRiver.style.opacity = ".3";
+  moneyTreeForests.style.opacity = ".3";
+  fasterChopping.style.opacity = ".3";
+  effExtraction.style.opacity = ".3";
+
+  unlockPaperMineUp.classList.remove("bought");
+  unlockWoodToPaperUp.classList.remove("bought");
+  unlockFasterPixUp.classList.remove("bought");
+  unlockMorePaperDepUp.classList.remove("bought");
+  inkDeposits.classList.remove("bought");
+  betterTorches.classList.remove("bought");
+  lessPaperCuts.classList.remove("bought");
+  moneyGrowsOnTrees.classList.remove("bought");
+  skillPointDeposits.classList.remove("bought");
+  moreSPDeposits.classList.remove("bought");
+  skillPointRiver.classList.remove("bought");
+  moneyTreeForests.classList.remove("bought");
+  fasterChopping.classList.remove("bought");
+  effExtraction.classList.remove("bought");
+}
+
+autoUpgradeWorker();
+autoWorker(1000 - workerEffDec);
 
   </script>
 
