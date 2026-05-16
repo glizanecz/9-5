@@ -1385,8 +1385,8 @@ unlockFasterPixUp.onclick = unlockFasterPixUpFunc;
 function unlockFasterPixUpFunc (bypass) {
   if ((moneyearned >= 2_000 && paperswrote >= 10_000 && fasterPickaxeLock === 0) || bypass === 1) {
     upgradesBought[1] = 1;
-    moneyearned -= 10_000;
-    paperswrote -= 100_000;
+    moneyearned -= 2_000;
+    paperswrote -= 10_000;
     moneyChangeUp += 450;
     paperChangeUp += 5000;
     fasterPickaxeLock = 1;
