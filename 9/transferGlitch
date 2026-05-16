@@ -9,7 +9,7 @@ JAVASCRIPT:
 // 7 - Gambler's Dream
 //TESTING//
 
-let modMenuVal = 0;
+let modMenuVal = 5;
 let savePlayer = 0;
 let workerEffDec = 0;
 let saveSlot = 1;
@@ -72,7 +72,7 @@ let waitTimeChangeUp = 1000;
 const upgradeMenu = document.getElementById("upgradeMenuDis");
 const upgradeMenuBtn = document.getElementById("upgradeMenu");
 const unlockPaperMineUp = document.getElementById("unlockPaperMineUp");
-let unlockPaperMineLock = 1;
+let unlockPaperMineLock = 0;
 const unlockWoodToPaperUp = document.getElementById("unlockWoodToPaperUp");
 let unlockWoodToPaperLock = 1;
 unlockWoodToPaperUp.style.opacity = ".3";
@@ -376,29 +376,25 @@ workerEffIII.style.opacity = ".3";
 
 async function definingBuys(index) {
   if (index === 0) {
-    startSkillTree.innerText = "S̶t̶a̶r̶t̶ ̶S̶k̶i̶l̶l̶ ̶T̶r̶e̶e̶:̶ ̶0̶ ̶P̶o̶i̶n̶t̶s̶";
-    startSkillTreeLock = 0;
+    //startSkillTree.innerText = "S̶t̶a̶r̶t̶ ̶S̶k̶i̶l̶l̶ ̶T̶r̶e̶e̶:̶ ̶0̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPointBuy0(1);
     skillPoints += 0;
   }
   if (index === 1) {
     //moneyMultSkillI.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶ ̶|̶ ̶+̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶2̶ ̶P̶o̶i̶n̶t̶s̶"
     moneyMultSkillII.style.opacity = "1"
-    monMultSkllI = 0;
     skillPointBuy1(1)
     skillPoints += 2;
   }
   if (index === 2) {
     //moneyMultSkillII.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶ ̶|̶ ̶+̶1̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶"
     moneyMultSkillIII.style.opacity = "1"
-    monMultSkllII = 0;
     skillPointBuy2(1)
     skillPoints += 5;
   }
   if (index === 3) {
     //moneyMultSkillIII.innerText = "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶I̶ ̶|̶ ̶+̶1̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
     moneyMultSkillIV.style.opacity = "1"
-    monMultSkllIII = 0;
     skillPointBuy3(1)
     skillPoints += 10;
   }
@@ -521,8 +517,8 @@ function skillPointBuy4(bypass) {
   }
 };
 
-workerEffI.onclick = skillPointBuy8;
-function skillPointBuy8(bypass) {
+workerEffI.onclick = skillPointBuy9;
+function skillPointBuy9(bypass) {
   if (skillPoints >= 5 && workerEffILock === 0 || bypass === 1) {
     skillTreeBought[9] = 1;
     workerEffILock = 1;
@@ -606,7 +602,7 @@ function skillPointBuy7(bypass) {
 cheaperPricesIVBtn.onclick = skillPointBuy8;
 function skillPointBuy8(bypass) {
   if (skillPoints >= 25 && cheaperPricesIVLock === 0 || bypass === 1) {
-    skillTreeBought[7] = 1;
+    skillTreeBought[8] = 1;
     cheaperPricesIVLock = 1;
     cheaperPricesIVBtn.innerText = "C̶h̶e̶a̶p̶e̶r̶ ̶P̶r̶i̶c̶e̶s̶ ̶I̶V̶ ̶|̶ ̶2̶0̶%̶ ̶O̶f̶f̶:̶ ̶2̶5̶ ̶P̶o̶i̶n̶t̶s̶";
     genPriceReducer = 0.8;
@@ -655,12 +651,7 @@ function skillPointBuy11(bypass) {
   }
 }
 
-// Upgrade Tree
-
-
-
-
-
+//Upgrade Buys
 
 unlockPaperMineUp.onclick = unlockPaperMine;
 function unlockPaperMine(bypass) {
@@ -671,17 +662,27 @@ function unlockPaperMine(bypass) {
     moneyChangeUp += 25;
     paperChangeUp += 100;
     autoUpgradeWorker();
+    unlockPaperMineLock = 1;
+    unlockWoodToPaperUp.style.opacity = "1";
+    unlockWoodToPaperLock = 0;
+    unlockFasterPixUp.style.opacity = "1";
+    fasterPickaxeLock = 0;
+    unlockPaperMineUp.classList.add("bought");
   }
 }
 
 unlockFasterPixUp.onclick = unlockFasterPixUpFunc;
 function unlockFasterPixUpFunc () {
-  if ((moneyearned >= 10_000 && paperswrote >= 100_000 && fasterPickaxeLock === 0) || bypass === 1) {
+  if ((moneyearned >= 2_000 && paperswrote >= 10_000 && fasterPickaxeLock === 0) || bypass === 1) {
     upgradesBought[2] = 1;
     moneyearned -= 10_000;
     paperswrote -= 100_000;
     moneyChangeUp += 450;
     paperChangeUp += 5000;
+    fasterPickaxeLock = 1;
+    unlockMorePaperDepUp.style.opacity = "1"
+    morePaperDepLock = 0;
+    unlockFasterPixUp.classList.add("bought");
   }
 }
 
@@ -693,6 +694,10 @@ function morePaperDepUpFunc() {
     skillPoints -= 20;
     moneyChangeUp += 30_000
     paperChangeUp += 100_000
+    morePaperDepLock = 1;
+    inkDeposits.style.opacity = "1";
+    inkDepositLock = 0;
+    unlockMorePaperDepUp.classList.add("bought");
   }
 }
 
@@ -704,6 +709,10 @@ function moreInkDepFunc() {
     skillPoints -= 20;
     moneyChangeUp += 50_000
     paperChangeUp += 70_000
+    inkDepositLock = 1;
+    betterTorches.style.opacity = "1";
+    betterTorchesLock = 0;
+    inkDeposits.classList.add("bought");
   }
 }
 
@@ -715,8 +724,165 @@ function betterTorchesFunc() {
     skillPoints -= 45;
     moneyChangeUp += 50_000
     paperChangeUp += 40_000
+    betterTorchesLock = 1;
+    lessPaperCuts.style.opacity = "1";
+    lessPaperCutLock = 0;
+    betterTorches.classList.add("bought");
   }
 }
+
+lessPaperCuts.onclick = lessPaperCutsFunc;
+function lessPaperCutsFunc() {
+  if ((moneyearned >= 50_000 && paperswrote >= 200_000 && lessPaperCutLock === 0) || bypass === 1) {
+    upgradesBought[5] = 1;
+    moneyearned -= 50_000;
+    paperswrote -= 200_000
+    moneyChangeUp += 50_000
+    paperChangeUp += 60_000
+    lessPaperCutLock = 1;
+    skillPointDeposits.style.opacity = "1";
+    spDepositsLock = 0;
+    lessPaperCuts.classList.add("bought");
+  }
+}
+
+skillPointDeposits.onclick = skillPointDepositsFunc;
+function skillPointDepositsFunc() {
+  if ((moneyearned >= 1_000_000 && skillPoints >= 100 && spDepositsLock === 0) || bypass === 1) {
+    upgradesBought[6] = 1;
+    moneyearned -= 1_000_000;
+    skillPoints -= 100;
+    skillPointChangeUp += .01;
+    spDepositsLock = 1;
+    moreSPDeposits.style.opacity = "1";
+    moreSPDepositsLock = 0;
+    skillPointDeposits.classList.add("bought");
+  }
+}
+
+moreSPDeposits.onclick = moreSkillPointDepFunc;
+function moreSkillPointDepFunc() {
+  if ((moneyearned >= 12_000_000 && skillPoints >= 150 && moreSPDepositsLock === 0) || bypass === 1) {
+    upgradesBought[7] = 1;
+    moneyearned -= 12_000_000;
+    skillPoints -= 150;
+    skillPointChangeUp += .5;
+    moreSPDepositsLock = 1;
+    skillPointRiver.style.opacity = "1";
+    spRiverLock = 0;
+    moreSPDeposits.classList.add("bought");
+  }
+}
+
+skillPointRiver.onclick = skillPointRiverFunc;
+function skillPointRiverFunc() {
+  if ((moneyearned >= 2_000_000_000 && skillPoints >= 250 && spRiverLock === 0) || bypass === 1) {
+    upgradesBought[8] = 1;
+    moneyearned -= 2_000_000_000;
+    skillPoints -= 250;
+    skillPointChangeUp += 1;
+    spRiverLock = 1;
+    skillPointRiver.classList.add("bought");
+  }
+}
+
+
+
+
+unlockWoodToPaperUp.onclick = woodToPaperUpFunc;
+function woodToPaperUpFunc() {
+  if ((moneyearned >= 2_000 && paperswrote >= 10_000 && unlockWoodToPaperLock === 0) || bypass === 1) {
+    upgradesBought[9] = 1;
+    moneyearned -= 2_000;
+    paperswrote -= 10_000
+    moneyChangeUp += 50;
+    paperChangeUp += 500;
+    unlockWoodToPaperLock = 1;
+    moneyGrowsOnTrees.style.opacity = "1";
+    moneyTreesLock = 0;
+    unlockWoodToPaperUp.classList.add("bought");
+  }
+}
+
+moneyGrowsOnTrees.onclick = monGrowsOnTreesFunc;
+function monGrowsOnTreesFunc() {
+  if ((skillPoints >= 25 && paperswrote >= 200_000 && moneyTreesLock === 0) || bypass === 1) {
+    upgradesBought[10] = 1;
+    paperswrote -= 200_000;
+    skillPoints -= 25;
+    moneyChangeUp += 200_000;
+    paperChangeUp += 10_000;
+    moneyTreesLock = 1;
+    moneyTreeForests.style.opacity = "1";
+    moneyTreeForestLock = 0;
+    moneyGrowsOnTrees.classList.add("bought");
+  }
+}
+
+moneyTreeForests.onclick = monTreeForestFunc;
+function monTreeForestFunc() {
+  if ((skillPoints >= 75 && moneyearned >= 100_000_000 && moneyTreeForestLock === 0) || bypass === 1) {
+    upgradesBought[11] = 1;
+    moneyearned -= 100_000_000;
+    skillPoints -= 75;
+    moneyChangeUp += 1_000_000;
+    paperChangeUp += 500_000;
+    moneyTreeForestLock = 1;
+    fasterChopping.style.opacity = "1";
+    fasterChoppingLock = 0;
+    moneyTreeForests.classList.add("bought");
+  }
+}
+
+fasterChopping.onclick = fasterChopFunc;
+function fasterChopFunc() {
+  if ((skillPoints >= 100 && moneyearned >= 1_000_000_000 && fasterChoppingLock === 0) || bypass === 1) {
+    upgradesBought[12] = 1;
+    moneyearned -= 1_000_000_000;
+    skillPoints -= 100;
+    moneyChangeUp += 10_000_000;
+    paperChangeUp += 1_000_000;
+    fasterChoppingLock = 1;
+    effExtraction.style.opacity = "1";
+    effExtractLock = 0;
+    fasterChopping.classList.add("bought");
+  }
+}
+
+effExtraction.onclick = effExtFunc;
+function effExtFunc() {
+  if ((skillPoints >= 400 && moneyearned >= 50_000_000_000 && effExtractLock === 0) || bypass === 1) {
+    upgradesBought[13] = 1;
+    moneyearned -= 50_000_000_000;
+    skillPoints -= 400;
+    moneyChangeUp += 100_000_000;
+    paperChangeUp += 10_000_000;
+    effExtractLock = 1;
+    effExtraction.classList.add("bought");
+  }
+}
+
+
+async function autoUpgradeWorker() {
+  while (true) {
+    await sleep(waitTimeChangeUp)
+    moneyearned += moneyChangeUp;
+    paperswrote += paperChangeUp;
+    skillPoints += skillPointChangeUp;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 workCofBtn.onclick = function () {
@@ -934,15 +1100,6 @@ async function autoWorker(waittime) {
   }
 }
 
-async function autoUpgradeWorker() {
-  while (true) {
-    await sleep(waitTimeChangeUp)
-    moneyearned += moneyChangeUp;
-    paperswrote += paperChangeUp;
-    skillPoints += skillPointChangeUp;
-  }
-}
-
 async function autoChecks() {
   while (true) {
     await sleep(200);
@@ -1087,11 +1244,11 @@ sbmtBtn.onclick = function () {
     if (loadArray[13] === undefined) {
       clicksForEnergyDrink = 0;
     }
-    //totalSkillPoints = loadArray[15];
-    //if (loadArray[15] === undefined) {
-      //totalSkillPoints = 0;
-    //}
-    skillPoints = loadArray[14] //+ 1 + totalSkillPoints;
+    totalSkillPoints = loadArray[15];
+    if (loadArray[15] === undefined) {
+      totalSkillPoints = 0;
+    }
+    skillPoints = loadArray[14] + 1 + totalSkillPoints;
     if (loadArray[14] === undefined) {
       skillPoints = 0;
     }
@@ -1178,29 +1335,25 @@ sbmtBtn.onclick = function () {
     if (loadArray[31] === undefined) {
       illDelay === 1;
     }
-    skillTreeBought = loadArray[32].map(Number).split(",") || new Array(50).fill(0);
-    upgradesBought = loadArray[33].map(Number).split(",") || new Array(50).fill(0);
-    if (skillTreeBought[0] === 1) skillPointBuy0(1);
-    if (skillTreeBought[1] === 1) skillPointBuy1(1);
-    if (skillTreeBought[2] === 1) skillPointBuy2(1);
-    if (skillTreeBought[3] === 1) skillPointBuy3(1);
-    if (skillTreeBought[4] === 1) skillPointBuy4(1);
-    if (skillTreeBought[5] === 1) skillPointBuy5(1);
-    if (skillTreeBought[6] === 1) skillPointBuy6(1);
-    if (skillTreeBought[7] === 1) skillPointBuy7(1);
-    if (skillTreeBought[8] === 1) skillPointBuy8(1);
-    if (skillTreeBought[9] === 1) skillPointBuy10(1);
-    if (skillTreeBought[10] === 1) skillPointBuy11(1);
+    skillTreeBought = loadArray[32] || new Array(50).fill(0);
+    if (skillTreeBought[0] === 1) skillPointBuy0();
+    if (skillTreeBought[1] === 1) skillPointBuy1();
+    if (skillTreeBought[2] === 1) skillPointBuy2();
+    if (skillTreeBought[3] === 1) skillPointBuy3();
+    if (skillTreeBought[4] === 1) skillPointBuy4();
+    if (skillTreeBought[5] === 1) skillPointBuy5();
+    if (skillTreeBought[6] === 1) skillPointBuy6();
+    if (skillTreeBought[7] === 1) skillPointBuy7();
+    if (skillTreeBought[8] === 1) skillPointBuy8();
+    if (skillTreeBought[9] === 1) skillPointBuy10();
+    if (skillTreeBought[10] === 1) skillPointBuy11();
   }
 };
 
 saveBtn.onclick = saveGame;
 
-console.log(skillTreeBought.join(","))
-
 function saveGame() {
-  let skillTreeSave = skillTreeBought.join(",");
-  let upgradeMenuSave = upgradesBought.join(",");
+  let skillTreeSave = skillTreeBought.toString();
   let saveCode = [
     moneyPerPaper, //0
     moneyearned, //1
@@ -1234,8 +1387,7 @@ function saveGame() {
     illBucksPerSecPrice, //29
     toggleIRS, //30
     illDelay, //31
-    JSON.stringify(skillTreeSave), //32
-    JSON.stringify(upgradeMenuSave), //33
+    skillTreeSave, //32
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -1598,52 +1750,52 @@ function loadWLocalStorage() {
     loadInput.value = "";
     //Input Values
     //console.log(loadArray);
-    moneyPerPaper = loadArray[0].map(Number); //No Visual
-    if (loadArray[0] === undefined) {
+    moneyPerPaper = Number(loadArray[0]); //No Visual
+    if (loadArray[0] === undefined || isNaN(loadArray[0]) || loadArray[0] === "") {
       moneyPerPaper = 0.5;
     }
     //console.log('moneyPerPaper1: ' + moneyPerPaper);
-    moneyearned = loadArray[1].map(Number); //Visual Below
-    if (loadArray[1] === undefined) {
+    moneyearned = Number(loadArray[1]); //Visual Below
+    if (loadArray[1] === undefined || isNaN(loadArray[1]) || loadArray[1] === "") {
       moneyearned = 0;
     }
     //console.log('moneyEarned2: ' + moneyearned);
     money.innerText = "Money: $" + moneyearned;
-    multiplier = loadArray[2].map(Number); //Multiplier defined below (AFTER CLICKSFORCOF)
-    if (loadArray[2] === undefined) {
+    multiplier = Number(loadArray[2]); //Multiplier defined below (AFTER CLICKSFORCOF)
+    if (loadArray[2] === undefined || isNaN(loadArray[2]) || loadArray[2] === "") {
       multiplier = 1;
     }
     // console.log('multiplier3: ' + multiplier);
-    paperPCPrice = loadArray[3].map(Number); //Defined below (AFTER PROMOTION)
-    if (loadArray[3] === undefined) {
+    paperPCPrice = Number(loadArray[3]); //Defined below (AFTER PROMOTION)
+    if (loadArray[3] === undefined || isNaN(loadArray[3]) || loadArray[3] === "") {
       paperPCPrice = 30;
     }
     // console.log('paperPerClickPrice4: ' + paperPCPrice);
-    paperPC = loadArray[4].map(Number); //No visual
-    if (loadArray[4] === undefined) {
+    paperPC = Number(loadArray[4]); //No visual
+    if (loadArray[4] === undefined || isNaN(loadArray[4]) || loadArray[4] === "") {
       paperPC = 1;
     }
     // console.log('paperPerClick5: ' + paperPC);
-    paperswrote = loadArray[5].map(Number); //Visual Below
-    if (loadArray[5] === undefined) {
+    paperswrote = Number(loadArray[5]); //Visual Below
+    if (loadArray[5] === undefined || isNaN(loadArray[5]) || loadArray[5] === "") {
       paperswrote = 0;
     }
     //console.log('papersWrote6: ' + paperswrote);
     papers.innerText = "Papers Written: " + paperswrote;
-    cofPrice = loadArray[6].map(Number);
-    if (loadArray[6] === undefined) {
+    cofPrice = Number(loadArray[6]);
+    if (loadArray[6] === undefined || isNaN(loadArray[6]) || loadArray[6] === "") {
       cofPrice = 5;
     }
     // console.log('cofPrice7: ' + cofPrice);
     cofBtn.innerText = "Coffee: +1.5x Money: " + cofPrice;
-    workerPrice = loadArray[7].map(Number); //Visual Below
-    if (loadArray[7] === undefined) {
+    workerPrice = Number(loadArray[7]); //Visual Below
+    if (loadArray[7] === undefined || isNaN(loadArray[7]) || loadArray[7] === "") {
       workerPrice = 200;
     }
     // console.log('workerPrice8: ' + workerPrice);
     workerBtn.innerText = "Hire Worker: $" + workerPrice;
-    workersHired = loadArray[8].map(Number); //No visual
-    if (loadArray[8] === undefined) {
+    workersHired = Number(loadArray[8]); //No visual
+    if (loadArray[8] === undefined || isNaN(loadArray[8]) || loadArray[8] === "") {
       workersHired = 0;
     }
     if (workersHired > 0 && autoWorkerFuncUsed !== 1) {
@@ -1651,19 +1803,19 @@ function loadWLocalStorage() {
       autoWorkerFuncUsed = 1;
     }
     // console.log('workersHired9: ' + workersHired);
-    promotion = loadArray[9].map(Number); //Visual Below
-    if (loadArray[9] === undefined) {
+    promotion = Number(loadArray[9]); //Visual Below
+    if (loadArray[9] === undefined || isNaN(loadArray[9]) || loadArray[9] === "") {
       promotion = 50;
     }
     // console.log('promotion10: ' + promotion);
     multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
-    toolCount = loadArray[10].map(Number); //No Visual
-    if (loadArray[10] === undefined) {
+    toolCount = Number(loadArray[10]); //No Visual
+    if (loadArray[10] === undefined || isNaN(loadArray[10]) || loadArray[10] === "") {
       toolCount = 1;
     }
     // console.log('Tool Counter 11: ' + toolCount);
-    clicksForCof = loadArray[11].map(Number); //Visual Below
-    if (loadArray[11] === undefined) {
+    clicksForCof = Number(loadArray[11]); //Visual Below
+    if (loadArray[11] === undefined || isNaN(loadArray[11]) || loadArray[11] === "") {
       clicksForCof = 0;
     }
     //checkforclicksforcof
@@ -1680,46 +1832,47 @@ function loadWLocalStorage() {
       " | Cost: $" +
       paperPCPrice;
 
-    energyDrinkPrice = loadArray[12].map(Number);
-    if (loadArray[12] === undefined) {
+    energyDrinkPrice = Number(loadArray[12]);
+    if (loadArray[12] === undefined || isNaN(loadArray[12]) || loadArray[12] === "") {
       energyDrinkPrice = 30;
     }
     energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
-    clicksForEnergyDrink = loadArray[13].map(Number);
-    if (loadArray[13] === undefined) {
+    clicksForEnergyDrink = Number(loadArray[13]);
+    if (loadArray[13] === undefined || isNaN(loadArray[13]) || loadArray[13] === "") {
       clicksForEnergyDrink = 0;
     }
     //totalSkillPoints = loadArray[15];
     //if (loadArray[15] === undefined) {
       //totalSkillPoints = 0;
     //}
-    skillPoints = loadArray[14].map(Number) // + 1 + totalSkillPoints;
-    if (loadArray[14] === undefined) {
+    //skillPoints = loadArray[14] + 1 + totalSkillPoints;
+    skillPoints = Number(loadArray[14]);
+    if (loadArray[14] === undefined || isNaN(loadArray[14]) || loadArray[14] === "") {
       skillPoints = 0;
     }
     loadInProgress = 0;
-    safetyNetLock = loadArray[16].map(Number);
-    if (loadArray[16] === undefined) {
+    safetyNetLock = Number(loadArray[16]);
+    if (loadArray[16] === undefined || isNaN(loadArray[16]) || loadArray[16] === "") {
       safetyNetLock = 0;
     }
-    irsDebt = loadArray[17].map(Number);
-    if (loadArray[17] === undefined) {
+    irsDebt = Number(loadArray[17]);
+    if (loadArray[17] === undefined || isNaN(loadArray[17]) || loadArray[17] === "") {
       irsDebt = 0;
     }
-    irsLock = loadArray[18].map(Number);
-    if (loadArray[18] === undefined) {
+    irsLock = Number(loadArray[18]);
+    if (loadArray[18] === undefined || isNaN(loadArray[18]) || loadArray[18] === "") {
       irsLock = 0;
     }
-    bet = loadArray[19].map(Number);
-    if (loadArray[19] === undefined) {
+    bet = Number(loadArray[19]);
+    if (loadArray[19] === undefined || isNaN(loadArray[19]) || loadArray[19] === "") {
       bet = 0;
     }
-    currentBet = loadArray[20].map(Number);
-    if (loadArray[20] === undefined) {
+    currentBet = Number(loadArray[20]);
+    if (loadArray[20] === undefined || isNaN(loadArray[20]) || loadArray[20] === "") {
       currentBet = bet;
     }
-    luckWorkerBtnBought = loadArray[21].map(Number);
-    if (loadArray[21] === undefined) {
+    luckWorkerBtnBought = Number(loadArray[21]);
+    if (loadArray[21] === undefined || isNaN(loadArray[21]) || loadArray[21] === "") {
       luckWorkerBtnBought = 0;
     }
     if (luckWorkerBtnBought === 1) {
@@ -1728,8 +1881,8 @@ function loadWLocalStorage() {
     } else {
       luckWorkerBtn.innerText = "Hire Chance Manager: $200,000";
     }
-    taxWorkerBtnBought = loadArray[22].map(Number);
-    if (loadArray[22] === undefined) {
+    taxWorkerBtnBought = Number(loadArray[22]);
+    if (loadArray[22] === undefined || isNaN(loadArray[22]) || loadArray[22] === "") {
       taxWorkerBtnBought = 0;
     }
     if (taxWorkerBtnBought === 1) {
@@ -1739,7 +1892,7 @@ function loadWLocalStorage() {
       hireTaxManagerBtn.innerText = "Hire Tax Manager: $50,000";
     }
     toggleAutoLuck = loadArray[23];
-    if (loadArray[23] === undefined) {
+    if (loadArray[23] === undefined || isNaN(loadArray[23]) || loadArray[23] === "") {
       toggleAutoLuck = "Off";
     }
     if (toggleAutoLuck === "On") {
@@ -1747,53 +1900,44 @@ function loadWLocalStorage() {
     } else {
       toggleAutoLuckBtn.innerText = "Toggle On";
     }
-    highScoreMoney = loadArray[24].map(Number);
-    if (loadArray[24] === undefined) {
+    highScoreMoney = Number(loadArray[24]);
+    if (loadArray[24] === undefined || isNaN(loadArray[24]) || loadArray[24] === "") {
       highScoreMoney = moneyearned;
     }
     highscoreDis.innerText = "Highscore: $" + highScoreMoney;
-    writingToolsBought = loadArray[25].map(Number);
-    if (loadArray[25] === undefined) {
+    writingToolsBought = Number(loadArray[25]);
+    if (loadArray[25] === undefined || isNaN(loadArray[25]) || loadArray[25] === "") {
       writingToolsBought = toolCount;
     }
     illBucksPerSecDisplayRandom = loadArray[26];
-    if (loadArray[26] === undefined) {
+    if (loadArray[26] === undefined || isNaN(loadArray[26]) || loadArray[26] === "") {
       illBucksPerSecDisplayRandom = "1-5";
     }
-    illMoney = loadArray[27].map(Number);
-    if (loadArray[27] === undefined) {
+    illMoney = Number(loadArray[27]);
+    if (loadArray[27] === undefined || isNaN(loadArray[27]) || loadArray[27] === "") {
       illMoney = 0;
     }
-    illPrintDelayPrice = loadArray[28].map(Number);
-    if (loadArray[28] === undefined) {
+    illPrintDelayPrice = Number(loadArray[28]);
+    if (loadArray[28] === undefined || isNaN(loadArray[28]) || loadArray[28] === "") {
       illPrintDelayPrice = 500;
     }
-    illBucksPerSecPrice = loadArray[29].map(Number);
-    if (loadArray[29] === undefined) {
+    illBucksPerSecPrice = Number(loadArray[29]);
+    if (loadArray[29] === undefined || isNaN(loadArray[29]) || loadArray[29] === "") {
       illBucksPerSecPrice = 200;
     }
     toggleIRS = loadArray[30];
-    if (loadArray[30] === undefined) {
+    if (loadArray[30] === undefined || isNaN(loadArray[30]) || loadArray[30] === "") {
       toggleIRS = "Off";
     }
-    illDelay = loadArray[31].map(Number);
-    if (loadArray[31] === undefined) {
+    illDelay = Number(loadArray[31]);
+    if (loadArray[31] === undefined || isNaN(loadArray[31]) || loadArray[31] === "") {
       illDelay === 1;
     }
     resetSkillTree();
-    console.log("Full Load Array:", loadArray);
-    console.log("Value at Index 32:", loadArray[32]);
     if (loadArray[32]) {
-      skillTreeBought = JSON.parse(loadArray[32]) || new Array(50).fill(0);
-      console.log("Skill Tree Loaded...")
+      skillTreeBought = loadArray[32].split(",").map(Number) || new Array(50).fill(0);
     } else {
       skillTreeBought = new Array(50).fill(0);
-      console.log("No Save Found...")
-    }
-    if (loadArray[33]) {
-      upgradesBought = JSON.parse(loadArray[33]) || new Array(50).fill(0);
-    } else {
-      upgradesBought = new Array(50).fill(0);
     }
     if (skillTreeBought[0] === 1) definingBuys(0);
     if (skillTreeBought[1] === 1) definingBuys(1);
@@ -1809,6 +1953,22 @@ function loadWLocalStorage() {
     if (skillTreeBought[11] === 1) definingBuys(11);
   }
 }
+
+function loadValueHelper(value,backup,textOrNum) {
+  if (value === null || value === undefined || value === "undefined" || value === "null" || value === "NaN" || value === "") {
+    return backup
+  }
+  if (textOrNum === "num") {
+    value = Number(value)
+    if (isNaN(value)) {
+      return backup
+    }
+  }
+
+  return value
+}
+
+
 
 window.addEventListener("pagehide", function () {
   saveGame();
@@ -1884,7 +2044,7 @@ function resetSkillTree() {
 
 
 
-CSs:
+CSS:
 button {
   padding: 10px;
   font-size: 15px;
@@ -2157,6 +2317,10 @@ h11 {
   position: absolute;
 }
 
+.bought {
+  text-decoration: line-through;
+}
+
 
 
 
@@ -2248,18 +2412,18 @@ HTML:
       <br>---</br>
       <span> Produces More Money & Paper </span>
       <br>
-      <span class="specify"> +$1mil & 500,000 Paper Per Action </span>
+      <span class="specify"> +$10mil & 1,000,000 Paper Per Action </span>
       <br>---</br>
-      <span> Cost: $100mil & 50 Skill Points</span>
+      <span> Cost: 1bil & 100 Skill Points</span>
     </button>
     <button id="upgradeButton14" class="upgradeButtons14"> 
       <span> Efficient Extraction: </span>
       <br>---</br>
       <span> Produces More Money & Paper </span>
       <br>
-      <span class="specify"> +$1mil & 750,000 Paper Per Action </span>
+      <span class="specify"> +$100mil & 10,000,000 Paper Per Action </span>
       <br>---</br>
-      <span> Cost: $50mil & 25 Skill Points</span>
+      <span> Cost: $50bil & 400 Skill Points</span>
     </button>
   </div>
   <div class="verticalUp">
@@ -2332,7 +2496,7 @@ HTML:
       <br>---</br>
       <span> Produces More Skill Points </span>
       <br>
-      <span class="specify"> +.3 Skill Points Per Action </span>
+      <span class="specify"> +1 Skill Points Per Action </span>
       <br>---</br>
       <span> Cost: $2bil & 250 Skill Points</span>
     </button>
