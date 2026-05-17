@@ -2824,15 +2824,10 @@ function resetUpgradeMenu() {
 function autoSuffixer(valuePassed) {
   let moneySuffixedOutput;
   let numberString = String(valuePassed)
-  let numberString2 = String()
+  let numberString2 = String(Math.abs(Math.trunc(Number(valuePassed))))
   let count = (numberString.match(new RegExp("0", "g")) || []).length;
-  let actualLength = 0;
+  let actualLength = numberString2.length;
   let suffixSolution;
-  if (valuePassed < 0) {
-    actualLength = numberString.length - 1;
-  } else {
-    actualLength = numberString.length;
-  }
   if (valuePassed >= 1000 || valuePassed <= -1000) {
     suffixSolution = suffixes[Math.floor((actualLength - 1) / 3) - 1]
     let startIndex = valuePassed < 0 ? 1 : 0;
