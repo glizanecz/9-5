@@ -2241,7 +2241,7 @@ doubleONothin.onclick = function () {
       let outcomeRandom = Math.floor(Math.random() * 4) + 1;
       if (outcomeRandom === 1) {
         moneyearned = moneyearned + bet * 2;
-        outcomeDisplay.innerText = "You Won: $" + bet * 2;
+        outcomeDisplay.innerText = "You Won: $" + autoSuffixer(bet * 2);
         money.innerText = "Money: $" + autoSuffixer(moneyearned);
       } else {
         outcomeDisplay.innerText = "You Lost!";
@@ -2340,14 +2340,14 @@ async function autoTaxer() {
         if (taxWorkerBtnBought === 0) {
           taxNoti.style.display = "block";
           taxNoti.style.opacity = "1";
-          debtDisplay.innerText = "Debt: $" + irsDebt;
+          debtDisplay.innerText = "Debt: $" + autoSuffixer(irsDebt);
           irsVisits -= 1;
-          taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
+          taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
           if (irsVisits === 0) {
             irsLock = 1;
             taxNoti.innerText =
               "You Owe The IRS $" +
-              irsDebt +
+              autoSuffixer(irsDebt) +
               " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
             moneyPrintOperation();
             while (irsVisits === 0) {
@@ -2374,7 +2374,7 @@ sbmtPayOff.onclick = function () {
         irsVisits = 10;
         taxNoti.innerText =
           "You Owe The IRS $" +
-          irsDebt +
+          autoSuffixer(irsDebt) +
           " | " +
           irsVisits +
           " Visits Until Your Assets Are Frozen.";
@@ -2384,7 +2384,7 @@ sbmtPayOff.onclick = function () {
       } else if (irsLock === 1) {
         taxNoti.innerText =
           "You Owe The IRS $" +
-          irsDebt +
+          autoSuffixer(irsDebt) +
           " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
         money.innerText = "Money: $" + autoSuffixer(moneyearned);
       }
@@ -2395,11 +2395,11 @@ sbmtPayOff.onclick = function () {
       illMoney -= Number(payDebtInput.value);
       if (Number(payDebtInput.value) >= irsDebt * 0.5 && irsVisits === 0) {
         irsVisits = 10;
-        taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
+        taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
         illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
         irsLock == 0;
       } else if (Number(payDebtInput.value) < irsDebt * 0.5 && irsVisits === 0) {
-        taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
+        taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
         illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       }
       debtDisplay.innerText = "Debt: $" + irsDebt;
@@ -2429,12 +2429,12 @@ async function autoTaxWorker() {
       if (irsLock === 0) {
         if (irsDebt > 0 && moneyearned >= irsDebt) {
           moneyearned -= irsDebt;
-          transTaxDis.innerText = "Last Auto Tax Transaction: -$" + irsDebt;
+          transTaxDis.innerText = "Last Auto Tax Transaction: -$" + autoSuffixer(irsDebt);
           irsDebt -= irsDebt;
           irsVisits = 10;
           taxNoti.innerText =
             "You Owe The IRS $" +
-            irsDebt +
+            autoSuffixer(irsDebt) +
             " | " +
             irsVisits +
             " Visits Until Your Assets Are Frozen.";
