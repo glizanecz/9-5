@@ -1761,8 +1761,8 @@ async function autoUpgradeWorker() {
     moneyearned += moneyChangeUp;
     paperswrote += paperChangeUp;
     skillPoints += skillPointChangeUp;
-    money.innerText = "Money: $" + moneyearned;
-    papers.innerText = "Papers Written: " + paperswrote;
+    money.innerText = "Money: $" + autoSuffixer(moneyearned)
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   }
 }
@@ -1786,9 +1786,8 @@ workCofBtn.onclick = function () {
     moneyearned = moneyearned - workCofPrice;
     workCofPrice = Math.floor(workCofPrice * 2 * genPriceReducer);
     workCofClicks = workCofClicks + 30;
-    workCofBtn.innerText =
-      "Worker Coffee +1.5x Money For Workers: $" + workCofPrice;
-    money.innerText = "Money: " + moneyearned;
+    workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
+    money.innerText = "Money: $" + autoSuffixer(moneyearned)
   }
 };
 
@@ -1841,17 +1840,17 @@ modMenuBtn.onclick = function () {
   if (modMenuVal === 1) {
     let input = prompt("How much money would you like?");
     moneyearned = Number(input);
-    money.innerText = "Money: $" + moneyearned;
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
     input = prompt("How much paper would you like?");
     paperswrote = Number(input);
-    papers.innerText = "Papers Written: " + paperswrote;
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
   } else if (modMenuVal === 2) {
     moneyearned = 200000;
     paperswrote = 200000;
     illMoney = 200000;
-    money.innerText = "Money: $" + moneyearned;
-    papers.innerText = "Papers Written: " + paperswrote;
-    illMoneyDisplay.innerText = "Illegal Printed Money: $" + 200000
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
+    illMoneyDisplay.innerText = "Illegal Printed Money: $200.0k"
   } else if (modMenuVal === 3) {
     let input = prompt("How much skill points would you like?");
     skillPoints = Number(input);
@@ -1862,27 +1861,27 @@ modMenuBtn.onclick = function () {
   } else if (modMenuVal === 5) {
     let input = prompt("How much money would you like?");
     moneyearned = Number(input);
-    money.innerText = "Money: $" + moneyearned;
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
     input = prompt("How much paper would you like?");
     paperswrote = Number(input);
-    papers.innerText = "Papers Written: " + paperswrote;
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
     input = prompt("How much skill points would you like?");
     skillPoints = Number(input);
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   } else if (modMenuVal === 6) {
     moneyearned = 200000;
     paperswrote = 200000;
-    money.innerText = "Money: $" + moneyearned;
-    papers.innerText = "Papers Written: " + paperswrote;
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
     skillPoints = 200000;
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   } else if (modMenuVal === 7) {
     moneyearned = 200000000;
     paperswrote = 200000000;
     illMoney = 200000000;
-    illMoneyDisplay.innerText = "Illegal Printed Money: $" + 200000
-    money.innerText = "Money: $" + moneyearned;
-    papers.innerText = "Papers Written: " + paperswrote;
+    illMoneyDisplay.innerText = "Illegal Printed Money: $200.0M"
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
     skillPoints = 200000000;
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   }
@@ -1893,9 +1892,9 @@ button.onclick = function () {
     if (clicksForCof > 0) {
       clicksForCof = clicksForCof - 1;
       moneyearned = moneyearned + moneyPerPaper * (multiplier + 1.5) + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp));
-      money.innerText = "Money: $" + moneyearned;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
       paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
-      papers.innerText = "Papers Written: " + paperswrote;
+      papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
       if (clicksForEnergyDrink > 0) {
         multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
@@ -1906,9 +1905,9 @@ button.onclick = function () {
       }
     } else {
       moneyearned = moneyearned + moneyPerPaper * multiplier + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp));
-      money.innerText = "Money: $" + moneyearned;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
       paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
-      papers.innerText = "Papers Written: " + paperswrote;
+      papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + multiplier + "x";
       if (clicksForEnergyDrink > 0) {
         multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
@@ -1925,10 +1924,10 @@ multBtn.onclick = function () {
   if (paperswrote >= promotion) {
     skillPoints = skillPoints + 0.5;
     paperswrote = paperswrote - promotion;
-    papers.innerText = "Papers Written: " + paperswrote;
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
     promotion = Math.floor(promotion * 1.5 * genPriceReducer);
     multiplier = multiplier + 0.5;
-    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
+    multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion) + " Papers.";
     multi.innerText = "Multiplier: " + multiplier;
   }
 };
@@ -1937,9 +1936,9 @@ cofBtn.onclick = function () {
   if (moneyearned >= cofPrice) {
     skillPoints = skillPoints + 0.25;
     moneyearned = moneyearned - cofPrice;
-    money.innerText = "Money: $" + moneyearned;
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
     cofPrice = Math.floor(cofPrice * 1.2 * genPriceReducer);
-    cofBtn.innerText = "Coffee +1.5x Money: $" + cofPrice;
+    cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
     clicksForCof = clicksForCof + 30;
     multi.innerText =
       "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
@@ -1951,9 +1950,9 @@ energyBtn.onclick = function () {
     skillPoints = skillPoints + 0.5;
     energyDrinkMultBonus = 3;
     moneyearned = moneyearned - energyDrinkPrice;
-    money.innerText = "Money: $" + moneyearned;
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
     energyDrinkPrice = Math.floor(energyDrinkPrice * 1.5 * genPriceReducer);
-    energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
+    energyBtn.innerText = "Energy Drink +3x Money: $" + autoSuffixer(energyDrinkPrice)
     clicksForEnergyDrink = clicksForEnergyDrink + 30;
     multiPaper.innerText =
       "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
@@ -1966,7 +1965,7 @@ writingTool.onclick = function () {
     moneyearned = moneyearned - paperPCPrice;
     writingToolsBought += 1;
     paperPC = Math.floor(paperPC * 3);
-    papPerClickDisplay.innerText = "Paper Per Click: " + paperPC;
+    papPerClickDisplay.innerText = "Paper Per Click: " + autoSuffixer(paperPC);
     paperPCPrice = Math.floor(paperPCPrice * 3 * genPriceReducer);
     if (toolCount < 16) {
       toolCount = toolCount + 1;
@@ -1975,8 +1974,8 @@ writingTool.onclick = function () {
       "Upgrade Writing Tool | Current Tool: " +
       tool[toolCount] +
       " | Cost: $" +
-      paperPCPrice;
-    money.innerText = "Money: $" + moneyearned;
+      autoSuffixer(paperPCPrice);
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
   }
 };
 
@@ -1986,8 +1985,8 @@ workerBtn.onclick = function () {
     workersHired = workersHired + 1;
     moneyearned = moneyearned - workerPrice;
     workerPrice = Math.floor(workerPrice * 1.5 * genPriceReducer);
-    workerBtn.innerText = "Hire Worker: $" + workerPrice;
-    money.innerText = "Money: $" + moneyearned;
+    workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
     if (autoWorkerFuncUsed === 0) {
       autoWorker(1000);
       autoWorkerFuncUsed = 1;
@@ -2001,21 +2000,16 @@ async function autoWorker(waittime) {
     if (irsLock === 0) {
       if (workCofClicks > 0) {
         moneyPerSecond1 = 10 * (workersHired / 2) * workersHired * 1.5;
-        moneyPerSec.innerText =
-          "Auto Cash Per Second: $" +
-          moneyPerSecond1 +
-          " ($" +
-          10 * (workersHired / 2) * workersHired +
-          " without 1.5x coffee bonus)";
+        moneyPerSec.innerText = "Auto Cash Per Second: $" + autoSuffixer(moneyPerSecond1) + " ($" + autoSuffixer(10 * (workersHired / 2) * workersHired) + " without 1.5x coffee bonus)";
         workCofClicks = workCofClicks - 1;
       } else {
         moneyPerSecond1 = 10 * (workersHired / 2) * workersHired;
-        moneyPerSec.innerText = "Auto Cash Per Second: $" + moneyPerSecond1;
+        moneyPerSec.innerText = "Auto Cash Per Second: $" + autoSuffixer(moneyPerSecond1);
       }
       paperPerSecond1 = 10 * (workersHired / 2) * workersHired;
       paperswrote += 10 * (workersHired / 2) * workersHired;
-      papers.innerText = "Papers Written: " + paperswrote;
-      money.innerText = "Money: $" + moneyearned;
+      papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
       moneyearned = moneyearned + moneyPerSecond1;
     }
   }
@@ -2041,21 +2035,16 @@ async function autoChecks() {
       }
       if (highScoreMoney < moneyearned) {
         highScoreMoney = moneyearned;
-        highscoreDis.innerText = "Highscore: $" + highScoreMoney;
+        highscoreDis.innerText = "Highscore: $" + autoSuffixer(highScoreMoney);
       }
       moneyLuckMenu.innerText = "Money: $" + moneyearned;
       skillPointsDisplay.innerText =
         "Skill Points: " +
         skillPoints;
       if (clicksForEnergyDrink > 0) {
-        papPerClickDisplay.innerText =
-          "Paper Per Click: " +
-          (paperPC * multiplierPaper + energyDrinkMultBonus) +
-          "(" +
-          paperPC +
-          " without 3x energy drink bonus)";
+        papPerClickDisplay.innerText = "Paper Per Click: " + autoSuffixer(paperPC * multiplierPaper + energyDrinkMultBonus) + "(" + autoSuffixer(paperPC); + " without 3x energy drink bonus)";
       } else {
-        papPerClickDisplay.innerText = "Paper Per Click: " + paperPC;
+        papPerClickDisplay.innerText = "Paper Per Click: " + autoSuffixer(paperPC)
         energyDrinkMultBonus = 1;
         multiPaper.innerText = "Multiplier: " + multiplierPaper + "x";
       }
@@ -2113,14 +2102,14 @@ sbmtBtn.onclick = function () {
     toggleIRS = loadValueHelper(loadArray[30], "Off", "text");
 
     illDelay = loadValueHelper(loadArray[31], 1, "num");
-    money.innerText = "Money: $" + moneyearned;
-    papers.innerText = "Papers Written: " + paperswrote;
-    workerBtn.innerText = "Hire Worker: $" + workerPrice;
-    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
-    cofBtn.innerText = "Coffee +1.5x Money: $" + cofPrice;
-    energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
-    highscoreDis.innerText = "Highscore: $" + highScoreMoney;
-    illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
+    workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
+    multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion) + " Papers.";
+    cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
+    energyBtn.innerText = "Energy Drink +3x Money: $" + autoSuffixer(energyDrinkPrice)
+    highscoreDis.innerText = "Highscore: $" + autoSuffixer(highScoreMoney);
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
     resetSkillTree();
     resetUpgradeMenu();
     if (loadArray[32]) {
@@ -2252,12 +2241,12 @@ doubleONothin.onclick = function () {
       let outcomeRandom = Math.floor(Math.random() * 4) + 1;
       if (outcomeRandom === 1) {
         moneyearned = moneyearned + bet * 2;
-        outcomeDisplay.innerText = "You Won: $" + bet * 2;
-        money.innerText = "Money: $" + moneyearned;
+        outcomeDisplay.innerText = "You Won: $" + autoSuffixer(bet * 2);
+        money.innerText = "Money: $" + autoSuffixer(moneyearned);
       } else {
         outcomeDisplay.innerText = "You Lost!";
         moneyearned = moneyearned - bet;
-        money.innerText = "Money: $" + moneyearned;
+        money.innerText = "Money: $" + autoSuffixer(moneyearned);
       }
     }
   }
@@ -2269,7 +2258,7 @@ luckWorkerBtn.onclick = function () {
   } else {
     if (moneyearned >= luckWorkerPrice && luckWorkerBtnBought === 0) {
       moneyearned -= luckWorkerPrice;
-      money.innerText = "Money: $" + moneyearned;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
       luckWorkerBtn.innerText = "H̶i̶r̶e̶ ̶C̶h̶a̶n̶c̶e̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶2̶0̶0̶,̶0̶0̶0̶";
       luckWorkerBtnBought = 1;
       currentBet = bet;
@@ -2334,7 +2323,7 @@ async function autoLuckWorker() {
         currentBet = bet / 2;
         continue;
       }
-      money.innerText = "Money: $" + Math.floor(moneyearned);
+      money.innerText = "Money: $" + autoSuffixer(Math.floor(moneyearned));
       moneyLuckMenu.innerText = "Money: $" + Math.floor(moneyearned);
     }
   }
@@ -2351,14 +2340,14 @@ async function autoTaxer() {
         if (taxWorkerBtnBought === 0) {
           taxNoti.style.display = "block";
           taxNoti.style.opacity = "1";
-          debtDisplay.innerText = "Debt: $" + irsDebt;
+          debtDisplay.innerText = "Debt: $" + autoSuffixer(irsDebt);
           irsVisits -= 1;
-          taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
+          taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
           if (irsVisits === 0) {
             irsLock = 1;
             taxNoti.innerText =
               "You Owe The IRS $" +
-              irsDebt +
+              autoSuffixer(irsDebt) +
               " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
             moneyPrintOperation();
             while (irsVisits === 0) {
@@ -2385,19 +2374,19 @@ sbmtPayOff.onclick = function () {
         irsVisits = 10;
         taxNoti.innerText =
           "You Owe The IRS $" +
-          irsDebt +
+          autoSuffixer(irsDebt) +
           " | " +
           irsVisits +
           " Visits Until Your Assets Are Frozen.";
-        money.innerText = "Money: $" + moneyearned;
+        money.innerText = "Money: $" + autoSuffixer(moneyearned);
         taxNoti.style.display = "none";
         irsLock == 0;
       } else if (irsLock === 1) {
         taxNoti.innerText =
           "You Owe The IRS $" +
-          irsDebt +
+          autoSuffixer(irsDebt) +
           " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
-        money.innerText = "Money: $" + moneyearned;
+        money.innerText = "Money: $" + autoSuffixer(moneyearned);
       }
       debtDisplay.innerText = "Debt: $" + irsDebt;
       payDebtInput.value = "";
@@ -2406,12 +2395,12 @@ sbmtPayOff.onclick = function () {
       illMoney -= Number(payDebtInput.value);
       if (Number(payDebtInput.value) >= irsDebt * 0.5 && irsVisits === 0) {
         irsVisits = 10;
-        taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
-        illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+        taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
+        illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
         irsLock == 0;
       } else if (Number(payDebtInput.value) < irsDebt * 0.5 && irsVisits === 0) {
-        taxNoti.innerText = "You Owe The IRS $" + irsDebt + " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
-        illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+        taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
+        illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       }
       debtDisplay.innerText = "Debt: $" + irsDebt;
       payDebtInput.value = "";
@@ -2423,7 +2412,7 @@ hireTaxManagerBtn.onclick = function () {
   if (toggleIRS === "On") {
     if (moneyearned >= 50000 && taxWorkerBtnBought === 0) {
       moneyearned -= 50000;
-      money.innerText = "Money: $" + moneyearned;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
       autoTaxWorker();
       hireTaxManagerBtn.innerText = "̶H̶i̶r̶e̶ ̶T̶a̶x̶ ̶M̶a̶n̶a̶g̶e̶r̶:̶ ̶$̶5̶0̶,̶0̶0̶0̶";
       taxNoti.style.display = "none";
@@ -2440,16 +2429,16 @@ async function autoTaxWorker() {
       if (irsLock === 0) {
         if (irsDebt > 0 && moneyearned >= irsDebt) {
           moneyearned -= irsDebt;
-          transTaxDis.innerText = "Last Auto Tax Transaction: -$" + irsDebt;
+          transTaxDis.innerText = "Last Auto Tax Transaction: -$" + autoSuffixer(irsDebt);
           irsDebt -= irsDebt;
           irsVisits = 10;
           taxNoti.innerText =
             "You Owe The IRS $" +
-            irsDebt +
+            autoSuffixer(irsDebt) +
             " | " +
             irsVisits +
             " Visits Until Your Assets Are Frozen.";
-          money.innerText = "Money: $" + moneyearned;
+          money.innerText = "Money: $" + autoSuffixer(moneyearned);
           debtDisplay.innerText = "Debt: $" + irsDebt;
         }
       }
@@ -2503,7 +2492,7 @@ async function moneyPrintOperation() {
         illMoney += 1000000;
       }     
     }
-    illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
   }
 }
 
@@ -2512,38 +2501,38 @@ increaseBillBtn.onclick = function() {
     if (illBucksPerSecDisplayRandom === "1-5") {
       illBucksPerSecDisplayRandom = "10-20";
       illMoney -= illBucksPerSecPrice;
-      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       illBucksPerSecPrice = 750;
       increaseBillBtn.innerText = "Print $50-100 Bills | $1,000"
     } else if (illBucksPerSecDisplayRandom === "10-20") {
       illBucksPerSecDisplayRandom = "50-100";
       illMoney -= illBucksPerSecPrice;
-      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       illBucksPerSecPrice = 1750;
       increaseBillBtn.innerText = "Print $500-1000 Bills | $1,750"
     } else if (illBucksPerSecDisplayRandom === "50-100") {
       illBucksPerSecDisplayRandom = "500-1000";
       illMoney -= illBucksPerSecPrice;
-      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       illBucksPerSecPrice = 10000;
       increaseBillBtn.innerText = "Print $5000-10000 Bills | $10,000"
     } else if (illBucksPerSecDisplayRandom === "500-1000") {
       illBucksPerSecDisplayRandom = "5000-10000";
       illMoney -= illBucksPerSecPrice;
-      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       illBucksPerSecPrice = 50000;
       increaseBillBtn.innerText = "Print $50000-100000 Bills | $50,000"
     } else if (illBucksPerSecDisplayRandom === "5000-10000") {
       illBucksPerSecDisplayRandom = "50000-100000";
       illMoney -= illBucksPerSecPrice;
-      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       illBucksPerSecPrice = 1000000;
       increaseBillBtn.innerText = "Print $500000-1000000 Bills | $1,000,000"
     } else if (illBucksPerSecDisplayRandom === "50000-100000") {
       increaseBillBtn.innerText = "Printing $500,000-1,000,000 | MAXED"
       illBucksPerSecDisplayRandom = "500000-1000000";
       illMoney -= illBucksPerSecPrice;
-      illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+      illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
     }
   }
 }
@@ -2552,7 +2541,7 @@ decreasePrintDelayBtn.onclick = function() {
   if (illPrintDelayPrice <= illMoney && illDelay - .15 > 0) {
     illDelay -= .15;
     illMoney -= illPrintDelayPrice;
-    illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
     illPrintDelayPrice += 20000;
     decreasePrintDelayBtn.innerText = "Print Delay Down .15 Sec | $" + illPrintDelayPrice;
   } else if (illDelay - .15 <= 0) {
@@ -2613,14 +2602,14 @@ function loadWLocalStorage() {
     toggleIRS = loadValueHelper(loadArray[30], "Off", "text");
 
     illDelay = loadValueHelper(loadArray[31], 1, "num");
-    money.innerText = "Money: $" + moneyearned;
-    papers.innerText = "Papers Written: " + paperswrote;
-    workerBtn.innerText = "Hire Worker: $" + workerPrice;
-    multBtn.innerText = "Get Promotion: " + promotion + " Papers.";
-    cofBtn.innerText = "Coffee +1.5x Money: $" + cofPrice;
-    energyBtn.innerText = "Energy Drink +3x Money: $" + energyDrinkPrice;
-    highscoreDis.innerText = "Highscore: $" + highScoreMoney;
-    illMoneyDisplay.innerText = "Illegal Printed Money: $" + illMoney;
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
+    workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
+    multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion) + " Papers.";
+    cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
+    energyBtn.innerText = "Energy Drink +3x Money: $" + autoSuffixer(energyDrinkPrice);
+    highscoreDis.innerText = "Highscore: $" + autoSuffixer(highScoreMoney);
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
     resetSkillTree();
     resetUpgradeMenu();
     if (loadArray[32]) {
@@ -2821,18 +2810,13 @@ function resetUpgradeMenu() {
   effExtraction.classList.remove("bought");
 }
 
-async function autoSuffixer(valuePassed) {
+function autoSuffixer(valuePassed) {
   let moneySuffixedOutput;
   let numberString = String(valuePassed)
-  let numberString2 = String()
+  let numberString2 = String(Math.abs(Math.trunc(Number(valuePassed))))
   let count = (numberString.match(new RegExp("0", "g")) || []).length;
-  let actualLength = 0;
+  let actualLength = numberString2.length;
   let suffixSolution;
-  if (valuePassed < 0) {
-    actualLength = numberString.length - 1;
-  } else {
-    actualLength = numberString.length;
-  }
   if (valuePassed >= 1000 || valuePassed <= -1000) {
     suffixSolution = suffixes[Math.floor((actualLength - 1) / 3) - 1]
     let startIndex = valuePassed < 0 ? 1 : 0;
