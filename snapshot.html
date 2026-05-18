@@ -428,14 +428,17 @@ h11 {
   <h1 id="papers">Papers Written: 0</h1>
   <h4 id="MultiplierPaper">Multiplier: 1x</h1>
   <button id="btn">Click To Write</button>
-  <button id="multBtn">Get Promotion: 50 Papers.</button>
+  <button id="multBtn">Get Promotion: 50 Papers.</button> <button id="buyMaxPromo">Max Buy</button>
   <h4>-----------------</h4>
-  <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Next Tool: Pen🖊️ | Cost: $30</button>
+  <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Next Tool: Pen🖊️ | Cost: $30</button> <button id="buyMaxWritingTool">Max Buy</button>
   <h4>-----------------</h4>
   <button id="autoClick">Hire Worker: $200</button> <button id="buyMaxWorker">Max Buy</button>
   <h4>-----------------</h4>
-  <button id="cofBtn">Coffee +1.5x Money: $5</button><button id="energyBtn">Energy Drink +3x Papers: $30</button>
-  <button id="workCofBtn">Worker Coffee +1.5x Money For Workers: $10</button>
+  <button id="cofBtn">Coffee +1.5x Money: $5</button> <button id="buyMaxCof">Max Buy</button>
+  <br>
+  <button id="energyBtn">Energy Drink +3x Papers: $30</button> <button id="buyMaxEnDrink">Max Buy</button>
+  <br>
+  <button id="workCofBtn">Worker Coffee +1.5x Money For Workers: $10</button> <button id="buyMaxWorkCof">Max Buy</button>
   <h4>-----------------</h4>
   <button2 id="modMenu">MODERATOR (OPERATOR STATUS REQUIRED)</button2>
   <h4>-----------------</h4>
@@ -735,9 +738,30 @@ const suffixes = [
 
 const consoleOut = document.getElementById("consoleOut");
 const buyMaxWorker = document.getElementById("buyMaxWorker");
+const buyMaxPromo = document.getElementById("buyMaxPromo");
+const buyMaxWritingTool = document.getElementById("buyMaxWritingTool");
+const buyMaxCof = document.getElementById("buyMaxCof");
+const buyMaxEnDrink = document.getElementById("buyMaxEnDrink");
+const buyMaxWorkCof = document.getElementById("buyMaxWorkCof");
 
 buyMaxWorker.onclick = function() {
   maxBuyPossible("worker");
+}
+
+buyMaxPromo.onclick = function() {
+  maxBuyPossible("promotions")
+}
+
+buyMaxCof.onclick = function() {
+  maxBuyPossible("cof")
+}
+
+buyMaxWorkCof.onclick = function() {
+  maxBuyPossible("workCof")
+}
+
+buyMaxEnDrink.onclick = function() {
+  maxBuyPossible("enDrink")
 }
 
 // Luck Menu
@@ -2014,7 +2038,7 @@ cofBtn.onclick = function () {
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
     cofPrice = Math.floor(cofPrice * 1.2 * genPriceReducer);
     cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
-    clicksForCof = clicksForCof + 30;
+    clicksForCof += 30;
     multi.innerText =
       "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
   }
@@ -2029,8 +2053,7 @@ energyBtn.onclick = function () {
     energyDrinkPrice = Math.floor(energyDrinkPrice * 1.5 * genPriceReducer);
     energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(energyDrinkPrice)
     clicksForEnergyDrink = clicksForEnergyDrink + 30;
-    multiPaper.innerText =
-      "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+    multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
   }
 };
 
@@ -2932,7 +2955,7 @@ function maxBuyPossible(upgradeMax) {
           workersHired += 1;
           workersBoughtMax += 1;
           workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
-          consoleOut.innerText = "Console Output: Workers Price Max - " + workerPriceLoop  + " and it bought - " +
+          consoleOut.innerText = "Console Output: Workers Price Max -$" + workerPriceLoop  + " and it bought: " +
           workersBoughtMax;
         }
       }
@@ -2949,9 +2972,56 @@ function maxBuyPossible(upgradeMax) {
           papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
           multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion)
           promosBoughtMax += 1;
-          consoleOut.innerText = "Console Output: Promotions Price Max - " + promotionPriceLoop + " and it bought - " +
+          consoleOut.innerText = "Console Output: Promotions Price Max -$" + promotionPriceLoop + " and it bought: " +
           promosBoughtMax;
         }
+      }
+    }
+  } else if (upgradeMax === "cof") {
+    let cofPriceLoop = cofPrice;
+    if (moneyearned >= cofPrice) {
+      for (let i = 0; i < 100; i++) {
+        cofPriceLoop = Math.floor(cofPriceLoop * 1.2 * genPriceReducer);
+        cofPrice = cofPriceLoop;
+        moneyearned -= cofPriceLoop;
+        clicksForCof += 30;
+        money.innerText = "Money: $" + autoSuffixer(moneyearned);
+        cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
+        cofBoughtMax += 1;
+        consoleOut.innerText = "Console Output: Cof Price Max -$" + cofPriceLoop + " and it bought: " +
+        cofBoughtMax;
+      }
+    }
+  } else if (upgradeMax === "workCof") {
+    let workCofPriceLoop = cofPrice;
+    if (moneyearned >= cofPrice) {
+      for (let i = 0; i < 100; i++) {
+        workCofPriceLoop = Math.floor(workCofPriceLoop * 2 * genPriceReducer);
+        workCofPrice = workCofPriceLoop;
+        moneyearned -= workCofPriceLoop;
+        workCofClicks += 30;
+        workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
+        money.innerText = "Money: $" + autoSuffixer(moneyearned);
+        workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
+        workCofBoughtMax += 1;
+        consoleOut.innerText = "Console Output: Worker Cof Price Max -$" + workCofPriceLoop + " and it bought: " +
+        workCofBoughtMax;
+      }
+    }
+  } else if (upgradeMax === "enDrink") {
+    let enDrinkPriceLoop = energyDrinkPrice;
+    if (moneyearned >= energyDrinkPrice) {
+      for (let i = 0; i < 100; i++) {
+        enDrinkPriceLoop = Math.floor(enDrinkPriceLoop * 1.5 * genPriceReducer);
+        energyDrinkPrice = enDrinkPriceLoop;
+        moneyearned -= enDrinkPriceLoop;
+        money.innerText = "Money: $" + autoSuffixer(moneyearned);
+        energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(enDrinkPriceLoop)
+        clicksForEnergyDrink += 30;
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+        enDrinkBoughtMax += 1;
+        consoleOut.innerText = "Console Output: Energy Drink Price Max: -$" + enDrinkPriceLoop + " and it bought: " +
+        enDrinkBoughtMax;
       }
     }
   }
