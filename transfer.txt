@@ -125,6 +125,8 @@ HTML:
     <br>---</br>
     <span> Cost: $1m & 100 Skill Points </span>
   </button>
+<<<<<<< HEAD
+=======
   <button id="upgradeButton10" class="upgradeButtons10"> 
     <span> More Skill Point Deposits: </span>
     <br>---</br>
@@ -170,6 +172,7 @@ HTML:
     <br>---</br>
     <span> Cost: $50mil & 25 Skill Points</span>
   </button>
+>>>>>>> 3351b1356fb019cca82c0df7dc634a8c83e27aa6
 </div>
 
 <div id="luckMenuDis">
@@ -2329,7 +2332,11 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
+<<<<<<< HEAD
+  left: 200px;
+=======
   left: 205px;
+>>>>>>> 3351b1356fb019cca82c0df7dc634a8c83e27aa6
 }
 
 .upgradeButtons3 {
@@ -2364,14 +2371,22 @@ h11 {
   font-size: x-small;
   position: absolute;
   top: 100px;
+<<<<<<< HEAD
+  left: 390px;
+=======
   left: 395px;
+>>>>>>> 3351b1356fb019cca82c0df7dc634a8c83e27aa6
 }
 
 .upgradeButtons9 {
   font-size: x-small;
   position: absolute;
   top: 100px;
+<<<<<<< HEAD
+  left: 615px;
+=======
   left: 625px;
+>>>>>>> 3351b1356fb019cca82c0df7dc634a8c83e27aa6
   white-space: nowrap;
 }
 
@@ -2382,6 +2397,8 @@ h11 {
   left: 10px;
 }
 
+<<<<<<< HEAD
+=======
 .upgradeButtons10 {
   font-size: x-small;
   position: absolute;
@@ -2422,6 +2439,7 @@ h11 {
   white-space: nowrap;
 }
 
+>>>>>>> 3351b1356fb019cca82c0df7dc634a8c83e27aa6
 .specify {
   font-size: xx-small;
 }
