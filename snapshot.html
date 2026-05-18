@@ -417,6 +417,7 @@ h11 {
   </head>
   <body>
 <h2>-~-~ 💼 ((9/5 Simulator V1.70)) ☕ -~-~</h1>
+<h2 id="consoleOut"> Console Output (FOR DEV): </h2>
 <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5> <button5 id="helpMenu">Help Menu</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
@@ -431,7 +432,7 @@ h11 {
   <h4>-----------------</h4>
   <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Cost: $30</button>
   <h4>-----------------</h4>
-  <button id="autoClick">Hire Worker: $200</button>
+  <button id="autoClick">Hire Worker: $200</button> <button id="buyMaxWorker">Max Buy</button>
   <h4>-----------------</h4>
   <button id="cofBtn">Coffee +1.5x Money: $5</button><button id="energyBtn">Energy Drink +3x Papers: $30</button>
   <button id="workCofBtn">Worker Coffee +1.5x Money For Workers: $10</button>
@@ -731,6 +732,13 @@ const suffixes = [
   "Tg",
   "Utg"
 ];
+
+const consoleOut = document.getElementById("consoleOut");
+const buyMaxWorker = document.getElementById("buyMaxWorker");
+
+buyMaxWorker.onclick = function() {
+  maxBuyPossible("worker");
+}
 
 // Luck Menu
 const biggestWinDis = document.getElementById("biggestWin");
@@ -2893,7 +2901,7 @@ function maxBuyPossible(upgradeMax) {
           moneyearned -= workerPriceLoop;
           workersHired += 1;
           workerBtn.innerText = "Hire Worker: $" + workerPrice;
-          console.log(workerPriceLoop)
+          consoleOut.innerText = workerPriceLoop;
         }
       }
     }
@@ -2908,7 +2916,7 @@ function maxBuyPossible(upgradeMax) {
           multiplier += .5;
           papers.innerText = "Papers Written: " + paperswrote;
           multBtn.innerText = "Get Promotion: " + promotion;
-          console.log(promotionPriceLoop)
+          consoleOut.innerText = promotionPriceLoop;
         }
       }
     }
