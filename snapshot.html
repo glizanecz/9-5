@@ -2127,6 +2127,7 @@ sbmtBtn.onclick = function () {
     workersHired = loadValueHelper(loadArray[8], 0, "num");
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
+    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + " | Cost: $" + autoSuffixer(paperPCPrice);
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
     multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
@@ -2628,6 +2629,8 @@ function loadWLocalStorage() {
     workersHired = loadValueHelper(loadArray[8], 0, "num");
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
+    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+    " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
     multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
