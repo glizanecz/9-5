@@ -2882,15 +2882,18 @@ let maxBuyCof = 0;
 let maxBuyEnergyDrink = 0;
 let maxBuyWorkerCof = 0;
 
-async function maxBuyPossible(upgradeMax) {
+function maxBuyPossible(upgradeMax) {
   if (upgradeMax === "worker") {
     let workerPriceLoop = workerPrice;
     if (moneyearned >= workerPrice) {
       for (let i = 0; i < moneyearned && i < paperswrote; i++) {
         if ((workerPriceLoop * 1.5) * genPriceReducer <= moneyearned) {
           workerPriceLoop = (workerPriceLoop * 1.5) * genPriceReducer;
+          workerPrice = workerPriceLoop;
           moneyearned -= workerPriceLoop;
           workersHired += 1;
+          workerBtn.innerText = "Hire Worker: $" + workerPrice;
+          console.log(workerPriceLoop)
         }
       }
     }
@@ -2900,8 +2903,12 @@ async function maxBuyPossible(upgradeMax) {
       for (let i = 0; i < paperswrote; i++) {
         if ((promotionPriceLoop * 1.5) * genPriceReducer) {
           promotionPriceLoop = (promotionPriceLoop * 1.5) * genPriceReducer;
+          promotion = promotionPriceLoop
           paperswrote -= promotionPriceLoop;
           multiplier += .5;
+          papers.innerText = "Papers Written: " + paperswrote;
+          multBtn.innerText = "Get Promotion: " + promotion;
+          console.log(promotionPriceLoop)
         }
       }
     }
