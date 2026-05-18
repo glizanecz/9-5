@@ -2908,11 +2908,17 @@ function autoSuffixer(valuePassed) {
 }
 
 let maxBuyWorker = 0;
+let workersBoughtMax = 0;
 let maxBuyPromotions = 0;
+let promosBoughtMax = 0
 let maxBuyWritingTools = 0;
+let writingToolsBoughtMax = 0;
 let maxBuyCof = 0;
+let cofBoughtMax = 0
 let maxBuyEnergyDrink = 0;
+let enDrinkBoughtMax = 0;
 let maxBuyWorkerCof = 0;
+let workCofBoughtMax = 0;
 
 function maxBuyPossible(upgradeMax) {
   if (upgradeMax === "worker") {
@@ -2924,8 +2930,10 @@ function maxBuyPossible(upgradeMax) {
           workerPrice = workerPriceLoop;
           moneyearned -= workerPriceLoop;
           workersHired += 1;
+          workersBoughtMax += 1;
           workerBtn.innerText = "Hire Worker: $" + workerPrice;
-          consoleOut.innerText = "Console Output: Workers Price Max - " + workerPriceLoop;
+          consoleOut.innerText = "Console Output: Workers Price Max - " + workerPriceLoop  + " and it bought - " +
+          workersBoughtMax;
         }
       }
     }
@@ -2940,7 +2948,9 @@ function maxBuyPossible(upgradeMax) {
           multiplier += .5;
           papers.innerText = "Papers Written: " + paperswrote;
           multBtn.innerText = "Get Promotion: " + promotion;
-          consoleOut.innerText = "Console Output: Promotions Price Max - " + promotionPriceLoop;
+          promosBoughtMax += 1;
+          consoleOut.innerText = "Console Output: Promotions Price Max - " + promotionPriceLoop + " and it bought - " +
+          promosBoughtMax;
         }
       }
     }
