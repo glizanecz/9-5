@@ -1939,9 +1939,9 @@ button.onclick = function () {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-      multi.innerText = "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+      multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
@@ -1954,7 +1954,7 @@ button.onclick = function () {
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + multiplier + "x";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
@@ -1985,7 +1985,7 @@ cofBtn.onclick = function () {
     cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
     clicksForCof = clicksForCof + 30;
     multi.innerText =
-      "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+      "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
   }
 };
 
@@ -1996,10 +1996,10 @@ energyBtn.onclick = function () {
     moneyearned = moneyearned - energyDrinkPrice;
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
     energyDrinkPrice = Math.floor(energyDrinkPrice * 1.5 * genPriceReducer);
-    energyBtn.innerText = "Energy Drink +3x Money: $" + autoSuffixer(energyDrinkPrice)
+    energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(energyDrinkPrice)
     clicksForEnergyDrink = clicksForEnergyDrink + 30;
     multiPaper.innerText =
-      "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+      "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
   }
 };
 
@@ -2120,6 +2120,7 @@ sbmtBtn.onclick = function () {
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
+    multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
     clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
     skillPoints = loadValueHelper(loadArray[14], 0, "num");
@@ -2620,6 +2621,7 @@ function loadWLocalStorage() {
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
+    multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
     clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
     skillPoints = loadValueHelper(loadArray[14], 0, "num");
@@ -2871,6 +2873,39 @@ function autoSuffixer(valuePassed) {
     moneySuffixedOutput = valuePassed;
   }
   return moneySuffixedOutput;
+}
+
+let maxBuyWorker = 0;
+let maxBuyPromotions = 0;
+let maxBuyWritingTools = 0;
+let maxBuyCof = 0;
+let maxBuyEnergyDrink = 0;
+let maxBuyWorkerCof = 0;
+
+async function maxBuyPossible(upgradeMax) {
+  if (upgradeMax === "worker") {
+    let workerPriceLoop = workerPrice;
+    if (moneyearned >= workerPrice) {
+      for (let i = 0; i < moneyearned && i < paperswrote; i++) {
+        if ((workerPriceLoop * 1.5) * genPriceReducer <= moneyearned) {
+          workerPriceLoop = (workerPriceLoop * 1.5) * genPriceReducer;
+          moneyearned -= workerPriceLoop;
+          workersHired += 1;
+        }
+      }
+    }
+  } else if (upgradeMax === "promotions") {
+    let promotionPriceLoop = promotion;
+    if (paperswrote >= promotion) {
+      for (let i = 0; i < paperswrote; i++) {
+        if ((promotionPriceLoop * 1.5) * genPriceReducer) {
+          promotionPriceLoop = (promotionPriceLoop * 1.5) * genPriceReducer;
+          paperswrote -= promotionPriceLoop;
+          multiplier += .5;
+        }
+      }
+    }
+  }
 }
 
 autoUpgradeWorker();
