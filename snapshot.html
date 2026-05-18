@@ -2924,7 +2924,7 @@ function maxBuyPossible(upgradeMax) {
   if (upgradeMax === "worker") {
     let workerPriceLoop = workerPrice;
     if (moneyearned >= workerPrice) {
-      for (let i = 0; i < moneyearned && i < paperswrote; i++) {
+      for (let i = 0; i < 100; i++) {
         if ((workerPriceLoop * 1.5) * genPriceReducer <= moneyearned) {
           workerPriceLoop = (workerPriceLoop * 1.5) * genPriceReducer;
           workerPrice = workerPriceLoop;
@@ -2940,7 +2940,7 @@ function maxBuyPossible(upgradeMax) {
   } else if (upgradeMax === "promotions") {
     let promotionPriceLoop = promotion;
     if (paperswrote >= promotion) {
-      for (let i = 0; i < paperswrote; i++) {
+      for (let i = 0; i < 100; i++) {
         if ((promotionPriceLoop * 1.5) * genPriceReducer) {
           promotionPriceLoop = (promotionPriceLoop * 1.5) * genPriceReducer;
           promotion = promotionPriceLoop
