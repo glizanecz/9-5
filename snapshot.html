@@ -2931,7 +2931,7 @@ function maxBuyPossible(upgradeMax) {
           moneyearned -= workerPriceLoop;
           workersHired += 1;
           workersBoughtMax += 1;
-          workerBtn.innerText = "Hire Worker: $" + workerPrice;
+          workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
           consoleOut.innerText = "Console Output: Workers Price Max - " + workerPriceLoop  + " and it bought - " +
           workersBoughtMax;
         }
@@ -2946,8 +2946,8 @@ function maxBuyPossible(upgradeMax) {
           promotion = promotionPriceLoop
           paperswrote -= promotionPriceLoop;
           multiplier += .5;
-          papers.innerText = "Papers Written: " + paperswrote;
-          multBtn.innerText = "Get Promotion: " + promotion;
+          papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
+          multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion)
           promosBoughtMax += 1;
           consoleOut.innerText = "Console Output: Promotions Price Max - " + promotionPriceLoop + " and it bought - " +
           promosBoughtMax;
