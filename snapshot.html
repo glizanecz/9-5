@@ -430,7 +430,7 @@ h11 {
   <button id="btn">Click To Write</button>
   <button id="multBtn">Get Promotion: 50 Papers.</button>
   <h4>-----------------</h4>
-  <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Cost: $30</button>
+  <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Next Tool: Pen🖊️ | Cost: $30</button>
   <h4>-----------------</h4>
   <button id="autoClick">Hire Worker: $200</button> <button id="buyMaxWorker">Max Buy</button>
   <h4>-----------------</h4>
@@ -2022,11 +2022,8 @@ writingTool.onclick = function () {
     if (toolCount < 16) {
       toolCount = toolCount + 1;
     }
-    writingTool.innerText =
-      "Upgrade Writing Tool | Current Tool: " +
-      tool[toolCount] +
-      " | Cost: $" +
-      autoSuffixer(paperPCPrice);
+    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+    " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
   }
 };
@@ -2127,7 +2124,8 @@ sbmtBtn.onclick = function () {
     workersHired = loadValueHelper(loadArray[8], 0, "num");
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
-    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + " | Cost: $" + autoSuffixer(paperPCPrice);
+    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+    " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
     multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
