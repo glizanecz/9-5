@@ -416,8 +416,8 @@ h11 {
       </script>
   </head>
   <body>
-<h2>-~-~ 💼 ((9/5 Simulator V1.68)) ☕ -~-~</h1>
-<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5>
+<h2>-~-~ 💼 ((9/5 Simulator V1.70)) ☕ -~-~</h1>
+<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5> <button5 id="helpMenu">Help Menu</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
 <div id="mainGameDis">
@@ -650,6 +650,26 @@ h11 {
   <h5 id="paperPerClickDisplay">Paper Per Click: 0</h5>
 </div>
 
+<div id="helpMenuDis">
+  <h4>-----------------</h4>
+  <h1>Menu Unlock Requirements:</h1>
+  <h4>-----------------</h4>
+  <ul>
+    <li>Skill Tree | $1.5k</li>
+    <li>Upgrade Menu | $10k & 1k Paper</li>
+    <li>Luck Menu | $100k & 500k Paper</li>
+    <li>Tax Menu | $1.5M</li>
+    <li>Money Print Menu | Tax Experiment Enabled & In Debt</li>
+  </ul>
+  <h4>-----------------</h4>
+  <h1>FAQ</h1>
+  <h4>-----------------</h4>
+  <ul>
+    <li>Q: How much do workers make per action? A: Workers make ((5 * the amount of workers hired) * the amount of workers hired) per action</li>
+  </ul>
+  <h4>-----------------</h4>
+</div>
+
 <div id="moneyPrintMenuDis">
   <h1 id="illMoneyDisplay">Illegal Printed Money: $0</h1>
   <h4>-----------------</h4>
@@ -869,6 +889,8 @@ const sbmtBtn = document.getElementById("sbmtBtn");
 const skillTreeBtn = document.getElementById("skillTree");
 const mainGameBtn = document.getElementById("mainGame");
 const saveAndMoreBtn = document.getElementById("saveAndMoreBtn");
+const helpMenuBtn = document.getElementById("helpMenu");
+const helpMenuDis = document.getElementById("helpMenuDis");
 const tool = [
   "Pencil ✏️",
   "Pen 🖊️",
@@ -987,6 +1009,7 @@ function getTaxMenu() {
   luckMenuDis.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
 }
 
 function getSkillTree() {
@@ -997,6 +1020,7 @@ function getSkillTree() {
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
 }
 
 function getMainGame() {
@@ -1007,6 +1031,7 @@ function getMainGame() {
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
 }
 
 function getSaveAndMore() {
@@ -1017,6 +1042,7 @@ function getSaveAndMore() {
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
 }
 
 function getLuckMenu() {
@@ -1027,6 +1053,7 @@ function getLuckMenu() {
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
 }
 
 function getMoneyPrint() {
@@ -1037,6 +1064,7 @@ function getMoneyPrint() {
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "block";
   upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
 }
 
 function getUpgradeMenu() {
@@ -1047,6 +1075,18 @@ function getUpgradeMenu() {
   taxMenu.style.display = "none";
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "flex";
+  helpMenuDis.style.display = "none";
+}
+
+function getHelpMenu() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "block";
 }
 
 async function menuHandling() {
@@ -1113,6 +1153,10 @@ taxMenuBtn.onclick = function () {
 
 moneyPrintMenuSwitcher.onclick = function () {
   if (moneyPrintMenuUnlocked === 0) getMoneyPrint();
+}
+
+helpMenuBtn.onclick = function () {
+  getHelpMenu();
 }
 
 //Opacity setters
@@ -1895,9 +1939,9 @@ button.onclick = function () {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-      multi.innerText = "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+      multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
@@ -1910,7 +1954,7 @@ button.onclick = function () {
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + multiplier + "x";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
@@ -1941,7 +1985,7 @@ cofBtn.onclick = function () {
     cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
     clicksForCof = clicksForCof + 30;
     multi.innerText =
-      "Multiplier: " + multiplier + "x +1.5x SWEET BONANZA BONUS!";
+      "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
   }
 };
 
@@ -1952,10 +1996,10 @@ energyBtn.onclick = function () {
     moneyearned = moneyearned - energyDrinkPrice;
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
     energyDrinkPrice = Math.floor(energyDrinkPrice * 1.5 * genPriceReducer);
-    energyBtn.innerText = "Energy Drink +3x Money: $" + autoSuffixer(energyDrinkPrice)
+    energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(energyDrinkPrice)
     clicksForEnergyDrink = clicksForEnergyDrink + 30;
     multiPaper.innerText =
-      "Multiplier: " + multiplierPaper + "x +3x INCREASED WRITING SPEED!";
+      "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
   }
 };
 
@@ -2076,6 +2120,7 @@ sbmtBtn.onclick = function () {
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
+    multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
     clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
     skillPoints = loadValueHelper(loadArray[14], 0, "num");
@@ -2576,6 +2621,7 @@ function loadWLocalStorage() {
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
+    multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
     clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
     skillPoints = loadValueHelper(loadArray[14], 0, "num");
@@ -2827,6 +2873,46 @@ function autoSuffixer(valuePassed) {
     moneySuffixedOutput = valuePassed;
   }
   return moneySuffixedOutput;
+}
+
+let maxBuyWorker = 0;
+let maxBuyPromotions = 0;
+let maxBuyWritingTools = 0;
+let maxBuyCof = 0;
+let maxBuyEnergyDrink = 0;
+let maxBuyWorkerCof = 0;
+
+function maxBuyPossible(upgradeMax) {
+  if (upgradeMax === "worker") {
+    let workerPriceLoop = workerPrice;
+    if (moneyearned >= workerPrice) {
+      for (let i = 0; i < moneyearned && i < paperswrote; i++) {
+        if ((workerPriceLoop * 1.5) * genPriceReducer <= moneyearned) {
+          workerPriceLoop = (workerPriceLoop * 1.5) * genPriceReducer;
+          workerPrice = workerPriceLoop;
+          moneyearned -= workerPriceLoop;
+          workersHired += 1;
+          workerBtn.innerText = "Hire Worker: $" + workerPrice;
+          console.log(workerPriceLoop)
+        }
+      }
+    }
+  } else if (upgradeMax === "promotions") {
+    let promotionPriceLoop = promotion;
+    if (paperswrote >= promotion) {
+      for (let i = 0; i < paperswrote; i++) {
+        if ((promotionPriceLoop * 1.5) * genPriceReducer) {
+          promotionPriceLoop = (promotionPriceLoop * 1.5) * genPriceReducer;
+          promotion = promotionPriceLoop
+          paperswrote -= promotionPriceLoop;
+          multiplier += .5;
+          papers.innerText = "Papers Written: " + paperswrote;
+          multBtn.innerText = "Get Promotion: " + promotion;
+          console.log(promotionPriceLoop)
+        }
+      }
+    }
+  }
 }
 
 autoUpgradeWorker();
