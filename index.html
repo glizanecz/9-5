@@ -324,6 +324,10 @@ h11 {
   width: 95vw;
 }
 
+.fakeConsole {
+  display: none;
+}
+
 
 
 
@@ -417,7 +421,7 @@ h11 {
   </head>
   <body>
 <h2>-~-~ 💼 ((9/5 Simulator V1.70)) ☕ -~-~</h1>
-<h2 id="consoleOut"> Console Output (FOR DEV): </h2>
+<h2 id="consoleOut" class="fakeConsole"> Console Output (FOR DEV): </h2>
 <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5> <button5 id="helpMenu">Help Menu</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
@@ -695,7 +699,7 @@ h11 {
 // 7 - Gambler's Dream
 //TESTING//
 
-let modMenuVal = 5;
+let modMenuVal = 0;
 let savePlayer = 0;
 let workerEffDec = 0;
 let saveSlot = 1;
@@ -1141,6 +1145,11 @@ function getMainGame() {
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
   helpMenuDis.style.display = "none";
+  if (modMenuVal != 0) {
+    modMenuBtn.style.display = "block";
+  } else {
+    modMenuBtn.style.display = "none";
+  }
 }
 
 function getSaveAndMore() {
