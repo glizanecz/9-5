@@ -2953,7 +2953,7 @@ function maxBuyPossible(upgradeMax) {
       workersHired += 1;
       workersBoughtMax += 1;
       workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
-      consoleOut.innerText = "Console Output: Workers Price Max -$" + workerPriceLoop  + " and it bought: " +
+      consoleOut.innerText = "Console Output: Workers Price Max -$" + autoSuffixer(workerPriceLoop)  + " and it bought: " +
       workersBoughtMax;
     }
   } else if (upgradeMax === "promotions") {
@@ -2966,7 +2966,7 @@ function maxBuyPossible(upgradeMax) {
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion)
       promosBoughtMax += 1;
-      consoleOut.innerText = "Console Output: Promotions Price Max -$" + promotionPriceLoop + " and it bought: " +
+      consoleOut.innerText = "Console Output: Promotions Price Max -$" + autoSuffixer(promotionPriceLoop) + " and it bought: " +
       promosBoughtMax;
     }
   } else if (upgradeMax === "cof") {
@@ -2979,7 +2979,7 @@ function maxBuyPossible(upgradeMax) {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
       cofBoughtMax += 1;
-      consoleOut.innerText = "Console Output: Cof Price Max -$" + cofPriceLoop + " and it bought: " +
+      consoleOut.innerText = "Console Output: Cof Price Max -$" + autoSuffixer(cofPriceLoop) + " and it bought: " +
       cofBoughtMax;
     }
   } else if (upgradeMax === "workCof") {
@@ -2993,7 +2993,7 @@ function maxBuyPossible(upgradeMax) {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
       workCofBoughtMax += 1;
-      consoleOut.innerText = "Console Output: Worker Cof Price Max -$" + workCofPriceLoop + " and it bought: " +
+      consoleOut.innerText = "Console Output: Worker Cof Price Max -$" + autoSuffixer(workCofPriceLoop) + " and it bought: " +
       workCofBoughtMax;
     }
   } else if (upgradeMax === "enDrink") {
@@ -3007,8 +3007,22 @@ function maxBuyPossible(upgradeMax) {
       clicksForEnergyDrink += 30;
       multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
       enDrinkBoughtMax += 1;
-      consoleOut.innerText = "Console Output: Energy Drink Price Max: -$" + enDrinkPriceLoop + " and it bought: " +
+      consoleOut.innerText = "Console Output: Energy Drink Price Max: -$" + autoSuffixer(enDrinkPriceLoop) + " and it bought: " +
       enDrinkBoughtMax;
+    }
+  } else if (upgradeMax === "writingTool") {
+    let writingToolPriceLoop = paperPCPrice;
+    while (moneyearned >= writingToolPriceLoop) {
+      moneyearned -= writingToolPriceLoop;
+      writingToolPriceLoop = writingToolPriceLoop * 3 * genPriceReducer;
+      paperPCPrice = writingToolPriceLoop;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+      " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
+      multi += .5;
+      writingToolsBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Writing Tool Price Max: -$" + autoSuffixer(writingToolPriceLoop) + " and it bought: " +
+      writingToolsBoughtMax;
     }
   }
 }
