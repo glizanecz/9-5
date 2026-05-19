@@ -1060,10 +1060,13 @@ taxMenuBtn.style.opacity = ".3"
 let taxMenuUnlocked = 1;
 
 async function opacitySettingForUpgrades() {
-  if (moneyearned <= paperPCPrice) {
-    writingTool.opacity = ".3";
-  } else {
-    writingTool.opacity = "1";
+  while (true) {
+    await sleep(100);
+    if (moneyearned <= paperPCPrice) {
+      writingTool.opacity = ".3";
+    } else {
+      writingTool.opacity = "1";
+    }
   }
 }
 
