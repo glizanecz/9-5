@@ -1063,9 +1063,9 @@ async function opacitySettingForUpgrades() {
   while (true) {
     await sleep(100);
     if (moneyearned <= paperPCPrice) {
-      writingTool.opacity = ".3";
+      writingTool.style.opacity = ".3";
     } else {
-      writingTool.opacity = "1";
+      writingTool.style.opacity = "1";
     }
   }
 }
