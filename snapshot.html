@@ -2782,7 +2782,7 @@ function loadValueHelper(value,backup,textOrNum) {
   return value
 }
 
-let saveLockING = 0;
+let saveLockING = 1;
 
 window.addEventListener("pagehide", function () {
   if (saveLockING === 0) saveGame();
