@@ -417,6 +417,7 @@ h11 {
   </head>
   <body>
 <h2>-~-~ 💼 ((9/5 Simulator V1.70)) ☕ -~-~</h1>
+<h2 id="consoleOut"> Console Output (FOR DEV): </h2>
 <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5> <button5 id="helpMenu">Help Menu</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
@@ -427,14 +428,17 @@ h11 {
   <h1 id="papers">Papers Written: 0</h1>
   <h4 id="MultiplierPaper">Multiplier: 1x</h1>
   <button id="btn">Click To Write</button>
-  <button id="multBtn">Get Promotion: 50 Papers.</button>
+  <button id="multBtn">Get Promotion: 50 Papers.</button> <button id="buyMaxPromo">Max Buy</button>
   <h4>-----------------</h4>
-  <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Cost: $30</button>
+  <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Next Tool: Pen🖊️ | Cost: $30</button> <button id="buyMaxWritingTool">Max Buy</button>
   <h4>-----------------</h4>
-  <button id="autoClick">Hire Worker: $200</button>
+  <button id="autoClick">Hire Worker: $200</button> <button id="buyMaxWorker">Max Buy</button>
   <h4>-----------------</h4>
-  <button id="cofBtn">Coffee +1.5x Money: $5</button><button id="energyBtn">Energy Drink +3x Papers: $30</button>
-  <button id="workCofBtn">Worker Coffee +1.5x Money For Workers: $10</button>
+  <button id="cofBtn">Coffee +1.5x Money: $5</button> <button id="buyMaxCof">Max Buy</button>
+  <br>
+  <button id="energyBtn">Energy Drink +3x Papers: $30</button> <button id="buyMaxEnDrink">Max Buy</button>
+  <br>
+  <button id="workCofBtn">Worker Coffee +1.5x Money For Workers: $10</button> <button id="buyMaxWorkCof">Max Buy</button>
   <h4>-----------------</h4>
   <button2 id="modMenu">MODERATOR (OPERATOR STATUS REQUIRED)</button2>
   <h4>-----------------</h4>
@@ -691,7 +695,7 @@ h11 {
 // 7 - Gambler's Dream
 //TESTING//
 
-let modMenuVal = 0;
+let modMenuVal = 5;
 let savePlayer = 0;
 let workerEffDec = 0;
 let saveSlot = 1;
@@ -731,6 +735,38 @@ const suffixes = [
   "Tg",
   "Utg"
 ];
+
+const consoleOut = document.getElementById("consoleOut");
+const buyMaxWorker = document.getElementById("buyMaxWorker");
+const buyMaxPromo = document.getElementById("buyMaxPromo");
+const buyMaxWritingTool = document.getElementById("buyMaxWritingTool");
+const buyMaxCof = document.getElementById("buyMaxCof");
+const buyMaxEnDrink = document.getElementById("buyMaxEnDrink");
+const buyMaxWorkCof = document.getElementById("buyMaxWorkCof");
+
+buyMaxWorker.onclick = function() {
+  maxBuyPossible("worker");
+}
+
+buyMaxPromo.onclick = function() {
+  maxBuyPossible("promotions")
+}
+
+buyMaxCof.onclick = function() {
+  maxBuyPossible("cof")
+}
+
+buyMaxWorkCof.onclick = function() {
+  maxBuyPossible("workCof")
+}
+
+buyMaxEnDrink.onclick = function() {
+  maxBuyPossible("enDrink")
+}
+
+buyMaxWritingTool.onclick = function() {
+  maxBuyPossible("writingTool")
+}
 
 // Luck Menu
 const biggestWinDis = document.getElementById("biggestWin");
@@ -898,17 +934,40 @@ const tool = [
   "Typewriter ⌨️",
   "Army of Typers 👨⌨️",
   "Computer 💻",
+  "Software Engineer Team 👨💻",
+  "Professional Writers ✍️",
+  "Army of Professional Writers 👨✍️",
+  "Army of Bank Tellers 👨💸",
   "AI Model 👨‍💻",
+  "AI Report Summarizer 👨‍💻✍️",
+  "Army of AI Summarizers 👩‍💻✍️",
   "LLM Model 👨‍💻➕",
   "LLM Army 👨‍💻👩‍💻",
   "Global Writing Force 🌎✍️",
   "Space Powered LLM 🚀",
   "Intergalatic Alien Writing Software 👾",
+  "Star Harnessing Pen ☀️🖊️",
+  "Quantum Writing Tool 🌌",
   "Galaxy Auto-Write LLM 🌌",
+  "Universal Writing Tool 🌌",
+  "Intergalatic Auto Write 🌌",
+  "The Ink of Space 🖊️🌌",
   "JavaScript Writing God 🟨✝️",
   "Writing God ✝️",
   "All In One God ✝️🟨🌌💻",
   "The Final Semicolon; 🏁",
+  "The End?",
+  "The End? (pt 1)",
+  "The End? (pt 2)",
+  "The End? (pt 3)",
+  "The End? (pt 4)",
+  "The End? (pt 5)",
+  "The End? (pt 6)",
+  "The End? (pt 7)",
+  "The End? (pt 8)",
+  "The End? (pt 9)",
+  "The End? (pt 10)",
+  "The Ultimate Pen ✝️🟨🌌💻🏁🌎✍️🖊️",
 ];
 //sleep promise below is not mine//
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -1983,7 +2042,7 @@ cofBtn.onclick = function () {
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
     cofPrice = Math.floor(cofPrice * 1.2 * genPriceReducer);
     cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
-    clicksForCof = clicksForCof + 30;
+    clicksForCof += 30;
     multi.innerText =
       "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
   }
@@ -1998,8 +2057,7 @@ energyBtn.onclick = function () {
     energyDrinkPrice = Math.floor(energyDrinkPrice * 1.5 * genPriceReducer);
     energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(energyDrinkPrice)
     clicksForEnergyDrink = clicksForEnergyDrink + 30;
-    multiPaper.innerText =
-      "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+    multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
   }
 };
 
@@ -2014,11 +2072,8 @@ writingTool.onclick = function () {
     if (toolCount < 16) {
       toolCount = toolCount + 1;
     }
-    writingTool.innerText =
-      "Upgrade Writing Tool | Current Tool: " +
-      tool[toolCount] +
-      " | Cost: $" +
-      autoSuffixer(paperPCPrice);
+    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+    " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
   }
 };
@@ -2119,6 +2174,8 @@ sbmtBtn.onclick = function () {
     workersHired = loadValueHelper(loadArray[8], 0, "num");
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
+    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+    " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
     multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
@@ -2200,6 +2257,8 @@ sbmtBtn.onclick = function () {
     upgradeMenuUnlocked = loadValueHelper(loadArray[35], 1, "num");
     luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
     taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
+    workCofPrice = loadValueHelper(loadArray[38], 10, "num");
+    loadInProgress = 0;
   }
 };
 
@@ -2247,6 +2306,7 @@ function saveGame() {
     upgradeMenuUnlocked, //35
     luckMenuUnlocked, //36
     taxMenuUnlocked, //37
+    workCofPrice, //38
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -2620,6 +2680,8 @@ function loadWLocalStorage() {
     workersHired = loadValueHelper(loadArray[8], 0, "num");
     promotion = loadValueHelper(loadArray[9], 50, "num");
     toolCount = loadValueHelper(loadArray[10], 0, "num");
+    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+    " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
     multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
@@ -2701,6 +2763,7 @@ function loadWLocalStorage() {
     upgradeMenuUnlocked = loadValueHelper(loadArray[35], 1, "num");
     luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
     taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
+    workCofPrice = loadValueHelper(loadArray[38], 10, "num");
     loadInProgress = 0;
   }
 }
@@ -2762,6 +2825,8 @@ function resetSkillTree() {
   genPriceReducer = 1;
   workerEffDec = 0;
   percentWorkerPerClick = 0;
+
+  workCofPrice = 10;
 
   startSkillTree.innerText = "Start Skill Tree: 0 Points";
 
@@ -2876,44 +2941,105 @@ function autoSuffixer(valuePassed) {
 }
 
 let maxBuyWorker = 0;
+let workersBoughtMax = 0;
 let maxBuyPromotions = 0;
+let promosBoughtMax = 0
 let maxBuyWritingTools = 0;
+let writingToolsBoughtMax = 0;
 let maxBuyCof = 0;
+let cofBoughtMax = 0
 let maxBuyEnergyDrink = 0;
+let enDrinkBoughtMax = 0;
 let maxBuyWorkerCof = 0;
+let workCofBoughtMax = 0;
 
 function maxBuyPossible(upgradeMax) {
   if (upgradeMax === "worker") {
     let workerPriceLoop = workerPrice;
-    if (moneyearned >= workerPrice) {
-      for (let i = 0; i < moneyearned && i < paperswrote; i++) {
-        if ((workerPriceLoop * 1.5) * genPriceReducer <= moneyearned) {
-          workerPriceLoop = (workerPriceLoop * 1.5) * genPriceReducer;
-          workerPrice = workerPriceLoop;
-          moneyearned -= workerPriceLoop;
-          workersHired += 1;
-          workerBtn.innerText = "Hire Worker: $" + workerPrice;
-          console.log(workerPriceLoop)
-        }
-      }
+    while (moneyearned >= workerPriceLoop) {
+      moneyearned -= workerPriceLoop;
+      workerPriceLoop = Math.max(1,(workerPriceLoop * 1.5) * genPriceReducer);
+      workerPrice = workerPriceLoop;
+      workersHired += 1;
+      workersBoughtMax += 1;
+      workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
+      consoleOut.innerText = "Console Output: Workers Price Max -$" + autoSuffixer(workerPriceLoop)  + " and it bought: " +
+      workersBoughtMax;
     }
   } else if (upgradeMax === "promotions") {
     let promotionPriceLoop = promotion;
-    if (paperswrote >= promotion) {
-      for (let i = 0; i < paperswrote; i++) {
-        if ((promotionPriceLoop * 1.5) * genPriceReducer) {
-          promotionPriceLoop = (promotionPriceLoop * 1.5) * genPriceReducer;
-          promotion = promotionPriceLoop
-          paperswrote -= promotionPriceLoop;
-          multiplier += .5;
-          papers.innerText = "Papers Written: " + paperswrote;
-          multBtn.innerText = "Get Promotion: " + promotion;
-          console.log(promotionPriceLoop)
-        }
-      }
+    while (paperswrote >= promotionPriceLoop) {
+      paperswrote -= promotionPriceLoop;
+      promotionPriceLoop = Math.max(1,(promotionPriceLoop * 1.5) * genPriceReducer);
+      promotion = promotionPriceLoop
+      multiplier += .5;
+      papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
+      multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion)
+      promosBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Promotions Price Max -$" + autoSuffixer(promotionPriceLoop) + " and it bought: " +
+      promosBoughtMax;
+    }
+  } else if (upgradeMax === "cof") {
+    let cofPriceLoop = cofPrice;
+    while (moneyearned >= cofPriceLoop) {
+      moneyearned -= cofPriceLoop;
+      cofPriceLoop = Math.max(1,Math.floor(cofPriceLoop * 1.2 * genPriceReducer));
+      cofPrice = cofPriceLoop;
+      clicksForCof += 30;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
+      cofBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Cof Price Max -$" + autoSuffixer(cofPriceLoop) + " and it bought: " +
+      cofBoughtMax;
+    }
+  } else if (upgradeMax === "workCof") {
+    let workCofPriceLoop = workCofPrice;
+    while (moneyearned >= workCofPriceLoop) {
+      moneyearned -= workCofPriceLoop;
+      workCofPriceLoop = Math.max(1,Math.floor(workCofPriceLoop * 2 * genPriceReducer));
+      workCofPrice = workCofPriceLoop;
+      workCofClicks += 30;
+      workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
+      workCofBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Worker Cof Price Max -$" + autoSuffixer(workCofPriceLoop) + " and it bought: " +
+      workCofBoughtMax;
+    }
+  } else if (upgradeMax === "enDrink") {
+    let enDrinkPriceLoop = energyDrinkPrice;
+    while (moneyearned >= enDrinkPriceLoop) {
+      moneyearned -= enDrinkPriceLoop;
+      enDrinkPriceLoop = Math.max(1,Math.floor(enDrinkPriceLoop * 1.5 * genPriceReducer));
+      energyDrinkPrice = enDrinkPriceLoop;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(enDrinkPriceLoop)
+      clicksForEnergyDrink += 30;
+      multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+      enDrinkBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Energy Drink Price Max: -$" + autoSuffixer(enDrinkPriceLoop) + " and it bought: " +
+      enDrinkBoughtMax;
+    }
+  } else if (upgradeMax === "writingTool") {
+    let writingToolPriceLoop = paperPCPrice;
+    while (moneyearned >= writingToolPriceLoop) {
+      moneyearned -= writingToolPriceLoop;
+      writingToolPriceLoop = Math.max(1,writingToolPriceLoop * 3 * genPriceReducer);
+      paperPCPrice = writingToolPriceLoop;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      toolCount += 1;
+      writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+      " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
+      multi += .5;
+      writingToolsBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Writing Tool Price Max: -$" + autoSuffixer(writingToolPriceLoop) + " and it bought: " +
+      writingToolsBoughtMax;
     }
   }
 }
+
+//so many writing changes T-T
+//this is so buggy, noooooo!!!
 
 autoUpgradeWorker();
 autoWorker(1000 - workerEffDec);
