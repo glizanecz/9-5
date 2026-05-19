@@ -427,7 +427,6 @@ h11 {
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
 <div id="mainGameDis">
   <h1 id="money">Money: $0</h1>
-  <h1 id="highscore">Highscore: $0</h1>
   <h4 id="MultiplierMoney">Multiplier: 1x</h1>
   <h1 id="papers">Papers Written: 0</h1>
   <h4 id="MultiplierPaper">Multiplier: 1x</h1>
@@ -449,6 +448,8 @@ h11 {
 </div>
 
 <div id="skillTreeDis">
+  <h6>Skill Points Can Be Obtained By Buying Main Game Upgrades (Workers, drinks, promotions, and writing tools) </h6>
+  <h4>-----------------</h4>
   <h6 id="skillPointsCurrency">Skill Points: 0</h6>
   <button6 id="startSkillTree">Start Skill Tree: 0 Points</button6>
   <h4>-----------------</h4>
@@ -472,6 +473,7 @@ h11 {
 </div>
 
 <div id="upgradeMenuDis">
+  <h1 id="upMenuMonDis">Money: $0 & Papers Written: 0</h1>
   <div class="flexRowColumn">
     <button id="unlockPaperMineUp" class="upgradeButtons1"> 
       <span> Unlock Worker Upgrades: </span>
@@ -656,6 +658,7 @@ h11 {
   <h4>-----------------</h4>
   <h5 id="moneyPerSecond">Auto Cash Per Sec: $0</h5> 
   <h5 id="paperPerClickDisplay">Paper Per Click: 0</h5>
+  <h5 id="highscore">Highscore: $0</h5>
 </div>
 
 <div id="helpMenuDis">
@@ -705,6 +708,7 @@ let workerEffDec = 0;
 let saveSlot = 1;
 //Constants Below:
 
+const upMenuMonDis = document.getElementById("upMenuMonDis");
 const suffixes = [
   "k",
   "M",
@@ -2176,6 +2180,7 @@ async function autoWorker(waittime) {
 async function autoChecks() {
   while (true) {
     skillPoints = Math.round(skillPoints * 100) / 100
+    upMenuMonDis.innerText = "Money: $" + autoSuffixer(moneyearned) + " & Papers Written: " + autoSuffixer(paperswrote) + " & Skill Points: " + skillPoints;
     await sleep(200);
     if (loadInProgress === 0) {
       if (moneyearned >= currentBet) {
