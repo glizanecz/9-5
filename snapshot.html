@@ -3021,6 +3021,7 @@ function maxBuyPossible(upgradeMax) {
       writingToolPriceLoop = writingToolPriceLoop * 3 * genPriceReducer;
       paperPCPrice = writingToolPriceLoop;
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      toolCount += 1;
       writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
       " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
       multi += .5;
