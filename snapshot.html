@@ -985,7 +985,7 @@ const tool = [
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 //rebirth below
 const rebirthBtn = document.getElementById("rebirth");
-let rebirthMulti = 1;
+let rebirthMulti = 10;
 
 //Definitions Below:
 
@@ -2169,17 +2169,17 @@ async function autoWorker(waittime) {
     if (irsLock === 0) {
       if (workCofClicks > 0) {
         moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) * rebirthMulti
-        moneyPerSec.innerText = "Auto Cash Per Second: $" + autoSuffixer(moneyPerSecond1) + " ($" + autoSuffixer(10 * (workersHired / 2) * workersHired) + " without 1.5x coffee bonus)";
+        moneyPerSec.innerText = "Auto Cash Per Second: $" + autoSuffixer(moneyPerSecond1) + " ($" + autoSuffixer((10 * (workersHired / 2) * workersHired) * rebirthMulti) + " without 1.5x coffee bonus)";
         workCofClicks = workCofClicks - 1;
       } else {
-        moneyPerSecond1 = 10 * (workersHired / 2) * workersHired;
+        moneyPerSecond1 = (10 * (workersHired / 2) * workersHired) * rebirthMulti;
         moneyPerSec.innerText = "Auto Cash Per Second: $" + autoSuffixer(moneyPerSecond1);
       }
-      paperPerSecond1 = 10 * (workersHired / 2) * workersHired;
+      paperPerSecond1 = (10 * (workersHired / 2) * workersHired) * rebirthMulti;
       paperswrote += (10 * (workersHired / 2) * workersHired) * rebirthMulti
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
-      moneyearned = moneyearned + moneyPerSecond1;
+      moneyearned += moneyPerSecond1;
     }
   }
 }
