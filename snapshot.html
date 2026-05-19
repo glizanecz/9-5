@@ -2257,6 +2257,8 @@ sbmtBtn.onclick = function () {
     upgradeMenuUnlocked = loadValueHelper(loadArray[35], 1, "num");
     luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
     taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
+    workCofPrice = loadValueHelper(loadArray[38], 0, "num");
+    loadInProgress = 0;
   }
 };
 
@@ -2304,6 +2306,7 @@ function saveGame() {
     upgradeMenuUnlocked, //35
     luckMenuUnlocked, //36
     taxMenuUnlocked, //37
+    workCofPrice, //38
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -2760,6 +2763,7 @@ function loadWLocalStorage() {
     upgradeMenuUnlocked = loadValueHelper(loadArray[35], 1, "num");
     luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
     taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
+    workCofPrice = loadValueHelper(loadArray[38], 0, "num");
     loadInProgress = 0;
   }
 }
@@ -2821,6 +2825,8 @@ function resetSkillTree() {
   genPriceReducer = 1;
   workerEffDec = 0;
   percentWorkerPerClick = 0;
+
+  workCofPrice = 0;
 
   startSkillTree.innerText = "Start Skill Tree: 0 Points";
 
