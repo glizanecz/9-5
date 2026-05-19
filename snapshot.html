@@ -2946,89 +2946,69 @@ let workCofBoughtMax = 0;
 function maxBuyPossible(upgradeMax) {
   if (upgradeMax === "worker") {
     let workerPriceLoop = workerPrice;
-    if (moneyearned >= workerPrice) {
-      for (let i = 0; i < 100; i++) {
-        if ((workerPriceLoop * 1.5) * genPriceReducer <= moneyearned) {
-          moneyearned -= workerPriceLoop;
-          workerPriceLoop = (workerPriceLoop * 1.5) * genPriceReducer;
-          workerPrice = workerPriceLoop;
-          workersHired += 1;
-          workersBoughtMax += 1;
-          workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
-          consoleOut.innerText = "Console Output: Workers Price Max -$" + workerPriceLoop  + " and it bought: " +
-          workersBoughtMax;
-        }
-      }
+    while (moneyearned >= workerPriceLoop) {
+      moneyearned -= workerPriceLoop;
+      workerPriceLoop = (workerPriceLoop * 1.5) * genPriceReducer;
+      workerPrice = workerPriceLoop;
+      workersHired += 1;
+      workersBoughtMax += 1;
+      workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
+      consoleOut.innerText = "Console Output: Workers Price Max -$" + workerPriceLoop  + " and it bought: " +
+      workersBoughtMax;
     }
   } else if (upgradeMax === "promotions") {
     let promotionPriceLoop = promotion;
-    if (paperswrote >= promotion) {
-      for (let i = 0; i < 100; i++) {
-        if (promotionPriceLoop) {
-          paperswrote -= promotionPriceLoop;
-          promotionPriceLoop = (promotionPriceLoop * 1.5) * genPriceReducer;
-          promotion = promotionPriceLoop
-          multiplier += .5;
-          papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-          multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion)
-          promosBoughtMax += 1;
-          consoleOut.innerText = "Console Output: Promotions Price Max -$" + promotionPriceLoop + " and it bought: " +
-          promosBoughtMax;
-        }
-      }
+    while (paperswrote >= promotionPriceLoop {
+      paperswrote -= promotionPriceLoop;
+      promotionPriceLoop = (promotionPriceLoop * 1.5) * genPriceReducer;
+      promotion = promotionPriceLoop
+      multiplier += .5;
+      papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
+      multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion)
+      promosBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Promotions Price Max -$" + promotionPriceLoop + " and it bought: " +
+      promosBoughtMax;
     }
   } else if (upgradeMax === "cof") {
     let cofPriceLoop = cofPrice;
-    if (moneyearned >= cofPrice) {
-      for (let i = 0; i < 100; i++) {
-        if (cofPriceLoop >= moneyearned) {
-          moneyearned -= cofPriceLoop;
-          cofPriceLoop = Math.floor(cofPriceLoop * 1.2 * genPriceReducer);
-          cofPrice = cofPriceLoop;
-          clicksForCof += 30;
-          money.innerText = "Money: $" + autoSuffixer(moneyearned);
-          cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
-          cofBoughtMax += 1;
-          consoleOut.innerText = "Console Output: Cof Price Max -$" + cofPriceLoop + " and it bought: " +
-          cofBoughtMax;
-        }
-      }
+    while (moneyearned >= cofPriceLoop) {
+      moneyearned -= cofPriceLoop;
+      cofPriceLoop = Math.floor(cofPriceLoop * 1.2 * genPriceReducer);
+      cofPrice = cofPriceLoop;
+      clicksForCof += 30;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
+      cofBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Cof Price Max -$" + cofPriceLoop + " and it bought: " +
+      cofBoughtMax;
     }
   } else if (upgradeMax === "workCof") {
     let workCofPriceLoop = workCofPrice;
-    if (moneyearned >= workCofPrice) {
-      for (let i = 0; i < 100; i++) {
-        if (moneyearned >= workCofPriceLoop) {
-          moneyearned -= workCofPriceLoop;
-          workCofPriceLoop = Math.floor(workCofPriceLoop * 2 * genPriceReducer);
-          workCofPrice = workCofPriceLoop;
-          workCofClicks += 30;
-          workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
-          money.innerText = "Money: $" + autoSuffixer(moneyearned);
-          workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
-          workCofBoughtMax += 1;
-          consoleOut.innerText = "Console Output: Worker Cof Price Max -$" + workCofPriceLoop + " and it bought: " +
-          workCofBoughtMax;
-        }
-      }
+    while (moneyearned >= workCofPriceLoop) {
+      moneyearned -= workCofPriceLoop;
+      workCofPriceLoop = Math.floor(workCofPriceLoop * 2 * genPriceReducer);
+      workCofPrice = workCofPriceLoop;
+      workCofClicks += 30;
+      workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
+      workCofBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Worker Cof Price Max -$" + workCofPriceLoop + " and it bought: " +
+      workCofBoughtMax;
     }
   } else if (upgradeMax === "enDrink") {
     let enDrinkPriceLoop = energyDrinkPrice;
-    if (moneyearned >= energyDrinkPrice) {
-      for (let i = 0; i < 100; i++) {
-        if (enDrinkPriceLoop >= moneyearned) {
-          moneyearned -= enDrinkPriceLoop;
-          enDrinkPriceLoop = Math.floor(enDrinkPriceLoop * 1.5 * genPriceReducer);
-          energyDrinkPrice = enDrinkPriceLoop;
-          money.innerText = "Money: $" + autoSuffixer(moneyearned);
-          energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(enDrinkPriceLoop)
-          clicksForEnergyDrink += 30;
-          multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
-          enDrinkBoughtMax += 1;
-          consoleOut.innerText = "Console Output: Energy Drink Price Max: -$" + enDrinkPriceLoop + " and it bought: " +
-          enDrinkBoughtMax;
-        }
-      }
+    while (moneyearned >= enDrinkPriceLoop) {
+      moneyearned -= enDrinkPriceLoop;
+      enDrinkPriceLoop = Math.floor(enDrinkPriceLoop * 1.5 * genPriceReducer);
+      energyDrinkPrice = enDrinkPriceLoop;
+      money.innerText = "Money: $" + autoSuffixer(moneyearned);
+      energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(enDrinkPriceLoop)
+      clicksForEnergyDrink += 30;
+      multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+      enDrinkBoughtMax += 1;
+      consoleOut.innerText = "Console Output: Energy Drink Price Max: -$" + enDrinkPriceLoop + " and it bought: " +
+      enDrinkBoughtMax;
     }
   }
 }
