@@ -1059,6 +1059,14 @@ let luckMenuUnlocked = 1;
 taxMenuBtn.style.opacity = ".3"
 let taxMenuUnlocked = 1;
 
+async function opacitySettingForUpgrades() {
+  if (moneyearned <= paperPCPrice) {
+    writingTool.opacity = ".3";
+  } else {
+    writingTool.opacity = "1";
+  }
+}
+
 //Menu Tab Functions:
 function getTaxMenu() {
   skillTreeDis.style.display = "none";
