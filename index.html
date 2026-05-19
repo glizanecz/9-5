@@ -2319,6 +2319,7 @@ sbmtBtn.onclick = function () {
     luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
     taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
     workCofPrice = loadValueHelper(loadArray[38], 10, "num");
+    workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + workCofPrice;
     loadInProgress = 0;
   }
 };
@@ -2825,6 +2826,7 @@ function loadWLocalStorage() {
     luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
     taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
     workCofPrice = loadValueHelper(loadArray[38], 10, "num");
+    workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + workCofPrice;
     loadInProgress = 0;
   }
 }
