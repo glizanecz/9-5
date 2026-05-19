@@ -324,6 +324,14 @@ h11 {
   width: 95vw;
 }
 
+.fakeConsole {
+  display: none;
+}
+
+.rebirth {
+  display: block;
+}
+
 
 
 
@@ -417,13 +425,14 @@ h11 {
   </head>
   <body>
 <h2>-~-~ 💼 ((9/5 Simulator V1.70)) ☕ -~-~</h1>
-<h2 id="consoleOut"> Console Output (FOR DEV): </h2>
+<h2 id="consoleOut" class="fakeConsole"> Console Output (FOR DEV): </h2>
+<button id="rebirth" class="rebirth"> Rebirth | Start With 10x Multiplier</button>
+</button>
 <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5> <button5 id="helpMenu">Help Menu</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
 <div id="mainGameDis">
   <h1 id="money">Money: $0</h1>
-  <h1 id="highscore">Highscore: $0</h1>
   <h4 id="MultiplierMoney">Multiplier: 1x</h1>
   <h1 id="papers">Papers Written: 0</h1>
   <h4 id="MultiplierPaper">Multiplier: 1x</h1>
@@ -445,6 +454,8 @@ h11 {
 </div>
 
 <div id="skillTreeDis">
+  <h6>Skill Points Can Be Obtained By Buying Main Game Upgrades (Workers, drinks, promotions, and writing tools) </h6>
+  <h4>-----------------</h4>
   <h6 id="skillPointsCurrency">Skill Points: 0</h6>
   <button6 id="startSkillTree">Start Skill Tree: 0 Points</button6>
   <h4>-----------------</h4>
@@ -652,6 +663,7 @@ h11 {
   <h4>-----------------</h4>
   <h5 id="moneyPerSecond">Auto Cash Per Sec: $0</h5> 
   <h5 id="paperPerClickDisplay">Paper Per Click: 0</h5>
+  <h5 id="highscore">Highscore: $0</h5>
 </div>
 
 <div id="helpMenuDis">
@@ -695,7 +707,7 @@ h11 {
 // 7 - Gambler's Dream
 //TESTING//
 
-let modMenuVal = 5;
+let modMenuVal = 0;
 let savePlayer = 0;
 let workerEffDec = 0;
 let saveSlot = 1;
@@ -1059,6 +1071,56 @@ let luckMenuUnlocked = 1;
 taxMenuBtn.style.opacity = ".3"
 let taxMenuUnlocked = 1;
 
+async function opacitySettingForUpgrades() {
+  while (true) {
+    await sleep(100);
+    if (moneyearned < paperPCPrice) {
+      writingTool.style.opacity = ".3";
+      buyMaxWritingTool.style.opacity = ".3"
+    } else {
+      writingTool.style.opacity = "1";
+      buyMaxWritingTool.style.opacity = "1"
+    }
+    if (paperswrote < promotion) {
+      multBtn.style.opacity = ".3"
+      buyMaxPromo.style.opacity = ".3"
+    } else {
+      multBtn.style.opacity = "1"
+      buyMaxPromo.style.opacity = "1"
+    }
+    if (moneyearned < workerPrice) {
+      workerBtn.style.opacity = ".3"
+      buyMaxWorker.style.opacity = ".3"
+    } else {
+      workerBtn.style.opacity = "1"
+      buyMaxWorker.style.opacity = "1"
+    }
+    if (moneyearned < cofPrice) {
+      cofBtn.style.opacity = ".3"
+      buyMaxCof.style.opacity = ".3"
+    } else {
+      cofBtn.style.opacity = "1"
+      buyMaxCof.style.opacity = "1"  
+    }
+    if (moneyearned < energyDrinkPrice) {
+      energyBtn.style.opacity = ".3"
+      buyMaxEnDrink.style.opacity = ".3"
+    } else {
+      energyBtn.style.opacity = "1"
+      buyMaxEnDrink.style.opacity = "1"
+    }
+    if (moneyearned < workCofPrice) {
+      workCofBtn.style.opacity = ".3"
+      buyMaxWorkCof.style.opacity = ".3"
+    } else {
+      workCofBtn.style.opacity = "1"
+      buyMaxWorkCof.style.opacity = "1"
+    }
+  }
+}
+
+opacitySettingForUpgrades();
+
 //Menu Tab Functions:
 function getTaxMenu() {
   skillTreeDis.style.display = "none";
@@ -1091,6 +1153,11 @@ function getMainGame() {
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
   helpMenuDis.style.display = "none";
+  if (modMenuVal != 0) {
+    modMenuBtn.style.display = "block";
+  } else {
+    modMenuBtn.style.display = "none";
+  }
 }
 
 function getSaveAndMore() {
@@ -2258,6 +2325,14 @@ sbmtBtn.onclick = function () {
     luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
     taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
     workCofPrice = loadValueHelper(loadArray[38], 10, "num");
+    workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + workCofPrice;
+    moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
+    paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
+    let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
+    if (Date.now() - lastDateNow > 0) {
+      moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+      paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+    }
     loadInProgress = 0;
   }
 };
@@ -2307,6 +2382,7 @@ function saveGame() {
     luckMenuUnlocked, //36
     taxMenuUnlocked, //37
     workCofPrice, //38
+    Date.now(), //39
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -2764,6 +2840,14 @@ function loadWLocalStorage() {
     luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
     taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
     workCofPrice = loadValueHelper(loadArray[38], 10, "num");
+    workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + workCofPrice;
+    moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
+    paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
+    let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
+    if (Date.now() - lastDateNow > 0) {
+      moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+      paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+    }
     loadInProgress = 0;
   }
 }
