@@ -473,7 +473,6 @@ h11 {
 </div>
 
 <div id="upgradeMenuDis">
-  <h1 id="upMenuMonDis">Money: $0 & Papers Written: 0</h1>
   <div class="flexRowColumn">
     <button id="unlockPaperMineUp" class="upgradeButtons1"> 
       <span> Unlock Worker Upgrades: </span>
@@ -708,7 +707,6 @@ let workerEffDec = 0;
 let saveSlot = 1;
 //Constants Below:
 
-const upMenuMonDis = document.getElementById("upMenuMonDis");
 const suffixes = [
   "k",
   "M",
@@ -2180,7 +2178,6 @@ async function autoWorker(waittime) {
 async function autoChecks() {
   while (true) {
     skillPoints = Math.round(skillPoints * 100) / 100
-    upMenuMonDis.innerText = "Money: $" + autoSuffixer(moneyearned) + " & Papers Written: " + autoSuffixer(paperswrote) + " & Skill Points: " + skillPoints;
     await sleep(200);
     if (loadInProgress === 0) {
       if (moneyearned >= currentBet) {
