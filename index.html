@@ -1062,10 +1062,47 @@ let taxMenuUnlocked = 1;
 async function opacitySettingForUpgrades() {
   while (true) {
     await sleep(100);
-    if (moneyearned <= paperPCPrice) {
+    if (moneyearned < paperPCPrice) {
       writingTool.style.opacity = ".3";
+      buyMaxWritingTool.style.opacity = ".3"
     } else {
       writingTool.style.opacity = "1";
+      buyMaxWritingTool.style.opacity = "1"
+    }
+    if (paperswrote < promotion) {
+      multBtn.style.opacity = ".3"
+      buyMaxPromo.style.opacity = ".3"
+    } else {
+      multBtn.style.opacity = "1"
+      buyMaxPromo.style.opacity = "1"
+    }
+    if (moneyearned < workerPrice) {
+      workerBtn.style.opacity = ".3"
+      buyMaxWorker.style.opacity = ".3"
+    } else {
+      workerBtn.style.opacity = "1"
+      buyMaxWorker.style.opacity = "1"
+    }
+    if (moneyearned < cofPrice) {
+      cofBtn.style.opacity = ".3"
+      buyMaxCof.style.opacity = ".3"
+    } else {
+      cofBtn.style.opacity = "1"
+      buyMaxCof.style.opacity = "1"  
+    }
+    if (moneyearned < energyDrinkPrice) {
+      energyBtn.style.opacity = ".3"
+      buyMaxEnDrink.style.opacity = ".3"
+    } else {
+      energyBtn.style.opacity = "1"
+      buyMaxEnDrink.style.opacity = "1"
+    }
+    if (moneyearned < workCofPrice) {
+      workCofBtn.style.opacity = ".3"
+      buyMaxWorkCof.style.opacity = ".3"
+    } else {
+      workCofBtn.style.opacity = "1"
+      buyMaxWorkCof.style.opacity = "1"
     }
   }
 }
