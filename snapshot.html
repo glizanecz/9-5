@@ -986,6 +986,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 //rebirth below
 const rebirthBtn = document.getElementById("rebirth");
 let rebirthMulti = 10;
+let rebirthPrice = 100_000;
 
 //Definitions Below:
 
@@ -1535,7 +1536,7 @@ function skillPointBuy4(bypass) {
       multiplier = multiplier + 2;
       multiplierPaper += 2;
     }
-    multi.innerText = "Multiplier: " + multiplier + "x";
+    multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x";
     monMultSkllIV = 1;
     totalSkillPoints = totalSkillPoints + 16;
   }
@@ -2068,26 +2069,26 @@ button.onclick = function () {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp)) * rebirthMulti;
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-      multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
+      multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x +1.5x - COFFEE OVERLOAD!";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x";
       }
     } else {
       moneyearned = moneyearned + moneyPerPaper * multiplier + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp)) * rebirthMulti;
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp)) * rebirthMulti;
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-      multi.innerText = "Multiplier: " + multiplier + "x";
+      multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x";
       }
     }
   }
@@ -2101,7 +2102,7 @@ multBtn.onclick = function () {
     promotion = Math.floor(promotion * 1.5 * genPriceReducer);
     multiplier = multiplier + 0.5;
     multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion) + " Papers.";
-    multi.innerText = "Multiplier: " + multiplier;
+    multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x"
   }
 };
 
@@ -2114,7 +2115,7 @@ cofBtn.onclick = function () {
     cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
     clicksForCof += 30;
     multi.innerText =
-      "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
+      "Multiplier: " + (multiplier + rebirthMulti) + "x +1.5x - COFFEE OVERLOAD!";
   }
 };
 
@@ -2127,7 +2128,7 @@ energyBtn.onclick = function () {
     energyDrinkPrice = Math.floor(energyDrinkPrice * 1.5 * genPriceReducer);
     energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(energyDrinkPrice)
     clicksForEnergyDrink = clicksForEnergyDrink + 30;
-    multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+    multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
   }
 };
 
@@ -2183,216 +2184,6 @@ async function autoWorker(waittime) {
     }
   }
 }
-
-async function autoChecks() {
-  while (true) {
-    skillPoints = Math.round(skillPoints * 100) / 100
-    await sleep(200);
-    if (loadInProgress === 0) {
-      if (moneyearned >= currentBet) {
-        safetyNetLock = 0;
-      }
-      if (toggleIRS === "Off") {
-        taxNoti.style.display = "none";
-        taxNoti.style.opacity = "0";
-      }
-      if (
-        betDisplay.innerText === "Player needs money to bet!" &&
-        moneyearned >= bet
-      ) {
-        betDisplay.innerText = "Bet Set To: $" + bet;
-      }
-      if (highScoreMoney < moneyearned) {
-        highScoreMoney = moneyearned;
-        highscoreDis.innerText = "Highscore: $" + autoSuffixer(highScoreMoney);
-      }
-      moneyLuckMenu.innerText = "Money: $" + moneyearned;
-      skillPointsDisplay.innerText =
-        "Skill Points: " +
-        skillPoints;
-      if (clicksForEnergyDrink > 0) {
-        papPerClickDisplay.innerText = "Paper Per Click: " + autoSuffixer(paperPC * multiplierPaper + energyDrinkMultBonus) + "(" + autoSuffixer(paperPC); + " without 3x energy drink bonus)";
-      } else {
-        papPerClickDisplay.innerText = "Paper Per Click: " + autoSuffixer(paperPC)
-        energyDrinkMultBonus = 1;
-        multiPaper.innerText = "Multiplier: " + multiplierPaper + "x";
-      }
-    }
-  }
-}
-
-autoChecks();
-
-//Save and Load:
-
-sbmtBtn.onclick = function () {
-  if (savePlayer === 0) {
-    loadInProgress = 1;
-    let loadCode = loadInput.value;
-    let loadArray = loadCode.split("|");
-    loadInput.value = "";
-    //Input Values
-    //console.log(loadArray);
-    moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
-    moneyearned = loadValueHelper(loadArray[1], 0, "num");
-    multiplier = loadValueHelper(loadArray[2], 1, "num");
-    paperPCPrice = loadValueHelper(loadArray[3], 30, "num");
-    paperPC = loadValueHelper(loadArray[4], 1, "num");
-    paperswrote = loadValueHelper(loadArray[5], 0, "num");
-    cofPrice = loadValueHelper(loadArray[6], 5, "num");
-    workerPrice = loadValueHelper(loadArray[7], 200, "num");
-    workersHired = loadValueHelper(loadArray[8], 0, "num");
-    promotion = loadValueHelper(loadArray[9], 50, "num");
-    toolCount = loadValueHelper(loadArray[10], 0, "num");
-    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
-    " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
-    clicksForCof = loadValueHelper(loadArray[11], 0, "num");
-    multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
-    energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
-    clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
-    skillPoints = loadValueHelper(loadArray[14], 0, "num");
-    totalSkillPoints = loadValueHelper(loadArray[15], 0, "num");
-    safetyNetLock = loadValueHelper(loadArray[16], 0, "num");
-    irsDebt = loadValueHelper(loadArray[17], 0, "num");
-    irsLock = loadValueHelper(loadArray[18], 0, "num");
-    bet = loadValueHelper(loadArray[19], 0, "num");
-    currentBet = loadValueHelper(loadArray[20], bet, "num");
-    luckWorkerBtnBought = loadValueHelper(loadArray[21], 0, "num");
-    taxWorkerBtnBought = loadValueHelper(loadArray[22], 0, "num");
-
-    toggleAutoLuck = loadValueHelper(loadArray[23], "Off", "text");
-
-    highScoreMoney = loadValueHelper(loadArray[24], moneyearned, "num");
-    writingToolsBought = loadValueHelper(loadArray[25], toolCount, "num");
-
-    illBucksPerSecDisplayRandom = loadValueHelper(loadArray[26], "1-5", "text");
-
-    illMoney = loadValueHelper(loadArray[27], 0, "num");
-    illPrintDelayPrice = loadValueHelper(loadArray[28], 200, "num");
-    illBucksPerSecPrice = loadValueHelper(loadArray[29], 500, "num");
-
-    toggleIRS = loadValueHelper(loadArray[30], "Off", "text");
-
-    illDelay = loadValueHelper(loadArray[31], 1, "num");
-    money.innerText = "Money: $" + autoSuffixer(moneyearned);
-    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-    workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
-    multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion) + " Papers.";
-    cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
-    energyBtn.innerText = "Energy Drink +3x Money: $" + autoSuffixer(energyDrinkPrice)
-    highscoreDis.innerText = "Highscore: $" + autoSuffixer(highScoreMoney);
-    illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
-    resetSkillTree();
-    resetUpgradeMenu();
-    if (loadArray[32]) {
-      skillTreeBought = loadArray[32].split(",").map(Number) || new Array(50).fill(0);
-    } else {
-      skillTreeBought = new Array(50).fill(0);
-    }
-    if (loadArray[33]) {
-      upgradesBought = loadArray[33].split(",").map(Number) || new Array(50).fill(0);
-    } else {
-      upgradesBought = new Array(50).fill(0);
-    }
-    if (skillTreeBought[0] === 1) definingBuys(0);
-    if (skillTreeBought[1] === 1) definingBuys(1);
-    if (skillTreeBought[2] === 1) definingBuys(2);
-    if (skillTreeBought[3] === 1) definingBuys(3);
-    if (skillTreeBought[4] === 1) definingBuys(4);
-    if (skillTreeBought[5] === 1) definingBuys(5);
-    if (skillTreeBought[6] === 1) definingBuys(6);
-    if (skillTreeBought[7] === 1) definingBuys(7);
-    if (skillTreeBought[8] === 1) definingBuys(8);
-    if (skillTreeBought[9] === 1) definingBuys(9);
-    if (skillTreeBought[10] === 1) definingBuys(10);
-    if (skillTreeBought[11] === 1) definingBuys(11);
-    if (skillTreeBought[12] === 1) definingBuys(12);
-    if (skillTreeBought[13] === 1) definingBuys(13);
-    if (skillTreeBought[14] === 1) definingBuys(14);
-    if (upgradesBought[0] === 1) definingUpgrades(0);
-    if (upgradesBought[1] === 1) definingUpgrades(1);
-    if (upgradesBought[2] === 1) definingUpgrades(2);
-    if (upgradesBought[3] === 1) definingUpgrades(3);
-    if (upgradesBought[4] === 1) definingUpgrades(4);
-    if (upgradesBought[5] === 1) definingUpgrades(5);
-    if (upgradesBought[6] === 1) definingUpgrades(6);
-    if (upgradesBought[7] === 1) definingUpgrades(7);
-    if (upgradesBought[8] === 1) definingUpgrades(8);
-    if (upgradesBought[9] === 1) definingUpgrades(9);
-    if (upgradesBought[10] === 1) definingUpgrades(10);
-    if (upgradesBought[11] === 1) definingUpgrades(11);
-    if (upgradesBought[12] === 1) definingUpgrades(12);
-    if (upgradesBought[13] === 1) definingUpgrades(13);
-    skillTreeUnlocked = loadValueHelper(loadArray[34], 1, "num");
-    upgradeMenuUnlocked = loadValueHelper(loadArray[35], 1, "num");
-    luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
-    taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
-    workCofPrice = loadValueHelper(loadArray[38], 10, "num");
-    workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + workCofPrice;
-    moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
-    paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
-    let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
-    if (Date.now() - lastDateNow > 0) {
-      moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
-      paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
-    }
-    loadInProgress = 0;
-  }
-};
-
-saveBtn.onclick = saveGame;
-
-function saveGame() {
-  let skillTreeSave = skillTreeBought.toString();
-  let upgradeSave = upgradesBought.toString();
-  let saveCode = [
-    moneyPerPaper, //0
-    moneyearned, //1
-    multiplier, //2
-    paperPCPrice, //3
-    paperPC, //4
-    paperswrote, //5
-    cofPrice, //6
-    workerPrice, //7
-    workersHired, //8
-    promotion, //9
-    toolCount, //10
-    clicksForCof, //11
-    energyDrinkPrice, //12
-    clicksForEnergyDrink, //13
-    skillPoints, //14
-    totalSkillPoints, //15
-    safetyNetLock, //16
-    irsDebt, //17
-    irsLock, //18
-    bet, //19
-    currentBet, //20
-    luckWorkerBtnBought, //21
-    taxWorkerBtnBought, //22
-    toggleAutoLuck, //23
-    highScoreMoney, //24
-    writingToolsBought, //25
-    illBucksPerSecDisplayRandom, //26
-    illMoney, //27
-    illPrintDelayPrice, //28
-    illBucksPerSecPrice, //29
-    toggleIRS, //30
-    illDelay, //31
-    skillTreeSave, //32
-    upgradeSave, //33
-    skillTreeUnlocked, //34
-    upgradeMenuUnlocked, //35
-    luckMenuUnlocked, //36
-    taxMenuUnlocked, //37
-    workCofPrice, //38
-    Date.now(), //39
-  ];
-  let saveCodeSeperated = saveCode.join("|");
-  copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
-  if (saveSlot === 1) localStorage.setItem("9to5Save", JSON.stringify(saveCodeSeperated));
-  if (saveSlot === 2) localStorage.setItem("9to5Save2", JSON.stringify(saveCodeSeperated));
-  if (saveSlot === 3) localStorage.setItem("9to5Save3", JSON.stringify(saveCodeSeperated));
-};
 
 async function taxVisit() {
   await sleep(Math.random(Math.floor()));
@@ -2733,7 +2524,74 @@ decreasePrintDelayBtn.onclick = function() {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 loadMethod.onclick = loadWLocalStorage;
+
+function saveGame() {
+  let skillTreeSave = skillTreeBought.toString();
+  let upgradeSave = upgradesBought.toString();
+  let saveCode = [
+    moneyPerPaper, //0
+    moneyearned, //1
+    multiplier, //2
+    paperPCPrice, //3
+    paperPC, //4
+    paperswrote, //5
+    cofPrice, //6
+    workerPrice, //7
+    workersHired, //8
+    promotion, //9
+    toolCount, //10
+    clicksForCof, //11
+    energyDrinkPrice, //12
+    clicksForEnergyDrink, //13
+    skillPoints, //14
+    totalSkillPoints, //15
+    safetyNetLock, //16
+    irsDebt, //17
+    irsLock, //18
+    bet, //19
+    currentBet, //20
+    luckWorkerBtnBought, //21
+    taxWorkerBtnBought, //22
+    toggleAutoLuck, //23
+    highScoreMoney, //24
+    writingToolsBought, //25
+    illBucksPerSecDisplayRandom, //26
+    illMoney, //27
+    illPrintDelayPrice, //28
+    illBucksPerSecPrice, //29
+    toggleIRS, //30
+    illDelay, //31
+    skillTreeSave, //32
+    upgradeSave, //33
+    skillTreeUnlocked, //34
+    upgradeMenuUnlocked, //35
+    luckMenuUnlocked, //36
+    taxMenuUnlocked, //37
+    workCofPrice, //38
+    Date.now(), //39
+    rebirthMulti, //40
+    rebirthPrice, //41
+  ];
+  let saveCodeSeperated = saveCode.join("|");
+  copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
+  if (saveSlot === 1) localStorage.setItem("9to5Save", JSON.stringify(saveCodeSeperated));
+  if (saveSlot === 2) localStorage.setItem("9to5Save2", JSON.stringify(saveCodeSeperated));
+  if (saveSlot === 3) localStorage.setItem("9to5Save3", JSON.stringify(saveCodeSeperated));
+};
 
 function loadWLocalStorage() {
   if (savePlayer === 0) {
@@ -2748,6 +2606,8 @@ function loadWLocalStorage() {
     loadInput.value = "";
     //Input Values
     //console.log(loadArray);
+    rebirthMulti = loadValueHelper(loadArray[39],1,"num");
+    rebirthPrice = loadValueHelper(loadArray[40],100_000,"num");
     moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
     moneyearned = loadValueHelper(loadArray[1], 0, "num");
     multiplier = loadValueHelper(loadArray[2], 1, "num");
@@ -2762,7 +2622,7 @@ function loadWLocalStorage() {
     writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
     " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
-    multi.innerText = "Multiplier: " + multiplier + "x +1.5x - COFFEE OVERLOAD!";
+    multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x +1.5x - COFFEE OVERLOAD!";
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
     clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
     skillPoints = loadValueHelper(loadArray[14], 0, "num");
@@ -2854,6 +2714,179 @@ function loadWLocalStorage() {
     loadInProgress = 0;
   }
 }
+
+sbmtBtn.onclick = function () {
+  if (savePlayer === 0) {
+    loadInProgress = 1;
+    let loadCode = loadInput.value;
+    let loadArray = loadCode.split("|");
+    loadInput.value = "";
+    //Input Values
+    //console.log(loadArray);
+    moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
+    moneyearned = loadValueHelper(loadArray[1], 0, "num");
+    multiplier = loadValueHelper(loadArray[2], 1, "num");
+    paperPCPrice = loadValueHelper(loadArray[3], 30, "num");
+    paperPC = loadValueHelper(loadArray[4], 1, "num");
+    paperswrote = loadValueHelper(loadArray[5], 0, "num");
+    cofPrice = loadValueHelper(loadArray[6], 5, "num");
+    workerPrice = loadValueHelper(loadArray[7], 200, "num");
+    workersHired = loadValueHelper(loadArray[8], 0, "num");
+    promotion = loadValueHelper(loadArray[9], 50, "num");
+    toolCount = loadValueHelper(loadArray[10], 0, "num");
+    writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
+    " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
+    clicksForCof = loadValueHelper(loadArray[11], 0, "num");
+    multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x +1.5x - COFFEE OVERLOAD!";
+    energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
+    clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
+    skillPoints = loadValueHelper(loadArray[14], 0, "num");
+    totalSkillPoints = loadValueHelper(loadArray[15], 0, "num");
+    safetyNetLock = loadValueHelper(loadArray[16], 0, "num");
+    irsDebt = loadValueHelper(loadArray[17], 0, "num");
+    irsLock = loadValueHelper(loadArray[18], 0, "num");
+    bet = loadValueHelper(loadArray[19], 0, "num");
+    currentBet = loadValueHelper(loadArray[20], bet, "num");
+    luckWorkerBtnBought = loadValueHelper(loadArray[21], 0, "num");
+    taxWorkerBtnBought = loadValueHelper(loadArray[22], 0, "num");
+
+    toggleAutoLuck = loadValueHelper(loadArray[23], "Off", "text");
+
+    highScoreMoney = loadValueHelper(loadArray[24], moneyearned, "num");
+    writingToolsBought = loadValueHelper(loadArray[25], toolCount, "num");
+
+    illBucksPerSecDisplayRandom = loadValueHelper(loadArray[26], "1-5", "text");
+
+    illMoney = loadValueHelper(loadArray[27], 0, "num");
+    illPrintDelayPrice = loadValueHelper(loadArray[28], 200, "num");
+    illBucksPerSecPrice = loadValueHelper(loadArray[29], 500, "num");
+
+    toggleIRS = loadValueHelper(loadArray[30], "Off", "text");
+
+    illDelay = loadValueHelper(loadArray[31], 1, "num");
+    money.innerText = "Money: $" + autoSuffixer(moneyearned);
+    papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
+    workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
+    multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion) + " Papers.";
+    cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
+    energyBtn.innerText = "Energy Drink +3x Money: $" + autoSuffixer(energyDrinkPrice)
+    highscoreDis.innerText = "Highscore: $" + autoSuffixer(highScoreMoney);
+    illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
+    resetSkillTree();
+    resetUpgradeMenu();
+    if (loadArray[32]) {
+      skillTreeBought = loadArray[32].split(",").map(Number) || new Array(50).fill(0);
+    } else {
+      skillTreeBought = new Array(50).fill(0);
+    }
+    if (loadArray[33]) {
+      upgradesBought = loadArray[33].split(",").map(Number) || new Array(50).fill(0);
+    } else {
+      upgradesBought = new Array(50).fill(0);
+    }
+    if (skillTreeBought[0] === 1) definingBuys(0);
+    if (skillTreeBought[1] === 1) definingBuys(1);
+    if (skillTreeBought[2] === 1) definingBuys(2);
+    if (skillTreeBought[3] === 1) definingBuys(3);
+    if (skillTreeBought[4] === 1) definingBuys(4);
+    if (skillTreeBought[5] === 1) definingBuys(5);
+    if (skillTreeBought[6] === 1) definingBuys(6);
+    if (skillTreeBought[7] === 1) definingBuys(7);
+    if (skillTreeBought[8] === 1) definingBuys(8);
+    if (skillTreeBought[9] === 1) definingBuys(9);
+    if (skillTreeBought[10] === 1) definingBuys(10);
+    if (skillTreeBought[11] === 1) definingBuys(11);
+    if (skillTreeBought[12] === 1) definingBuys(12);
+    if (skillTreeBought[13] === 1) definingBuys(13);
+    if (skillTreeBought[14] === 1) definingBuys(14);
+    if (upgradesBought[0] === 1) definingUpgrades(0);
+    if (upgradesBought[1] === 1) definingUpgrades(1);
+    if (upgradesBought[2] === 1) definingUpgrades(2);
+    if (upgradesBought[3] === 1) definingUpgrades(3);
+    if (upgradesBought[4] === 1) definingUpgrades(4);
+    if (upgradesBought[5] === 1) definingUpgrades(5);
+    if (upgradesBought[6] === 1) definingUpgrades(6);
+    if (upgradesBought[7] === 1) definingUpgrades(7);
+    if (upgradesBought[8] === 1) definingUpgrades(8);
+    if (upgradesBought[9] === 1) definingUpgrades(9);
+    if (upgradesBought[10] === 1) definingUpgrades(10);
+    if (upgradesBought[11] === 1) definingUpgrades(11);
+    if (upgradesBought[12] === 1) definingUpgrades(12);
+    if (upgradesBought[13] === 1) definingUpgrades(13);
+    skillTreeUnlocked = loadValueHelper(loadArray[34], 1, "num");
+    upgradeMenuUnlocked = loadValueHelper(loadArray[35], 1, "num");
+    luckMenuUnlocked = loadValueHelper(loadArray[36], 1, "num");
+    taxMenuUnlocked = loadValueHelper(loadArray[37], 1, "num");
+    workCofPrice = loadValueHelper(loadArray[38], 10, "num");
+    workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + workCofPrice;
+    moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
+    paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
+    let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
+    if (Date.now() - lastDateNow > 0) {
+      moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+      paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+    }
+    loadInProgress = 0;
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+saveBtn.onclick = saveGame;
+
+async function autoChecks() {
+  while (true) {
+    skillPoints = Math.round(skillPoints * 100) / 100
+    await sleep(200);
+    if (loadInProgress === 0) {
+      if (moneyearned >= currentBet) {
+        safetyNetLock = 0;
+      }
+      if (toggleIRS === "Off") {
+        taxNoti.style.display = "none";
+        taxNoti.style.opacity = "0";
+      }
+      if (
+        betDisplay.innerText === "Player needs money to bet!" &&
+        moneyearned >= bet
+      ) {
+        betDisplay.innerText = "Bet Set To: $" + bet;
+      }
+      if (highScoreMoney < moneyearned) {
+        highScoreMoney = moneyearned;
+        highscoreDis.innerText = "Highscore: $" + autoSuffixer(highScoreMoney);
+      }
+      moneyLuckMenu.innerText = "Money: $" + moneyearned;
+      skillPointsDisplay.innerText =
+        "Skill Points: " +
+        skillPoints;
+      if (clicksForEnergyDrink > 0) {
+        papPerClickDisplay.innerText = "Paper Per Click: " + autoSuffixer(paperPC * multiplierPaper + energyDrinkMultBonus) + "(" + autoSuffixer(paperPC); + " without 3x energy drink bonus)";
+      } else {
+        papPerClickDisplay.innerText = "Paper Per Click: " + autoSuffixer(paperPC)
+        energyDrinkMultBonus = 1;
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x";
+      }
+    }
+  }
+}
+
+autoChecks();
+
+//Save and Load:
 
 function loadValueHelper(value,backup,textOrNum) {
   if (value === null || value === undefined || value === "undefined" || value === "null" || value === "NaN" || value === "") {
@@ -3102,7 +3135,7 @@ function maxBuyPossible(upgradeMax) {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(enDrinkPriceLoop)
       clicksForEnergyDrink += 30;
-      multiPaper.innerText = "Multiplier: " + multiplierPaper + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+      multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
       enDrinkBoughtMax += 1;
       consoleOut.innerText = "Console Output: Energy Drink Price Max: -$" + autoSuffixer(enDrinkPriceLoop) + " and it bought: " +
       enDrinkBoughtMax;
