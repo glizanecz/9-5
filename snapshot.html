@@ -2949,9 +2949,9 @@ function maxBuyPossible(upgradeMax) {
     if (moneyearned >= workerPrice) {
       for (let i = 0; i < 100; i++) {
         if ((workerPriceLoop * 1.5) * genPriceReducer <= moneyearned) {
+          moneyearned -= workerPriceLoop;
           workerPriceLoop = (workerPriceLoop * 1.5) * genPriceReducer;
           workerPrice = workerPriceLoop;
-          moneyearned -= workerPriceLoop;
           workersHired += 1;
           workersBoughtMax += 1;
           workerBtn.innerText = "Hire Worker: $" + autoSuffixer(workerPrice);
@@ -2965,9 +2965,9 @@ function maxBuyPossible(upgradeMax) {
     if (paperswrote >= promotion) {
       for (let i = 0; i < 100; i++) {
         if ((promotionPriceLoop * 1.5) * genPriceReducer) {
+          paperswrote -= promotionPriceLoop;
           promotionPriceLoop = (promotionPriceLoop * 1.5) * genPriceReducer;
           promotion = promotionPriceLoop
-          paperswrote -= promotionPriceLoop;
           multiplier += .5;
           papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
           multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion)
@@ -2981,9 +2981,9 @@ function maxBuyPossible(upgradeMax) {
     let cofPriceLoop = cofPrice;
     if (moneyearned >= cofPrice) {
       for (let i = 0; i < 100; i++) {
+        moneyearned -= cofPriceLoop;
         cofPriceLoop = Math.floor(cofPriceLoop * 1.2 * genPriceReducer);
         cofPrice = cofPriceLoop;
-        moneyearned -= cofPriceLoop;
         clicksForCof += 30;
         money.innerText = "Money: $" + autoSuffixer(moneyearned);
         cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
@@ -2996,9 +2996,9 @@ function maxBuyPossible(upgradeMax) {
     let workCofPriceLoop = cofPrice;
     if (moneyearned >= cofPrice) {
       for (let i = 0; i < 100; i++) {
+        moneyearned -= workCofPriceLoop;
         workCofPriceLoop = Math.floor(workCofPriceLoop * 2 * genPriceReducer);
         workCofPrice = workCofPriceLoop;
-        moneyearned -= workCofPriceLoop;
         workCofClicks += 30;
         workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $" + autoSuffixer(workCofPrice);
         money.innerText = "Money: $" + autoSuffixer(moneyearned);
@@ -3012,9 +3012,9 @@ function maxBuyPossible(upgradeMax) {
     let enDrinkPriceLoop = energyDrinkPrice;
     if (moneyearned >= energyDrinkPrice) {
       for (let i = 0; i < 100; i++) {
+        moneyearned -= enDrinkPriceLoop;
         enDrinkPriceLoop = Math.floor(enDrinkPriceLoop * 1.5 * genPriceReducer);
         energyDrinkPrice = enDrinkPriceLoop;
-        moneyearned -= enDrinkPriceLoop;
         money.innerText = "Money: $" + autoSuffixer(moneyearned);
         energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(enDrinkPriceLoop)
         clicksForEnergyDrink += 30;
