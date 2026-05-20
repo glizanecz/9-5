@@ -985,7 +985,7 @@ const tool = [
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 //rebirth below
 const rebirthBtn = document.getElementById("rebirth");
-let rebirthMulti = 10;
+let rebirthMulti = 1000;
 let rebirthPrice = 100_000;
 
 //Definitions Below:
@@ -2723,6 +2723,8 @@ sbmtBtn.onclick = function () {
     loadInput.value = "";
     //Input Values
     //console.log(loadArray);
+    rebirthMulti = loadValueHelper(loadArray[39],1,"num");
+    rebirthPrice = loadValueHelper(loadArray[40],100_000,"num");
     moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
     moneyearned = loadValueHelper(loadArray[1], 0, "num");
     multiplier = loadValueHelper(loadArray[2], 1, "num");
