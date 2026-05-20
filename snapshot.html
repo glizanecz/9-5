@@ -2345,7 +2345,15 @@ fullyPayDebt.onclick = function() {
     irsDebt -= irsDebt;
     taxNoti.style.display = "none";
     irsVisits = 10;
+  } else {
+    if (moneyearned >= .5 * irsDebt) {
+      taxNoti.style.display = "none";
+      irsVisits = 10;
+    }
+    irsDebt -= moneyearned;
+    moneyearned -= moneyearned;
   }
+  debtDisplay.innerText = "Debt: $" + autoSuffixer(irsDebt);
 }
 
 sbmtPayOff.onclick = function () {
