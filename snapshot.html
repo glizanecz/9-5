@@ -639,7 +639,7 @@ h11 {
   <h1 id="debtDisplay">Debt: $0</h1>
   <h4>-----------------</h4>
   <label2 for="payDebt">Pay Off Debt</label2>
-  <input type="number" id="payDebt" class="payDebtInput"> <button9 id="sbmtPayOff">Submit Money</button9>
+  <input type="number" id="payDebt" class="payDebtInput"> <button9 id="sbmtPayOff">Submit Money</button9> <button9 id="fullyPayDebt">Fully Pay Debt</button9>
   <h4>-----------------</h4>
   <button9 id="hireTaxManagerBtn">Hire Tax Manager: $50,000</button9> <h10 id="transTaxDis">Last Auto Tax Transaction: $0</h10>
   <h4>ENABLE/DISABLE IRS:</h4>
@@ -797,6 +797,7 @@ const luckWorkerBtn = document.getElementById("luckWorker");
 const luckWorkerStrat = document.getElementById("luckWorkerStrat");
 
 //Tax Menu
+const fullyPayDebt = document.getElementById("fullyPayDebt");
 const taxMenu = document.getElementById("taxMenuSwitch");
 const taxMenuBtn = document.getElementById("taxMenuSwitchBtn");
 const taxNoti = document.getElementById("taxNoti");
@@ -2299,7 +2300,7 @@ async function autoLuckWorker() {
         continue;
       }
       money.innerText = "Money: $" + autoSuffixer(Math.floor(moneyearned));
-      moneyLuckMenu.innerText = "Money: $" + Math.floor(moneyearned);
+      moneyLuckMenu.innerText = "Money: $" + autoSuffixer(Math.floor(moneyearned));
     }
   }
 }
@@ -2338,6 +2339,15 @@ async function autoTaxer() {
 
 autoTaxer();
 
+fullyPayDebt.onclick = function() {
+  if (moneyearned >= irsDebt) {
+    moneyearned -= irsDebt;
+    irsDebt -= irsDebt;
+    taxNoti.style.display = "none";
+    irsVisits = 10;
+  }
+}
+
 sbmtPayOff.onclick = function () {
   if (toggleIRS === "On") {
     const canPayDebt = Number(payDebtInput.value) > 0 && moneyearned >= Number(payDebtInput.value) && Number(payDebtInput.value) <= irsDebt
@@ -2363,7 +2373,7 @@ sbmtPayOff.onclick = function () {
           " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
         money.innerText = "Money: $" + autoSuffixer(moneyearned);
       }
-      debtDisplay.innerText = "Debt: $" + irsDebt;
+      debtDisplay.innerText = "Debt: $" + autoSuffixer(irsDebt);
       payDebtInput.value = "";
     } else if (canPayDebtIll) {
       irsDebt -= Number(payDebtInput.value);
@@ -2377,7 +2387,7 @@ sbmtPayOff.onclick = function () {
         taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
         illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       }
-      debtDisplay.innerText = "Debt: $" + irsDebt;
+      debtDisplay.innerText = "Debt: $" + autoSuffixer(irsDebt);
       payDebtInput.value = "";
     }
   }
@@ -2871,7 +2881,7 @@ async function autoChecks() {
         highScoreMoney = moneyearned;
         highscoreDis.innerText = "Highscore: $" + autoSuffixer(highScoreMoney);
       }
-      moneyLuckMenu.innerText = "Money: $" + moneyearned;
+      moneyLuckMenu.innerText = "Money: $" + autoSuffixer(Math.floor(moneyearned))
       skillPointsDisplay.innerText =
         "Skill Points: " +
         skillPoints;
