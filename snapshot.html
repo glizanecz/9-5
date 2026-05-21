@@ -2186,6 +2186,22 @@ async function autoWorker(waittime) {
   }
 }
 
+async function rebirthGive() {
+  while (rebirthPrice - (rebirthPrice / 2) <= moneyearned) {
+    await sleep(500)
+    if ((rebirthPrice - (rebirthPrice / 2) < moneyearned)) {
+      rebirthBtn.style.display = "block";
+      rebirthBtn.style.opacity = ".50"
+      rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+    } else if (rebirthPrice <= moneyearned) {
+      rebirthBtn.style.display = "block"
+      rebirthBtn.style.opacity = "1"
+      rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned);
+    }
+  }
+}
+rebirthGive();
+
 async function taxVisit() {
   await sleep(Math.random(Math.floor()));
 }
@@ -2432,7 +2448,7 @@ async function autoTaxWorker() {
             irsVisits +
             " Visits Until Your Assets Are Frozen.";
           money.innerText = "Money: $" + autoSuffixer(moneyearned);
-          debtDisplay.innerText = "Debt: $" + irsDebt;
+          debtDisplay.innerText = "Debt: $" + autoSuffixer(irsDebt);
         }
       }
     }
