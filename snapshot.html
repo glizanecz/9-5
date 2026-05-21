@@ -1477,7 +1477,7 @@ function skillPointBuy1(bypass) {
       "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶ ̶|̶ ̶+̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶2̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPoints = skillPoints - 2;
     if (bypass != 1) {
-      multiplier = multiplier + 0.5;
+      multiplier += 0.5;
       multiplierPaper += 0.5;
     }
     multi.innerText = "Multiplier: " + multiplier + "x";
@@ -1496,7 +1496,7 @@ function skillPointBuy2(bypass) {
       "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶ ̶|̶ ̶+̶1̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶5̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPoints = skillPoints - 5;
     if (bypass != 1) {
-      multiplier = multiplier + 1;
+      multiplier += 1;
       multiplierPaper += 1;
     }
     multi.innerText = "Multiplier: " + multiplier + "x";
@@ -1515,7 +1515,7 @@ function skillPointBuy3(bypass) {
       "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶I̶I̶ ̶|̶ ̶+̶1̶.̶5̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶0̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPoints = skillPoints - 10;
     if (bypass != 1) {
-      multiplier = multiplier + 1.5;
+      multiplier += 1.5;
       multiplierPaper += 1.5;
     }
     multi.innerText = "Multiplier: " + multiplier + "x";
@@ -1534,7 +1534,7 @@ function skillPointBuy4(bypass) {
       "M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶I̶V̶ ̶|̶ ̶+̶2̶x̶ ̶M̶u̶l̶t̶i̶p̶l̶i̶e̶r̶ ̶F̶o̶r̶ ̶M̶o̶n̶e̶y̶ ̶a̶n̶d̶ ̶P̶a̶p̶e̶r̶:̶ ̶1̶6̶ ̶P̶o̶i̶n̶t̶s̶";
     skillPoints = skillPoints - 16;
     if (bypass != 1) {
-      multiplier = multiplier + 2;
+      multiplier += 2;
       multiplierPaper += 2;
     }
     multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x";
@@ -2101,7 +2101,7 @@ multBtn.onclick = function () {
     paperswrote = paperswrote - promotion;
     papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
     promotion = Math.floor(promotion * 1.5 * genPriceReducer);
-    multiplier = multiplier + 0.5;
+    multiplier += 0.5;
     multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion) + " Papers.";
     multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x"
   }
@@ -2197,6 +2197,8 @@ async function rebirthGive() {
       rebirthBtn.style.display = "block"
       rebirthBtn.style.opacity = "1"
       rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned);
+    } else {
+      rebirthBtn.style.display = "none"
     }
   }
 }
