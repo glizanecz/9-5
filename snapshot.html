@@ -2204,6 +2204,15 @@ async function rebirthGive() {
 }
 rebirthGive();
 
+rebirthBtn.onclick = function() {
+  if (rebirthPrice <= moneyearned) {
+    moneyearned -= rebirthPrice;
+    rebirthPrice *= 10;
+    rebirthMulti *= 2;
+    rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+  }
+}
+
 async function taxVisit() {
   await sleep(Math.random(Math.floor()));
 }
