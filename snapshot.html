@@ -2765,11 +2765,9 @@ function loadWLocalStorage() {
     if ((Date.now() - lastDateNow) > 0) {
       moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
       paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
-      if ((Date.now() - lastDateNow) >= 60_000) {
-        if (Number(lastSessionID) !== Number(sessionID)) {
-          incrementCounter();
-        }
-      }
+    }
+    if (Number(lastSessionID) !== Number(sessionID)) {
+      incrementCounter();
     }
     loadInProgress = 0;
   }
@@ -2893,11 +2891,9 @@ sbmtBtn.onclick = function () {
     if ((Date.now() - lastDateNow) > 0) {
       moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
       paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
-      if ((Date.now() - lastDateNow) >= 60_000) {
-        if (Number(lastSessionID) !== Number(sessionID)) {
-          incrementCounter();
-        }
-      }
+    }
+    if (Number(lastSessionID) !== Number(sessionID)) {
+      incrementCounter();
     }
     loadInProgress = 0;
   }
