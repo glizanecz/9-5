@@ -2081,7 +2081,7 @@ button.onclick = function () {
     } else {
       moneyearned += moneyPerPaper * (multiplier + (rebirthMulti - 1)) + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp));
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
-      paperswrote = paperswrote + (paperPC * (multiplierPaper(rebirthMulti - 1)) + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
+      paperswrote += (paperPC * (multiplierPaper + (rebirthMulti - 1)) + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
       if (clicksForEnergyDrink > 0) {
