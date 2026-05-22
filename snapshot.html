@@ -2211,7 +2211,7 @@ rebirthBtn.onclick = function() {
     rebirthPrice *= 10;
     rebirthMulti *= 2;
     rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
-    
+    massiveReset();
   }
 }
 
@@ -3219,6 +3219,84 @@ function maxBuyPossible(upgradeMax) {
 
 //so many writing changes T-T
 //this is so buggy, noooooo!!!
+
+function massiveReset() {
+  moneyPerPaper = 0.5;
+  moneyearned = 0;
+  multiplier = 1;
+  multiplierPaper = 1;
+  paperPCPrice = 30;
+  paperPC = 1;
+  paperswrote = 0;
+  cofPrice = 5;
+  workerPrice = 200;
+  workersHired = 0;
+  promotion = 50;
+  toolCount = 0;
+  clicksForCof = 0;
+  energyDrinkPrice = 30;
+  clicksForEnergyDrink = 0;
+  energyDrinkMultBonus = 1;
+  skillPoints = 0;
+  totalSkillPoints = 0;
+  safetyNetLock = 0;
+  irsDebt = 0;
+  irsLock = 0;
+  irsVisits = 11;
+  bet = 0;
+  currentBet = 0;
+  luckWorkerBtnBought = 0;
+  taxWorkerBtnBought = 0;
+  toggleAutoLuck = "Off";
+  highScoreMoney = 0;
+  writingToolsBought = 0;
+  illBucksPerSecDisplayRandom = "1-5";
+  illMoney = 0;
+  illPrintDelayPrice = 200;
+  illBucksPerSecPrice = 500;
+  toggleIRS = "Off";
+  illDelay = 1;
+  workCofPrice = 10;
+  workCofClicks = 0;
+  moneyPerSecond1 = 0;
+  paperPerSecond1 = 0;
+
+  resetSkillTree();
+  resetUpgradeMenu();
+
+  money.innerText = "Money: $0";
+  papers.innerText = "Papers Written: 0";
+  workerBtn.innerText = "Hire Worker: $200";
+  multBtn.innerText = "Get Promotion: 50 Papers.";
+  cofBtn.innerText = "Coffee +1.5x Money: $5";
+  energyBtn.innerText = "Energy Drink +3x Papers: $30";
+  workCofBtn.innerText = "Worker Coffee +1.5x Money For Workers: $10";
+  writingTool.innerText = "Upgrade Writing Tool | Current Tool: Pencil ✏️| Next Tool: Pen🖊️ | Cost: $30";
+  papPerClickDisplay.innerText = "Paper Per Click: 1";
+  
+  multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
+  multiPaper.innerText = "Multiplier: " + (multiplierPaper + (rebirthMulti - 1)) + "x";
+  
+  highscoreDis.innerText = "Highscore: $0";
+  illMoneyDisplay.innerText = "Illegal Printed Money: $0";
+  debtDisplay.innerText = "Debt: $0";
+  taxNoti.style.display = "none";
+  taxNoti.style.opacity = "0";
+  
+  luckWorkerBtn.innerText = "Hire Chance Manager: $200,000";
+  toggleAutoLuckBtn.innerText = "Toggle On";
+  outcomeDisplay.innerText = "No Chances Have Been Taken";
+  betDisplay.innerText = "Set Your Bet To Begin!";
+  
+  increaseBillBtn.innerText = "Print $10-20 Bills | $500";
+  decreasePrintDelayBtn.innerText = "Print Delay Down .15 Sec | $200";
+  
+  hireTaxManagerBtn.innerText = "Hire Tax Manager: $50,000";
+  toggleIRSExperiment.innerText = "The IRS: Experimental | Toggle On";
+  transTaxDis.innerText = "Last Auto Tax Transaction: $0";
+
+  saveGame();
+}
 
 autoUpgradeWorker();
 autoWorker(1000 - workerEffDec);
