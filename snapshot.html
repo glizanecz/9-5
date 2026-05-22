@@ -2189,7 +2189,7 @@ async function autoWorker(waittime) {
 async function rebirthGive() {
   while (true) {
     await sleep(500)
-    if ((rebirthPrice - (rebirthPrice / 2) < moneyearned) && rebirthPrice <= moneyearned) {
+    if ((rebirthPrice - (rebirthPrice / 2) < moneyearned) && !moneyearned >= rebirthPrice) {
       rebirthBtn.style.display = "block";
       rebirthBtn.style.opacity = ".50"
       rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
