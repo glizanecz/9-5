@@ -2066,9 +2066,9 @@ button.onclick = function () {
   if (irsLock === 0) {
     if (clicksForCof > 0) {
       clicksForCof = clicksForCof - 1;
-      moneyearned += moneyPerPaper * (multiplier + 1.5) + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp)) * rebirthMulti;
+      moneyearned += moneyPerPaper * ((multiplier + (rebirthMulti - 1)) + 1.5) + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp));
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
-      paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp)) * rebirthMulti;
+      paperswrote += (paperPC * (multiplierPaper + (rebirthMulti - 1)) + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x +1.5x - COFFEE OVERLOAD!";
       if (clicksForEnergyDrink > 0) {
@@ -2076,12 +2076,12 @@ button.onclick = function () {
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
-        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + (rebirthMulti - 1)) + "x";
       }
     } else {
-      moneyearned = moneyearned + moneyPerPaper * multiplier + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp)) * rebirthMulti;
+      moneyearned += moneyPerPaper * (multiplier + (rebirthMulti - 1)) + (percentWorkerPerClick * (moneyPerSecond1 + moneyChangeUp));
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
-      paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp)) * rebirthMulti;
+      paperswrote = paperswrote + (paperPC * (multiplierPaper(rebirthMulti - 1)) + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp));
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
       if (clicksForEnergyDrink > 0) {
@@ -2170,7 +2170,7 @@ async function autoWorker(waittime) {
     await sleep(waittime - workerEffDec);
     if (irsLock === 0) {
       if (workCofClicks > 0) {
-        moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) * rebirthMulti
+        moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) * rebirthMulti;
         moneyPerSec.innerText = "Auto Cash Per Second: $" + autoSuffixer(moneyPerSecond1) + " ($" + autoSuffixer((10 * (workersHired / 2) * workersHired) * rebirthMulti) + " without 1.5x coffee bonus)";
         workCofClicks = workCofClicks - 1;
       } else {
