@@ -2761,7 +2761,7 @@ function loadWLocalStorage() {
     moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
     paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
     let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
-    let lastSessionID = loadValueHelper(loadArray[42], sessionID, "num");
+    let lastSessionID = loadValueHelper(loadArray[42], Math.floor(Math.floor(Math.random() * 1_000_000_000_000) * (Math.random() + .01)), "num");
     if ((Date.now() - lastDateNow) > 0) {
       moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
       paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
@@ -2889,7 +2889,7 @@ sbmtBtn.onclick = function () {
     moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
     paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
     let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
-    let lastSessionID = loadValueHelper(loadArray[42], sessionID, "num");
+    let lastSessionID = loadValueHelper(loadArray[42], Math.floor(Math.floor(Math.random() * 1_000_000_000_000) * (Math.random() + .01)), "num");
     if ((Date.now() - lastDateNow) > 0) {
       moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
       paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
