@@ -2187,16 +2187,16 @@ async function autoWorker(waittime) {
 }
 
 async function rebirthGive() {
-  while (rebirthPrice - (rebirthPrice / 2) <= moneyearned) {
+  while (true) {
     await sleep(500)
     if ((rebirthPrice - (rebirthPrice / 2) < moneyearned)) {
       rebirthBtn.style.display = "block";
       rebirthBtn.style.opacity = ".50"
-      rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+      rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     } else if (rebirthPrice <= moneyearned) {
       rebirthBtn.style.display = "block"
       rebirthBtn.style.opacity = "1"
-      rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned);
+      rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned);
     } else {
       rebirthBtn.style.display = "none"
     }
