@@ -2192,11 +2192,11 @@ async function rebirthGive() {
     if ((rebirthPrice - (rebirthPrice / 2) < moneyearned) && !moneyearned >= rebirthPrice) {
       rebirthBtn.style.display = "block";
       rebirthBtn.style.opacity = ".60"
-      rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+      rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti * 2) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     } else if (rebirthPrice <= moneyearned) {
       rebirthBtn.style.display = "block"
       rebirthBtn.style.opacity = "1"
-      rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned);
+      rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti * 2) + "x Multiplier | $" + autoSuffixer(moneyearned);
     } else {
       rebirthBtn.style.display = "block"
       rebirthBtn.style.opacity = ".3"
@@ -2210,7 +2210,7 @@ rebirthBtn.onclick = function() {
     moneyearned -= rebirthPrice;
     rebirthPrice *= 10;
     rebirthMulti *= 2;
-    rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+    rebirthBtn.innerText = "Rebirth | Start With " + (rebirthMulti * 2) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     massiveReset();
   }
 }
@@ -2655,7 +2655,7 @@ function loadWLocalStorage() {
     //console.log(loadArray);
     rebirthMulti = loadValueHelper(loadArray[40],1,"num");
     rebirthPrice = loadValueHelper(loadArray[41],100_000,"num");
-    rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+    rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti * 2) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
     moneyearned = loadValueHelper(loadArray[1], 0, "num");
     multiplier = loadValueHelper(loadArray[2], 1, "num");
@@ -2777,7 +2777,7 @@ sbmtBtn.onclick = function () {
     //console.log(loadArray);
     rebirthMulti = loadValueHelper(loadArray[40],1,"num");
     rebirthPrice = loadValueHelper(loadArray[41],100_000,"num");
-    rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+    rebirthBtn.innerText = "Rebirth | Start With " + (rebirthMulti * 2) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
     moneyearned = loadValueHelper(loadArray[1], 0, "num");
     multiplier = loadValueHelper(loadArray[2], 1, "num");
