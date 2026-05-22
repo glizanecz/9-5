@@ -2653,7 +2653,7 @@ function loadWLocalStorage() {
     //console.log(loadArray);
     rebirthMulti = loadValueHelper(loadArray[39],1,"num");
     rebirthPrice = loadValueHelper(loadArray[40],100_000,"num");
-    rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+    rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     moneyPerPaper = loadValueHelper(loadArray[0], 0.5, "num");
     moneyearned = loadValueHelper(loadArray[1], 0, "num");
     multiplier = loadValueHelper(loadArray[2], 1, "num");
