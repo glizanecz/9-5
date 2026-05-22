@@ -3298,6 +3298,26 @@ function massiveReset() {
   saveGame();
 }
 
+const DB_URL = "https://sim-ab44f-default-rtdb.firebaseio.com/counter/value.json";
+
+//incrementCounter is NOT my code.
+async function incrementCounter() {
+  const res = await fetch(DB_URL);
+  let value = await res.json();
+
+  if (value === null) value = 0;
+
+  value++;
+
+  await fetch(DB_URL, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(value)
+  });
+
+  console.log("Counter is now:", value);
+}
+
 autoUpgradeWorker();
 autoWorker(1000 - workerEffDec);
 autoWorkerFuncUsed = 1;
