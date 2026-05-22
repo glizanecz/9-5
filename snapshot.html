@@ -1480,7 +1480,7 @@ function skillPointBuy1(bypass) {
       multiplier += 0.5;
       multiplierPaper += 0.5;
     }
-    multi.innerText = "Multiplier: " + multiplier + "x";
+    multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
     moneyMultSkillII.style.opacity = "1";
     monMultSkllI = 1;
     monMultSkllII = 0;
@@ -1499,7 +1499,7 @@ function skillPointBuy2(bypass) {
       multiplier += 1;
       multiplierPaper += 1;
     }
-    multi.innerText = "Multiplier: " + multiplier + "x";
+    multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
     monMultSkllII = 1;
     monMultSkllIII = 0;
     moneyMultSkillIII.style.opacity = "1";
@@ -1518,7 +1518,7 @@ function skillPointBuy3(bypass) {
       multiplier += 1.5;
       multiplierPaper += 1.5;
     }
-    multi.innerText = "Multiplier: " + multiplier + "x";
+    multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
     monMultSkllIII = 1;
     monMultSkllIV = 0;
     moneyMultSkillIV.style.opacity = "1";
@@ -2072,7 +2072,7 @@ button.onclick = function () {
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x +1.5x - COFFEE OVERLOAD!";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + (rebirthMulti - 1)) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
@@ -2085,11 +2085,11 @@ button.onclick = function () {
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
       multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
       if (clicksForEnergyDrink > 0) {
-        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + (rebirthMulti - 1)) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
         clicksForEnergyDrink = clicksForEnergyDrink - 1;
       } else {
-        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + (rebirthMulti - 1)) + "x";
       }
     }
   }
@@ -2129,7 +2129,7 @@ energyBtn.onclick = function () {
     energyDrinkPrice = Math.floor(energyDrinkPrice * 1.5 * genPriceReducer);
     energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(energyDrinkPrice)
     clicksForEnergyDrink = clicksForEnergyDrink + 30;
-    multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+    multiPaper.innerText = "Multiplier: " + (multiplierPaper + (rebirthMulti - 1)) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
   }
 };
 
@@ -2211,6 +2211,7 @@ rebirthBtn.onclick = function() {
     rebirthPrice *= 10;
     rebirthMulti *= 2;
     rebirthBtn.innerText = "Rebirth | Start With " + rebirthMulti + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
+    
   }
 }
 
@@ -2936,7 +2937,7 @@ async function autoChecks() {
       } else {
         papPerClickDisplay.innerText = "Paper Per Click: " + autoSuffixer(paperPC)
         energyDrinkMultBonus = 1;
-        multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x";
+        multiPaper.innerText = "Multiplier: " + (multiplierPaper + (rebirthMulti - 1)) + "x";
       }
     }
   }
@@ -3193,7 +3194,7 @@ function maxBuyPossible(upgradeMax) {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       energyBtn.innerText = "Energy Drink +3x Papers: $" + autoSuffixer(enDrinkPriceLoop)
       clicksForEnergyDrink += 30;
-      multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
+      multiPaper.innerText = "Multiplier: " + (multiplierPaper + (rebirthMulti - 1)) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
       enDrinkBoughtMax += 1;
       consoleOut.innerText = "Console Output: Energy Drink Price Max: -$" + autoSuffixer(enDrinkPriceLoop) + " and it bought: " +
       enDrinkBoughtMax;
