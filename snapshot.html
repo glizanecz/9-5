@@ -1537,7 +1537,7 @@ function skillPointBuy4(bypass) {
       multiplier += 2;
       multiplierPaper += 2;
     }
-    multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x";
+    multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
     monMultSkllIV = 1;
     totalSkillPoints = totalSkillPoints + 16;
   }
@@ -2070,7 +2070,7 @@ button.onclick = function () {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp)) * rebirthMulti;
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-      multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x +1.5x - COFFEE OVERLOAD!";
+      multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x +1.5x - COFFEE OVERLOAD!";
       if (clicksForEnergyDrink > 0) {
         multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
@@ -2083,7 +2083,7 @@ button.onclick = function () {
       money.innerText = "Money: $" + autoSuffixer(moneyearned);
       paperswrote = paperswrote + (paperPC * multiplierPaper + energyDrinkMultBonus) + (percentWorkerPerClick * (paperPerSecond1 + paperChangeUp)) * rebirthMulti;
       papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-      multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x";
+      multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
       if (clicksForEnergyDrink > 0) {
         multiPaper.innerText = "Multiplier: " + (multiplierPaper + rebirthMulti) + "x +3x - INCREASED CORPORATE INVESTMENTS!";
         energyDrinkMultBonus = 3;
@@ -2103,7 +2103,7 @@ multBtn.onclick = function () {
     promotion = Math.floor(promotion * 1.5 * genPriceReducer);
     multiplier += 0.5;
     multBtn.innerText = "Get Promotion: " + autoSuffixer(promotion) + " Papers.";
-    multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x"
+    multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x"
   }
 };
 
@@ -2116,7 +2116,7 @@ cofBtn.onclick = function () {
     cofBtn.innerText = "Coffee +1.5x Money: $" + autoSuffixer(cofPrice);
     clicksForCof += 30;
     multi.innerText =
-      "Multiplier: " + (multiplier + rebirthMulti) + "x +1.5x - COFFEE OVERLOAD!";
+      "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x +1.5x - COFFEE OVERLOAD!";
   }
 };
 
@@ -2668,7 +2668,11 @@ function loadWLocalStorage() {
     writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
     " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
-    multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x +1.5x - COFFEE OVERLOAD!";
+    if (clicksForCof > 0) {
+      multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x +1.5x - COFFEE OVERLOAD!";
+    } else {
+      multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
+    }
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
     clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
     skillPoints = loadValueHelper(loadArray[14], 0, "num");
@@ -2786,7 +2790,11 @@ sbmtBtn.onclick = function () {
     writingTool.innerText = "Upgrade Writing Tool | Current Tool: " + tool[toolCount] + 
     " | Next Tool: " + tool[toolCount + 1] + " | Cost: $" + autoSuffixer(paperPCPrice);
     clicksForCof = loadValueHelper(loadArray[11], 0, "num");
-    multi.innerText = "Multiplier: " + (multiplier + rebirthMulti) + "x +1.5x - COFFEE OVERLOAD!";
+    if (clicksForCof > 0) {
+      multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x +1.5x - COFFEE OVERLOAD!";
+    } else {
+      multi.innerText = "Multiplier: " + (multiplier + (rebirthMulti - 1)) + "x";
+    }
     energyDrinkPrice = loadValueHelper(loadArray[12], 30, "num");
     clicksForEnergyDrink = loadValueHelper(loadArray[13], 0, "num");
     skillPoints = loadValueHelper(loadArray[14], 0, "num");
