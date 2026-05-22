@@ -2191,14 +2191,15 @@ async function rebirthGive() {
     await sleep(500)
     if ((rebirthPrice - (rebirthPrice / 2) < moneyearned) && !moneyearned >= rebirthPrice) {
       rebirthBtn.style.display = "block";
-      rebirthBtn.style.opacity = ".50"
+      rebirthBtn.style.opacity = ".60"
       rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     } else if (rebirthPrice <= moneyearned) {
       rebirthBtn.style.display = "block"
       rebirthBtn.style.opacity = "1"
       rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti) + "x Multiplier | $" + autoSuffixer(moneyearned);
     } else {
-      rebirthBtn.style.display = "none"
+      rebirthBtn.style.display = "block"
+      rebirthBtn.style.opacity = ".3"
     }
   }
 }
