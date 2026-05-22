@@ -711,6 +711,7 @@ let modMenuVal = 5;
 let savePlayer = 0;
 let workerEffDec = 0;
 let saveSlot = 1;
+let sessionID = Math.floor(Math.floor(Math.random() * 1_000_000_000_000) * (Math.random() + .01));
 //Constants Below:
 
 const suffixes = [
@@ -2632,6 +2633,7 @@ function saveGame() {
     Date.now(), //39
     rebirthMulti, //40
     rebirthPrice, //41
+    sessionID, //42
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
@@ -2759,9 +2761,15 @@ function loadWLocalStorage() {
     moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
     paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
     let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
-    if (Date.now() - lastDateNow > 0) {
+    let lastSessionID = loadValueHelper(loadArray[42], sessionID, "num");
+    if ((Date.now() - lastDateNow) > 0) {
       moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
       paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+      if ((Date.now() - lastDateNow) > 60_000) {
+        if (lastSessionID != sessionID) {
+          incrementCounter();
+        }
+      }
     }
     loadInProgress = 0;
   }
@@ -2881,9 +2889,15 @@ sbmtBtn.onclick = function () {
     moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
     paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
     let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
-    if (Date.now() - lastDateNow > 0) {
+    let lastSessionID = loadValueHelper(loadArray[42], sessionID, "num");
+    if ((Date.now() - lastDateNow) > 0) {
       moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
       paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+      if ((Date.now() - lastDateNow) > 60_000) {
+        if (lastSessionID != sessionID) {
+          incrementCounter();
+        }
+      }
     }
     loadInProgress = 0;
   }
@@ -3317,8 +3331,6 @@ async function incrementCounter() {
 
   console.log("Counter is now:", value);
 }
-
-incrementCounter();
 
 autoUpgradeWorker();
 autoWorker(1000 - workerEffDec);
