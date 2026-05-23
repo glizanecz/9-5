@@ -348,13 +348,15 @@ h11 {
 
   </head>
   <body>
-<h2>-~-~ 💼 ((9/5 Simulator V1.72)) ☕ -~-~</h1>
+<h2>-~-~ 💼 ((9/5 Simulator V1.75)) ☕ -~-~</h1>
 <h2 id="consoleOut" class="fakeConsole"> Console Output (FOR DEV): </h2>
 <button id="rebirth" class="rebirth"> Rebirth | Start With 10x Multiplier</button>
 <br>
 <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5> <button5 id="helpMenu">Help Menu</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
+<h2 id="moneyPaperSPDis">Money: $0 | Papers Written: 0</h1>
+<h4>-----------------</h4>
 <div id="mainGameDis">
   <h1 id="money">Money: $0</h1>
   <h4 id="MultiplierMoney">Multiplier: 1x</h1>
@@ -414,7 +416,7 @@ h11 {
       <span> Cost: $200 & 1000 Paper </span>
     </button>
     <button id="unlockWoodToPaperUp" class="upgradeButtons2"> 
-      <span> Wood to Paper: </span>
+      <span> Buy Water Cooler: </span>
       <br>---</br>
       <span> Increases Paper Production </span>
       <br>
@@ -423,7 +425,7 @@ h11 {
       <span> Cost: $2,000 & 10,000 Paper </span>
     </button>
     <button id="moneyGrowsOnTrees" class="upgradeButtons7"> 
-      <span> Money Grows on Trees!: </span>
+      <span> Better Filing Cabinets: </span>
       <br>---</br>
       <span> Produces More Passive Paper & Money </span>
       <br>
@@ -432,7 +434,7 @@ h11 {
       <span> Cost: 200,000 Paper & 25 Skill Points </span>
     </button>
     <button id="upgradeButton12" class="upgradeButtons12"> 
-      <span> Money Tree Forests: </span>
+      <span> Premium Desks: </span>
       <br>---</br>
       <span> Produces More Money & Paper </span>
       <br>
@@ -441,7 +443,7 @@ h11 {
       <span> Cost: $100mil & 75 Skill Points</span>
     </button>
     <button id="upgradeButton13" class="upgradeButtons13"> 
-      <span> Faster Chopping: </span>
+      <span> Faster Filing: </span>
       <br>---</br>
       <span> Produces More Money & Paper </span>
       <br>
@@ -450,7 +452,7 @@ h11 {
       <span> Cost: $1bil & 100 Skill Points</span>
     </button>
     <button id="upgradeButton14" class="upgradeButtons14"> 
-      <span> Efficient Extraction: </span>
+      <span> Efficient Writing Tools: </span>
       <br>---</br>
       <span> Produces More Money & Paper </span>
       <br>
@@ -461,7 +463,7 @@ h11 {
   </div>
   <div class="verticalUp">
     <button id="unlockFasterPixUp" class="upgradeButtons3"> 
-      <span> Faster Pickaxes: </span>
+      <span> Add Second Story: </span>
       <br>---</br>
       <span> Produces More Passive Paper & Money </span>
       <br>
@@ -470,7 +472,7 @@ h11 {
       <span> Cost: $2,000 & 10,000 Paper </span>
     </button>
     <button id="unlockMorePaperDepUp" class="upgradeButtons4"> 
-      <span> More Paper Deposits: </span>
+      <span> More Office Cells: </span>
       <br>---</br>
       <span> Produces More Passive Paper & Money </span>
       <br>
@@ -480,7 +482,7 @@ h11 {
     </button>
 
     <button id="inkDeposits" class="upgradeButtons5"> 
-      <span> More Ink Deposits: </span>
+      <span> Outward Wall Expansion: </span>
       <br>---</br>
       <span> Produces More Passive Paper & Money </span>
       <br>
@@ -489,7 +491,7 @@ h11 {
       <span> Cost: $100,000 & 20 Skill Points </span>
     </button>
     <button id="betterTorches" class="upgradeButtons6"> 
-      <span> Better Torches: </span>
+      <span> Better Lighting: </span>
       <br>---</br>
       <span> Produces More Passive Paper & Money </span>
       <br>
@@ -507,7 +509,7 @@ h11 {
       <span> Cost: $50,000 & 200,000 Paper </span>
     </button>
     <button id="skillPointDeposits" class="upgradeButtons9"> 
-      <span> Skill Point Deposits: </span>
+      <span> Add Third Story: </span>
       <br>---</br>
       <span> Produces Passive Skill Points </span>
       <br>
@@ -516,7 +518,7 @@ h11 {
       <span> Cost: $1m & 100 Skill Points </span>
     </button>
     <button id="upgradeButton10" class="upgradeButtons10"> 
-      <span> More Skill Point Deposits: </span>
+      <span> Flawless Cell Flooring: </span>
       <br>---</br>
       <span> Produces More Skill Points </span>
       <br>
@@ -525,7 +527,7 @@ h11 {
       <span> Cost: $12m & 150 Skill Points</span>
     </button>
     <button id="upgradeButton11" class="upgradeButtons11"> 
-      <span> Skill Points River Stream: </span>
+      <span> Office Kitchen: </span>
       <br>---</br>
       <span> Produces More Skill Points </span>
       <br>
@@ -542,7 +544,7 @@ h11 {
   <h10 id="betDisplay">Set Your Bet To Begin!</h10>
   <h4>-----------------</h4>
   <label2 for="inputBet">Bet Size:</label2>
-  <input type="number" id="inputBet" class="luckInput">
+  <input type="text" id="inputBet" class="luckInput">
   <button9 id="sbmtBet">Set Bet</button9>
   <h4>Simple Chance:</h4>
   <h10 id="outcomeDisplay">No Chances Have Been Taken</h10>
@@ -563,7 +565,7 @@ h11 {
   <h1 id="debtDisplay">Debt: $0</h1>
   <h4>-----------------</h4>
   <label2 for="payDebt">Pay Off Debt</label2>
-  <input type="number" id="payDebt" class="payDebtInput"> <button9 id="sbmtPayOff">Submit Money</button9> <button9 id="fullyPayDebt">Fully Pay Debt</button9>
+  <input type="text" id="payDebt" class="payDebtInput"> <button9 id="sbmtPayOff">Submit Money</button9> <button9 id="fullyPayDebt">Fully Pay Debt</button9>
   <h4>-----------------</h4>
   <button9 id="hireTaxManagerBtn">Hire Tax Manager: $50,000</button9> <h10 id="transTaxDis">Last Auto Tax Transaction: $0</h10>
   <h4>ENABLE/DISABLE IRS:</h4>
@@ -584,6 +586,8 @@ h11 {
   <button id="firstSaveSlot">Save #1</button>
   <button id="secondSaveSlot">Save #2</button>
   <button id="thirdSaveSlot">Save #3</button>
+  <h4>-----------------</h4>
+  <button id="clickModeBtn">Click Mode: Click</button>
   <h4>-----------------</h4>
   <h5 id="moneyPerSecond">Auto Cash Per Sec: $0</h5> 
   <h5 id="paperPerClickDisplay">Paper Per Click: 0</h5>
@@ -806,6 +810,9 @@ fasterChopping.style.opacity = ".3";
 const effExtraction = document.getElementById("upgradeButton14");
 let effExtractLock = 1;
 effExtraction.style.opacity = ".3";
+
+//Stuff on top
+const overallValuesDis = document.getElementById("moneyPaperSPDis");
 
 //Skill Tree
 const skillTreeDis = document.getElementById("skillTreeDis");
@@ -1939,10 +1946,10 @@ thirdSaveSlot.onclick = function() {
 }
 modMenuBtn.onclick = function () {
   if (modMenuVal === 1) {
-    let input = prompt("How much money would you like?");
+    let input = undoSuffix(prompt("How much money would you like?"));
     moneyearned = Number(input);
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
-    input = prompt("How much paper would you like?");
+    input = undoSuffix(prompt("How much paper would you like?"));
     paperswrote = Number(input);
     papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
   } else if (modMenuVal === 2) {
@@ -1953,20 +1960,20 @@ modMenuBtn.onclick = function () {
     papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
     illMoneyDisplay.innerText = "Illegal Printed Money: $200.0k"
   } else if (modMenuVal === 3) {
-    let input = prompt("How much skill points would you like?");
+    let input = undoSuffix(prompt("How much skill points would you like?"));
     skillPoints = Number(input);
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   } else if (modMenuVal === 4) {
     skillPoints = 20000;
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   } else if (modMenuVal === 5) {
-    let input = prompt("How much money would you like?");
+    let input = undoSuffix(prompt("How much money would you like?"));
     moneyearned = Number(input);
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
-    input = prompt("How much paper would you like?");
+    input = undoSuffix(prompt("How much paper would you like?"));
     paperswrote = Number(input);
     papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-    input = prompt("How much skill points would you like?");
+    input = undoSuffix(prompt("How much skill points would you like?"));
     skillPoints = Number(input);
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   } else if (modMenuVal === 6) {
@@ -1988,7 +1995,7 @@ modMenuBtn.onclick = function () {
   }
 };
 
-button.onclick = function () {
+function buttonClickedMain() {
   if (irsLock === 0) {
     if (clicksForCof > 0) {
       clicksForCof = clicksForCof - 1;
@@ -2126,6 +2133,7 @@ async function rebirthGive() {
     } else {
       rebirthBtn.style.display = "block"
       rebirthBtn.style.opacity = ".3"
+      rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti * 2) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     }
   }
 }
@@ -2150,14 +2158,14 @@ sbmtBet.onclick = function () {
   if (inputBet.value === "") {
     betDisplay.innerText = "Invalid Bet!";
     inputBet.value = "";
-  } else if (Number(inputBet.value) > moneyearned) {
+  } else if (undoSuffix(inputBet.value) > moneyearned) {
     betDisplay.innerText = "Invalid Bet! Bet > Money!";
     inputBet.value = "";
-  } else if (bet < 0) {
+  } else if (undoSuffix(inputBet.value) < 0) {
     betDisplay.innerText = "Invalid Bet! Bet < 0!";
     inputBet.value = "";
   } else {
-    bet = Number(inputBet.value);
+    bet = undoSuffix(inputBet.value);
     inputBet.value = "";
     betDisplay.innerText = "Bet Set To: $" + bet;
     currentBet = bet;
@@ -2197,6 +2205,19 @@ luckWorkerBtn.onclick = function () {
     }
   }
 };
+
+const clickModeBtn = document.getElementById("clickModeBtn");
+let clickMode = "click";
+
+clickModeBtn.onclick = function () {
+  if (clickMode === "click") {
+    clickMode = "hold";
+    clickModeBtn.innerText = "Click Mode: Hold";
+  } else {
+    clickMode = "click"
+    clickModeBtn.innerText = "Click Mode: Click";
+  }
+}
 
 toggleAutoLuckBtn.onclick = function () {
   if (toggleAutoLuck === "Off") {
@@ -2313,12 +2334,12 @@ fullyPayDebt.onclick = function() {
 
 sbmtPayOff.onclick = function () {
   if (toggleIRS === "On") {
-    const canPayDebt = Number(payDebtInput.value) > 0 && moneyearned >= Number(payDebtInput.value) && Number(payDebtInput.value) <= irsDebt
-    const canPayDebtIll = irsLock === 1 && Number(payDebtInput.value) > 0 && illMoney >= Number(payDebtInput.value) && Number(payDebtInput.value) <= irsDebt;
+    const canPayDebt = undoSuffix(payDebtInput.value) > 0 && moneyearned >= undoSuffix(payDebtInput.value) && undoSuffix(payDebtInput.value) <= irsDebt
+    const canPayDebtIll = irsLock === 1 && undoSuffix(payDebtInput.value) > 0 && illMoney >= undoSuffix(payDebtInput.value) && undoSuffix(payDebtInput.value) <= irsDebt;
     if (canPayDebt) {
-      irsDebt -= Number(payDebtInput.value);
-      moneyearned -= Number(payDebtInput.value);
-      if (Number(payDebtInput.value) >= irsDebt * 0.5 && irsVisits > 0) {
+      irsDebt -= undoSuffix(payDebtInput.value);
+      moneyearned -= undoSuffix(payDebtInput.value);
+      if (undoSuffix(payDebtInput.value) >= irsDebt * 0.5 && irsVisits > 0) {
         irsVisits = 10;
         taxNoti.innerText =
           "You Owe The IRS $" +
@@ -2339,14 +2360,14 @@ sbmtPayOff.onclick = function () {
       debtDisplay.innerText = "Debt: $" + autoSuffixer(irsDebt);
       payDebtInput.value = "";
     } else if (canPayDebtIll) {
-      irsDebt -= Number(payDebtInput.value);
-      illMoney -= Number(payDebtInput.value);
-      if (Number(payDebtInput.value) >= irsDebt * 0.5 && irsVisits === 0) {
+      irsDebt -= undoSuffix(payDebtInput.value);
+      illMoney -= undoSuffix(payDebtInput.value);
+      if (undoSuffix(payDebtInput.value) >= irsDebt * 0.5 && irsVisits === 0) {
         irsVisits = 10;
         taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
         illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
         irsLock == 0;
-      } else if (Number(payDebtInput.value) < irsDebt * 0.5 && irsVisits === 0) {
+      } else if (undoSuffix(payDebtInput.value) < irsDebt * 0.5 && irsVisits === 0) {
         taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
         illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       }
@@ -2846,6 +2867,11 @@ async function autoChecks() {
     skillPoints = Math.round(skillPoints * 100) / 100
     await sleep(200);
     if (loadInProgress === 0) {
+      if (skillTreeUnlocked === 1) {
+        overallValuesDis.innerText = "Money: $" + autoSuffixer(moneyearned) + " | Papers Written: " + autoSuffixer(paperswrote);
+      } else {
+        overallValuesDis.innerText = "Money: $" + autoSuffixer(moneyearned) + " | Papers Written: " + autoSuffixer(paperswrote) + " | Skill Points: " + autoSuffixer(skillPoints);
+      }
       if (moneyearned >= currentBet) {
         safetyNetLock = 0;
       }
@@ -3052,6 +3078,21 @@ function autoSuffixer(valuePassed) {
     moneySuffixedOutput = valuePassed;
   }
   return moneySuffixedOutput;
+}
+
+function undoSuffix(valuePassed) {
+  if (isNaN(valuePassed) && valuePassed != undefined && valuePassed != null) {
+    let numberOfSuffix = Number(String(valuePassed).replace(/[a-zA-Z]/g, ""));
+    let valPassStr = String(valuePassed);
+    let suffix = valPassStr.replace(/[^a-zA-Z]/g, "");
+    let indexOfSuf = suffixes.indexOf(suffix);
+    let currentStringVal = "1"
+    for (let i = 0; i <= indexOfSuf; i++) {
+      currentStringVal += "000"
+    }
+    return Number(currentStringVal) * numberOfSuffix;
+  }
+  return Number(valuePassed);
 }
 
 let maxBuyWorker = 0;
@@ -3261,6 +3302,45 @@ async function incrementCounter() {
 autoUpgradeWorker();
 autoWorker(1000 - workerEffDec);
 autoWorkerFuncUsed = 1;
+
+let holdActive = false;
+
+button.addEventListener("mousedown", () => {
+  if (clickMode === "hold") {
+    holdActive = true;
+    holdButton(6.5);
+  } else {
+    buttonClickedMain();
+  }
+});
+
+button.addEventListener("mouseup", () => {
+  if (clickMode === "hold") {
+    holdActive = false;
+  }
+});
+
+button.addEventListener("touchstart", () => {
+  if (clickMode === "hold") {
+    holdActive = true;
+    holdButton(6.5);
+  } else {
+    buttonClickedMain();
+  }
+});
+
+button.addEventListener("touchend", () => {
+  if (clickMode === "hold") {
+    holdActive = false;
+  }
+});
+
+async function holdButton(cps) {
+  while (holdActive === true) {
+    await sleep(1000 / cps);
+    buttonClickedMain();
+  }
+}
 
   </script>
 
