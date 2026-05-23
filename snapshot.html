@@ -595,6 +595,8 @@ h11 {
 
 <div id="saveAndMoreDis">
   <h4>-----------------</h4>
+  <button4 id="openPopUp">Give Feedback?</button4>
+  <h4>-----------------</h4>
   <h4>Don't save in debt, unless your illegal money exceeds or is equal to your IRS debt, progress will be lost.</h4>
   <button9 id="loadMethod">Load With Local Storage</button9>
   <button3 id="saveBtn">SAVE GAME</button3>
@@ -2594,6 +2596,8 @@ async function attemptPopUp() {
   }
 }
 
+const openPopUp = document.getElementById("openPopUp");
+
 feedbackSbmt.onclick = async function() {
   if (inTesting === 0 && feedbackBox.value != "" && feedbackBox.value != "NO") {
     await window.submitFeedbackToDatabase("SessionID: " + sessionID + " says: '" + feedbackBox.value + "'");
@@ -2605,7 +2609,11 @@ feedbackSbmt.onclick = async function() {
   feedbackPopUp.style.display = "none";
 }
 
-attemptPopUp();
+openPopUp.onclick = function() {
+  feedbackGiven = 0;
+  attemptPopUp();
+}
+
 
 
 
