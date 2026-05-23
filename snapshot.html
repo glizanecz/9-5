@@ -1988,7 +1988,9 @@ modMenuBtn.onclick = function () {
   }
 };
 
-button.onclick = function () {
+button.onclick = buttonClickedMain;
+
+function buttonClickedMain() {
   if (irsLock === 0) {
     if (clicksForCof > 0) {
       clicksForCof = clicksForCof - 1;
@@ -3262,13 +3264,30 @@ autoUpgradeWorker();
 autoWorker(1000 - workerEffDec);
 autoWorkerFuncUsed = 1;
 
+let holdActive = false;
+
 document.addEventListener("mousedown", () => {
-  console.log("AHH");
+  holdActive = true;
 });
 
 document.addEventListener("mouseup", () => {
-  console.log("AHH STOP");
+  holdActive = false;
 });
+
+document.addEventListener("touchstart", () => {
+  holdActive = true;
+});
+
+document.addEventListener("touchend", () => {
+  holdActive = false;
+});
+
+async function holdButton(cps) {
+  while (holdActive === true) {
+    await sleep(1000 / cps);
+    buttonClickedMain();
+  }
+}
 
   </script>
 
