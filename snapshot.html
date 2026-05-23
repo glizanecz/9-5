@@ -2562,10 +2562,20 @@ decreasePrintDelayBtn.onclick = function() {
   }
 }
 
+async function attemptPopUp() {
+  if (feedbackGiven === 0) {
+    feedbackPopUp.style.display = "block";
+  }
+}
 
+feedbackSbmt.onclick = function() {
+  console.log(feedbackBox.value);
+  feedbackBox.value = "";
+  feedbackGiven = 1;
+  feedbackPopUp.style.display = "none";
+}
 
-
-
+attemptPopUp();
 
 
 
