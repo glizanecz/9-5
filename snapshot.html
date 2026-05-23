@@ -356,6 +356,7 @@ h11 {
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
 <h2 id="moneyPaperSPDis">Money: $0 | Papers Written: 0</h1>
+<h4>-----------------</h4>
 <div id="mainGameDis">
   <h1 id="money">Money: $0</h1>
   <h4 id="MultiplierMoney">Multiplier: 1x</h1>
@@ -2855,7 +2856,7 @@ async function autoChecks() {
       if (skillTreeUnlocked === 0) {
         overallValuesDis.innerText = "Money: $" + moneyearned + " | Papers Written: " + paperswrote;
       } else {
-        overallValuesDis.innerText = "Money: $" + moneyearned + " | Papers Written: " + paperswrote + " | Skill Points: " + skillPoints;
+        overallValuesDis.innerText = "Money: $" + autoSuffixer(moneyearned) + " | Papers Written: " + autoSuffixer(paperswrote) + " | Skill Points: " + autoSuffixer(skillPoints);
       }
       if (moneyearned >= currentBet) {
         safetyNetLock = 0;
