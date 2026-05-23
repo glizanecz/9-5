@@ -32,17 +32,19 @@
   </style>
 </head>
 <body>
-<h1>9/5 Simulator Login</h1>
 <div id="loginBox">
+    <h1>9/5 Simulator Login</h1>
+    
     <input id="email" placeholder="Email">
     <input id="password" placeholder="Password" type="password">
 
     <button id="signupBtn">Sign Up</button>
     <button id="loginBtn">Log In</button>
     <button id="logoutBtn">Log Out</button>
-</div>
 
     <p id="status"></p>
+</div>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
@@ -80,6 +82,8 @@
     const logoutBtn = document.getElementById("logoutBtn");
 
     const loginBox = document.getElementById("loginBox");
+    const sectionName = document.getElementById("sectionName");
+
 
     signUpBtn.onclick = async () => {
       try {
@@ -87,6 +91,7 @@
         statusText.textContent = "Account created.";
         await sleep(600)
         loginBox.style.display = "none";
+        sectionName.innerText = "9/5 Simulator Multiplayer";
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -98,6 +103,7 @@
         statusText.textContent = "Logged in.";
         await sleep(600)
         loginBox.style.display = "none";
+        sectionName.innerText = "9/5 Simulator Multiplayer";
       } catch (error) {
         statusText.textContent = error.message;
       }
