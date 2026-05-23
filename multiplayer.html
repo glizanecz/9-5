@@ -29,12 +29,18 @@
       font-weight: bold;
     }
 
+    .mainValuesDis {
+        font-size: large;
+        width: 10vw;
+        height: 10vh;
+    }
+
   </style>
 </head>
 <body>
 <div id="loginBox">
     <h1>9/5 Simulator Login</h1>
-    
+
     <input id="email" placeholder="Email">
     <input id="password" placeholder="Password" type="password">
 
@@ -43,6 +49,13 @@
     <button id="logoutBtn">Log Out</button>
 
     <p id="status"></p>
+
+</div>
+
+<div id="game">
+    <h1 class="mainValuesDis">Money: $0</h1>
+    <h1>Papers Written: 0</h1>
+    <h1>Workers Hired: 0</h1>
 </div>
 
   <script type="module">
