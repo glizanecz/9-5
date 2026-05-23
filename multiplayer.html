@@ -10,8 +10,6 @@
       font-family: Arial, sans-serif;
       background: #ee9898;
       text-align: center;
-      align-items: center;
-      justify-items: center;
     }
 
     input {
@@ -29,21 +27,25 @@
     #status {
       font-weight: bold;
     }
+
+    .loginBox {
+        background-color: gray;
+    }
   </style>
 </head>
 <body>
+<div class="loginBox">
+    <h1>9/5 Simulator Login</h1>
 
-  <h1>9/5 Simulator Login</h1>
+    <input id="email" placeholder="Email">
+    <input id="password" placeholder="Password" type="password">
 
-  <input id="email" placeholder="Email">
-  <input id="password" placeholder="Password" type="password">
+    <button id="signupBtn">Sign Up</button>
+    <button id="loginBtn">Log In</button>
+    <button id="logoutBtn">Log Out</button>
 
-  <button id="signupBtn">Sign Up</button>
-  <button id="loginBtn">Log In</button>
-  <button id="logoutBtn">Log Out</button>
-
-  <p id="status"></p>
-
+    <p id="status"></p>
+</div>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
