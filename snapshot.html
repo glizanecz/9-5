@@ -1995,7 +1995,11 @@ modMenuBtn.onclick = function () {
   }
 };
 
-button.onclick = buttonClickedMain;
+button.onclick = function () {
+  if (clickMode === "click") {
+    buttonClickedMain;
+  }
+}
 
 function buttonClickedMain() {
   if (irsLock === 0) {
