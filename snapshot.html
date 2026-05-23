@@ -644,6 +644,32 @@ h11 {
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fb10b4fac29fca8',t:'MTc3ODY2ODgxNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"95d4af946c9a4d229ea725f950960b54","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import { getDatabase, ref, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB8xaqKa_oKDIVcjaIydsfmenEKmfqQsmo",
+      authDomain: "sim-ab44f.firebaseapp.com",
+      databaseURL: "https://sim-ab44f-default-rtdb.firebaseio.com",
+      projectId: "sim-ab44f",
+      storageBucket: "sim-ab44f.firebasestorage.app",
+      messagingSenderId: "531235139954",
+      appId: "1:531235139954:web:50ac39e7beecff0c522deb",
+      measurementId: "G-C6M13CS7VV"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const feedbackDatabase = getDatabase(app);
+
+    window.submitFeedbackToDatabase = function (feedbackText) {
+      return push(ref(feedbackDatabase, "feedback"), {
+        text: String(feedbackText),
+        createdAt: serverTimestamp()
+      });
+    };
+  </script>
+
     <script type="text/javascript">
 
 // 0 - Disabled For Website
@@ -2568,8 +2594,9 @@ async function attemptPopUp() {
   }
 }
 
-feedbackSbmt.onclick = function() {
+feedbackSbmt.onclick = async function() {
   console.log("SessionID: " + sessionID + " says: " + feedbackBox.value);
+  await window.submitFeedbackToDatabase(feedbackBox.value);
   feedbackBox.value = "";
   feedbackGiven = 1;
   feedbackPopUp.style.display = "none";
