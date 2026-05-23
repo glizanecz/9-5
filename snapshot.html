@@ -1944,10 +1944,10 @@ thirdSaveSlot.onclick = function() {
 }
 modMenuBtn.onclick = function () {
   if (modMenuVal === 1) {
-    let input = prompt("How much money would you like?");
+    let input = undoSuffix(prompt("How much money would you like?"));
     moneyearned = Number(input);
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
-    input = prompt("How much paper would you like?");
+    input = undoSuffix(prompt("How much paper would you like?"));
     paperswrote = Number(input);
     papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
   } else if (modMenuVal === 2) {
@@ -1958,20 +1958,20 @@ modMenuBtn.onclick = function () {
     papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
     illMoneyDisplay.innerText = "Illegal Printed Money: $200.0k"
   } else if (modMenuVal === 3) {
-    let input = prompt("How much skill points would you like?");
+    let input = undoSuffix(prompt("How much skill points would you like?"));
     skillPoints = Number(input);
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   } else if (modMenuVal === 4) {
     skillPoints = 20000;
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   } else if (modMenuVal === 5) {
-    let input = prompt("How much money would you like?");
+    let input = undoSuffix(prompt("How much money would you like?"));
     moneyearned = Number(input);
     money.innerText = "Money: $" + autoSuffixer(moneyearned);
-    input = prompt("How much paper would you like?");
+    input = undoSuffix(prompt("How much paper would you like?"));
     paperswrote = Number(input);
     papers.innerText = "Papers Written: " + autoSuffixer(paperswrote);
-    input = prompt("How much skill points would you like?");
+    input = undoSuffix(prompt("How much skill points would you like?"));
     skillPoints = Number(input);
     skillPointsDisplay.innerText = "Skill Points: " + skillPoints;
   } else if (modMenuVal === 6) {
