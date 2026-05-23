@@ -3262,8 +3262,12 @@ autoUpgradeWorker();
 autoWorker(1000 - workerEffDec);
 autoWorkerFuncUsed = 1;
 
-document.addEventListener("keydown", (event) => {
-  console.log(event.key);
+document.addEventListener("mousedown", () => {
+  console.log("AHH");
+});
+
+document.addEventListener("mouseup", () => {
+  console.log("AHH STOP");
 });
 
   </script>
