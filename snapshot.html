@@ -801,6 +801,7 @@ const saveSlotLabel = document.getElementById("saveSlotLabel");
 const feedbackPopUp = document.getElementById("feedbackPopUp");
 const feedbackBox = document.getElementById("feedbackBox");
 const feedbackSbmt = document.getElementById("submitFeedback");
+let feedbackGiven = 0;
 
 //Upgrades Menu
 let upgradesBought = new Array(50).fill(0);
@@ -2626,6 +2627,7 @@ function saveGame() {
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
   localStorage.setItem("session", JSON.stringify(sessionID));
+  localStorage.setItem("feedbackGiven", JSON.stringify(feedbackGiven));
   if (saveSlot === 1) localStorage.setItem("9to5Save", JSON.stringify(saveCodeSeperated));
   if (saveSlot === 2) localStorage.setItem("9to5Save2", JSON.stringify(saveCodeSeperated));
   if (saveSlot === 3) localStorage.setItem("9to5Save3", JSON.stringify(saveCodeSeperated));
@@ -2759,6 +2761,7 @@ function loadWLocalStorage() {
       incrementCounter();
     }
     loadInProgress = 0;
+    feedbackGiven = loadValueHelper(localStorage.getItem("feedbackGiven"), 0, "num");
   }
 }
 
@@ -2884,6 +2887,7 @@ sbmtBtn.onclick = function () {
     if (Number(lastSessionID) !== Number(sessionID)) {
       incrementCounter();
     }
+    feedbackGiven = loadValueHelper(localStorage.getItem("feedbackGiven"), 0, "num");
     loadInProgress = 0;
   }
 };
