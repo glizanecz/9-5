@@ -1242,6 +1242,7 @@ async function menuHandling() {
     await sleep(1000)
     if ((moneyearned >= 1500) || skillTreeUnlocked === 0) {
       skillTreeBtn.style.opacity = "1";
+      skillTreeBtn.style.display = "block";
       skillTreeUnlocked = 0;
     }
     if ((moneyearned >= 10_000 && paperswrote >= 1000 && skillPoints >= 5) || upgradeMenuUnlocked === 0) {
@@ -1275,6 +1276,7 @@ menuHandling();
 getMainGame();
 taxNoti.style.display = "none";
 feedbackPopUp.style.display = "none";
+skillTreeBtn.style.display = "none";
 
 skillTreeBtn.onclick = function () {
   if (skillTreeUnlocked === 0) getSkillTree();
