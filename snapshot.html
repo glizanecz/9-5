@@ -2569,7 +2569,7 @@ async function attemptPopUp() {
 }
 
 feedbackSbmt.onclick = function() {
-  console.log(feedbackBox.value);
+  console.log("SessionID: " + sessionID + " says: " + feedbackBox.value);
   feedbackBox.value = "";
   feedbackGiven = 1;
   feedbackPopUp.style.display = "none";
