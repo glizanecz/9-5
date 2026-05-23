@@ -33,13 +33,14 @@
 </head>
 <body>
 <h1>9/5 Simulator Login</h1>
+<div id="loginBox">
+    <input id="email" placeholder="Email">
+    <input id="password" placeholder="Password" type="password">
 
-<input id="email" placeholder="Email">
-<input id="password" placeholder="Password" type="password">
-
-<button id="signupBtn">Sign Up</button>
-<button id="loginBtn">Log In</button>
-<button id="logoutBtn">Log Out</button>
+    <button id="signupBtn">Sign Up</button>
+    <button id="loginBtn">Log In</button>
+    <button id="logoutBtn">Log Out</button>
+</div>
 
     <p id="status"></p>
   <script type="module">
@@ -68,29 +69,41 @@
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const statusText = document.getElementById("status");
 
-    document.getElementById("signupBtn").onclick = async () => {
+    const signUpBtn = document.getElementById("signUpBtn");
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    const loginBox = document.getElementById("loginBox");
+
+    signUpBtn.onclick = async () => {
       try {
         await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
         statusText.textContent = "Account created.";
+        await sleep(600)
+        loginBox.style.display = "none";
       } catch (error) {
         statusText.textContent = error.message;
       }
     };
 
-    document.getElementById("loginBtn").onclick = async () => {
+    loginBtn.onclick = async () => {
       try {
         await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
         statusText.textContent = "Logged in.";
+        await sleep(600)
+        loginBox.style.display = "none";
       } catch (error) {
         statusText.textContent = error.message;
       }
     };
 
-    document.getElementById("logoutBtn").onclick = async () => {
+    logoutBtn.onclick = async () => {
       await signOut(auth);
       statusText.textContent = "Logged out.";
     };
