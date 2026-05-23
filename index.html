@@ -711,6 +711,7 @@ let modMenuVal = 0;
 let savePlayer = 0;
 let workerEffDec = 0;
 let saveSlot = 1;
+const sessionID = Math.floor(Math.floor(Math.random() * 1_000_000_000_000) * (Math.random() + .01));
 //Constants Below:
 
 const suffixes = [
@@ -2635,6 +2636,7 @@ function saveGame() {
   ];
   let saveCodeSeperated = saveCode.join("|");
   copAPaste.innerText = "Copy and Paste This Code: " + saveCodeSeperated
+  localStorage.setItem("session", JSON.stringify(sessionID));
   if (saveSlot === 1) localStorage.setItem("9to5Save", JSON.stringify(saveCodeSeperated));
   if (saveSlot === 2) localStorage.setItem("9to5Save2", JSON.stringify(saveCodeSeperated));
   if (saveSlot === 3) localStorage.setItem("9to5Save3", JSON.stringify(saveCodeSeperated));
@@ -2759,9 +2761,13 @@ function loadWLocalStorage() {
     moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
     paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
     let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
-    if (Date.now() - lastDateNow > 0) {
+    let lastSessionID = loadValueHelper(localStorage.getItem("session"), Math.floor(Math.floor(Math.random() * 1_000_000_000_000) * (Math.random() + .01)), "num");
+    if ((Date.now() - lastDateNow) > 0) {
       moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
       paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+    }
+    if (Number(lastSessionID) !== Number(sessionID)) {
+      incrementCounter();
     }
     loadInProgress = 0;
   }
@@ -2881,9 +2887,13 @@ sbmtBtn.onclick = function () {
     moneyPerSecond1 = (10 * (workersHired / 2) * workersHired * 1.5) + moneyChangeUp;
     paperPerSecond1 = (10 * (workersHired / 2) * workersHired) + paperChangeUp;
     let lastDateNow = loadValueHelper(loadArray[39], Date.now(), "num");
-    if (Date.now() - lastDateNow > 0) {
+    let lastSessionID = loadValueHelper(localStorage.getItem("session"), Math.floor(Math.floor(Math.random() * 1_000_000_000_000) * (Math.random() + .01)), "num");
+    if ((Date.now() - lastDateNow) > 0) {
       moneyearned += moneyPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
       paperswrote += paperPerSecond1 * Math.floor((Date.now() - lastDateNow) / 1000);
+    }
+    if (Number(lastSessionID) !== Number(sessionID)) {
+      incrementCounter();
     }
     loadInProgress = 0;
   }
@@ -3296,6 +3306,29 @@ function massiveReset() {
   transTaxDis.innerText = "Last Auto Tax Transaction: $0";
 
   saveGame();
+}
+
+async function incrementCounter() {
+  const url = "https://sim-ab44f-default-rtdb.firebaseio.com/counter.json";
+
+  const response = await fetch(url);
+  let counterData = await response.json();
+
+  if (counterData === null) {
+    counterData = {
+      value: 0,
+      lastSessionID: 0
+    };
+  }
+
+  await fetch(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      value: counterData.value + 1,
+      lastSessionID: sessionID
+    })
+  });
 }
 
 autoUpgradeWorker();
