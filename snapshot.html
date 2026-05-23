@@ -395,7 +395,7 @@ h11 {
 
 <div id="feedbackPopUp" class="feedbackBackground">
   <h1>Have Any Feedback?</h1>
-  <textarea placeholder="Enter feedback here, it WILL be added. Type NO if you don't."></textarea>
+  <textarea id="feedbackBox" placeholder="Enter feedback here, it WILL be added. Type NO if you don't."></textarea>
   <br>
   <button9 id="submitFeedback">Submit Feedback</button9>
 </div>
@@ -796,6 +796,12 @@ const firstSaveSlot = document.getElementById("firstSaveSlot");
 const secondSaveSlot = document.getElementById("secondSaveSlot");
 const thirdSaveSlot = document.getElementById("thirdSaveSlot");
 const saveSlotLabel = document.getElementById("saveSlotLabel");
+
+//Feedback Popup
+const feedbackPopUp = document.getElementById("feedbackPopUp");
+const feedbackBox = document.getElementById("feedbackBox");
+const feedbackSbmt = document.getElementById("submitFeedback");
+
 //Upgrades Menu
 let upgradesBought = new Array(50).fill(0);
 let skillTreeBought = new Array(50).fill(0);
@@ -1226,6 +1232,7 @@ menuHandling();
 
 getMainGame();
 taxNoti.style.display = "none";
+feedbackPopUp.style.display = "none";
 
 skillTreeBtn.onclick = function () {
   if (skillTreeUnlocked === 0) getSkillTree();
