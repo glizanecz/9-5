@@ -366,7 +366,7 @@ h11 {
 <h2 id="consoleOut" class="fakeConsole"> Console Output (FOR DEV): </h2>
 <button id="rebirth" class="rebirth"> Rebirth | Start With 10x Multiplier</button>
 <br>
-<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="statsBtn">Statistics</button5> <button5 id="saveAndMoreBtn">Save & Load</button5> <button5 id="helpMenu">Help Menu</button5> <button5 id="settingsBtn">Settings</button5> <button5 id="moreBtn">More</button5>
+<button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="statsBtn">Stats</button5> <button5 id="saveAndMoreBtn">Save & Load</button5> <button5 id="helpMenu">Help Menu</button5> <button5 id="settingsBtn">Settings</button5> <button5 id="moreBtn">More</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
 <h2 id="moneyPaperSPDis">Money: $0 | Papers Written: 0</h1>
@@ -829,6 +829,14 @@ const decreasePrintDelayBtn = document.getElementById("decreasePrintDelayBtn");
 //Increase bill Amounts
 const increaseBillBtn = document.getElementById("increaseBillBtn");
 
+const settingsBtn = document.getElementById("settingsBtn");
+const statsBtn = document.getElementById("statsBtn");
+const moreBtn = document.getElementById("moreBtn");
+
+const settingsMenu = document.getElementById("settingsMenu");
+const statsMenu = document.getElementById("statsMenu");
+const moreMenu = document.getElementById("moreMenu");
+
 
 //Save and More
 const saveAndMoreDis = document.getElementById("saveAndMoreDis");
@@ -1153,6 +1161,9 @@ function getTaxMenu() {
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
   helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
 }
 
 function getSkillTree() {
@@ -1164,6 +1175,9 @@ function getSkillTree() {
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
   helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
 }
 
 function getMainGame() {
@@ -1180,6 +1194,9 @@ function getMainGame() {
   } else {
     modMenuBtn.style.display = "none";
   }
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
 }
 
 function getSaveAndMore() {
@@ -1191,6 +1208,9 @@ function getSaveAndMore() {
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
   helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
 }
 
 function getLuckMenu() {
@@ -1202,6 +1222,9 @@ function getLuckMenu() {
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
   helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
 }
 
 function getMoneyPrint() {
@@ -1213,6 +1236,9 @@ function getMoneyPrint() {
   moneyPrintMenuDis.style.display = "block";
   upgradeMenu.style.display = "none";
   helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
 }
 
 function getUpgradeMenu() {
@@ -1224,6 +1250,9 @@ function getUpgradeMenu() {
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "flex";
   helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
 }
 
 function getHelpMenu() {
@@ -1235,14 +1264,60 @@ function getHelpMenu() {
   moneyPrintMenuDis.style.display = "none";
   upgradeMenu.style.display = "none";
   helpMenuDis.style.display = "block";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
 }
+
+function getSettingsMenu() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "block";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "none";
+}
+
+function getStatsMenu() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "block";
+  moreMenu.style.display = "none";
+}
+
+function getMoreMenu() {
+  mainGameDis.style.display = "none";
+  skillTreeDis.style.display = "none";
+  saveAndMoreDis.style.display = "none";
+  luckMenuDis.style.display = "none";
+  taxMenu.style.display = "none";
+  moneyPrintMenuDis.style.display = "none";
+  upgradeMenu.style.display = "none";
+  helpMenuDis.style.display = "none";
+  settingsMenu.style.display = "none";
+  statsMenu.style.display = "none";
+  moreMenu.style.display = "block";
+}
+
+
 
 async function menuHandling() {
   while (true) {
     await sleep(1000)
     if ((moneyearned >= 1500) || skillTreeUnlocked === 0) {
       skillTreeBtn.style.opacity = "1";
-      skillTreeBtn.style.display = "block";
       skillTreeUnlocked = 0;
     }
     if ((moneyearned >= 10_000 && paperswrote >= 1000 && skillPoints >= 5) || upgradeMenuUnlocked === 0) {
@@ -1276,7 +1351,6 @@ menuHandling();
 getMainGame();
 taxNoti.style.display = "none";
 feedbackPopUp.style.display = "none";
-skillTreeBtn.style.display = "none";
 
 skillTreeBtn.onclick = function () {
   if (skillTreeUnlocked === 0) getSkillTree();
@@ -1308,6 +1382,18 @@ moneyPrintMenuSwitcher.onclick = function () {
 
 helpMenuBtn.onclick = function () {
   getHelpMenu();
+}
+
+settingsBtn.onclick = function () {
+  getSettingsMenu();
+}
+
+statsBtn.onclick = function () {
+  getStatsMenu();
+}
+
+moreBtn.onclick = function () {
+  getMoreMenu();
 }
 
 //Opacity setters
