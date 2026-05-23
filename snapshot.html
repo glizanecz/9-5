@@ -2595,7 +2595,9 @@ async function attemptPopUp() {
 }
 
 feedbackSbmt.onclick = async function() {
-  await window.submitFeedbackToDatabase("SessionID: " + sessionID + " says: " + feedbackBox.value);
+  if (inTesting === 1 && feedbackBox.value != "" && feedbackBox.value != "NO") {
+    await window.submitFeedbackToDatabase("SessionID: " + sessionID + " says: " + feedbackBox.value);
+  }
   feedbackBox.value = "";
   feedbackGiven = 1;
   feedbackPopUp.style.display = "none";
