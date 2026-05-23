@@ -1995,12 +1995,6 @@ modMenuBtn.onclick = function () {
   }
 };
 
-button.onclick = function () {
-  if (clickMode === "click") {
-    buttonClickedMain;
-  }
-}
-
 function buttonClickedMain() {
   if (irsLock === 0) {
     if (clicksForCof > 0) {
@@ -3315,6 +3309,8 @@ button.addEventListener("mousedown", () => {
   if (clickMode === "hold") {
     holdActive = true;
     holdButton(6.5);
+  } else {
+    buttonClickedMain();
   }
 });
 
@@ -3328,6 +3324,8 @@ button.addEventListener("touchstart", () => {
   if (clickMode === "hold") {
     holdActive = true;
     holdButton(6.5);
+  } else {
+    buttonClickedMain();
   }
 });
 
