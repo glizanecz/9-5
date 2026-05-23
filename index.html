@@ -711,6 +711,7 @@ let modMenuVal = 0;
 let savePlayer = 0;
 let workerEffDec = 0;
 let saveSlot = 1;
+let inTesting = 0;
 const sessionID = Math.floor(Math.floor(Math.random() * 1_000_000_000_000) * (Math.random() + .01));
 //Constants Below:
 
@@ -3309,26 +3310,28 @@ function massiveReset() {
 }
 
 async function incrementCounter() {
-  const url = "https://sim-ab44f-default-rtdb.firebaseio.com/counter.json";
+  if (inTesting === 0) {
+    const url = "https://sim-ab44f-default-rtdb.firebaseio.com/counter.json";
 
-  const response = await fetch(url);
-  let counterData = await response.json();
+    const response = await fetch(url);
+    let counterData = await response.json();
 
-  if (counterData === null) {
-    counterData = {
-      value: 0,
-      lastSessionID: 0
-    };
+    if (counterData === null) {
+      counterData = {
+        value: 0,
+        lastSessionID: 0
+      };
+    }
+
+    await fetch(url, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        value: counterData.value + 1,
+        lastSessionID: sessionID
+      })
+    });
   }
-
-  await fetch(url, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      value: counterData.value + 1,
-      lastSessionID: sessionID
-    })
-  });
 }
 
 autoUpgradeWorker();
