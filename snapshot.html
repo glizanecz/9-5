@@ -2695,7 +2695,7 @@ async function attemptPopUp() {
 const openPopUp = document.getElementById("openPopUp");
 
 feedbackSbmt.onclick = async function() {
-  if (inTesting === 0 && feedbackBox.value != "" && feedbackBox.value != "NO") {
+  if (inTesting === 1 && feedbackBox.value != "" && feedbackBox.value != "NO") {
     await window.submitFeedbackToDatabase("SessionID: " + sessionID + " says: '" + feedbackBox.value + "'");
   } else if (inTesting === 1) {
     console.log("SessionID: " + sessionID + " says: '" + feedbackBox.value + "'")
