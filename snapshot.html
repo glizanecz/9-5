@@ -3308,24 +3308,27 @@ function massiveReset() {
   saveGame();
 }
 
-const DB_URL = "https://sim-ab44f-default-rtdb.firebaseio.com/counter/value.json";
-
-//incrementCounter is NOT my code.
 async function incrementCounter() {
-  const res = await fetch(DB_URL);
-  let value = await res.json();
+  const url = "https://sim-ab44f-default-rtdb.firebaseio.com/counter.json";
 
-  if (value === null) value = 0;
+  const response = await fetch(url);
+  let counterData = await response.json();
 
-  value++;
+  if (counterData === null) {
+    counterData = {
+      value: 0,
+      lastSessionID: 0
+    };
+  }
 
-  await fetch(DB_URL, {
+  await fetch(url, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(value)
+    body: JSON.stringify({
+      value: counterData.value + 1,
+      lastSessionID: sessionID
+    })
   });
-
-  //console.log("Counter is now:", value);
 }
 
 autoUpgradeWorker();
