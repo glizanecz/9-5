@@ -2853,8 +2853,8 @@ async function autoChecks() {
     skillPoints = Math.round(skillPoints * 100) / 100
     await sleep(200);
     if (loadInProgress === 0) {
-      if (skillTreeUnlocked === 0) {
-        overallValuesDis.innerText = "Money: $" + moneyearned + " | Papers Written: " + paperswrote;
+      if (skillTreeUnlocked === 1) {
+        overallValuesDis.innerText = "Money: $" + autoSuffixer(moneyearned) + " | Papers Written: " + autoSuffixer(paperswrote);
       } else {
         overallValuesDis.innerText = "Money: $" + autoSuffixer(moneyearned) + " | Papers Written: " + autoSuffixer(paperswrote) + " | Skill Points: " + autoSuffixer(skillPoints);
       }
