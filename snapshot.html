@@ -587,6 +587,8 @@ h11 {
   <button id="secondSaveSlot">Save #2</button>
   <button id="thirdSaveSlot">Save #3</button>
   <h4>-----------------</h4>
+  <button id="clickModeBtn">Click Mode: Click</button>
+  <h4>-----------------</h4>
   <h5 id="moneyPerSecond">Auto Cash Per Sec: $0</h5> 
   <h5 id="paperPerClickDisplay">Paper Per Click: 0</h5>
   <h5 id="highscore">Highscore: $0</h5>
@@ -2206,6 +2208,19 @@ luckWorkerBtn.onclick = function () {
   }
 };
 
+const clickModeBtn = document.getElementById("clickModeBtn");
+let clickMode = "click";
+
+clickModeBtn.onclick = function () {
+  if (clickMode === "click") {
+    clickMode = "hold";
+    clickModeBtn.innerText = "Click Mode: Hold";
+  } else {
+    clickMode = "click"
+    clickModeBtn.innerText = "Click Mode: Click";
+  }
+}
+
 toggleAutoLuckBtn.onclick = function () {
   if (toggleAutoLuck === "Off") {
     toggleAutoLuck = "On";
@@ -3292,22 +3307,30 @@ autoWorkerFuncUsed = 1;
 
 let holdActive = false;
 
-document.addEventListener("mousedown", () => {
-  holdActive = true;
-  holdButton(6.5);
+button.addEventListener("mousedown", () => {
+  if (clickMode === "hold") {
+    holdActive = true;
+    holdButton(6.5);
+  }
 });
 
-document.addEventListener("mouseup", () => {
-  holdActive = false;
+button.addEventListener("mouseup", () => {
+  if (clickMode === "hold") {
+    holdActive = false;
+  }
 });
 
-document.addEventListener("touchstart", () => {
-  holdActive = true;
-  holdButton(6.5);
+button.addEventListener("touchstart", () => {
+  if (clickMode === "hold") {
+    holdActive = true;
+    holdButton(6.5);
+  }
 });
 
-document.addEventListener("touchend", () => {
-  holdActive = false;
+button.addEventListener("touchend", () => {
+  if (clickMode === "hold") {
+    holdActive = false;
+  }
 });
 
 async function holdButton(cps) {
