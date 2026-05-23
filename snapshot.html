@@ -3066,6 +3066,21 @@ function autoSuffixer(valuePassed) {
   return moneySuffixedOutput;
 }
 
+function undoSuffix(valuePassed) {
+  if (isNaN(valuePassed) && valuePassed != undefined && valuePassed != null) {
+    let numberOfSuffix = Number(String(valuePassed).replace(/[a-zA-Z]/g, ""));
+    let valPassStr = String(valuePassed);
+    let suffix = valPassStr.replace(/[^a-zA-Z]/g, "");
+    let indexOfSuf = suffixes.indexOf(suffix);
+    let currentStringVal = "1"
+    for (let i = 0; i < indexOfSuf; i++) {
+      currentStringVal += "000"
+    }
+    return Number(currentStringVal) * numberOfSuffix;
+  }
+  return valuePassed
+}
+
 let maxBuyWorker = 0;
 let workersBoughtMax = 0;
 let maxBuyPromotions = 0;
