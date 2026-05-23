@@ -53,9 +53,9 @@
 </div>
 
 <div id="game">
-    <h1 class="mainValuesDis">Money: $0</h1>
-    <h1>Papers Written: 0</h1>
-    <h1>Workers Hired: 0</h1>
+    <h1 id="moneyDis" class="mainValuesDis">Money: $0</h1>
+    <h1 id="papersDis" class="mainValuesDis">Papers Written: 0</h1>
+    <h1 id="workersHiredDis" class="mainValuesDis">Workers Hired: 0</h1>
 </div>
 
   <script type="module">
@@ -97,6 +97,13 @@
     const loginBox = document.getElementById("loginBox");
     const sectionName = document.getElementById("sectionName");
 
+    const game = document.getElementById("game");
+    let gameUnlocked = 1;
+    game.style.display = "none"; // for now!
+    const moneyDis = document.getElementById("moneyDis");
+    const papersDis = document.getElementById("papersDis");
+    const workersHiredDis = document.getElementById("workersHiredDis");
+
 
     signUpBtn.onclick = async () => {
       try {
@@ -104,6 +111,8 @@
         statusText.textContent = "Account created.";
         await sleep(600)
         loginBox.style.display = "none";
+        game.style.display = "block";
+        gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
       } catch (error) {
         statusText.textContent = error.message;
@@ -116,6 +125,8 @@
         statusText.textContent = "Logged in.";
         await sleep(600)
         loginBox.style.display = "none";
+        game.style.display = "block";
+        gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
       } catch (error) {
         statusText.textContent = error.message;
