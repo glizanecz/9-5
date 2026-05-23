@@ -355,6 +355,7 @@ h11 {
 <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5>  <button5 id="saveAndMoreBtn">Save & More...</button5> <button5 id="helpMenu">Help Menu</button5>
 <h4>-----------------</h4>
 <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
+<h2 id="moneyPaperSPDis">Money: $0 | Papers Written: 0</h1>
 <div id="mainGameDis">
   <h1 id="money">Money: $0</h1>
   <h4 id="MultiplierMoney">Multiplier: 1x</h1>
@@ -806,6 +807,9 @@ fasterChopping.style.opacity = ".3";
 const effExtraction = document.getElementById("upgradeButton14");
 let effExtractLock = 1;
 effExtraction.style.opacity = ".3";
+
+//Stuff on top
+const overallValuesDis = document.getElementById("moneyPaperSPDis");
 
 //Skill Tree
 const skillTreeDis = document.getElementById("skillTreeDis");
@@ -2848,6 +2852,11 @@ async function autoChecks() {
     skillPoints = Math.round(skillPoints * 100) / 100
     await sleep(200);
     if (loadInProgress === 0) {
+      if (skillTreeUnlocked === 0) {
+        overallValuesDis.innerText = "Money: $" + moneyearned + " | Papers Written: " + paperswrote;
+      } else {
+        overallValuesDis.innerText = "Money: $" + moneyearned + " | Papers Written: " + paperswrote + " | Skill Points: " + skillPoints;
+      }
       if (moneyearned >= currentBet) {
         safetyNetLock = 0;
       }
