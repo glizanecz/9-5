@@ -827,7 +827,7 @@ const saveSlotLabel = document.getElementById("saveSlotLabel");
 const feedbackPopUp = document.getElementById("feedbackPopUp");
 const feedbackBox = document.getElementById("feedbackBox");
 const feedbackSbmt = document.getElementById("submitFeedback");
-feedbackGiven = localStorage.getItem("feedbackGiven") || 0;
+let feedbackGiven = localStorage.getItem("feedbackGiven") || 0;
 
 //Upgrades Menu
 let upgradesBought = new Array(50).fill(0);
