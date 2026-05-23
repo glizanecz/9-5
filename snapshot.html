@@ -3073,7 +3073,7 @@ function undoSuffix(valuePassed) {
     let suffix = valPassStr.replace(/[^a-zA-Z]/g, "");
     let indexOfSuf = suffixes.indexOf(suffix);
     let currentStringVal = "1"
-    for (let i = 0; i < indexOfSuf; i++) {
+    for (let i = 0; i <= indexOfSuf; i++) {
       currentStringVal += "000"
     }
     return Number(currentStringVal) * numberOfSuffix;
