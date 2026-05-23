@@ -2158,14 +2158,14 @@ sbmtBet.onclick = function () {
   if (inputBet.value === "") {
     betDisplay.innerText = "Invalid Bet!";
     inputBet.value = "";
-  } else if (Number(inputBet.value) > moneyearned) {
+  } else if (undoSuffix(inputBet.value) > moneyearned) {
     betDisplay.innerText = "Invalid Bet! Bet > Money!";
     inputBet.value = "";
-  } else if (bet < 0) {
+  } else if (undoSuffix(inputBet.value) < 0) {
     betDisplay.innerText = "Invalid Bet! Bet < 0!";
     inputBet.value = "";
   } else {
-    bet = Number(inputBet.value);
+    bet = undoSuffix(inputBet.value);
     inputBet.value = "";
     betDisplay.innerText = "Bet Set To: $" + bet;
     currentBet = bet;
@@ -2321,12 +2321,12 @@ fullyPayDebt.onclick = function() {
 
 sbmtPayOff.onclick = function () {
   if (toggleIRS === "On") {
-    const canPayDebt = Number(payDebtInput.value) > 0 && moneyearned >= Number(payDebtInput.value) && Number(payDebtInput.value) <= irsDebt
-    const canPayDebtIll = irsLock === 1 && Number(payDebtInput.value) > 0 && illMoney >= Number(payDebtInput.value) && Number(payDebtInput.value) <= irsDebt;
+    const canPayDebt = undoSuffix(payDebtInput.value) > 0 && moneyearned >= undoSuffix(payDebtInput.value) && undoSuffix(payDebtInput.value) <= irsDebt
+    const canPayDebtIll = irsLock === 1 && undoSuffix(payDebtInput.value) > 0 && illMoney >= undoSuffix(payDebtInput.value) && undoSuffix(payDebtInput.value) <= irsDebt;
     if (canPayDebt) {
-      irsDebt -= Number(payDebtInput.value);
-      moneyearned -= Number(payDebtInput.value);
-      if (Number(payDebtInput.value) >= irsDebt * 0.5 && irsVisits > 0) {
+      irsDebt -= undoSuffix(payDebtInput.value);
+      moneyearned -= undoSuffix(payDebtInput.value);
+      if (undoSuffix(payDebtInput.value) >= irsDebt * 0.5 && irsVisits > 0) {
         irsVisits = 10;
         taxNoti.innerText =
           "You Owe The IRS $" +
@@ -2347,14 +2347,14 @@ sbmtPayOff.onclick = function () {
       debtDisplay.innerText = "Debt: $" + autoSuffixer(irsDebt);
       payDebtInput.value = "";
     } else if (canPayDebtIll) {
-      irsDebt -= Number(payDebtInput.value);
-      illMoney -= Number(payDebtInput.value);
-      if (Number(payDebtInput.value) >= irsDebt * 0.5 && irsVisits === 0) {
+      irsDebt -= undoSuffix(payDebtInput.value);
+      illMoney -= undoSuffix(payDebtInput.value);
+      if (undoSuffix(payDebtInput.value) >= irsDebt * 0.5 && irsVisits === 0) {
         irsVisits = 10;
         taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | " + irsVisits + " Visits Until Your Assets Are Frozen.";
         illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
         irsLock == 0;
-      } else if (Number(payDebtInput.value) < irsDebt * 0.5 && irsVisits === 0) {
+      } else if (undoSuffix(payDebtInput.value) < irsDebt * 0.5 && irsVisits === 0) {
         taxNoti.innerText = "You Owe The IRS $" + autoSuffixer(irsDebt) + " | YOUR ASSETS ARE FROZEN! Anything bought will be rendered useless until debt is paid.";
         illMoneyDisplay.innerText = "Illegal Printed Money: $" + autoSuffixer(illMoney);
       }
@@ -3079,7 +3079,7 @@ function undoSuffix(valuePassed) {
     }
     return Number(currentStringVal) * numberOfSuffix;
   }
-  return valuePassed
+  return Number(valuePassed);
 }
 
 let maxBuyWorker = 0;
