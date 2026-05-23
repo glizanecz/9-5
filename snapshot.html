@@ -2133,6 +2133,7 @@ async function rebirthGive() {
     } else {
       rebirthBtn.style.display = "block"
       rebirthBtn.style.opacity = ".3"
+      rebirthBtn.innerText = "Rebirth | Start With " + autoSuffixer(rebirthMulti * 2) + "x Multiplier | $" + autoSuffixer(moneyearned) + " / $" + autoSuffixer(rebirthPrice);
     }
   }
 }
