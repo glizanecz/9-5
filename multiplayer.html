@@ -1158,8 +1158,8 @@
             });
             const saveSnap = await getDoc(saveRef);
             const data = saveSnap.data();
-            lastFetchedMoney = data.money;
-            lastFetchedPaper = data.papersWritten;
+            lastFetchedMoney = Number(data.money);
+            lastFetchedPaper = Number(data.papersWritten);
             unsavedMoney = 0;
             unsavedPaper = 0;
         }
