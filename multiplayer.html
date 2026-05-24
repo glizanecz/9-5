@@ -1151,7 +1151,6 @@
 
     async function updateDocValues() {
         while (true) {
-            await sleep(3000);
             await updateDoc(saveRef, {
                 money: increment(unsavedMoney),
                 papersWritten: increment(unsavedPaper),
@@ -1162,6 +1161,7 @@
             lastFetchedPaper = Number(data.papersWritten);
             unsavedMoney = 0;
             unsavedPaper = 0;
+            await sleep(3000);
         }
     }
 
