@@ -1118,14 +1118,20 @@
 
     writePaperBtn.onclick = buttonClick;
 
+    async function updateMoneyDisplay() {
+        const saveSnap = await getDoc(saveRef);
+        if (saveSnap.exists()) {
+            const saveData = saveSnap.data();
+            moneyDisplay.innerText = "Money: $" + saveData.money;
+        }
+    }
+
     async function buttonClick() {
         await updateDoc(saveRef, {
             money: increment(.5),
             papersWritten: increment(1),
         });
-        moneyDis.innerText = "Money: $" + await getDoc(saveRef, {
-            money,
-        });
+        await updateMoneyDisplay();
     }
 
 
