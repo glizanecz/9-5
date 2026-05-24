@@ -860,6 +860,11 @@
     let taxMenuUnlocked = 1;
     let moneyPrintMenuUnlocked = 1;
 
+    let unsavedMoney = 0;
+    let moneyPerClick = .5;
+    let unsavedPaper = 0;
+    let paperPerClick = 1;
+
     skillTreeBtn.style.opacity = ".3";
     upgradeMenuBtn.style.opacity = ".3";
     luckMenuSwitch.style.opacity = ".3";
@@ -1084,13 +1089,29 @@
                 papersWritten: 0,
                 workersHired: 0,
                 moneyPerClick: 1,
-                workerCost: 50,
+                paperPerClick: 1,
+                autoMoney: 0,
+                autoPaper: 0,
+                workerCost: 200,
                 createdAt: Date.now(),
                 lastOnline: Date.now()
             });
 
             statusText.textContent = "New save created.";
         } else {
+            const data = saveSnap.data();
+            await setDoc(saveRef, {
+                money: data.money ?? 0,
+                papersWritten: data.papersWritten ?? 0,
+                workersHired: data.workersHired ?? 0,
+                moneyPerClick: data.moneyPerClick ?? 1,
+                paperPerClick: data.paperPerClick ?? 1,
+                autoMoney: data.autoMoney ?? 0,
+                autoPaper: data.autoPaper ?? 0,
+                workerCost: data.workerCost ?? 200,
+                createdAt: Date.now(),
+                lastOnline: Date.now()
+            }, { merge: true })
             statusText.textContent = "Save already exists.";
         }
     }
@@ -1127,11 +1148,19 @@
     }
 
     async function buttonClick() {
-        await updateDoc(saveRef, {
-            money: increment(.5),
-            papersWritten: increment(1),
-        });
-        await updateMoneyDisplay();
+        unsavedMoney += moneyPerClick;
+        unsavedPaper += paperPerClick;
+    }
+
+    async function updateDocValues() {
+        while (true) {
+            await sleep(3000);
+            await updateDoc(saveRef, {
+                money: increment(unsavedMoney),
+                papersWritten: increment(unsavedPaper),
+            });
+            await updateMoneyDisplay();
+        }
     }
 
 
