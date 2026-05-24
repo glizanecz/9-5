@@ -861,8 +861,10 @@
     let moneyPrintMenuUnlocked = 1;
 
     let unsavedMoney = 0;
+    let lastFetchedMoney = 0;
     let moneyPerClick = .5;
     let unsavedPaper = 0;
+    let lastFetchedPaper = 0;
     let paperPerClick = 1;
 
     skillTreeBtn.style.opacity = ".3";
@@ -1128,6 +1130,7 @@
 
             console.log("User ID:", user.uid);
             await createSaveIfNeeded();
+            updateDocValues();
         } else {
             currentUser = null;
 
@@ -1139,17 +1142,11 @@
 
     writePaperBtn.onclick = buttonClick;
 
-    async function updateMoneyDisplay() {
-        const saveSnap = await getDoc(saveRef);
-        if (saveSnap.exists()) {
-            const saveData = saveSnap.data();
-            moneyDisplay.innerText = "Money: $" + saveData.money;
-        }
-    }
-
     async function buttonClick() {
         unsavedMoney += moneyPerClick;
         unsavedPaper += paperPerClick;
+        moneyDis.innerText = "Money: $" + unsavedMoney + lastFetchedMoney;
+        papersDis.innerText = "Papers Written: " + unsavedPaper + lastFetchedPaper;
     }
 
     async function updateDocValues() {
@@ -1159,13 +1156,14 @@
                 money: increment(unsavedMoney),
                 papersWritten: increment(unsavedPaper),
             });
+            const saveSnap = await getDoc(saveRef);
+            const data = saveSnap.data();
+            lastFetchedMoney = data.money;
+            lastFetchedPaper = data.papersWritten;
             unsavedMoney = 0;
             unsavedPaper = 0;
-            await updateMoneyDisplay();
         }
     }
-
-    updateDocValues();
 
 
   </script>
