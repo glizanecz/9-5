@@ -926,6 +926,7 @@
         game.style.display = "block";
         gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
+        await createSaveIfNeeded();
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -940,6 +941,7 @@
         game.style.display = "block";
         gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
+        await createSaveIfNeeded();
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -976,7 +978,6 @@
         }
     }
 
-    await createSaveIfNeeded();
 
     onAuthStateChanged(auth, (user) => {
     if (user) {
