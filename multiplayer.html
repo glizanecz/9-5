@@ -1046,7 +1046,6 @@
         game.style.display = "block";
         gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
-        saveRef = doc(db, "users", currentUser.uid, "save", "main")
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -1061,7 +1060,6 @@
         game.style.display = "block";
         gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
-        saveRef = doc(db, "users", currentUser.uid, "save", "main");
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -1098,7 +1096,7 @@
     }
 
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
         if (user) {
             currentUser = user;
 
@@ -1107,7 +1105,8 @@
             game.style.display = "block";
 
             console.log("User ID:", user.uid);
-            createSaveIfNeeded;
+            await createSaveIfNeeded();
+            saveRef = doc(db, "users", currentUser.uid, "save", "main");
         } else {
             currentUser = null;
 
