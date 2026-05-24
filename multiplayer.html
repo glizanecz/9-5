@@ -39,6 +39,14 @@
         text-align: center;
     }
 
+    .loadBar {
+        text-align: center;
+    }
+
+    .loadingText {
+        text-align: center;
+    }
+
     button {
         padding: 10px;
         font-size: 15px;
@@ -367,7 +375,7 @@
 </head>
 <body>
 <div class="loginBox" id="loginBox">
-    <h1 class="loginH1">9/5 Simulator Login</h1>
+    <h1 class="loginBox">9/5 Simulator Login</h1>
 
     <input class="loginInputs" id="email" placeholder="Email">
     <input class="loginInputs" id="password" placeholder="Password" type="password">
@@ -378,6 +386,12 @@
 
     <p id="status"></p>
 
+</div>
+
+<div id="loadingMenu">
+    <h1 id="loadingText" class="loadingText">Loading.</h1>
+    <br>
+    <progress id="loadingBar" class="loadBar" value="0" max="100">0%</progress>
 </div>
 
 <div id="game">
@@ -854,6 +868,12 @@
     const feedbackPopUp = document.getElementById("feedbackPopUp");
     const taxNoti = document.getElementById("taxNoti");
 
+    const loadingMenu = document.getElementById("loadingMenu");
+    const loadingText = document.getElementById("loadingText");
+    const loadingBar = document.getElementById("loadingBar");
+
+    let loadingTextBool = false;
+
     let skillTreeUnlocked = 1;
     let upgradeMenuUnlocked = 1;
     let luckMenuUnlocked = 1;
@@ -1048,11 +1068,6 @@
       try {
         await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
         statusText.textContent = "Account created.";
-        await sleep(600)
-        loginBox.style.display = "none";
-        game.style.display = "block";
-        gameUnlocked = 1;
-        sectionName.innerText = "9/5 Simulator Multiplayer";
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -1062,11 +1077,6 @@
       try {
         await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
         statusText.textContent = "Logged in.";
-        await sleep(600)
-        loginBox.style.display = "none";
-        game.style.display = "block";
-        gameUnlocked = 1;
-        sectionName.innerText = "9/5 Simulator Multiplayer";
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -1124,13 +1134,33 @@
             currentUser = user;
             saveRef = doc(db, "users", currentUser.uid, "save", "main");
 
+            console.log("User ID:", user.uid);
+
+            loadingMenu.style.display = "block";
+            loadingTextBool = true;
+            loadingTextAnim();
+            await createSaveIfNeeded();
+            loadingBar.value = "25";
+            await updateDoc(saveRef, {
+                money: increment(unsavedMoney),
+                papersWritten: increment(unsavedPaper),
+            });
+            loadingBar.value = "43";
+            const saveSnap = await getDoc(saveRef);
+            loadingBar.value = "78";
+            const data = saveSnap.data();
+            lastFetchedMoney = Number(data.money);
+            lastFetchedPaper = Number(data.papersWritten);
+            moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
+            papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
+            loadingBar.value = "99";
+            updateDocValues();
+            loadingBar.value = "100";
+            await sleep(1500)
             statusText.textContent = "Logged in as: " + user.email;
             loginBox.style.display = "none";
             game.style.display = "block";
-
-            console.log("User ID:", user.uid);
-            await createSaveIfNeeded();
-            updateDocValues();
+            sectionName.innerText = "9/5 Simulator Multiplayer";
         } else {
             currentUser = null;
 
@@ -1139,6 +1169,17 @@
             game.style.display = "none";
         }
     });
+
+    async function loadingTextAnim() {
+        while (loadingTextBool === true) {
+            loadingText.innerText = "Loading.";
+            await sleep(200);
+            loadingText.innerText = "Loading..";
+            await sleep(200);
+            loadingText.innerText = "Loading...";
+            await sleep(200);
+        }
+    }
 
     writePaperBtn.onclick = buttonClick;
 
@@ -1150,16 +1191,6 @@
     }
 
     async function updateDocValues() {
-        await updateDoc(saveRef, {
-            money: increment(unsavedMoney),
-            papersWritten: increment(unsavedPaper),
-        });
-        const saveSnap = await getDoc(saveRef);
-        const data = saveSnap.data();
-        lastFetchedMoney = Number(data.money);
-        lastFetchedPaper = Number(data.papersWritten);
-        moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
-        papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
         while (true) {
             await updateDoc(saveRef, {
                 money: increment(unsavedMoney),
