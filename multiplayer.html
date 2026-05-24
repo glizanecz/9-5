@@ -1150,6 +1150,16 @@
     }
 
     async function updateDocValues() {
+        await updateDoc(saveRef, {
+            money: increment(unsavedMoney),
+            papersWritten: increment(unsavedPaper),
+        });
+        const saveSnap = await getDoc(saveRef);
+        const data = saveSnap.data();
+        lastFetchedMoney = Number(data.money);
+        lastFetchedPaper = Number(data.papersWritten);
+        moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
+        papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
         while (true) {
             await updateDoc(saveRef, {
                 money: increment(unsavedMoney),
