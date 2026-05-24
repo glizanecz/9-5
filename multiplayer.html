@@ -8,7 +8,7 @@
 <style>
     body {
       font-family: Arial, sans-serif;
-      background: #ee9898;
+      background: #f5c7c7;
     }
 
     input {
@@ -55,9 +55,11 @@
 </div>
 
 <div id="game">
-    <h1 id="moneyDis" class="mainValuesDis">Money: $0</h1>
-    <h1 id="papersDis" class="mainValuesDis">Papers Written: 0</h1>
-    <h1 id="workersHiredDis" class="mainValuesDis">Workers Hired: 0</h1>
+    <div id="mainGame">
+        <h1 id="moneyDis" class="mainValuesDis">Money: $0</h1>
+        <h1 id="papersDis" class="mainValuesDis">Papers Written: 0</h1>
+        <h1 id="workersHiredDis" class="mainValuesDis">Workers Hired: 0</h1>
+    </div>
 </div>
 
   <script type="module">
@@ -85,6 +87,8 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
+    const db = getFirestore(app);
+    let currentUser = null;
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -140,13 +144,52 @@
       statusText.textContent = "Logged out.";
     };
 
+    async function createSaveIfNeeded() {
+        if (!currentUser) {
+            statusText.textContent = "You must be logged in first.";
+            return;
+        }
+
+        const saveRef = doc(db, "users", currentUser.uid, "save", "main");
+        const saveSnap = await getDoc(saveRef);
+
+        if (!saveSnap.exists()) {
+            await setDoc(saveRef, {
+            money: 0,
+            papersWritten: 0,
+            workersHired: 0,
+            moneyPerClick: 1,
+            workerCost: 50,
+            createdAt: Date.now(),
+            lastOnline: Date.now()
+            });
+
+            statusText.textContent = "New save created.";
+        } else {
+            statusText.textContent = "Save already exists.";
+        }
+        }
+
+        startGameBtn.onclick = async () => {
+        await createSaveIfNeeded();
+    };
+
     onAuthStateChanged(auth, (user) => {
-      if (user) {
+    if (user) {
+        currentUser = user;
+
         statusText.textContent = "Logged in as: " + user.email;
+        loginBox.style.display = "none";
+        game.style.display = "block";
+
         console.log("User ID:", user.uid);
-      } else {
+    } else {
+        currentUser = null;
+
         statusText.textContent = "Not logged in.";
-      }
+        loginBox.style.display = "block";
+        game.style.display = "none";
+    }
     });
   </script>
 
