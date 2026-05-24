@@ -1071,7 +1071,7 @@
     };
 
     async function createSaveIfNeeded() {
-        if (!currentUser) {
+        if (!currentUser || !saveRef) {
             statusText.textContent = "You must be logged in first.";
             return;
         }
@@ -1099,6 +1099,7 @@
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             currentUser = user;
+            saveRef = doc(db, "users", currentUser.uid, "save", "main");
 
             statusText.textContent = "Logged in as: " + user.email;
             loginBox.style.display = "none";
@@ -1106,7 +1107,6 @@
 
             console.log("User ID:", user.uid);
             await createSaveIfNeeded();
-            saveRef = doc(db, "users", currentUser.uid, "save", "main");
         } else {
             currentUser = null;
 
