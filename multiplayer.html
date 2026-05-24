@@ -1109,7 +1109,7 @@
                 autoMoney: data.autoMoney ?? 0,
                 autoPaper: data.autoPaper ?? 0,
                 workerCost: data.workerCost ?? 200,
-                createdAt: Date.now(),
+                createdAt: data.createdAt ?? Date.now(),
                 lastOnline: Date.now()
             }, { merge: true })
             statusText.textContent = "Save already exists.";
@@ -1159,6 +1159,8 @@
                 money: increment(unsavedMoney),
                 papersWritten: increment(unsavedPaper),
             });
+            unsavedMoney = 0;
+            unsavedPaper = 0;
             await updateMoneyDisplay();
         }
     }
