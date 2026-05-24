@@ -738,6 +738,116 @@
     const statsBtn = document.getElementById("statsBtn");
     const moreBtn = document.getElementById("moreBtn");
 
+    const writePaperBtn = document.getElementById("btn");
+
+    const promotionBtn = document.getElementById("multBtn");
+    const buyMaxPromoBtn = document.getElementById("buyMaxPromo");
+
+    const writingToolBtn = document.getElementById("paperPerClick");
+    const buyMaxWritingToolBtn = document.getElementById("buyMaxWritingTool");
+
+    const hireWorkerBtn = document.getElementById("autoClick");
+    const buyMaxWorkerBtn = document.getElementById("buyMaxWorker");
+
+    const coffeeBtn = document.getElementById("cofBtn");
+    const buyMaxCoffeeBtn = document.getElementById("buyMaxCof");
+
+    const energyDrinkBtn = document.getElementById("energyBtn");
+    const buyMaxEnergyDrinkBtn = document.getElementById("buyMaxEnDrink");
+
+    const workerCoffeeBtn = document.getElementById("workCofBtn");
+    const buyMaxWorkerCoffeeBtn = document.getElementById("buyMaxWorkCof");
+
+    const rebirthBtn = document.getElementById("rebirth");
+    const modMenuBtn = document.getElementById("modMenu");
+
+    const moneyDisplay = document.getElementById("money");
+    const papersDisplay = document.getElementById("papers");
+    const moneyMultiplierDisplay = document.getElementById("MultiplierMoney");
+    const paperMultiplierDisplay = document.getElementById("MultiplierPaper");
+    const overallValuesDisplay = document.getElementById("moneyPaperSPDis");
+
+    const startSkillTreeBtn = document.getElementById("startSkillTree");
+
+    const moneyMultSkillIBtn = document.getElementById("moneyMultPlusSkillI");
+    const moneyMultSkillIIBtn = document.getElementById("moneyMultPlusSkillII");
+    const moneyMultSkillIIIBtn = document.getElementById("moneyMultPlusSkillIII");
+    const moneyMultSkillIVBtn = document.getElementById("moneyMultPlusSkillIV");
+
+    const cheaperPricesIBtn = document.getElementById("cheaperPricesI");
+    const cheaperPricesIIBtn = document.getElementById("cheaperPricesII");
+    const cheaperPricesIIIBtn = document.getElementById("cheaperPricesIII");
+    const cheaperPricesIVBtn = document.getElementById("cheaperPricesIV");
+
+    const workerEffIBtn = document.getElementById("workerEffI");
+    const workerEffIIBtn = document.getElementById("workerEffII");
+    const workerEffIIIBtn = document.getElementById("workerEffIII");
+
+    const manualLaborIBtn = document.getElementById("playLaborI");
+    const manualLaborIIBtn = document.getElementById("playLaborII");
+    const manualLaborIIIBtn = document.getElementById("playLaborIII");
+
+    const skillPointsDisplay = document.getElementById("skillPointsCurrency");
+
+    const unlockWorkerUpgradesBtn = document.getElementById("unlockPaperMineUp");
+    const waterCoolerBtn = document.getElementById("unlockWoodToPaperUp");
+    const secondStoryBtn = document.getElementById("unlockFasterPixUp");
+    const moreOfficeCellsBtn = document.getElementById("unlockMorePaperDepUp");
+    const outwardWallExpansionBtn = document.getElementById("inkDeposits");
+    const betterLightingBtn = document.getElementById("betterTorches");
+    const lessPaperCutsBtn = document.getElementById("lessPaperCuts");
+    const betterFilingCabinetsBtn = document.getElementById("moneyGrowsOnTrees");
+    const thirdStoryBtn = document.getElementById("skillPointDeposits");
+    const flawlessCellFlooringBtn = document.getElementById("upgradeButton10");
+    const officeKitchenBtn = document.getElementById("upgradeButton11");
+    const premiumDesksBtn = document.getElementById("upgradeButton12");
+    const fasterFilingBtn = document.getElementById("upgradeButton13");
+    const efficientWritingToolsBtn = document.getElementById("upgradeButton14");
+
+    const betInput = document.getElementById("inputBet");
+    const setBetBtn = document.getElementById("sbmtBet");
+    const doubleOrNothingBtn = document.getElementById("doubleONothin");
+    const hireChanceManagerBtn = document.getElementById("luckWorker");
+    const luckWorkerStrategySelect = document.getElementById("luckWorkerStrat");
+    const toggleAutoLuckBtn = document.getElementById("toggleAutoLuck");
+
+    const moneyLuckMenuDisplay = document.getElementById("moneyLuckMenu");
+    const betDisplay = document.getElementById("betDisplay");
+    const outcomeDisplay = document.getElementById("outcomeDisplay");
+
+    const debtDisplay = document.getElementById("debtDisplay");
+    const payDebtInput = document.getElementById("payDebt");
+    const submitPayDebtBtn = document.getElementById("sbmtPayOff");
+    const fullyPayDebtBtn = document.getElementById("fullyPayDebt");
+    const hireTaxManagerBtn = document.getElementById("hireTaxManagerBtn");
+    const taxTransactionDisplay = document.getElementById("transTaxDis");
+    const toggleIRSBtn = document.getElementById("toggleIRSExperiment");
+
+    const loadMethodBtn = document.getElementById("loadMethod");
+    const saveBtn = document.getElementById("saveBtn");
+    const loadInput = document.getElementById("loadInp");
+    const submitLoadBtn = document.getElementById("sbmtBtn");
+    const copyPasteDisplay = document.getElementById("copAPaste");
+
+    const firstSaveSlotBtn = document.getElementById("firstSaveSlot");
+    const secondSaveSlotBtn = document.getElementById("secondSaveSlot");
+    const thirdSaveSlotBtn = document.getElementById("thirdSaveSlot");
+    const saveSlotLabel = document.getElementById("saveSlotLabel");
+
+    const clickModeBtn = document.getElementById("clickModeBtn");
+
+    const moneyPerSecondDisplay = document.getElementById("moneyPerSecond");
+    const paperPerClickDisplay = document.getElementById("paperPerClickDisplay");
+    const highscoreDisplay = document.getElementById("highscore");
+
+    const openFeedbackPopupBtn = document.getElementById("openPopUp");
+    const feedbackBox = document.getElementById("feedbackBox");
+    const submitFeedbackBtn = document.getElementById("submitFeedback");
+
+    const illegalMoneyDisplay = document.getElementById("illMoneyDisplay");
+    const decreasePrintDelayBtn = document.getElementById("decreasePrintDelayBtn");
+    const increaseBillBtn = document.getElementById("increaseBillBtn");
+
     const feedbackPopUp = document.getElementById("feedbackPopUp");
     const taxNoti = document.getElementById("taxNoti");
 
@@ -923,6 +1033,8 @@
     const papersDis = document.getElementById("papersDis");
     const workersHiredDis = document.getElementById("workersHiredDis");
 
+    const saveRef = doc(db, "users", currentUser.uid, "save", "main")
+
 
     signUpBtn.onclick = async () => {
       try {
@@ -963,7 +1075,6 @@
             return;
         }
 
-        const saveRef = doc(db, "users", currentUser.uid, "save", "main");
         const saveSnap = await getDoc(saveRef);
 
         if (!saveSnap.exists()) {
@@ -1001,6 +1112,17 @@
             game.style.display = "none";
         }
     });
+
+    writePaperBtn.onclick = buttonClick();
+
+    async function buttonClick() {
+        await updateDoc(saveRef, {
+            money: increment(.5),
+            papersWritten: increment(1),
+        });
+    }
+
+
 
 
   </script>
