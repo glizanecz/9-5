@@ -961,24 +961,22 @@
 
         if (!saveSnap.exists()) {
             await setDoc(saveRef, {
-            money: 0,
-            papersWritten: 0,
-            workersHired: 0,
-            moneyPerClick: 1,
-            workerCost: 50,
-            createdAt: Date.now(),
-            lastOnline: Date.now()
+                money: 0,
+                papersWritten: 0,
+                workersHired: 0,
+                moneyPerClick: 1,
+                workerCost: 50,
+                createdAt: Date.now(),
+                lastOnline: Date.now()
             });
 
             statusText.textContent = "New save created.";
         } else {
             statusText.textContent = "Save already exists.";
         }
-        }
+    }
 
-        startGameBtn.onclick = async () => {
-        await createSaveIfNeeded();
-    };
+    await createSaveIfNeeded();
 
     onAuthStateChanged(auth, (user) => {
     if (user) {
