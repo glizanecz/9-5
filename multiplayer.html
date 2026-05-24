@@ -1123,6 +1123,9 @@
             money: increment(.5),
             papersWritten: increment(1),
         });
+        moneyDis.innerText = "Money: $" + await getDoc(saveRef, {
+            money,
+        });
     }
 
 
