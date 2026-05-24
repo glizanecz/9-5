@@ -359,6 +359,10 @@
         column-gap: 20px;
     }
 
+    #game {
+        display: none;
+    }
+
   </style>
 </head>
 <body>
@@ -927,7 +931,6 @@
         game.style.display = "block";
         gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
-        await createSaveIfNeeded();
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -942,7 +945,6 @@
         game.style.display = "block";
         gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
-        await createSaveIfNeeded();
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -981,21 +983,21 @@
 
 
     onAuthStateChanged(auth, (user) => {
-    if (user) {
-        currentUser = user;
+        if (user) {
+            currentUser = user;
 
-        statusText.textContent = "Logged in as: " + user.email;
-        loginBox.style.display = "none";
-        game.style.display = "block";
+            statusText.textContent = "Logged in as: " + user.email;
+            loginBox.style.display = "none";
+            game.style.display = "block";
 
-        console.log("User ID:", user.uid);
-    } else {
-        currentUser = null;
+            console.log("User ID:", user.uid);
+        } else {
+            currentUser = null;
 
-        statusText.textContent = "Not logged in.";
-        loginBox.style.display = "block";
-        game.style.display = "none";
-    }
+            statusText.textContent = "Not logged in.";
+            loginBox.style.display = "block";
+            game.style.display = "none";
+        }
     });
 
 
