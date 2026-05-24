@@ -707,6 +707,197 @@
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+    const mainGameDis = document.getElementById("mainGameDis");
+    const skillTreeDis = document.getElementById("skillTreeDis");
+    const saveAndMoreDis = document.getElementById("saveAndMoreDis");
+    const luckMenuDis = document.getElementById("luckMenuDis");
+    const taxMenu = document.getElementById("taxMenuSwitch");
+    const moneyPrintMenuDis = document.getElementById("moneyPrintMenuDis");
+    const upgradeMenu = document.getElementById("upgradeMenuDis");
+    const helpMenuDis = document.getElementById("helpMenuDis");
+    const settingsMenu = document.getElementById("settingsMenu");
+    const statsMenu = document.getElementById("statsMenu");
+    const moreMenu = document.getElementById("moreMenu");
+
+    const skillTreeBtn = document.getElementById("skillTree");
+    const mainGameBtn = document.getElementById("mainGame");
+    const saveAndMoreBtn = document.getElementById("saveAndMoreBtn");
+    const luckMenuSwitch = document.getElementById("chanceMenuSwitch");
+    const taxMenuBtn = document.getElementById("taxMenuSwitchBtn");
+    const moneyPrintMenuSwitcher = document.getElementById("moneyPrintBtnSwitch");
+    const upgradeMenuBtn = document.getElementById("upgradeMenu");
+    const helpMenuBtn = document.getElementById("helpMenu");
+    const settingsBtn = document.getElementById("settingsBtn");
+    const statsBtn = document.getElementById("statsBtn");
+    const moreBtn = document.getElementById("moreBtn");
+
+    const feedbackPopUp = document.getElementById("feedbackPopUp");
+    const taxNoti = document.getElementById("taxNoti");
+
+    let skillTreeUnlocked = 1;
+    let upgradeMenuUnlocked = 1;
+    let luckMenuUnlocked = 1;
+    let taxMenuUnlocked = 1;
+    let moneyPrintMenuUnlocked = 1;
+
+    skillTreeBtn.style.opacity = ".3";
+    upgradeMenuBtn.style.opacity = ".3";
+    luckMenuSwitch.style.opacity = ".3";
+    taxMenuBtn.style.opacity = ".3";
+    moneyPrintMenuSwitcher.style.opacity = ".3";
+
+    feedbackPopUp.style.display = "none";
+    taxNoti.style.display = "none";
+
+    function hideAllMenus() {
+    mainGameDis.style.display = "none";
+    skillTreeDis.style.display = "none";
+    saveAndMoreDis.style.display = "none";
+    luckMenuDis.style.display = "none";
+    taxMenu.style.display = "none";
+    moneyPrintMenuDis.style.display = "none";
+    upgradeMenu.style.display = "none";
+    helpMenuDis.style.display = "none";
+    settingsMenu.style.display = "none";
+    statsMenu.style.display = "none";
+    moreMenu.style.display = "none";
+    }
+
+    function getMainGame() {
+    hideAllMenus();
+    mainGameDis.style.display = "block";
+    }
+
+    function getSkillTree() {
+    hideAllMenus();
+    skillTreeDis.style.display = "block";
+    }
+
+    function getSaveAndMore() {
+    hideAllMenus();
+    saveAndMoreDis.style.display = "block";
+    }
+
+    function getLuckMenu() {
+    hideAllMenus();
+    luckMenuDis.style.display = "block";
+    }
+
+    function getTaxMenu() {
+    hideAllMenus();
+    taxMenu.style.display = "block";
+    }
+
+    function getMoneyPrint() {
+    hideAllMenus();
+    moneyPrintMenuDis.style.display = "block";
+    }
+
+    function getUpgradeMenu() {
+    hideAllMenus();
+    upgradeMenu.style.display = "flex";
+    }
+
+    function getHelpMenu() {
+    hideAllMenus();
+    helpMenuDis.style.display = "block";
+    }
+
+    function getSettingsMenu() {
+    hideAllMenus();
+    settingsMenu.style.display = "block";
+    }
+
+    function getStatsMenu() {
+    hideAllMenus();
+    statsMenu.style.display = "block";
+    }
+
+    function getMoreMenu() {
+    hideAllMenus();
+    moreMenu.style.display = "block";
+    }
+
+    mainGameBtn.onclick = function () {
+    getMainGame();
+    };
+
+    skillTreeBtn.onclick = function () {
+    if (skillTreeUnlocked === 0) {
+        getSkillTree();
+    }
+    };
+
+    saveAndMoreBtn.onclick = function () {
+    getSaveAndMore();
+    };
+
+    luckMenuSwitch.onclick = function () {
+    if (luckMenuUnlocked === 0) {
+        getLuckMenu();
+    }
+    };
+
+    taxMenuBtn.onclick = function () {
+    if (taxMenuUnlocked === 0) {
+        getTaxMenu();
+    }
+    };
+
+    moneyPrintMenuSwitcher.onclick = function () {
+    if (moneyPrintMenuUnlocked === 0) {
+        getMoneyPrint();
+    }
+    };
+
+    upgradeMenuBtn.onclick = function () {
+    if (upgradeMenuUnlocked === 0) {
+        getUpgradeMenu();
+    }
+    };
+
+    helpMenuBtn.onclick = function () {
+    getHelpMenu();
+    };
+
+    settingsBtn.onclick = function () {
+    getSettingsMenu();
+    };
+
+    statsBtn.onclick = function () {
+    getStatsMenu();
+    };
+
+    moreBtn.onclick = function () {
+    getMoreMenu();
+    };
+
+    async function menuHandling() {
+        while (true) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            if (skillTreeUnlocked === 0) {
+            skillTreeBtn.style.opacity = "1";
+            }
+            if (upgradeMenuUnlocked === 0) {
+            upgradeMenuBtn.style.opacity = "1";
+            }
+            if (luckMenuUnlocked === 0) {
+            luckMenuSwitch.style.opacity = "1";
+            }
+            if (taxMenuUnlocked === 0) {
+            taxMenuBtn.style.opacity = "1";
+            }
+            if (moneyPrintMenuUnlocked === 0) {
+            moneyPrintMenuSwitcher.style.opacity = "1";
+            } else {
+            moneyPrintMenuSwitcher.style.opacity = ".3";
+            }
+        }
+    }
+
+    menuHandling();
+    getMainGame();
+
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const statusText = document.getElementById("status");
