@@ -7,17 +7,18 @@
 
 <style>
     body {
-      font-family: Arial, sans-serif;
       background: #f5c7c7;
     }
 
-    input {
+    .loginInputs {
+      font-family: Arial, sans-serif;
       display: block;
       margin: 10px auto;
       padding: 8px;
     }
 
-    button {
+    .loginButtons {
+      font-family: Arial, sans-serif;
       padding: 8px 12px;
       margin: 5px;
       cursor: pointer;
@@ -25,6 +26,7 @@
     }
 
     #status {
+      font-family: Arial, sans-serif;
       font-weight: bold;
     }
 
@@ -37,18 +39,338 @@
         text-align: center;
     }
 
+    button {
+        padding: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        color: rgb(0, 0, 0);
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        background-color: rgb(212, 187, 198);
+        border-radius: 5px;
+    }
+
+    h1 {
+        padding: 0px;
+        font-size: 20px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color:rgb(0, 0, 0);
+        width: 50px;
+        white-space: nowrap;
+    }
+
+    h2 {
+        padding: 0px;
+        font-size: 12px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color:rgb(0, 0, 0);
+    }
+
+    h3 {
+        padding: 0px;
+        font-size: 10px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-color: rgb(255, 220, 252);
+    }
+
+    h4 {
+        padding: 0px;
+        font-size: 10px;
+        background-color: rgb(255, 220, 252);
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color:rgb(0, 0, 0);
+    }
+
+    button2 {
+        padding:10px;
+        font-size:15px;
+        cursor: pointer;
+        background-color: rgb(92, 67, 102);
+    }
+
+    button3 {
+        padding:10px;
+        font-size:10px;
+        cursor: pointer;
+        background-color: lightgray;
+        border-radius: 5px;
+    }
+
+    button4 {
+        padding:10px;
+        font-size:10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    label {
+        padding:10px;
+        font-size:10px;
+        background-color: lightgray;
+        border-radius: 5px;
+    }
+
+    h5 {
+        padding:10px;
+        font-size:10px;
+        background-color: lightgray;
+        border-radius: 5px;
+    }
+
+    h6 {
+        padding:10px;
+        font-size:10px;
+        background-color: cornflowerblue;
+        border-radius: 5px;
+    }
+
+    button5 {
+        padding:10px;
+        font-size:10px;
+        cursor: pointer;
+        visibility: visible;
+        background-color: rgb(212, 187, 198);
+        border-radius: 5px;
+        border: 2px black;
+        row-gap: 10;
+    }
+
+    button6 {
+        padding:10px;
+        width: 100;
+        height: 100;
+        font-size: 10px;
+        cursor: pointer;
+        flex-wrap: nowrap;
+        row-gap: 10;
+        display: inline-block;
+        background-color: lightskyblue;
+        border-radius: 5px;
+        column-gap: 15;
+    }
+
+    saveAndMoreDis {
+        display: block;
+        padding: 10;
+        column-gap: 10;
+        margin-top: 10;
+    }
+
+    button7 {
+        padding:0px;
+        width: 100;
+        height: 100;
+        font-size: auto;
+        cursor: pointer;
+    }
+
+    #mainGameDis {
+        background-repeat: repeat;
+        background-size: cover;
+    }
+
+    input {
+        background: linear-gradient(white,gray);
+        border-radius: 5px;
+    }
+
+    .luckInput {
+        background: linear-gradient(lightpink,white);
+        border-radius: 5px;
+    }
+
+
+    button9 {
+        padding:10px;
+        font-size:10px;
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: purple;
+    }
+
+    label2 {
+        padding:10px;
+        font-size:10px;
+        background-color: purple;
+        border-radius: 5px;
+    }
+
+    label3 {
+        column-gap: 10;
+        padding:15px;
+        font-size:15px;
+        background-color: papayawhip;
+        border-radius: 5px;
+    }
+
+    .payDebtInput {
+        background: linear-gradient(lightpink,white);
+        border-radius: 5px;
+    }
+
+    h11 {
+        padding: 0px;
+        font-size: 20px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color:rgb(0, 0, 0);
+        width: 30px;
+    }
+
+    .upgradeButtons1 {
+        font-size: x-small;
+    }
+
+    .upgradeButtons2 {
+        font-size: x-small;
+    }
+
+    .upgradeButtons3 {
+        font-size: x-small;
+    }
+
+    .upgradeButtons4 {
+        font-size: x-small;
+    }
+
+    .upgradeButtons5 {
+        font-size: x-small;
+    }
+
+    .upgradeButtons6 {
+        font-size: x-small;
+    }
+
+    .upgradeButtons7 {
+        font-size: x-small;
+    }
+
+    .upgradeButtons9 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons8 {
+        font-size: x-small;
+    }
+
+    .upgradeButtons10 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons11 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons12 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons13 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons14 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons15 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons16 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons17 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .upgradeButtons18 {
+        font-size: x-small;
+        white-space: nowrap;
+    }
+
+    .specify {
+        font-size: xx-small;
+    }
+
+    .flexRowColumn {
+        display: flex;
+        white-space: nowrap;
+        gap: 15px;
+        width: 300px;
+        height: 120px;
+    }
+
+    .verticalUp {
+        display: flex;
+        flex-direction: column;
+        white-space: wrap;
+        column-gap: 15px;
+        margin-top: 135px;
+        gap: 15px;
+        height: 150px;
+        width: 190px;
+        position: absolute;
+    }
+
+    .bought {
+        text-decoration: line-through;
+    }
+
+    .emailBoxText {
+        font-size: 10px;
+        background-color: whitesmoke;
+        border: 2px solid black;
+        height: 20px;
+        width: 95vw;
+    }
+
+    .fakeConsole {
+        display: none;
+    }
+
+    .rebirth {
+        display: block;
+    }
+
+    .feedbackBackground {
+        background-color: pink;
+        border-radius: 20px;
+        padding: 10px;
+        width: 350px;
+        height: 200px;
+        resize: both;
+        overflow: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        column-gap: 20px;
+    }
+
   </style>
 </head>
 <body>
 <div class="loginBox" id="loginBox">
-    <h1>9/5 Simulator Login</h1>
+    <h1 class="loginH1">9/5 Simulator Login</h1>
 
-    <input id="email" placeholder="Email">
-    <input id="password" placeholder="Password" type="password">
+    <input class="loginInputs" id="email" placeholder="Email">
+    <input class="loginInputs" id="password" placeholder="Password" type="password">
 
-    <button id="signupBtn">Sign Up</button>
-    <button id="loginBtn">Log In</button>
-    <button id="logoutBtn">Log Out</button>
+    <button class="loginButtons" id="signupBtn">Sign Up</button>
+    <button class="loginButtons" id="loginBtn">Log In</button>
+    <button class="loginButtons" id="logoutBtn">Log Out</button>
 
     <p id="status"></p>
 
@@ -56,9 +378,295 @@
 
 <div id="game">
     <div id="mainGame">
-        <h1 id="moneyDis" class="mainValuesDis">Money: $0</h1>
-        <h1 id="papersDis" class="mainValuesDis">Papers Written: 0</h1>
-        <h1 id="workersHiredDis" class="mainValuesDis">Workers Hired: 0</h1>
+        <h2>-~-~ 💼 ((9/5 Simulator V1.75)) ☕ -~-~</h1>
+        <h2 id="consoleOut" class="fakeConsole"> Console Output (FOR DEV): </h2>
+        <button id="rebirth" class="rebirth"> Rebirth | Start With 10x Multiplier</button>
+        <br>
+        <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="statsBtn">Stats</button5> <button5 id="saveAndMoreBtn">Save & Load</button5> <button5 id="helpMenu">Help Menu</button5> <button5 id="settingsBtn">Settings</button5> <button5 id="moreBtn">More</button5>
+        <h4>-----------------</h4>
+        <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
+        <h2 id="moneyPaperSPDis">Money: $0 | Papers Written: 0</h1>
+        <h4>-----------------</h4>
+
+        <div id="mainGameDis">
+            <h1 id="money">Money: $0</h1>
+            <h4 id="MultiplierMoney">Multiplier: 1x</h1>
+            <h1 id="papers">Papers Written: 0</h1>
+            <h4 id="MultiplierPaper">Multiplier: 1x</h1>
+            <button id="btn">Click To Write</button>
+            <button id="multBtn">Get Promotion: 50 Papers.</button> <button id="buyMaxPromo">Max Buy</button>
+            <h4>-----------------</h4>
+            <button id="paperPerClick">Upgrade Writing Tool | Current Tool: Pencil ✏️| Next Tool: Pen🖊️ | Cost: $30</button> <button id="buyMaxWritingTool">Max Buy</button>
+            <h4>-----------------</h4>
+            <button id="autoClick">Hire Worker: $200</button> <button id="buyMaxWorker">Max Buy</button>
+            <h4>-----------------</h4>
+            <button id="cofBtn">Coffee +1.5x Money: $5</button> <button id="buyMaxCof">Max Buy</button>
+            <br>
+            <button id="energyBtn">Energy Drink +3x Papers: $30</button> <button id="buyMaxEnDrink">Max Buy</button>
+            <br>
+            <button id="workCofBtn">Worker Coffee +1.5x Money For Workers: $10</button> <button id="buyMaxWorkCof">Max Buy</button>
+            <h4>-----------------</h4>
+            <button2 id="modMenu">MODERATOR (OPERATOR STATUS REQUIRED)</button2>
+            <h4>-----------------</h4>
+        </div>
+
+        <div id="feedbackPopUp" class="feedbackBackground">
+            <h1>Have Any Feedback?</h1>
+            <textarea id="feedbackBox" placeholder="Enter feedback here, it WILL be added. Type NO if you don't."></textarea>
+            <br>
+            <button9 id="submitFeedback">Submit Feedback</button9>
+        </div>
+
+        <div id="skillTreeDis">
+            <h6>Skill Points Can Be Obtained By Buying Main Game Upgrades (Workers, drinks, promotions, and writing tools) </h6>
+            <h4>-----------------</h4>
+            <h6 id="skillPointsCurrency">Skill Points: 0</h6>
+            <button6 id="startSkillTree">Start Skill Tree: 0 Points</button6>
+            <h4>-----------------</h4>
+            <button6 id="moneyMultPlusSkillI">Multiplier I | +.5 Multiplier For Money and Paper: 2 Points</button6>
+            <button6 id="moneyMultPlusSkillII">Multiplier II | +1 Multiplier For Money and Paper: 5 Points</button6>
+            <button6 id="moneyMultPlusSkillIII">Multiplier III | +1.5 Multiplier For Money and Paper: 10 Points</button6>
+            <button6 id="moneyMultPlusSkillIV">Multiplier IV | +2 Multiplier For Money and Paper: 16 Points</button6>
+            <h4>-----------------</h4>
+            <button6 id="cheaperPricesI">Cheaper Prices I | 5% Off: 3 Points</button6>
+            <button6 id="cheaperPricesII">Cheaper Prices II | 10% Off: 7 Points</button6>
+            <button6 id="cheaperPricesIII">Cheaper Prices III | 15% Off: 18 Points</button6>
+            <button6 id="cheaperPricesIV">Cheaper Prices IV | 20% Off: 25 Points</button6>
+            <h4>-----------------</h4>
+            <button6 id="workerEffI">Worker Efficiency I | -.1 Seconds Per Action: 5 Points</button6>
+            <button6 id="workerEffII">Worker Efficiency II | -.25 Seconds Per Action: 10 Points</button6>
+            <button6 id="workerEffIII">Worker Efficiency III | -.5 Seconds Per Action: 16 Points</button6>
+            <h4>-----------------</h4>
+            <button6 id="playLaborI">Manual Labor I | Earn 25% of Worker Income Per Click: 20 Points</button6>
+            <button6 id="playLaborII">Manual Labor II | Earn 50% of Worker Income Per Click: 50 Points</button6>
+            <button6 id="playLaborIII">Manual Labor III | Earn 100% of Worker Income Per Click: 100 Points</button6>
+        </div>
+
+        <div id="upgradeMenuDis">
+            <div class="flexRowColumn">
+                <button id="unlockPaperMineUp" class="upgradeButtons1"> 
+                    <span> Unlock Worker Upgrades: </span>
+                    <br>---</br>
+                    <span> Produces Passive Paper & Money </span>
+                    <br>
+                    <span class="specify"> Makes $25 & 100 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $200 & 1000 Paper </span>
+                </button>
+                <button id="unlockWoodToPaperUp" class="upgradeButtons2"> 
+                    <span> Buy Water Cooler: </span>
+                    <br>---</br>
+                    <span> Increases Paper Production </span>
+                    <br>
+                    <span class="specify"> Makes $50 & 500 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $2,000 & 10,000 Paper </span>
+                </button>
+                <button id="moneyGrowsOnTrees" class="upgradeButtons7"> 
+                    <span> Better Filing Cabinets: </span>
+                    <br>---</br>
+                    <span> Produces More Passive Paper & Money </span>
+                    <br>
+                    <span class="specify"> Makes $200,000 & 10,000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: 200,000 Paper & 25 Skill Points </span>
+                </button>
+                <button id="upgradeButton12" class="upgradeButtons12"> 
+                    <span> Premium Desks: </span>
+                    <br>---</br>
+                    <span> Produces More Money & Paper </span>
+                    <br>
+                    <span class="specify"> +$1mil & 500,000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $100mil & 75 Skill Points</span>
+                </button>
+                <button id="upgradeButton13" class="upgradeButtons13"> 
+                    <span> Faster Filing: </span>
+                    <br>---</br>
+                    <span> Produces More Money & Paper </span>
+                    <br>
+                    <span class="specify"> +$10mil & 1,000,000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $1bil & 100 Skill Points</span>
+                </button>
+                <button id="upgradeButton14" class="upgradeButtons14"> 
+                    <span> Efficient Writing Tools: </span>
+                    <br>---</br>
+                    <span> Produces More Money & Paper </span>
+                    <br>
+                    <span class="specify"> +$100mil & 10,000,000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $50bil & 400 Skill Points</span>
+                </button>
+            </div>
+            <div class="verticalUp">
+                <button id="unlockFasterPixUp" class="upgradeButtons3"> 
+                    <span> Add Second Story: </span>
+                    <br>---</br>
+                    <span> Produces More Passive Paper & Money </span>
+                    <br>
+                    <span class="specify"> Makes $450 & 5000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $2,000 & 10,000 Paper </span>
+                </button>
+                <button id="unlockMorePaperDepUp" class="upgradeButtons4"> 
+                    <span> More Office Cells: </span>
+                    <br>---</br>
+                    <span> Produces More Passive Paper & Money </span>
+                    <br>
+                    <span class="specify"> Makes $30,000 & 100,000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $100,000 & 20 Skill Points </span>
+                </button>
+
+                <button id="inkDeposits" class="upgradeButtons5"> 
+                    <span> Outward Wall Expansion: </span>
+                    <br>---</br>
+                    <span> Produces More Passive Paper & Money </span>
+                    <br>
+                    <span class="specify"> Makes $50,000 & 70,000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $100,000 & 20 Skill Points </span>
+                </button>
+                    <button id="betterTorches" class="upgradeButtons6"> 
+                    <span> Better Lighting: </span>
+                    <br>---</br>
+                    <span> Produces More Passive Paper & Money </span>
+                    <br>
+                    <span class="specify"> Makes $50,000 & 40,000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $180,000 & 45 Skill Points </span>
+                </button>
+                <button id="lessPaperCuts" class="upgradeButtons8"> 
+                    <span> Less Paper Cuts: </span>
+                    <br>---</br>
+                    <span> Produces More Passive Paper & Money </span>
+                    <br>
+                    <span class="specify"> Makes $50,000 & 60,000 Paper Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $50,000 & 200,000 Paper </span>
+                </button>
+                <button id="skillPointDeposits" class="upgradeButtons9"> 
+                    <span> Add Third Story: </span>
+                    <br>---</br>
+                    <span> Produces Passive Skill Points </span>
+                    <br>
+                    <span class="specify"> Makes .01 Skill Points Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $1m & 100 Skill Points </span>
+                </button>
+                <button id="upgradeButton10" class="upgradeButtons10"> 
+                    <span> Flawless Cell Flooring: </span>
+                    <br>---</br>
+                    <span> Produces More Skill Points </span>
+                    <br>
+                    <span class="specify"> +.5 Skill Points Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $12m & 150 Skill Points</span>
+                </button>
+                <button id="upgradeButton11" class="upgradeButtons11"> 
+                    <span> Office Kitchen: </span>
+                    <br>---</br>
+                    <span> Produces More Skill Points </span>
+                    <br>
+                    <span class="specify"> +1 Skill Points Per Action </span>
+                    <br>---</br>
+                    <span> Cost: $2bil & 250 Skill Points</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="luckMenuDis">
+            <h1 id="moneyLuckMenu">Money: $0</h1>
+            <h4>-----------------</h4>
+            <h10 id="betDisplay">Set Your Bet To Begin!</h10>
+            <h4>-----------------</h4>
+            <label2 for="inputBet">Bet Size:</label2>
+            <input type="text" id="inputBet" class="luckInput">
+            <button9 id="sbmtBet">Set Bet</button9>
+            <h4>Simple Chance:</h4>
+            <h10 id="outcomeDisplay">No Chances Have Been Taken</h10>
+            <h4>-----------------</h4>
+            <button9 id="doubleONothin">Double or Nothing Your Bet.</button9>
+            <h4>-----------------</h4>
+            <button9 id="luckWorker">Hire Chance Manager: $200,000</button9>
+            <h4>-----------------</h4>
+            <label for="luckWorkerStrat">Choose Worker Strategy</label>
+            <select id="luckWorkerStrat">
+                <option value="martingaleStrat">Martingale / Double Down If You Lose</option>
+                <option value="fivePercentStrat">Bet 50% Of Money At A Time</option>
+            </select> <button9 id="toggleAutoLuck">Toggle On</button9>
+        </div>
+
+        <div id="taxMenuSwitch">
+            <h1 id="debtDisplay">Debt: $0</h1>
+            <h4>-----------------</h4>
+            <label2 for="payDebt">Pay Off Debt</label2>
+            <input type="text" id="payDebt" class="payDebtInput"> <button9 id="sbmtPayOff">Submit Money</button9> <button9 id="fullyPayDebt">Fully Pay Debt</button9>
+            <h4>-----------------</h4>
+            <button9 id="hireTaxManagerBtn">Hire Tax Manager: $50,000</button9> <h10 id="transTaxDis">Last Auto Tax Transaction: $0</h10>
+            <h4>ENABLE/DISABLE IRS:</h4>
+            <button9 id="toggleIRSExperiment">The IRS: Experimental | Toggle On</button9>
+        </div>
+
+        <div id="saveAndMoreDis">
+            <h4>Don't save in debt, unless your illegal money exceeds or is equal to your IRS debt, progress will be lost.</h4>
+            <button9 id="loadMethod">Load With Local Storage</button9>
+            <button3 id="saveBtn">SAVE GAME</button3>
+            <label for="loadInp">Load Game<label> <input type="text" id="loadInp"></input>
+            <button4 id="sbmtBtn">LOAD</button4>
+            <h4>-----------------</h4>
+            <h5 id="copAPaste">Copy and Paste This Code: </h5>
+            <h4>-----------------</h4>
+            <h4 id="saveSlotLabel"> Save Slots: </h4>
+            <button id="firstSaveSlot">Save #1</button>
+            <button id="secondSaveSlot">Save #2</button>
+            <button id="thirdSaveSlot">Save #3</button>
+            <h4>-----------------</h4>
+        </div>
+
+        <div id="settingsMenu">
+            <button id="clickModeBtn">Click Mode: Click</button>
+            <h4>-----------------</h4>
+        </div>
+
+        <div id="statsMenu">
+            <h5 id="moneyPerSecond">Auto Cash Per Sec: $0</h5> 
+            <h5 id="paperPerClickDisplay">Paper Per Click: 0</h5>
+            <h5 id="highscore">Highscore: $0</h5>
+            <h4>-----------------</h4>
+        </div>
+
+        <div id="moreMenu">
+            <button id="openPopUp">Give Feedback?</button>
+            <h4>-----------------</h4>
+        </div>
+
+        <div id="helpMenuDis">
+            <h1>Menu Unlock Requirements:</h1>
+            <h4>-----------------</h4>
+            <ul>
+                <li>Skill Tree | $1.5k</li>
+                <li>Upgrade Menu | $10k & 1k Paper</li>
+                <li>Luck Menu | $100k & 500k Paper</li>
+                <li>Tax Menu | $1.5M</li>
+                <li>Money Print Menu | Tax Experiment Enabled & In Debt</li>
+            </ul>
+            <h4>-----------------</h4>
+            <h1>FAQ</h1>
+            <h4>-----------------</h4>
+            <ul>
+                <li>Q: How much do workers make per action? A: Workers make ((5 * the amount of workers hired) * the amount of workers hired) per action</li>
+            </ul>
+            <h4>-----------------</h4>
+        </div>
+
+        <div id="moneyPrintMenuDis">
+            <h1 id="illMoneyDisplay">Illegal Printed Money: $0</h1>
+            <h4>-----------------</h4>
+            <button id="decreasePrintDelayBtn">Print Delay Down .15 Sec | $200</button>
+            <button id="increaseBillBtn">Print $10-20 Bills | $500</button>
+        </div>
     </div>
 </div>
 
@@ -198,6 +806,8 @@
         game.style.display = "none";
     }
     });
+
+
   </script>
 
 </body>
