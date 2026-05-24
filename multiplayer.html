@@ -689,7 +689,9 @@
       getFirestore,
       doc,
       getDoc,
-      setDoc
+      setDoc,
+      updateDoc,
+      increment
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -709,6 +711,7 @@
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
     const db = getFirestore(app);
+    let saveRef = null;
     let currentUser = null;
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -1033,8 +1036,6 @@
     const papersDis = document.getElementById("papersDis");
     const workersHiredDis = document.getElementById("workersHiredDis");
 
-    const saveRef = doc(db, "users", currentUser.uid, "save", "main")
-
 
     signUpBtn.onclick = async () => {
       try {
@@ -1045,6 +1046,7 @@
         game.style.display = "block";
         gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
+        saveRef = doc(db, "users", currentUser.uid, "save", "main")
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -1059,6 +1061,7 @@
         game.style.display = "block";
         gameUnlocked = 1;
         sectionName.innerText = "9/5 Simulator Multiplayer";
+        saveRef = doc(db, "users", currentUser.uid, "save", "main");
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -1113,7 +1116,7 @@
         }
     });
 
-    writePaperBtn.onclick = buttonClick();
+    writePaperBtn.onclick = buttonClick;
 
     async function buttonClick() {
         await updateDoc(saveRef, {
