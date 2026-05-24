@@ -371,6 +371,10 @@
         display: none;
     }
 
+    .loadingMenu {
+        text-align: center;
+    }
+
   </style>
 </head>
 <body>
@@ -388,7 +392,7 @@
 
 </div>
 
-<div id="loadingMenu">
+<div class="loadingMenu" id="loadingMenu">
     <h1 id="loadingText" class="loadingText">Loading.</h1>
     <br>
     <progress id="loadingBar" class="loadBar" value="0" max="100">0%</progress>
@@ -873,6 +877,7 @@
     const loadingBar = document.getElementById("loadingBar");
 
     let loadingTextBool = false;
+    loadingMenu.style.display = "none";
 
     let skillTreeUnlocked = 1;
     let upgradeMenuUnlocked = 1;
@@ -1162,6 +1167,7 @@
             loadingBar.value = "100";
             await sleep(1500)
             loadingTextBool = false;
+            loadingMenu.style.display = "none";
             game.style.display = "block";
             sectionName.innerText = "9/5 Simulator Multiplayer";
         } else {
