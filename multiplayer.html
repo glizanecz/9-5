@@ -1136,9 +1136,13 @@
 
             console.log("User ID:", user.uid);
 
+            statusText.textContent = "Logged in as: " + user.email;
+            loginBox.style.display = "none";
+
             loadingMenu.style.display = "block";
             loadingTextBool = true;
             loadingTextAnim();
+            loadingBar.value = "12";
             await createSaveIfNeeded();
             loadingBar.value = "25";
             await updateDoc(saveRef, {
@@ -1157,8 +1161,7 @@
             updateDocValues();
             loadingBar.value = "100";
             await sleep(1500)
-            statusText.textContent = "Logged in as: " + user.email;
-            loginBox.style.display = "none";
+            loadingTextBool = false;
             game.style.display = "block";
             sectionName.innerText = "9/5 Simulator Multiplayer";
         } else {
