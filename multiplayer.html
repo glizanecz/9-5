@@ -1145,8 +1145,8 @@
     async function buttonClick() {
         unsavedMoney += moneyPerClick;
         unsavedPaper += paperPerClick;
-        moneyDisplay.innerText = "Money: $" + unsavedMoney + lastFetchedMoney;
-        papersDisplay.innerText = "Papers Written: " + unsavedPaper + lastFetchedPaper;
+        moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
+        papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
     }
 
     async function updateDocValues() {
