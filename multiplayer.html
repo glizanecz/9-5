@@ -408,6 +408,14 @@
         white-space: normal;
     }
 
+    .clanCodeInput {
+        color: black;
+    }
+
+    .usernameInput {
+        color:black;
+    }
+
 
   </style>
 </head>
@@ -668,9 +676,9 @@
         <div id="socialMenuDis">
             <h1>Social Menu</h1>
             <h4>-----------------</h4>
-            <input id="usernameInput" type="text" maxlength="15" placeholder="Username here..."> <button id="usernameSetBtn" class="buttonSmall">Set Username</button> 
+            <input class="usernameInput" id="usernameInput" type="text" maxlength="15" placeholder="Username here..."> <button id="usernameSetBtn" class="buttonSmall">Set Username</button> 
             <h4>-----------------</h4>
-            <input id="clanCodeInput" placeholder="Enter clan code here..." type="text" maxlength="15"> <button id="joinClanBtn" class="buttonSmall">Join Clan</button> 
+            <input class="clanCodeInput" id="clanCodeInput" placeholder="Enter clan code here..." type="text" maxlength="15"> <button id="joinClanBtn" class="buttonSmall">Join Clan</button> 
             <h4>-----------------</h4>
         </div>
 
@@ -1096,6 +1104,24 @@
     const papersDis = document.getElementById("papersDis");
     const workersHiredDis = document.getElementById("workersHiredDis");
 
+    //Inputs and submits
+    const clanCodeInput = document.getElementById("clanCodeInput");
+    const usernameInput = document.getElementById("usernameInput");
+    const joinClanBtn = document.getElementById("joinClanBtn");
+    const usernameSetBtn = document.getElementById("usernameSetBtn");
+
+    usernameSetBtn.onclick = async function () {
+        if (gameUnlocked === 0 && saveRef) {
+            const answer = await checkProfanityAI(usernameInput.value)
+            if (answer === "YES") {
+                console.log("username added")
+            } else {
+                console.log("remove dat lingo")
+            }
+        } else {
+            statusText.textContent = "You must be logged in first.";
+        }
+    }
 
     signUpBtn.onclick = async () => {
       try {
@@ -1201,6 +1227,7 @@
             loadingMenu.style.display = "none";
             game.style.display = "block";
             sectionName.innerText = "9/5 Simulator Multiplayer";
+            gameUnlocked = 0;
         } else {
             currentUser = null;
 
@@ -1221,7 +1248,52 @@
         }
     }
 
-    writePaperBtn.onclick = buttonClick;
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+
+
+    //NOT MY CODE BELOW FOR THE PROFANITY CHECKER, THIS IS FOR CLAN NAMES, CHAT, AND USERNAMES! use this later...
+    import {
+        getAI,
+        getGenerativeModel,
+        GoogleAIBackend
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-ai.js";
+
+    const ai = getAI(app, {
+        backend: new GoogleAIBackend()
+    });
+
+    const model = getGenerativeModel(ai, {
+        model: "gemini-2.5-flash"
+    });
+
+    async function checkProfanityAI(text) {
+        const prompt = `
+            You are a profanity checker.
+
+            Answer ONLY YES or NO.
+
+            YES = the text is clean and allowed.
+            NO = the text has profanity, slurs, threats, sexual content, harassment, or abusive insults.
+
+            Text:
+            ${JSON.stringify(text)}
+        `;
+
+        const result = await model.generateContent(prompt);
+        const answer = result.response.text().trim().toUpperCase();
+
+        if (answer.startsWith("YES")) {
+            return "YES";
+        }
+
+        return "NO";
+    }
+
+    writePaperBtn.onclick = function () {
+        if (gameUnlocked === 0) {
+            buttonClick;
+        }
+    }
 
     async function buttonClick() {
         unsavedMoney += moneyPerClick;
