@@ -1113,11 +1113,10 @@
     const usernameSetBtn = document.getElementById("usernameSetBtn");
 
     usernameSetBtn.onclick = async function () {
-        if (gameUnlocked === 0 && saveRef) {
+        if (gameUnlocked === 0 && usernameSaveRef) {
             const answer = await checkProfanityAI(usernameInput.value)
             if (answer === "YES") {
                 console.log("Username: " + usernameInput.value + " is now linked with your account!")
-                usernameSaveRef = doc(db, "users", currentUser.uid)
                 await setDoc(usernameSaveRef, {
                     username: usernameInput.value,
                 })
@@ -1143,6 +1142,7 @@
       try {
         await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
         statusText.textContent = "Logged in.";
+        usernameSaveRef = doc(db, "users", currentUser.uid)
       } catch (error) {
         statusText.textContent = error.message;
       }
