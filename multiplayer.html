@@ -748,20 +748,6 @@
     increment
     } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-    import {
-        getAI,
-        getGenerativeModel,
-        GoogleAIBackend
-    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-ai.js";
-
-    const ai = getAI(app, {
-        backend: new GoogleAIBackend()
-    });
-
-    const model = getGenerativeModel(ai, {
-        model: "gemini-2.5-flash"
-    });
-
     const firebaseConfig = {
       apiKey: "AIzaSyB8xaqKa_oKDIVcjaIydsfmenEKmfqQsmo",
       authDomain: "sim-ab44f.firebaseapp.com",
@@ -785,6 +771,21 @@
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
     const db = getFirestore(app);
+
+    import {
+        getAI,
+        getGenerativeModel,
+        GoogleAIBackend
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-ai.js";
+
+    const ai = getAI(app, {
+        backend: new GoogleAIBackend()
+    });
+
+    const model = getGenerativeModel(ai, {
+        model: "gemini-2.5-flash"
+    });
+    
     let saveRef = null;
     let clanSaveRef = null;
     let usernameSaveRef = null;
