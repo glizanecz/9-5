@@ -1252,6 +1252,7 @@
             const saveSnap = await getDoc(saveRef);
             loadingBar.value = "78";
             const data = saveSnap.data();
+            unsavedWorkerCost = Number(data.workerCost);
             lastFetchedMoney = Number(data.money);
             lastFetchedPaper = Number(data.papersWritten);
             lastFetchedWorkerCost = Number(data.workerCost);
@@ -1356,8 +1357,8 @@
                 money: increment(unsavedMoney),
                 papersWritten: increment(unsavedPaper),
                 workersHired: increment(unsavedWorkers),
-                workerCost: unsavedWorkerCost,
                 usernameSets: increment(unsavedUsernameSets),
+                workerCost: unsavedWorkerCost,
                 autoMoney: unsavedAutoMoney,
                 autoPaper: unsavedAutoPaper,
             });
