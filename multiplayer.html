@@ -1138,18 +1138,20 @@
 
     usernameSetBtn.onclick = async function () {
         if (gameUnlocked === 0 && usernameSaveRef) {
-            const answer = await checkProfanityAI(usernameInput.value)
-            if (answer === "YES") {
-                console.log("Username: " + usernameInput.value + " is now linked with your account!")
-                await setDoc(usernameSaveRef, {
-                    username: usernameInput.value,
-                })
-                if (lastFetchedUsernameSetLimit + unsavedUsernameSets > 0) {
-                    unsavedUsernameSets -= 1;
+            if (usernameInput.value === "" || usernameInput.value.includes(" ")) {
+                const answer = await checkProfanityAI(usernameInput.value)
+                if (answer === "YES") {
+                    console.log("Username: " + usernameInput.value + " is now linked with your account!")
+                    await setDoc(usernameSaveRef, {
+                        username: usernameInput.value,
+                    })
+                    if (lastFetchedUsernameSetLimit + unsavedUsernameSets > 0) {
+                        unsavedUsernameSets -= 1;
+                    }
+                    usernameInput.value = "";
+                } else {
+                    console.log("Profanity detected!")
                 }
-                usernameInput.value = "";
-            } else {
-                console.log("Profanity detected!")
             }
         } else {
             statusText.textContent = "You must be logged in first.";
