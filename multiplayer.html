@@ -1310,8 +1310,8 @@
     hireWorkerBtn.onclick = function () {
         if (gameUnlocked === 0 && (lastFetchedMoney + unsavedMoney) >= (lastFetchedWorkerCost + unsavedWorkerCost)) {
             unsavedWorkers += 1;
-            unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
             unsavedMoney -= unsavedWorkerCost;
+            unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
             hireWorkerBtn.innerText = "Hire Worker: $" + (lastFetchedWorkerCost + unsavedWorkerCost);
         }
     }
