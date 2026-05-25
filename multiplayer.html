@@ -732,20 +732,20 @@
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
 
     import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    signOut,
-    onAuthStateChanged
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signOut,
+        onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
     import {
-    getFirestore,
-    doc,
-    getDoc,
-    setDoc,
-    updateDoc,
-    increment
+        getFirestore,
+        doc,
+        getDoc,
+        setDoc,
+        updateDoc,
+        increment
     } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -1326,8 +1326,8 @@
             unsavedWorkers += 1;
             unsavedMoney -= unsavedWorkerCost;
             unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
-            unsavedAutoMoney += unsavedMoney += (lastFetchedWorkers + unsavedWorkers) * 5 * (lastFetchedWorkers + unsavedWorkers);
-            unsavedAutoPaper += unsavedPaper += (lastFetchedWorkers + unsavedWorkers) * 7 * (lastFetchedWorkers + unsavedWorkers);
+            unsavedAutoMoney += (lastFetchedWorkers + unsavedWorkers) * 5 * (lastFetchedWorkers + unsavedWorkers);
+            unsavedAutoPaper += (lastFetchedWorkers + unsavedWorkers) * 7 * (lastFetchedWorkers + unsavedWorkers);
             moneyPerSecondDisplay.innerText = "Auto Cash Per Sec: $" + unsavedAutoMoney;
             hireWorkerBtn.innerText = "Hire Worker: $" + (lastFetchedWorkerCost + unsavedWorkerCost);
         }
