@@ -1374,6 +1374,7 @@
             unsavedWorkers = 0;
             unsavedUsernameSets = 0;
             unsavedWorkerCost = lastFetchedWorkerCost;
+            hireWorkerBtn.innerText = "Hire Worker: $" + (unsavedWorkerCost);
             await sleep(3000);
         }
     }
