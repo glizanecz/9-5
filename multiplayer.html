@@ -1323,7 +1323,7 @@
     }
 
     hireWorkerBtn.onclick = function () {
-        if (gameUnlocked === 0 && (lastFetchedMoney + unsavedMoney) >= (lastFetchedWorkerCost + unsavedWorkerCost)) {
+        if (gameUnlocked === 0 && (lastFetchedMoney + unsavedMoney) >= (unsavedWorkerCost)) {
             unsavedWorkers += 1;
             unsavedMoney -= unsavedWorkerCost;
             unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
