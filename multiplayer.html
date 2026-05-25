@@ -1142,7 +1142,6 @@
       try {
         await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
         statusText.textContent = "Logged in.";
-        usernameSaveRef = doc(db, "users", currentUser.uid)
       } catch (error) {
         statusText.textContent = error.message;
       }
@@ -1235,6 +1234,7 @@
             game.style.display = "block";
             sectionName.innerText = "9/5 Simulator Multiplayer";
             gameUnlocked = 0;
+            usernameSaveRef = doc(db, "users", currentUser.uid)
         } else {
             currentUser = null;
 
