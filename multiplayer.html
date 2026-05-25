@@ -950,6 +950,8 @@
     let lastFetchedWorkerCost = 200;
     let lastFetchedUsernameSetLimit = 4;
     let unsavedUsernameSets = 0;
+    let unsavedAutoMoney = 0;
+    let unsavedAutoPaper = 0;
 
     skillTreeBtn.style.opacity = ".3";
     upgradeMenuBtn.style.opacity = ".3";
@@ -1322,6 +1324,9 @@
             unsavedWorkers += 1;
             unsavedMoney -= unsavedWorkerCost;
             unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
+            unsavedAutoMoney += unsavedMoney += (lastFetchedWorkers + unsavedWorkers) * 5 * (lastFetchedWorkers + unsavedWorkers);
+            unsavedAutoPaper += unsavedPaper += (lastFetchedWorkers + unsavedWorkers) * 7 * (lastFetchedWorkers + unsavedWorkers);
+            moneyPerSecondDisplay.innerText = "Auto Cash Per Sec: $" + unsavedAutoMoney;
             hireWorkerBtn.innerText = "Hire Worker: $" + (lastFetchedWorkerCost + unsavedWorkerCost);
         }
     }
@@ -1351,6 +1356,8 @@
                 workersHired: increment(unsavedWorkers),
                 workerCost: unsavedWorkerCost,
                 usernameSets: increment(unsavedUsernameSets),
+                autoMoney: unsavedAutoMoney,
+                autoPaper: unsavedAutoPaper,
             });
             const saveSnap = await getDoc(saveRef);
             const data = saveSnap.data();
