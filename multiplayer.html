@@ -171,7 +171,7 @@
         column-gap: 15;
     }
 
-    saveAndMoreDis {
+    socialMenu {
         display: block;
         padding: 10;
         column-gap: 10;
@@ -425,7 +425,7 @@
         <h2 id="consoleOut" class="fakeConsole"> Console Output (FOR DEV): </h2>
         <button id="rebirth" class="rebirth"> Rebirth | Start With 10x Multiplier</button>
         <br>
-        <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="statsBtn">Stats</button5> <button5 id="saveAndMoreBtn">Save & Load</button5> <button5 id="helpMenu">Help Menu</button5> <button5 id="settingsBtn">Settings</button5> <button5 id="moreBtn">More</button5>
+        <button5 id="mainGame">Main Game</button5> <button5 id="skillTree">Skill Tree</button5> <button5 id="upgradeMenu">Upgrades</button5> <button5 id="chanceMenuSwitch">Luck</button5> <button5 id="taxMenuSwitchBtn">Taxes</button5> <button5 id="moneyPrintBtnSwitch">Money Printing</button5> <button5 id="statsBtn">Stats</button5> <button5 id="socialMenuBtn">Social Menu</button5> <button5 id="helpMenu">Help Menu</button5> <button5 id="settingsBtn">Settings</button5> <button5 id="moreBtn">More</button5>
         <h4>-----------------</h4>
         <label3 id="taxNoti">You Owe No Money, Come Back Later!</label3>
         <h2 id="moneyPaperSPDis">Money: $0 | Papers Written: 0</h1>
@@ -652,19 +652,13 @@
             <button9 id="toggleIRSExperiment">The IRS: Experimental | Toggle On</button9>
         </div>
 
-        <div id="saveAndMoreDis">
-            <h4>Don't save in debt, unless your illegal money exceeds or is equal to your IRS debt, progress will be lost.</h4>
-            <button9 id="loadMethod">Load With Local Storage</button9>
-            <button3 id="saveBtn">SAVE GAME</button3>
-            <label for="loadInp">Load Game<label> <input type="text" id="loadInp"></input>
-            <button4 id="sbmtBtn">LOAD</button4>
+        <div id="socialMenuDis">
+            <h1>Social Menu</h1>
             <h4>-----------------</h4>
-            <h5 id="copAPaste">Copy and Paste This Code: </h5>
+            <button>Set Username</button>
+            <input type="text" maxlength="15">
             <h4>-----------------</h4>
-            <h4 id="saveSlotLabel"> Save Slots: </h4>
-            <button id="firstSaveSlot">Save #1</button>
-            <button id="secondSaveSlot">Save #2</button>
-            <button id="thirdSaveSlot">Save #3</button>
+            <button>Join Clan</button> <input placeholder="Enter clan code here..." type="text" maxlength="15">
             <h4>-----------------</h4>
         </div>
 
@@ -757,17 +751,18 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     let saveRef = null;
+    let clanSaveRef = null;
     let currentUser = null;
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
     const mainGameDis = document.getElementById("mainGameDis");
     const skillTreeDis = document.getElementById("skillTreeDis");
-    const saveAndMoreDis = document.getElementById("saveAndMoreDis");
     const luckMenuDis = document.getElementById("luckMenuDis");
     const taxMenu = document.getElementById("taxMenuSwitch");
     const moneyPrintMenuDis = document.getElementById("moneyPrintMenuDis");
     const upgradeMenu = document.getElementById("upgradeMenuDis");
+    const socialMenuDis = document.getElementById("socialMenuDis")
     const helpMenuDis = document.getElementById("helpMenuDis");
     const settingsMenu = document.getElementById("settingsMenu");
     const statsMenu = document.getElementById("statsMenu");
@@ -776,11 +771,11 @@
     const skillTreeBtn = document.getElementById("skillTree");
     const mainGameBtn = document.getElementById("mainGame");
     const mainGame = document.getElementById("mainGameContainer");
-    const saveAndMoreBtn = document.getElementById("saveAndMoreBtn");
     const luckMenuSwitch = document.getElementById("chanceMenuSwitch");
     const taxMenuBtn = document.getElementById("taxMenuSwitchBtn");
     const moneyPrintMenuSwitcher = document.getElementById("moneyPrintBtnSwitch");
     const upgradeMenuBtn = document.getElementById("upgradeMenu");
+    const socialMenuBtn = document.getElementById("socialMenuBtn");
     const helpMenuBtn = document.getElementById("helpMenu");
     const settingsBtn = document.getElementById("settingsBtn");
     const statsBtn = document.getElementById("statsBtn");
@@ -872,15 +867,9 @@
     const toggleIRSBtn = document.getElementById("toggleIRSExperiment");
 
     const loadMethodBtn = document.getElementById("loadMethod");
-    const saveBtn = document.getElementById("saveBtn");
     const loadInput = document.getElementById("loadInp");
     const submitLoadBtn = document.getElementById("sbmtBtn");
     const copyPasteDisplay = document.getElementById("copAPaste");
-
-    const firstSaveSlotBtn = document.getElementById("firstSaveSlot");
-    const secondSaveSlotBtn = document.getElementById("secondSaveSlot");
-    const thirdSaveSlotBtn = document.getElementById("thirdSaveSlot");
-    const saveSlotLabel = document.getElementById("saveSlotLabel");
 
     const clickModeBtn = document.getElementById("clickModeBtn");
 
@@ -924,6 +913,7 @@
     luckMenuSwitch.style.opacity = ".3";
     taxMenuBtn.style.opacity = ".3";
     moneyPrintMenuSwitcher.style.opacity = ".3";
+    socialMenuDis.style.opacity = ".3";
 
     feedbackPopUp.style.display = "none";
     taxNoti.style.display = "none";
@@ -931,11 +921,11 @@
     function hideAllMenus() {
         mainGameDis.style.display = "none";
         skillTreeDis.style.display = "none";
-        saveAndMoreDis.style.display = "none";
         luckMenuDis.style.display = "none";
         taxMenu.style.display = "none";
         moneyPrintMenuDis.style.display = "none";
         upgradeMenu.style.display = "none";
+        socialMenuDis.style.display = "none";
         helpMenuDis.style.display = "none";
         settingsMenu.style.display = "none";
         statsMenu.style.display = "none";
@@ -952,9 +942,9 @@
         skillTreeDis.style.display = "block";
     }
 
-    function getSaveAndMore() {
+    function getSocialMenu() {
         hideAllMenus();
-        saveAndMoreDis.style.display = "block";
+        socialMenuDis.style.display = "block";
     }
 
     function getLuckMenu() {
@@ -1007,9 +997,9 @@
         }
     };
 
-    saveAndMoreBtn.onclick = function () {
-        getSaveAndMore();
-    };
+    socialMenuBtn.onclick = function () {
+        getSocialMenu();
+    }
 
     luckMenuSwitch.onclick = function () {
         if (luckMenuUnlocked === 0) {
@@ -1159,6 +1149,9 @@
             statusText.textContent = "Save already exists.";
         }
     }
+
+    //clansJoinedRef = doc(db, "users", currentUser.uid, "clan")
+    //clanSaveRef = doc(db, "clans", "clanID", "save", "main");
 
 
     onAuthStateChanged(auth, async (user) => {
