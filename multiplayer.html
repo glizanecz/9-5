@@ -785,7 +785,7 @@
     const model = getGenerativeModel(ai, {
         model: "gemini-2.5-flash"
     });
-    
+
     let saveRef = null;
     let clanSaveRef = null;
     let usernameSaveRef = null;
@@ -1255,6 +1255,7 @@
             sectionName.innerText = "9/5 Simulator Multiplayer";
             gameUnlocked = 0;
             usernameSaveRef = doc(db, "users", currentUser.uid)
+            autoWorker()
         } else {
             currentUser = null;
 
@@ -1311,9 +1312,6 @@
             unsavedWorkers += 1;
             unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
             unsavedMoney -= unsavedWorkerCost;
-            if (lastFetchedWorkers + unsavedWorkers === 0) {
-                autoWorker()
-            }
         }
     }
 
