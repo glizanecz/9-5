@@ -1144,7 +1144,7 @@
                 await setDoc(usernameSaveRef, {
                     username: usernameInput.value,
                 })
-                if (lastFetchedUsernameSetLimit + unsavedUsernameSets) {
+                if (lastFetchedUsernameSetLimit + unsavedUsernameSets > 0) {
                     unsavedUsernameSets -= 1;
                 }
                 usernameInput.value = "";
