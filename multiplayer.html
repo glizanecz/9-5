@@ -929,6 +929,8 @@
     let unsavedPaper = 0;
     let lastFetchedPaper = 0;
     let paperPerClick = 1;
+    let unsavedWorkers = 0;
+    let unsavedWorkerCost = 200;
 
     skillTreeBtn.style.opacity = ".3";
     upgradeMenuBtn.style.opacity = ".3";
@@ -1101,6 +1103,7 @@
 
     const game = document.getElementById("game");
     let gameUnlocked = 1;
+    let waitTime = 1000;
     game.style.display = "none"; // for now!
     const moneyDis = document.getElementById("moneyDis");
     const papersDis = document.getElementById("papersDis");
@@ -1299,6 +1302,16 @@
         }
     }
 
+    hireWorkerBtn.onclick = function () {
+        if (gameUnlocked === 0 && (lastFetchedMoney + unsavedMoney) >= (lastFetchedWorkerCost + unsavedWorkerCost)) {
+            unsavedWorkers += 1;
+            unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
+            if (lastFetchedWorkers + unsavedWorkers === 0) {
+                autoWorker()
+            }
+        }
+    }
+
     async function buttonClick() {
         unsavedMoney += moneyPerClick;
         unsavedPaper += paperPerClick;
@@ -1306,16 +1319,30 @@
         papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
     }
 
+    async function autoWorker() {
+        while (true) {
+            await sleep(waitTime);
+            unsavedMoney += workersHired * 5 * workersHired;
+            unsavedPaper += workersHired * 7 * workersHired;
+            moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
+            papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
+        }
+    }
+
     async function updateDocValues() {
         while (true) {
             await updateDoc(saveRef, {
                 money: increment(unsavedMoney),
                 papersWritten: increment(unsavedPaper),
+                workersHired: increment(unsavedWorkers),
+                workerCost: increment(unsavedWorkerCost),
             });
             const saveSnap = await getDoc(saveRef);
             const data = saveSnap.data();
             lastFetchedMoney = Number(data.money);
             lastFetchedPaper = Number(data.papersWritten);
+            lastFetchedWorkers = Number(data.workersHired);
+            lastFetchedWorkerCost = Number(data.workerCost);
             unsavedMoney = 0;
             unsavedPaper = 0;
             await sleep(3000);
