@@ -773,6 +773,7 @@
     const db = getFirestore(app);
     let saveRef = null;
     let clanSaveRef = null;
+    let usernameSaveRef = null;
     let currentUser = null;
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -1115,9 +1116,14 @@
         if (gameUnlocked === 0 && saveRef) {
             const answer = await checkProfanityAI(usernameInput.value)
             if (answer === "YES") {
-                console.log("username added")
+                console.log("Username: " + usernameInput.value + " is now linked with your account!")
+                usernameSaveRef = doc(db, "users", currentUser.uid)
+                await setDoc(usernameSaveRef, {
+                    username: usernameInput.value,
+                })
+                usernameInput.value = "";
             } else {
-                console.log("remove dat lingo")
+                console.log("Profanity detected!")
             }
         } else {
             statusText.textContent = "You must be logged in first.";
