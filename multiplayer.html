@@ -1330,7 +1330,7 @@
             unsavedAutoMoney += (lastFetchedWorkers + unsavedWorkers) * 5 * (lastFetchedWorkers + unsavedWorkers);
             unsavedAutoPaper += (lastFetchedWorkers + unsavedWorkers) * 7 * (lastFetchedWorkers + unsavedWorkers);
             moneyPerSecondDisplay.innerText = "Auto Cash Per Sec: $" + unsavedAutoMoney;
-            hireWorkerBtn.innerText = "Hire Worker: $" + (lastFetchedWorkerCost + unsavedWorkerCost);
+            hireWorkerBtn.innerText = "Hire Worker: $" + (unsavedWorkerCost);
         }
     }
 
