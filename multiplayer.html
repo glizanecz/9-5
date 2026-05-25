@@ -748,6 +748,20 @@
     increment
     } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+    import {
+        getAI,
+        getGenerativeModel,
+        GoogleAIBackend
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-ai.js";
+
+    const ai = getAI(app, {
+        backend: new GoogleAIBackend()
+    });
+
+    const model = getGenerativeModel(ai, {
+        model: "gemini-2.5-flash"
+    });
+
     const firebaseConfig = {
       apiKey: "AIzaSyB8xaqKa_oKDIVcjaIydsfmenEKmfqQsmo",
       authDomain: "sim-ab44f.firebaseapp.com",
@@ -1261,19 +1275,6 @@
     }
 
     //NOT MY CODE BELOW FOR THE PROFANITY CHECKER, THIS IS FOR CLAN NAMES, CHAT, AND USERNAMES! use this later...
-    import {
-        getAI,
-        getGenerativeModel,
-        GoogleAIBackend
-    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-ai.js";
-
-    const ai = getAI(app, {
-        backend: new GoogleAIBackend()
-    });
-
-    const model = getGenerativeModel(ai, {
-        model: "gemini-2.5-flash"
-    });
 
     async function checkProfanityAI(text) {
         const prompt = `
@@ -1349,7 +1350,7 @@
             unsavedMoney = 0;
             unsavedPaper = 0;
             unsavedWorkers = 0;
-            unsavedWorkerCost = 0;
+            unsavedWorkerCost = lastFetchedWorkerCost;
             await sleep(3000);
         }
     }
