@@ -1308,6 +1308,7 @@
         if (gameUnlocked === 0 && (lastFetchedMoney + unsavedMoney) >= (lastFetchedWorkerCost + unsavedWorkerCost)) {
             unsavedWorkers += 1;
             unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
+            unsavedMoney -= unsavedWorkerCost;
             if (lastFetchedWorkers + unsavedWorkers === 0) {
                 autoWorker()
             }
@@ -1324,8 +1325,8 @@
     async function autoWorker() {
         while (true) {
             await sleep(waitTime);
-            unsavedMoney += workersHired * 5 * workersHired;
-            unsavedPaper += workersHired * 7 * workersHired;
+            unsavedMoney += (lastFetchedWorkers + unsavedWorkers) * 5 * (lastFetchedWorkers + unsavedWorkers);
+            unsavedPaper += (lastFetchedWorkers + unsavedWorkers) * 7 * (lastFetchedWorkers + unsavedWorkers);
             moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
             papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
         }
@@ -1337,7 +1338,7 @@
                 money: increment(unsavedMoney),
                 papersWritten: increment(unsavedPaper),
                 workersHired: increment(unsavedWorkers),
-                workerCost: increment(unsavedWorkerCost),
+                workerCost: unsavedWorkerCost,
             });
             const saveSnap = await getDoc(saveRef);
             const data = saveSnap.data();
@@ -1347,6 +1348,8 @@
             lastFetchedWorkerCost = Number(data.workerCost);
             unsavedMoney = 0;
             unsavedPaper = 0;
+            unsavedWorkers = 0;
+            unsavedWorkerCost = 0;
             await sleep(3000);
         }
     }
