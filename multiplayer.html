@@ -1312,6 +1312,7 @@
             unsavedWorkers += 1;
             unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
             unsavedMoney -= unsavedWorkerCost;
+            hireWorkerBtn.innerText = "Hire Worker: $" + (lastFetchedWorkerCost + unsavedWorkerCost);
         }
     }
 
