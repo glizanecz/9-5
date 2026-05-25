@@ -948,6 +948,8 @@
     let unsavedWorkerCost = 200;
     let lastFetchedWorkers = 0;
     let lastFetchedWorkerCost = 200;
+    let lastFetchedUsernameSetLimit = 4;
+    let unsavedUsernameSets = 0;
 
     skillTreeBtn.style.opacity = ".3";
     upgradeMenuBtn.style.opacity = ".3";
@@ -1140,6 +1142,9 @@
                 await setDoc(usernameSaveRef, {
                     username: usernameInput.value,
                 })
+                if (lastFetchedUsernameSetLimit + unsavedUsernameSets) {
+                    unsavedUsernameSets -= 1;
+                }
                 usernameInput.value = "";
             } else {
                 console.log("Profanity detected!")
@@ -1190,6 +1195,7 @@
                 autoMoney: 0,
                 autoPaper: 0,
                 workerCost: 200,
+                usernameSets: 4,
                 createdAt: Date.now(),
                 lastOnline: Date.now()
             });
@@ -1206,6 +1212,7 @@
                 autoMoney: data.autoMoney ?? 0,
                 autoPaper: data.autoPaper ?? 0,
                 workerCost: data.workerCost ?? 200,
+                usernameSets: data.usernameSets ?? 4,
                 createdAt: data.createdAt ?? Date.now(),
                 lastOnline: Date.now()
             }, { merge: true })
@@ -1340,6 +1347,7 @@
                 papersWritten: increment(unsavedPaper),
                 workersHired: increment(unsavedWorkers),
                 workerCost: unsavedWorkerCost,
+                usernameSets: increment(unsavedUsernameSets),
             });
             const saveSnap = await getDoc(saveRef);
             const data = saveSnap.data();
@@ -1347,9 +1355,11 @@
             lastFetchedPaper = Number(data.papersWritten);
             lastFetchedWorkers = Number(data.workersHired);
             lastFetchedWorkerCost = Number(data.workerCost);
+            lastFetchedUsernameSetLimit = Number(data.usernameSets);
             unsavedMoney = 0;
             unsavedPaper = 0;
             unsavedWorkers = 0;
+            unsavedUsernameSets = lastFetchedUsernameSetLimit;
             unsavedWorkerCost = lastFetchedWorkerCost;
             await sleep(3000);
         }
