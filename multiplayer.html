@@ -745,7 +745,8 @@
         getDoc,
         setDoc,
         updateDoc,
-        increment
+        increment,
+        serverTimestamp,
     } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -929,29 +930,52 @@
     const loadingText = document.getElementById("loadingText");
     const loadingBar = document.getElementById("loadingBar");
 
+    //Loading Text...
     let loadingTextBool = false;
     loadingMenu.style.display = "none";
 
+    //Menu Locks
     let skillTreeUnlocked = 1;
     let upgradeMenuUnlocked = 1;
     let luckMenuUnlocked = 1;
     let taxMenuUnlocked = 1;
     let moneyPrintMenuUnlocked = 1;
 
+    //Unsaved Values Handling
+    let unsavedMoneyMult = 0;
+    let unsavedPaperMult = 0;
     let unsavedMoney = 0;
-    let lastFetchedMoney = 0;
-    let moneyPerClick = .5;
+    let unsavedPromotions = 0;
+    let unsavedPromotionCost = 50;
+    let unsavedWritingTool = 0;
+    let unsavedWritingToolCost = 30;
+    let unsavedMoneyPerClick = .5;
     let unsavedPaper = 0;
-    let lastFetchedPaper = 0;
-    let paperPerClick = 1;
+    let unsavedPaperPerClick = 1;
     let unsavedWorkers = 0;
     let unsavedWorkerCost = 200;
-    let lastFetchedWorkers = 0;
-    let lastFetchedWorkerCost = 200;
-    let lastFetchedUsernameSetLimit = 4;
     let unsavedUsernameSets = 0;
     let unsavedAutoMoney = 0;
     let unsavedAutoPaper = 0;
+
+    //Last Fetched Values
+    let lastFetchedMoneyMult = 0;
+    let lastFetchedPaperMult = 0;
+    let lastFetchedMoney = 0;
+    let lastFetchedPromotions = 0;
+    let lastFetchedPromotionCost = 50;
+    let lastFetchedWritingTool = 0;
+    let lastFetchedWritingToolCost = 30;
+    let lastFetchedMoneyPerClick = .5;
+    let lastFetchedPaper = 0;
+    let lastFetchedPaperPerClick = 1;
+    let lastFetchedWorkers = 0;
+    let lastFetchedWorkerCost = 200;
+    let lastFetchedUsernameSetLimit = 4;
+    let lastFetchedAutoMoney = 0;
+    let lastFetchedAutoPaper = 0;
+
+
 
     skillTreeBtn.style.opacity = ".3";
     upgradeMenuBtn.style.opacity = ".3";
@@ -1188,40 +1212,29 @@
         }
 
         const saveSnap = await getDoc(saveRef);
+        const data = saveSnap.exists() ? saveSnap.data() : {};
 
-        if (!saveSnap.exists()) {
-            await setDoc(saveRef, {
-                money: 0,
-                papersWritten: 0,
-                workersHired: 0,
-                moneyPerClick: 1,
-                paperPerClick: 1,
-                autoMoney: 0,
-                autoPaper: 0,
-                workerCost: 200,
-                usernameSets: 4,
-                createdAt: Date.now(),
-                lastOnline: Date.now()
-            });
+        await setDoc(saveRef, {
+            money: data.money ?? 0,
+            moneyMult: data.moneyMult ?? 1,
+            paperMult: data.paperMult ?? 1,
+            papersWritten: data.papersWritten ?? 0,
+            workersHired: data.workersHired ?? 0,
+            moneyPerClick: data.moneyPerClick ?? 1,
+            paperPerClick: data.paperPerClick ?? 1,
+            autoMoney: data.autoMoney ?? 0,
+            autoPaper: data.autoPaper ?? 0,
+            workerCost: data.workerCost ?? 200,
+            usernameSets: data.usernameSets ?? 4,
+            createdAt: data.createdAt ?? serverTimestamp(),
+            lastOnline: serverTimestamp(),
+            promotions: data.promotions ?? 0,
+            promotionCost: data.promotionCost ?? 50,
+            writingTool: data.writingTool ?? 0,
+            writingToolCost: data.writingToolCost ?? 30,
+        }, { merge: true });
 
-            statusText.textContent = "New save created.";
-        } else {
-            const data = saveSnap.data();
-            await setDoc(saveRef, {
-                money: data.money ?? 0,
-                papersWritten: data.papersWritten ?? 0,
-                workersHired: data.workersHired ?? 0,
-                moneyPerClick: data.moneyPerClick ?? 1,
-                paperPerClick: data.paperPerClick ?? 1,
-                autoMoney: data.autoMoney ?? 0,
-                autoPaper: data.autoPaper ?? 0,
-                workerCost: data.workerCost ?? 200,
-                usernameSets: data.usernameSets ?? 4,
-                createdAt: data.createdAt ?? Date.now(),
-                lastOnline: Date.now()
-            }, { merge: true })
-            statusText.textContent = "Save already exists.";
-        }
+        statusText.textContent = saveSnap.exists() ? "Save already exists." : "New save created.";
     }
 
     //clansJoinedRef = doc(db, "users", currentUser.uid, "clan")
@@ -1335,8 +1348,8 @@
     }
 
     async function buttonClick() {
-        unsavedMoney += moneyPerClick;
-        unsavedPaper += paperPerClick;
+        unsavedMoney += unsavedMoneyPerClick;
+        unsavedPaper += unsavedPaperPerClick;
         moneyDisplay.innerText = "Money: $" + autoSuffixer((unsavedMoney + lastFetchedMoney));
         papersDisplay.innerText = "Papers Written: " + autoSuffixer((unsavedPaper + lastFetchedPaper));
     }
@@ -1351,6 +1364,16 @@
         }
     }
 
+    promotionBtn.onclick = function() {
+        if (unsavedPromotionCost <= (unsavedMoney + lastFetchedMoney)) {
+            unsavedPromotions += 1;
+            unsavedMoneyMult += .5;
+            unsavedMoney -= unsavedPromotionCost;
+            unsavedPromotionCost = unsavedPromotionCost * 1.5;
+            promotionBtn.innerText = "Get Promotion: " + unsavedPromotionCost + " Papers";
+        }
+    }
+
     async function updateDocValues() {
         while (true) {
             const updateData = {
@@ -1361,9 +1384,17 @@
                 autoMoney: unsavedAutoMoney,
                 autoPaper: unsavedAutoPaper,
             }
-
             if (unsavedWorkers > 0) {
                 updateData.workerCost = unsavedWorkerCost;
+            }
+            if (unsavedPromotions > 0) {
+                updateData.moneyMult = unsavedMoneyMult;
+                updateData.paperMult = unsavedPaperMult;
+                updateData.promotionCost = unsavedPromotionCost;
+            }
+            if (unsavedWritingTool > 0) {
+                updateData.paperPerClick = unsavedPaperPerClick;
+                updateData.writingToolCost = unsavedWritingToolCost;
             }
             await updateDoc(saveRef, updateData)
             const saveSnap = await getDoc(saveRef);
