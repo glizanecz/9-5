@@ -1383,6 +1383,75 @@
         }
     }
 
+    const suffixes = [
+        "k",
+        "M",
+        "B",
+        "T",
+        "Qd",
+        "Qn",
+        "Sx",
+        "Sp",
+        "Oc",
+        "No",
+        "Dc",
+        "Ud",
+        "Dd",
+        "Td",
+        "Qad",
+        "Qid",
+        "Sxd",
+        "Spd",
+        "Ocd",
+        "Nod",
+        "Vg",
+        "Uvg",
+        "Dvg",
+        "Tvg",
+        "Qavg",
+        "Qivg",
+        "Sxvg",
+        "Spvg",
+        "Ocvg",
+        "Novg",
+        "Tg",
+        "Utg"
+    ];
+
+    function autoSuffixer(valuePassed) {
+        let moneySuffixedOutput;
+        let numberString = String(valuePassed)
+        let numberString2 = String(Math.abs(Math.trunc(Number(valuePassed))))
+        let count = (numberString.match(new RegExp("0", "g")) || []).length;
+        let actualLength = numberString2.length;
+        let suffixSolution;
+        if (valuePassed >= 1000 || valuePassed <= -1000) {
+            suffixSolution = suffixes[Math.floor((actualLength - 1) / 3) - 1]
+            let startIndex = valuePassed < 0 ? 1 : 0;
+            let remainder = actualLength % 3 || 3;
+            moneySuffixedOutput = ((valuePassed < 0 ? "-" : "") + numberString.substring(startIndex, startIndex + remainder) + "." + numberString.substring(startIndex + remainder, startIndex + remainder + 1) + suffixSolution);
+        } else {
+            suffixSolution = ""
+            moneySuffixedOutput = valuePassed;
+        }
+        return moneySuffixedOutput;
+    }
+
+    function undoSuffix(valuePassed) {
+        if (isNaN(valuePassed) && valuePassed != undefined && valuePassed != null) {
+            let numberOfSuffix = Number(String(valuePassed).replace(/[a-zA-Z]/g, ""));
+            let valPassStr = String(valuePassed);
+            let suffix = valPassStr.replace(/[^a-zA-Z]/g, "");
+            let indexOfSuf = suffixes.indexOf(suffix);
+            let currentStringVal = "1"
+            for (let i = 0; i <= indexOfSuf; i++) {
+            currentStringVal += "000"
+            }
+            return Number(currentStringVal) * numberOfSuffix;
+        }
+        return Number(valuePassed);
+    }
+
 
   </script>
 
