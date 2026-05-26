@@ -1411,6 +1411,8 @@
             unsavedWorkers = 0;
             unsavedUsernameSets = 0;
             unsavedWorkerCost = lastFetchedWorkerCost;
+            moneyDisplay.innerText = "Money: $" + autoSuffixer((unsavedMoney + lastFetchedMoney));
+            papersDisplay.innerText = "Papers Written: " + autoSuffixer((unsavedPaper + lastFetchedPaper));
             hireWorkerBtn.innerText = "Hire Worker: $" + autoSuffixer(unsavedWorkerCost);
             await sleep(3000);
         }
