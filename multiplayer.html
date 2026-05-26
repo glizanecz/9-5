@@ -1368,7 +1368,7 @@
         if (unsavedPromotionCost <= (unsavedMoney + lastFetchedMoney)) {
             unsavedPromotions += 1;
             unsavedMoneyMult += .5;
-            unsavedMoney -= unsavedPromotionCost;
+            unsavedPaper -= unsavedPromotionCost;
             unsavedPromotionCost = Math.floor(unsavedPromotionCost * 1.5);
             promotionBtn.innerText = "Get Promotion: " + autoSuffixer(unsavedPromotionCost) + " Papers";
             moneyDisplay.innerText = "Money: $" + autoSuffixer((unsavedMoney + lastFetchedMoney));
