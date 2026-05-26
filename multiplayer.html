@@ -1353,15 +1353,19 @@
 
     async function updateDocValues() {
         while (true) {
-            await updateDoc(saveRef, {
+            const updateData = {
                 money: increment(unsavedMoney),
                 papersWritten: increment(unsavedPaper),
                 workersHired: increment(unsavedWorkers),
                 usernameSets: increment(unsavedUsernameSets),
-                workerCost: unsavedWorkerCost,
                 autoMoney: unsavedAutoMoney,
                 autoPaper: unsavedAutoPaper,
-            });
+            }
+
+            if (unsavedWorkers > 0) {
+                updateData.workerCost = unsavedWorkerCost;
+            }
+            await updateDoc(saveRef, updateData)
             const saveSnap = await getDoc(saveRef);
             const data = saveSnap.data();
             lastFetchedMoney = Number(data.money);
