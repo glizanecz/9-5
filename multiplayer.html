@@ -1369,8 +1369,8 @@
             unsavedPromotions += 1;
             unsavedMoneyMult += .5;
             unsavedMoney -= unsavedPromotionCost;
-            unsavedPromotionCost = unsavedPromotionCost * 1.5;
-            promotionBtn.innerText = "Get Promotion: " + unsavedPromotionCost + " Papers";
+            unsavedPromotionCost = Math.floor(unsavedPromotionCost * 1.5);
+            promotionBtn.innerText = "Get Promotion: " + autoSuffixer(unsavedPromotionCost) + " Papers";
         }
     }
 
