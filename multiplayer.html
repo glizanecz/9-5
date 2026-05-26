@@ -1257,9 +1257,9 @@
             lastFetchedPaper = Number(data.papersWritten);
             lastFetchedWorkerCost = Number(data.workerCost);
             lastFetchedWorkers = Number(data.workersHired);
-            moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
-            papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
-            hireWorkerBtn.innerText = "Hire Worker: $" + (unsavedWorkerCost);
+            moneyDisplay.innerText = "Money: $" + autoSuffixer(unsavedMoney + lastFetchedMoney);
+            papersDisplay.innerText = "Papers Written: " + autoSuffixer(unsavedPaper + lastFetchedPaper);
+            hireWorkerBtn.innerText = "Hire Worker: $" + autoSuffixer(unsavedWorkerCost);
             loadingBar.value = "99";
             updateDocValues();
             loadingBar.value = "100";
@@ -1329,16 +1329,16 @@
             unsavedWorkerCost = Math.floor((lastFetchedWorkerCost + unsavedWorkerCost) * 1.5);
             unsavedAutoMoney += (lastFetchedWorkers + unsavedWorkers) * 5 * (lastFetchedWorkers + unsavedWorkers);
             unsavedAutoPaper += (lastFetchedWorkers + unsavedWorkers) * 7 * (lastFetchedWorkers + unsavedWorkers);
-            moneyPerSecondDisplay.innerText = "Auto Cash Per Sec: $" + unsavedAutoMoney;
-            hireWorkerBtn.innerText = "Hire Worker: $" + (unsavedWorkerCost);
+            moneyPerSecondDisplay.innerText = "Auto Cash Per Sec: $" + autoSuffixer(unsavedAutoMoney);
+            hireWorkerBtn.innerText = "Hire Worker: $" + autoSuffixer(unsavedWorkerCost);
         }
     }
 
     async function buttonClick() {
         unsavedMoney += moneyPerClick;
         unsavedPaper += paperPerClick;
-        moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
-        papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
+        moneyDisplay.innerText = "Money: $" + autoSuffixer((unsavedMoney + lastFetchedMoney));
+        papersDisplay.innerText = "Papers Written: " + autoSuffixer((unsavedPaper + lastFetchedPaper));
     }
 
     async function autoWorker() {
@@ -1346,8 +1346,8 @@
             await sleep(waitTime);
             unsavedMoney += (lastFetchedWorkers + unsavedWorkers) * 5 * (lastFetchedWorkers + unsavedWorkers);
             unsavedPaper += (lastFetchedWorkers + unsavedWorkers) * 7 * (lastFetchedWorkers + unsavedWorkers);
-            moneyDisplay.innerText = "Money: $" + (unsavedMoney + lastFetchedMoney);
-            papersDisplay.innerText = "Papers Written: " + (unsavedPaper + lastFetchedPaper);
+            moneyDisplay.innerText = "Money: $" + autoSuffixer((unsavedMoney + lastFetchedMoney));
+            papersDisplay.innerText = "Papers Written: " + autoSuffixer((unsavedPaper + lastFetchedPaper));
         }
     }
 
