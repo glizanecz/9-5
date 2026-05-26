@@ -1365,7 +1365,7 @@
     }
 
     promotionBtn.onclick = function() {
-        if (unsavedPromotionCost <= (unsavedMoney + lastFetchedMoney)) {
+        if (unsavedPromotionCost <= (unsavedPaper + lastFetchedPaper)) {
             unsavedPromotions += 1;
             unsavedMoneyMult += .5;
             unsavedPaper -= unsavedPromotionCost;
