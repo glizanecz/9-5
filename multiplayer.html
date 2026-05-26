@@ -1371,6 +1371,8 @@
             unsavedMoney -= unsavedPromotionCost;
             unsavedPromotionCost = Math.floor(unsavedPromotionCost * 1.5);
             promotionBtn.innerText = "Get Promotion: " + autoSuffixer(unsavedPromotionCost) + " Papers";
+            moneyDisplay.innerText = "Money: $" + autoSuffixer((unsavedMoney + lastFetchedMoney));
+            papersDisplay.innerText = "Papers Written: " + autoSuffixer((unsavedPaper + lastFetchedPaper));
         }
     }
 
