@@ -1,10 +1,9 @@
 .mainMenuDecisions {
-    color: rgb(218, 120, 136);
+    background-color: rgb(218, 120, 136);
     border: none;
     width: 50px;
     height: 20px;
     border-radius: 10px;
-    
 }
 
 .h3Title {
@@ -21,4 +20,7 @@ background {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
 }
