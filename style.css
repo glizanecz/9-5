@@ -4,12 +4,16 @@
     width: fit-content;
     height: fit-content;
     border-radius: 5px;
+    padding: 5px;
 }
 
 .h3Title {
     color: rgb(137, 66, 78);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Times New Roman', Times, serif;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px;
 }
 
 .background {
@@ -23,5 +27,5 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    gap: 10px;
+    gap: 15px;
 }
