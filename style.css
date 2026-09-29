@@ -12,8 +12,8 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-background {
-    color: rgb(255, 204, 212);
+.background {
+    background-color: rgb(255, 204, 212);
 }
 
 .mainMenuDisplay {
