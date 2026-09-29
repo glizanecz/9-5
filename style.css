@@ -1,0 +1,13 @@
+mainMenuDecisions {
+    color: rgb(218, 120, 136);
+    border: none;
+    width: 50px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+h3Title {
+    color: rgb(137, 66, 78);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Times New Roman', Times, serif;
+}
