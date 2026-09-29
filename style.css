@@ -4,7 +4,6 @@
     width: fit-content;
     height: fit-content;
     border-radius: 5px;
-    row-gap: 10px;
 }
 
 .h3Title {
@@ -24,4 +23,5 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    row-gap: 10px;
 }
