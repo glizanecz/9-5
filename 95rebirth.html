@@ -10,16 +10,15 @@
   </head>
   <body>
     <main>
-      
-        <div class="mainMenuDisplay">
+
+        <div class="mainMenuDisplay" id="mainMenu">
             <h3 class="h3Title">☕︎ 9/5 Simulator 💼</h3>
-            <button class="mainMenuDecisions">Start New Game</button>
-            <button class="mainMenuDecisions">Load From Save</button>
-            <button class="mainMenuDecisions">Settings</button>
+            <button class="mainMenuDecisions" onclick="startGame()">Start New Game</button>
+            <button class="mainMenuDecisions" onclick="loadGame()">Load From Save</button>
+            <button class="mainMenuDecisions" onclick="loadSettings()">Settings</button>
         </div>
     </main>
-    <script>
-        //
-    </script>
+    <script src="definitions.js"></script>
+    <script src="gameCode.js"></script>
   </body>
 </html>
