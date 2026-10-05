@@ -6,6 +6,7 @@
     border-radius: 10px;
     padding: 15px;
     font-size: large;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .h3Title {
@@ -16,6 +17,7 @@
     margin-bottom: 0;
     padding: 10px;
     border-radius: 2px;
+    font-size: x-large;
 }
 
 .background {
