@@ -2,7 +2,8 @@ let papers = 0;
 
 window.startGame = function () {
     mainMenu.style.display = "none";
-    clickingMenu.style.display = "grid";
+    clickingTab.style.display = "grid";
+    paperDisplay.style.display = "grid";
 }
 
 window.openSettings = function () {
