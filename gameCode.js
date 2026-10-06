@@ -13,7 +13,7 @@ window.loadFromSave = function () {
     mainMenu.style.display = "none";
 }
 
-writeButton.onclick = writePaper;
+writeButton.onclick = writePaper();
 
 function writePaper() {
     papers += 1;
