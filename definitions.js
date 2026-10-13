@@ -1,0 +1,15 @@
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const startNewGame = document.getElementById("startNewGame");
+const loadFromSave = document.getElementById("loadFromSave");
+const viewSettings = document.getElementById("viewSettings");
+const mainMenu = document.getElementById("mainMenu");
+const clickMenu = document.getElementById("clickMenu");
+clickMenu.style.display = "none";
+const writePaperBtn = document.getElementById("writePaperBtn");
+const menuBar = document.getElementById("menuBar");
+menuBar.style.display = "none";
+const goToClickingTab = document.getElementById("goToClickingTab");
+const paperCount = document.getElementById("paperCount");
+let papers = 0;
+let money = 0;
+let workers = 0;
