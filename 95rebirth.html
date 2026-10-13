@@ -10,15 +10,23 @@
   </head>
   <body>
     <main>
+        <div id="menuBar" class="menuBar">
+            <button id="goToClickingTab">Main</button>
+        </div>
         <div id="mainMenu" class="mainMenuDisplay">
             <h3 class="h3Title">☕︎ 9/5 Simulator 💼</h3>
-            <button class="mainMenuDecisions">Start New Game</button>
-            <button class="mainMenuDecisions">Load From Save</button>
-            <button class="mainMenuDecisions">Settings</button>
+            <button id="startNewGame" class="mainMenuDecisions">Start New Game</button>
+            <button id="loadFromSave" class="mainMenuDecisions">Load From Save</button>
+            <button id="viewSettings" class="mainMenuDecisions">Settings</button>
+        </div>
+        <div id="clickMenu" class="clickMenuDisplay">
+            <h3 id="paperCount" class="paperCount">Papers Written: 0</h3>
+            <button id="writePaperBtn" class="writePaperBtn">Write Paper</button>
+            <br>
+            <button id="buyWorkerBtn" class="buyWorkerBtn">Buy Worker</button>
         </div>
     </main>
-    <script>
-        //
-    </script>
+    <script src="definitions.js"></script>
+    <script src="game.js"></script>
   </body>
 </html>
