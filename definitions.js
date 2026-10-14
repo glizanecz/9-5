@@ -13,3 +13,9 @@ const paperCount = document.getElementById("paperCount");
 let papers = 0;
 let money = 0;
 let workers = 0;
+
+let defaultValues = [
+    0, //Papers
+    0, //Money
+    0, //Workers
+]
