@@ -6,7 +6,7 @@ function saveGame(method, saveNumber) {
     }
     if (method === "localStorage") {
         let saveLocation = saveNumber == 1 ? "save1" : saveNumber == 2 ? "save2" : saveNumber == 3 ? "save3" : "save4"
-        localStorage.setItem(saveLocation, saveObject);
+        localStorage.setItem(saveLocation, JSON.stringify(saveObject));
     } else if (method === "saveCode") {
         let tempSaveCode = Object.values(saveObject);
         let tempSaveCode2 = tempSaveCode.join("|")
@@ -14,10 +14,10 @@ function saveGame(method, saveNumber) {
     }
 };
 
-function loadGame(method, saveDataFromLoad, saveNumber) {
+function loadGame(method, saveNumber) {
     if (method === "localStorage") {
         let saveLocation = saveNumber == 1 ? "save1" : saveNumber == 2 ? "save2" : saveNumber == 3 ? "save3" : "save4"
-        let savedVersion = localStorage.getItem(saveLocation)
-        return savedVersion
+        let savedVersion = JSON.parse(localStorage.getItem(saveLocation));
+
     }
 }
