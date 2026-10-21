@@ -4,6 +4,7 @@ viewSettings.onclick = openSettingsMenu;
 writePaperBtn.onclick = givePaper;
 
 async function makeGame() {
+    gameDisplay.style.display = "grid";
     mainMenu.style.display = "none";
     menuBar.style.display = "grid";
     clickMenu.style.display = "grid";

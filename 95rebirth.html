@@ -10,21 +10,24 @@
   </head>
   <body>
     <main>
-        <div id="menuBar" class="menuBar">
-            <button id="goToClickingTab">Main</button>
-        </div>
         <div id="mainMenu" class="mainMenuDisplay">
             <h3 class="h3Title">☕︎ 9/5 Simulator 💼</h3>
             <button id="startNewGame" class="mainMenuDecisions">Start New Game</button>
             <button id="loadFromSave" class="mainMenuDecisions">Load From Save</button>
             <button id="viewSettings" class="mainMenuDecisions">Settings</button>
         </div>
-        <div id="clickMenu" class="clickMenuDisplay">
-            <h3 id="paperCount" class="paperCount">Papers Written: 0</h3>
-            <button id="writePaperBtn" class="writePaperBtn">Write Paper</button>
+
+        <div id="gameDisplay" class="gameDisplayTab">
+            <button class="menuButtons" id="goToClickingTab">Main</button>
             <br>
-            <button id="buyWorkerBtn" class="buyWorkerBtn">Buy Worker</button>
-        </div>
+            <div id="clickMenu" class="clickMenuDisplay">
+                <h3 id="paperCount" class="paperCount">Papers Written: 0</h3>
+                <h4 id="moneyCount" class="moneyCount">Money: $0</h4>
+                <button id="writePaperBtn" class="writePaperBtn">Write Paper</button>
+                <button id="convertPapers" class="buyWorkerBtn">📰 Sell Articles 💵 ($1.50 Each)</button>
+                <button id="buyWorkerBtn" class="buyWorkerBtn">📝 Hire Writer 📝($200)</button>
+            </div>
+        </div> 
     </main>
     <script src="definitions.js"></script>
     <script src="saveGame.js"></script>
