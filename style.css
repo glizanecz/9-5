@@ -11,23 +11,19 @@
     -webkit-user-select: none; 
     -moz-user-select: none;    
     -ms-user-select: none;     
-    user-select: none;        
+    user-select: none;   
+    transition: transform 0.1s ease;     
 }
 
 .mainMenuDecisions:hover {
     background-color: rgb(255, 203, 212);
-    border: none;
-    width: 180px;
-    height: 80px;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: large;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    -webkit-user-select: none; 
-    -moz-user-select: none;    
-    -ms-user-select: none;     
-    user-select: none;      
+    transform: scale(1.05); 
+}
+
+.mainMenuDecisions:active {
+    background-color: rgb(255, 203, 212);
+    transform: scale(1.05); 
+    transform: translateY(2px);     
 }
 
 
@@ -35,7 +31,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(255, 234, 237);
+    background-color: rgb(225, 194, 198);
 }
 
 
@@ -68,6 +64,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-items: center;
     justify-content: center;
     text-align: center;
 }
@@ -95,8 +92,8 @@ body {
 .writePaperBtn {
     background-color: rgb(255, 183, 195);
     border: none;
-    width: 12%;
-    height: 70%;
+    width: 80%;
+    height: 80%;
     border-radius: 10px;
     padding: 10px;
     font-size: x-large;
@@ -112,10 +109,10 @@ body {
 }
 
 .menuBar {
-    background-color: rgb(255, 183, 195);
+    background-color: rgb(255, 209, 217);
     border: none;
-    width: 175px;
-    height: 75px;
+    width: 100%;
+    height: fit-content;
     border-radius: 10px;
     padding: 15px;
     font-size: large;
@@ -124,14 +121,16 @@ body {
     -webkit-user-select: none; 
     -moz-user-select: none;    
     -ms-user-select: none;     
-    user-select: none;      
+    user-select: none;    
+    display: flex;
+    flex-direction: row;  
 }
 
 .buyWorkerBtn {
     background-color: rgb(255, 183, 195);
     border: none;
-    width: 10%;
-    height: 50%;
+    width: 75%;
+    height: 80%;
     border-radius: 10px;
     padding: 15px;
     font-size: large;
@@ -142,31 +141,27 @@ body {
     -ms-user-select: none;     
     user-select: none;        
     margin-bottom: 10px;
-}
-
-.buyWorkerBtn:hover {
-    width: 10.5%;
-    height: 55%;
-    background-color: rgb(255, 172, 186);
     transition: transform 0.1s ease;
 }
 
+.buyWorkerBtn:hover {
+    transform: scale(1.05);
+    background-color: rgb(255, 172, 186);
+}
+
 .buyWorkerBtn:active {
-    width: 10.5%;
-    height: 55%;
+    transform: scale(1.05);
     transform: translateY(2px);
     background-color: rgb(255, 172, 186);
 }
 
 .writePaperBtn:hover {
-    width: 12.2%;
-    height: 75%;
+    transform: scale(1.05);
     background-color: rgb(255, 172, 186);
 }
 
 .writePaperBtn:active {
-    width: 12.2%;
-    height: 75%;
+    transform: scale(1.05);
     transform: translateY(2px);
     background-color: rgb(255, 172, 186);
 }
@@ -190,10 +185,11 @@ body {
 .menuButtons {
     background-color: rgb(255, 155, 172);
     border: none;
-    width: 5%;
-    height: 150%;
+    width: 8%;
+    height: 175%;
     border-radius: 5px;
     padding: 5px;
+    margin-right: 10px;
     font-size: small;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -206,14 +202,12 @@ body {
 
 .menuButtons:hover {
     background-color: rgb(255, 124, 146);
-    width: 5.1%;
-    height: 152%;
+    transform: scale(1.02);
 }
 
 .menuButtons:active {
     background-color: rgb(255, 124, 146);
-    width: 5.1%;
-    height: 152%;
+    transform: scale(1.02);
     transform: translateY(2px);
 }
 
