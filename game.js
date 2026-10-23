@@ -4,6 +4,19 @@ viewSettings.onclick = openSettingsMenu;
 writePaperBtn.onclick = givePaper;
 buyWorkerBtn.onclick = startWorkerLoop;
 convertPapers.onclick = convPapers;
+goToMainMenu.onclick = goToMnMenu;
+resumeGame.onclick = resumeGameFunc;
+
+function goToMnMenu() {
+    gameDisplay.style.display = "none";
+    mainMenu.style.display = "flex";
+    resumeGame.style.display = "block";
+}
+
+function resumeGameFunc() {
+    mainMenu.style.display = "none";
+    gameDisplay.style.display = "flex";
+}
 
 function convPapers() {
     money += papers * articlePrice;
@@ -57,8 +70,14 @@ async function makeGame() {
     gameDisplay.style.display = "grid";
     mainMenu.style.display = "none";
     clickMenu.style.display = "grid";
-    
-
+    money = 0;
+    papers = 0;
+    workers = 0;
+    workerPrice = 200;
+    articlePrice = 1.5;
+    paperCount.innerText = "Papers Written: " + papers.toFixed(0);
+    moneyCount.innerText = "Money: $" + money.toFixed(2);
+    buyWorkerBtn.innerText = "Hire Writer: $" + workerPrice.toFixed(2); 
 }
 
 async function loadSaveMenu() {
