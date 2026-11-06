@@ -6,6 +6,26 @@ buyWorkerBtn.onclick = startWorkerLoop;
 convertPapers.onclick = convPapers;
 goToMainMenu.onclick = goToMnMenu;
 resumeGame.onclick = resumeGameFunc;
+toggleDarkMode.onclick = () => themeSwitch("darkTheme");
+toggleGreenMode.onclick = () => themeSwitch("greenTheme");
+togglePurpleMode.onclick = () => themeSwitch("purpleTheme");
+returnToMMSettings.onclick = settingsReturn;
+btmmolg.onclick = lfsreturn;
+
+
+function lfsreturn() {
+    loadFromSaveMenu.style.display = "none";
+    mainMenu.style.display = "flex";
+}
+
+function settingsReturn() {
+    settingsMenu.style.display = "none";
+    mainMenu.style.display = "flex";
+}
+
+function toggleDarkModeFunc() {
+    document.body.classList.toggle("darkTheme");
+}
 
 function goToMnMenu() {
     gameDisplay.style.display = "none";
@@ -82,13 +102,24 @@ async function makeGame() {
 
 async function loadSaveMenu() {
     mainMenu.style.display = "none";
+    loadFromSaveMenu.style.display = "flex";
 }
 
 async function openSettingsMenu() {
     mainMenu.style.display = "none";
+    settingsMenu.style.display = "flex";
 }
 
 async function givePaper() {
     papers += 1;
     paperCount.innerText = "Papers Written: " + papers.toFixed(0);
+}
+
+function themeSwitch(theme) {
+    if (document.body.classList.contains(theme)) {
+        document.body.classList.remove("darkTheme","greenTheme","purpleTheme");
+        return;
+    } 
+    document.body.classList.remove("darkTheme","greenTheme","purpleTheme");
+    document.body.classList.add(theme)
 }

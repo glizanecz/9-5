@@ -1,5 +1,70 @@
+:root {
+    --gameButtons: rgb(255, 183, 195);
+    --gameButtonsHoA: rgb(255, 172, 186);
+    --menuBarColor: rgb(255, 155, 172);
+    --mmButtons: rgb(255, 179, 191);
+    --mmButtonsHoA: rgb(255, 150, 168);
+
+    --bodyColor: rgb(255, 223, 228);
+    --mainGameBg: rgb(255, 222, 222);
+    --menuBar: rgb(255, 183, 195);
+
+
+    --titleColor: rgb(110, 48, 59);
+    --titleBgColor: rgb(250, 203, 203); 
+    --backgrounds: rgb(255, 229, 233);
+}
+
+body.darkTheme {
+    --gameButtons: rgb(134, 134, 134);
+    --gameButtonsHoA: rgb(156, 156, 156);
+    --menuBarColor: rgb(39, 39, 39);
+    --mmButtons: rgb(104, 104, 104);
+    --mmButtonsHoA: rgb(128, 128, 128);
+
+    --bodyColor: rgb(36, 36, 36);
+    --mainGameBg: rgb(73, 73, 73);
+    --menuBar: rgb(48, 48, 48);
+    --backgrounds: rgb(58, 58, 58);
+
+    --titleColor: rgb(36, 36, 36);
+    --titleBgColor: rgb(122, 122, 122);
+}
+
+body.greenTheme {
+    --gameButtons: rgb(171, 204, 167);
+    --gameButtonsHoA: rgb(166, 204, 168);
+    --menuBarColor: rgb(140, 185, 148);
+    --mmButtons: rgb(138, 187, 150);
+    --mmButtonsHoA: rgb(127, 175, 122);
+
+    --bodyColor: rgb(193, 235, 191);
+    --mainGameBg: rgb(155, 190, 164);
+    --menuBar: rgb(79, 153, 99);
+    --backgrounds: rgb(189, 253, 211);
+
+    --titleColor: rgb(38, 90, 38);
+    --titleBgColor: rgb(255, 255, 255);
+}
+
+body.purpleTheme {
+    --gameButtons: rgb(190, 171, 204);
+    --gameButtonsHoA: rgb(186, 166, 204);
+    --menuBarColor: rgb(167, 140, 185);
+    --mmButtons: rgb(167, 138, 187);
+    --mmButtonsHoA: rgb(151, 122, 175);
+
+    --bodyColor: rgb(221, 191, 235);
+    --mainGameBg: rgb(176, 155, 190);
+    --menuBar: rgb(123, 79, 153);
+    --backgrounds: rgb(231, 189, 253);
+
+    --titleColor: rgb(61, 38, 90);
+    --titleBgColor: rgb(255, 255, 255);
+}
+
 .mainMenuDecisions {
-    background-color: rgb(255, 203, 212);
+    background-color: var(--mmButtons);
     border: none;
     width: 175px;
     height: 75px;
@@ -15,13 +80,31 @@
     transition: transform 0.1s ease;     
 }
 
+.settingsDecisions {
+    background-color: var(--mmButtons);
+    border: none;
+    width: 125px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: small;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;   
+    transition: transform 0.1s ease;     
+}
+
+
 .mainMenuDecisions:hover {
-    background-color: rgb(255, 203, 212);
+    background-color: var(--mmButtonsHoA);
     transform: scale(1.05); 
 }
 
 .mainMenuDecisions:active {
-    background-color: rgb(255, 203, 212);
+    background-color: var(--mmButtonsHoA);
     transform: scale(1.05); 
     transform: translateY(2px);     
 }
@@ -31,19 +114,19 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(225, 194, 198);
+    background-color: var(--bodyColor);
 }
 
 
 .h3Title {
-    color: rgb(110, 48, 59);
+    color: var(--titleColor);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Times New Roman', Times, serif;
     margin-top: 0;
     margin-bottom: 0;
     padding: 10px;
     border-radius: 3px;
-    background-color: rgb(250, 203, 203);
+    background-color: var(--titleBgColor);
     -webkit-user-select: none; 
     -moz-user-select: none;    
     -ms-user-select: none;     
@@ -57,7 +140,7 @@ body {
     user-select: none;    
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Times New Roman', Times, serif;
-    background-color: rgb(255, 225, 225);
+    background-color: var(--mainGameBg);
     width: 100%;
     height: auto;
     padding:  10px;
@@ -90,7 +173,7 @@ body {
 }
 
 .writePaperBtn {
-    background-color: rgb(255, 183, 195);
+    background-color: var(--gameButtons);
     border: none;
     width: 80%;
     height: 80%;
@@ -109,7 +192,7 @@ body {
 }
 
 .menuBar {
-    background-color: rgb(255, 209, 217);
+    background-color: var(--menuBarColor);
     border: none;
     width: 100%;
     height: fit-content;
@@ -127,7 +210,7 @@ body {
 }
 
 .buyWorkerBtn {
-    background-color: rgb(255, 183, 195);
+    background-color: var(--gameButtons);
     border: none;
     width: 75%;
     height: 80%;
@@ -146,30 +229,30 @@ body {
 
 .buyWorkerBtn:hover {
     transform: scale(1.05);
-    background-color: rgb(255, 172, 186);
+    background-color: var(--gameButtonsHoA);
 }
 
 .buyWorkerBtn:active {
     transform: scale(1.05);
     transform: translateY(2px);
-    background-color: rgb(255, 172, 186);
+    background-color: var(--gameButtonsHoA);
 }
 
 .writePaperBtn:hover {
     transform: scale(1.05);
-    background-color: rgb(255, 172, 186);
+    background-color: var(--gameButtonsHoA);
 }
 
 .writePaperBtn:active {
     transform: scale(1.05);
     transform: translateY(2px);
-    background-color: rgb(255, 172, 186);
+    background-color: var(--gameButtonsHoA);
 }
 
 
 
 .background {
-    background-color: rgb(255, 229, 233);
+    background-color: var(--backgrounds);
 }
 
 .mainMenuDisplay {
@@ -183,7 +266,7 @@ body {
 }
 
 .menuButtons {
-    background-color: rgb(255, 155, 172);
+    background-color: var(--mmButtons);
     border: none;
     width: 8%;
     height: 175%;
@@ -201,17 +284,19 @@ body {
 }
 
 .menuButtons:hover {
-    background-color: rgb(255, 124, 146);
+    background-color: var(--gameButtonsHoA);
     transform: scale(1.02);
 }
 
 .menuButtons:active {
-    background-color: rgb(255, 124, 146);
+    background-color: var(--gameButtonsHoA);
     transform: scale(1.02);
     transform: translateY(2px);
 }
 
 .gameDisplayTab {
-    background-color: rgb(255, 225, 229);
+    background-color: var(--mainGameBg);
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
