@@ -1,7 +1,7 @@
 :root {
     --gameButtons: rgb(255, 183, 195);
     --gameButtonsHoA: rgb(255, 172, 186);
-    --menuBarColor: rgb(255, 155, 172);
+    --menuBarButtons: rgb(255, 155, 172);
     --mmButtons: rgb(255, 179, 191);
     --mmButtonsHoA: rgb(255, 150, 168);
 
@@ -18,7 +18,7 @@
 body.darkTheme {
     --gameButtons: rgb(134, 134, 134);
     --gameButtonsHoA: rgb(156, 156, 156);
-    --menuBarColor: rgb(39, 39, 39);
+    --menuBarButtons: rgb(39, 39, 39);
     --mmButtons: rgb(104, 104, 104);
     --mmButtonsHoA: rgb(128, 128, 128);
 
@@ -34,7 +34,7 @@ body.darkTheme {
 body.greenTheme {
     --gameButtons: rgb(171, 204, 167);
     --gameButtonsHoA: rgb(166, 204, 168);
-    --menuBarColor: rgb(140, 185, 148);
+    --menuBarButtons: rgb(107, 163, 116);
     --mmButtons: rgb(138, 187, 150);
     --mmButtonsHoA: rgb(127, 175, 122);
 
@@ -50,7 +50,7 @@ body.greenTheme {
 body.purpleTheme {
     --gameButtons: rgb(190, 171, 204);
     --gameButtonsHoA: rgb(186, 166, 204);
-    --menuBarColor: rgb(167, 140, 185);
+    --menuBarButtons: rgb(124, 93, 145);
     --mmButtons: rgb(167, 138, 187);
     --mmButtonsHoA: rgb(151, 122, 175);
 
@@ -60,6 +60,38 @@ body.purpleTheme {
     --backgrounds: rgb(231, 189, 253);
 
     --titleColor: rgb(61, 38, 90);
+    --titleBgColor: rgb(255, 255, 255);
+}
+
+body.orangeTheme {
+    --gameButtons: rgb(255, 179, 138);
+    --gameButtonsHoA: rgb(255, 163, 117);
+    --menuBarButtons: rgb(230, 115, 60);
+    --mmButtons: rgb(255, 153, 102);
+    --mmButtonsHoA: rgb(240, 135, 82);
+
+    --bodyColor: rgb(255, 235, 224);
+    --mainGameBg: rgb(255, 204, 179);
+    --menuBar: rgb(242, 133, 78);
+    --backgrounds: rgb(255, 220, 204);
+
+    --titleColor: rgb(128, 48, 10);
+    --titleBgColor: rgb(255, 255, 255);
+}
+
+body.goldenTheme {
+    --gameButtons: rgb(240, 203, 117);
+    --gameButtonsHoA: rgb(232, 191, 95);
+    --menuBarButtons: rgb(184, 142, 44);
+    --mmButtons: rgb(222, 178, 80);
+    --mmButtonsHoA: rgb(207, 162, 62);
+
+    --bodyColor: rgb(253, 248, 228);
+    --mainGameBg: rgb(245, 226, 170);
+    --menuBar: rgb(212, 168, 64);
+    --backgrounds: rgb(250, 238, 195);
+
+    --titleColor: rgb(102, 75, 12);
     --titleBgColor: rgb(255, 255, 255);
 }
 
@@ -192,7 +224,7 @@ body {
 }
 
 .menuBar {
-    background-color: var(--menuBarColor);
+    background-color: var(--menuBarButtons);
     border: none;
     width: 100%;
     height: fit-content;

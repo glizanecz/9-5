@@ -9,6 +9,8 @@ resumeGame.onclick = resumeGameFunc;
 toggleDarkMode.onclick = () => themeSwitch("darkTheme");
 toggleGreenMode.onclick = () => themeSwitch("greenTheme");
 togglePurpleMode.onclick = () => themeSwitch("purpleTheme");
+orangeModeToggle.onclick = () => themeSwitch("orangeTheme");
+goldenModeToggle.onclick = () => themeSwitch("goldenTheme");
 returnToMMSettings.onclick = settingsReturn;
 btmmolg.onclick = lfsreturn;
 
@@ -117,9 +119,9 @@ async function givePaper() {
 
 function themeSwitch(theme) {
     if (document.body.classList.contains(theme)) {
-        document.body.classList.remove("darkTheme","greenTheme","purpleTheme");
+        document.body.classList.remove("darkTheme","greenTheme","purpleTheme", "orangeTheme", "goldenTheme");
         return;
     } 
-    document.body.classList.remove("darkTheme","greenTheme","purpleTheme");
+    document.body.classList.remove("darkTheme","greenTheme","purpleTheme", "orangeTheme", "goldenTheme");
     document.body.classList.add(theme)
 }
