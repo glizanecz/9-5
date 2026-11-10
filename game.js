@@ -22,7 +22,11 @@ function buyCoffeeFunc () {
         money -= 10;
         coffeesBought += 1;
         coffeeMult += .5;
-        coffeeTimer += 30;
+        multiTimeObject.push({
+            type: "coffee",
+            timer: 30,
+            multi: .5,
+        });
         coffeePrice *= 1.25;
         buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + coffeePrice;
         return
@@ -30,7 +34,11 @@ function buyCoffeeFunc () {
     if (coffeePrice <= money) {
         coffeesBought += 1;
         coffeeMult += .5;
-        coffeeTimer += 30;
+        multiTimeObject.push({
+            type: "coffee",
+            timer: 30,
+            multi: .5,
+        });
         money -= coffeePrice;
         coffeePrice *= 1.25;
         buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + coffeePrice;
@@ -43,7 +51,11 @@ function buyEnergyFunc () {
         money -= 10;
         energyDrinksBought += 1;
         energyMult += 2.5;
-        energyTimer += 30;
+        multiTimeObject.push({
+            type: "engDrink",
+            timer: 15,
+            multi: 2.5,
+        });
         energyPrice *= 1.25;
         buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
         return
@@ -51,7 +63,11 @@ function buyEnergyFunc () {
     if (energyPrice <= money) {
         energyDrinksBought += 1;
         energyMult += 2.5;
-        energyTimer += 30;
+        multiTimeObject.push({
+            type: "engDrink",
+            timer: 15,
+            multi: 2.5,
+        });
         money -= energyPrice;
         energyPrice *= 1.25;
         buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
@@ -62,18 +78,20 @@ function buyEnergyFunc () {
 async function reduceMultTimers () {
     while (true) {
         await sleep(1000);
-        if (coffeeTimer === 0) {
-            coffeeTimer -= 0;
-            coffeeMult = 1;
-            return
+        drinkMultiplierTotal = 0;
+        for (const drink of multiTimeObject) {
+            drink.timer = drink.timer - 1;
+            if (drink.timer === 0) {
+                let indexOfDrink = multiTimeObject.indexOf(drink);
+                if (indexOfDrink > -1) {
+                    multiTimeObject.splice(indexOfDrink, 1);
+                }
+            }
+            drinkMultiplierTotal += drink.multi;
         }
-        if (energyTimer === 0) {
-            energyTimer -= 0;
-            energyMult = 1;
-            return
-        }
-        coffeeTimer -= 1;
-        energyTimer -= 1;
+        cofShopMultiDisplay.innerText = "+" + drinkMultiplierTotal;
+        fakeTempConsole.value = "";
+        fakeTempConsole.value = multiTimeObject;
     }
 }
 
@@ -175,7 +193,7 @@ async function openSettingsMenu() {
 }
 
 async function givePaper() {
-    let papersGained = (1 * (coffeeMult + energyMult));
+    let papersGained = (1 * (drinkMultiplierTotal));
     papers += papersGained;
     money += papersGained * articlePrice;
     moneyCount.innerText = "Money: $" + money.toFixed(2);
