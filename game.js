@@ -87,7 +87,7 @@ function buyWorkersCoffeeFunc () {
     //next update :=)
 }
 
-function buyProductivityBurst () {
+function buyProductivityBurstFunc () {
     //next update :3
 }
 
