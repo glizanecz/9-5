@@ -176,7 +176,7 @@ async function openSettingsMenu() {
 
 async function givePaper() {
     papers += (1 * (coffeeMult + energyMult));
-    money += papers * articlePrice;
+    money += articlePrice;
     moneyCount.innerText = "Money: $" + money.toFixed(2);
     paperCount.innerText = "Papers Written: " + papers.toFixed(0);
 }
