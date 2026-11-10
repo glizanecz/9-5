@@ -20,6 +20,7 @@ reduceMultTimers();
 function buyCoffeeFunc () {
     if (coffeesBought === 0 && money >= 10) {
         money -= 10;
+        moneyCount.innerText = "Money: $" + money.toFixed(2);
         coffeesBought += 1;
         coffeeMult += .5;
         multiTimeObject.push({
@@ -27,7 +28,8 @@ function buyCoffeeFunc () {
             timer: 30,
             multi: .5,
         });
-        coffeePrice *= 1.25;
+        coffeePrice *= 1.2;
+        coffeePrice = coffeePrice.toFixed(2);
         buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + coffeePrice;
         return
     } 
@@ -40,7 +42,9 @@ function buyCoffeeFunc () {
             multi: .5,
         });
         money -= coffeePrice;
-        coffeePrice *= 1.25;
+        moneyCount.innerText = "Money: $" + money.toFixed(2);
+        coffeePrice *= 1.2;
+        coffeePrice = coffeePrice.toFixed(2);
         buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + coffeePrice;
         return
     }
@@ -48,7 +52,8 @@ function buyCoffeeFunc () {
 
 function buyEnergyFunc () {
     if (energyDrinksBought === 0 && money >= 10) {
-        money -= 10;
+        money -= 75;
+        moneyCount.innerText = "Money: $" + money.toFixed(2);
         energyDrinksBought += 1;
         energyMult += 2.5;
         multiTimeObject.push({
@@ -56,7 +61,8 @@ function buyEnergyFunc () {
             timer: 15,
             multi: 2.5,
         });
-        energyPrice *= 1.25;
+        energyPrice *= 1.5;
+        energyPrice = energyPrice.toFixed(2)
         buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
         return
     } 
@@ -69,7 +75,9 @@ function buyEnergyFunc () {
             multi: 2.5,
         });
         money -= energyPrice;
-        energyPrice *= 1.25;
+        moneyCount.innerText = "Money: $" + money.toFixed(2);
+        energyPrice *= 1.5;
+        energyPrice = energyPrice.toFixed(2)
         buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
         return
     }
@@ -89,9 +97,12 @@ async function reduceMultTimers () {
             }
             drinkMultiplierTotal += drink.multi;
         }
-        cofShopMultiDisplay.innerText = "+" + drinkMultiplierTotal;
-        fakeTempConsole.value = "";
-        fakeTempConsole.value = multiTimeObject;
+        if (multiTimeObject.length > 0) {
+            cofShopMultiDisplay.innerText = "Coffee Shop | +" + drinkMultiplierTotal + "x Multiplier";
+            console.log(multiTimeObject);
+        } else {
+            cofShopMultiDisplay.innerText = "Coffee Shop (No Multipliers Currently Active)"
+        }
     }
 }
 
@@ -193,7 +204,8 @@ async function openSettingsMenu() {
 }
 
 async function givePaper() {
-    let papersGained = (1 * (drinkMultiplierTotal));
+    drinkMultiplierTotal = drinkMultiplierTotal === 0 ? 1 : drinkMultiplierTotal;
+    let papersGained = (1 * (drinkMultiplierTotal)).toFixed(2);
     papers += papersGained;
     money += papersGained * articlePrice;
     moneyCount.innerText = "Money: $" + money.toFixed(2);

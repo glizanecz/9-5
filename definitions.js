@@ -27,7 +27,6 @@ const buyEngDrink = document.getElementById("buyEngDrink");
 const buyCoffee = document.getElementById("buyCoffee");
 const menuBar = document.getElementById("menuBar");
 const btmmolg = document.getElementById("btmmolg");
-const fakeTempConsole = document.getElementById("fakeTempConsole");
 const cofShopMultiDisplay = document.getElementById("cofShopMultiDisplay");
 loadFromSaveMenu.style.display = "none";
 resumeGame.style.display = "none";
