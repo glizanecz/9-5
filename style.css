@@ -340,3 +340,22 @@ body {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.greyedOutBtn {
+    background-color: var(--gameButtons);
+    border: none;
+    width: 75%;
+    height: 80%;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;        
+    margin-bottom: 10px;
+    transition: transform 0.1s ease;
+    opacity: .45;   
+}

@@ -20,7 +20,7 @@ reduceMultTimers();
 function buyCoffeeFunc () {
     if (coffeesBought === 0 && money >= 10) {
         money -= 10;
-        moneyCount.innerText = "Money: $" + money.toFixed(2);
+        displayMoney();
         coffeesBought += 1;
         coffeeMult += .5;
         multiTimeObject.push({
@@ -30,7 +30,7 @@ function buyCoffeeFunc () {
         });
         coffeePrice *= 1.2;
         coffeePrice = coffeePrice.toFixed(2);
-        buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + coffeePrice;
+        buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + autoSuffixer(coffeePrice);
         return
     } 
     if (coffeePrice <= money) {
@@ -42,10 +42,10 @@ function buyCoffeeFunc () {
             multi: .5,
         });
         money -= coffeePrice;
-        moneyCount.innerText = "Money: $" + money.toFixed(2);
+        displayMoney();
         coffeePrice *= 1.2;
         coffeePrice = coffeePrice.toFixed(2);
-        buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + coffeePrice;
+        buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + autoSuffixer(coffeePrice);
         return
     }
 }
@@ -53,7 +53,7 @@ function buyCoffeeFunc () {
 function buyEnergyFunc () {
     if (energyDrinksBought === 0 && money >= 10) {
         money -= 75;
-        moneyCount.innerText = "Money: $" + money.toFixed(2);
+        displayMoney();
         energyDrinksBought += 1;
         energyMult += 2.5;
         multiTimeObject.push({
@@ -63,7 +63,7 @@ function buyEnergyFunc () {
         });
         energyPrice *= 1.5;
         energyPrice = energyPrice.toFixed(2)
-        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
+        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + autoSuffixer(energyPrice);
         return
     } 
     if (energyPrice <= money) {
@@ -75,12 +75,20 @@ function buyEnergyFunc () {
             multi: 2.5,
         });
         money -= energyPrice;
-        moneyCount.innerText = "Money: $" + money.toFixed(2);
+        displayMoney();
         energyPrice *= 1.5;
         energyPrice = energyPrice.toFixed(2)
-        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
+        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + autoSuffixer(energyPrice);
         return
     }
+}
+
+function buyWorkersCoffeeFunc () {
+    //next update :=)
+}
+
+function buyProductivityBurst () {
+    //next update :3
 }
 
 async function reduceMultTimers () {
@@ -98,10 +106,9 @@ async function reduceMultTimers () {
             drinkMultiplierTotal += drink.multi;
         }
         if (multiTimeObject.length > 0) {
-            cofShopMultiDisplay.innerText = "Coffee Shop | +" + drinkMultiplierTotal + "x Multiplier";
-            console.log(multiTimeObject);
+            cofShopMultiDisplay.innerText = "Coffee Shop | +" + autoSuffixer(drinkMultiplierTotal) + "x Multiplier";
         } else {
-            cofShopMultiDisplay.innerText = "Coffee Shop (No Multipliers Currently Active)"
+            cofShopMultiDisplay.innerText = "Coffee Shop"
         }
     }
 }
@@ -146,7 +153,7 @@ function startWorkerLoop() {
     }
     workers++
     money -= workerPrice;
-    moneyCount.innerText = "Money: $" + money.toFixed(2);
+    displayMoney();
     workerPrice *= 1.25
     buyWorkerBtn.innerText = "Hire Writer: $" + workerPrice.toFixed(2); 
 }
@@ -174,8 +181,10 @@ function autoSuffixer(valuePassed) {
 async function workerLoop() {
     while (workerLoopEnabled) {
         await sleep(1000)
-        papers += (1 * workers);
-        paperCount.innerText = "Papers Written: " + papers.toFixed(0);
+        let papersGained = Math.ceil((10 * (workers / 2) * workers));
+        papers += papersGained;
+        convMoney(papersGained);
+        displayPaper();
     }
 }
 
@@ -188,9 +197,9 @@ async function makeGame() {
     workers = 0;
     workerPrice = 200;
     articlePrice = 1.5;
-    paperCount.innerText = "Papers Written: " + papers.toFixed(0);
-    moneyCount.innerText = "Money: $" + money.toFixed(2);
-    buyWorkerBtn.innerText = "Hire Writer: $" + workerPrice.toFixed(2); 
+    displayPaper();
+    displayMoney();
+    buyWorkerBtn.innerText = "Hire Writer: $" + autoSuffixer(workerPrice.toFixed(2)); 
 }
 
 async function loadSaveMenu() {
@@ -204,12 +213,60 @@ async function openSettingsMenu() {
 }
 
 async function givePaper() {
-    drinkMultiplierTotal = drinkMultiplierTotal === 0 ? 1 : drinkMultiplierTotal;
-    let papersGained = (1 * (drinkMultiplierTotal)).toFixed(2);
+    let papersGained = Number((1 * (drinkMultiplierTotal + 1)).toFixed(2));
     papers += papersGained;
+    convMoney(papersGained);
+    displayPaper();
+}
+
+const suffixes = [
+  "k",
+  "M",
+  "B",
+  "T",
+  "Qd",
+  "Qn",
+  "Sx",
+  "Sp",
+  "Oc",
+  "No",
+  "Dc",
+  "Ud",
+  "Dd",
+  "Td",
+  "Qad",
+  "Qid",
+  "Sxd",
+  "Spd",
+  "Ocd",
+  "Nod",
+  "Vg",
+  "Uvg",
+  "Dvg",
+  "Tvg",
+  "Qavg",
+  "Qivg",
+  "Sxvg",
+  "Spvg",
+  "Ocvg",
+  "Novg",
+  "Tg",
+  "Utg"
+];
+
+function displayPaper () {
+    let paperAsNumber = Number(papers);
+    paperCount.innerText = "Papers Written: " + autoSuffixer(Number(paperAsNumber.toFixed(0)));
+}
+
+function displayMoney () {
+    let moneyAsNumber = Number(money);
+    moneyCount.innerText = "Money: $" + autoSuffixer(Number(moneyAsNumber.toFixed(2)));
+}
+
+function convMoney (papersGained) {
     money += papersGained * articlePrice;
-    moneyCount.innerText = "Money: $" + money.toFixed(2);
-    paperCount.innerText = "Papers Written: " + papers.toFixed(0);
+    displayMoney();
 }
 
 function themeSwitch(theme) {
