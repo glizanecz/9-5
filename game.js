@@ -3,7 +3,6 @@ loadFromSave.onclick = loadSaveMenu;
 viewSettings.onclick = openSettingsMenu;
 writePaperBtn.onclick = givePaper;
 buyWorkerBtn.onclick = startWorkerLoop;
-convertPapers.onclick = convPapers;
 goToMainMenu.onclick = goToMnMenu;
 resumeGame.onclick = resumeGameFunc;
 toggleDarkMode.onclick = () => themeSwitch("darkTheme");
@@ -110,13 +109,6 @@ function resumeGameFunc() {
     clickMenu.style.display = "grid";
 }
 
-function convPapers() {
-    money += papers * articlePrice;
-    papers = 0;
-    paperCount.innerText = "Papers Written: " + papers.toFixed(0);
-    moneyCount.innerText = "Money: $" + money.toFixed(2);
-}
-
 function startWorkerLoop() {
     if (money < workerPrice) return;
     if (workers === 0 || workerLoopEnabled === false) {
@@ -184,6 +176,8 @@ async function openSettingsMenu() {
 
 async function givePaper() {
     papers += (1 * (coffeeMult + energyMult));
+    money += papers * articlePrice;
+    moneyCount.innerText = "Money: $" + money.toFixed(2);
     paperCount.innerText = "Papers Written: " + papers.toFixed(0);
 }
 

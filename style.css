@@ -194,6 +194,9 @@ body {
     margin-top: 2px;
 }
 
+.spamClickButton {
+    background-color: rgb(255, 204, 212);
+}
 .moneyCount {
     -webkit-user-select: none; 
     -moz-user-select: none;    

@@ -17,7 +17,6 @@ const toggleGreenMode = document.getElementById("greenModeToggle");
 const togglePurpleMode = document.getElementById("purpleModeToggle");
 const paperCount = document.getElementById("paperCount");
 const moneyCount = document.getElementById("moneyCount");
-const convertPapers = document.getElementById("convertPapers");
 const buyWorkerBtn = document.getElementById("buyWorkerBtn");
 const resumeGame = document.getElementById("resumeGame");
 const returnToMMSettings = document.getElementById("returnToMMSettings");
