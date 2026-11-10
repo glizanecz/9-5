@@ -8,6 +8,7 @@
     <title>9-5 Simulator Remastered</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./95favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   </head>
   <body>
     <main>
@@ -38,7 +39,7 @@
         </div>
 
         <div id="gameDisplay" class="gameDisplayTab">
-            <div id="menuBar" class="menuBar"><button class="menuButtons" id="goToMainMenu">Home</button> <button class="menuButtons" id="goToClickingTab">Write</button> <button class="menuButtons" id="goToCoffeeShop">Coffee Shop</button></div>
+            <div id="menuBar" class="menuBar"><button class="menuButtons" id="goToMainMenu">Home</button> <button class="menuButtons" id="goToClickingTab">Write</button></div>
             <br>
             <div id="clickMenu" class="clickMenuDisplay">
                 <h3 id="paperCount" class="paperCount">Papers Written: 0</h3>
@@ -46,11 +47,15 @@
                 <button id="writePaperBtn" class="writePaperBtn">Write Paper</button>
                 <button id="convertPapers" class="buyWorkerBtn">Sell Articles: $1.50</button>
                 <button id="buyWorkerBtn" class="buyWorkerBtn">Hire Writer: $200</button>
+                <br>
+                <br>
+                <div>
+                    <h2 class="fancyText">Coffee Shop</h2>
+                    <button id="buyCoffee" class="buyWorkerBtn">Buy Coffee (+.5x Temp Bonus)</button>
+                    <button id="buyEngDrink" class="buyWorkerBtn">Buy Energy Drink (+2.5x Temp Bonus)</button>
+                </div>
             </div>
-            <div id="coffeeShop" class="clickMenuDisplay">
-                <button id="buyCoffee" class="buyWorkerBtn">Buy Coffee (+.5x Temp Bonus)</button>
-                <button id="buyEngDrink" class="buyWorkerBtn">Buy Energy Drink (+2.5x Temp Bonus)</button>
-            </div>
+
         </div> 
     </main>
     <script src="definitions.js"></script>

@@ -13,11 +13,9 @@ orangeModeToggle.onclick = () => themeSwitch("orangeTheme");
 goldenModeToggle.onclick = () => themeSwitch("goldenTheme");
 returnToMMSettings.onclick = settingsReturn;
 btmmolg.onclick = lfsreturn;
-goToCoffeeShop.onclick = goToCoffeeShopFunc;
 goToClickingTab.onclick = goToClickingTabFunc;
 
 function goToClickingTabFunc() {
-    coffeeShop.style.display = "none";
     clickMenu.style.display = "grid";
 }
 
@@ -133,9 +131,4 @@ function themeSwitch(theme) {
     } 
     document.body.classList.remove("darkTheme","greenTheme","purpleTheme", "orangeTheme", "goldenTheme");
     document.body.classList.add(theme)
-}
-
-function goToCoffeeShopFunc() {
-    clickMenu.style.display = "none";
-    coffeeShop.style.display = "grid";
 }
