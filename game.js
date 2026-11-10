@@ -43,7 +43,7 @@ function buyEnergyFunc () {
     if (energyDrinksBought === 0 && money >= 10) {
         money -= 10;
         energyDrinksBought += 1;
-        energyMult += .5;
+        energyMult += 2.5;
         energyTimer += 30;
         energyPrice *= 1.25;
         buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
@@ -51,7 +51,7 @@ function buyEnergyFunc () {
     } 
     if (energyPrice <= money) {
         energyDrinksBought += 1;
-        energyMult += .5;
+        energyMult += 2.5;
         energyTimer += 30;
         money -= energyPrice;
         energyPrice *= 1.25;
