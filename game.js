@@ -25,7 +25,7 @@ function buyCoffeeFunc () {
         coffeeMult += .5;
         coffeeTimer += 30;
         coffeePrice *= 1.25;
-        buyCoffee.innerText = "Buy Coffee (+.5x) | $" + coffeePrice;
+        buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + coffeePrice;
         return
     } 
     if (coffeePrice <= money) {
@@ -34,7 +34,7 @@ function buyCoffeeFunc () {
         coffeeTimer += 30;
         money -= coffeePrice;
         coffeePrice *= 1.25;
-        buyCoffee.innerText = "Buy Coffee (+.5x) | $" + coffeePrice;
+        buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + coffeePrice;
         return
     }
 }
@@ -46,7 +46,7 @@ function buyEnergyFunc () {
         energyMult += .5;
         energyTimer += 30;
         energyPrice *= 1.25;
-        buyEngDrink.innerText = "Buy Energy Drink (+2.5x) | $" + energyPrice;
+        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
         return
     } 
     if (energyPrice <= money) {
@@ -55,7 +55,7 @@ function buyEnergyFunc () {
         energyTimer += 30;
         money -= energyPrice;
         energyPrice *= 1.25;
-        buyEngDrink.innerText = "Buy Energy Drink (+2.5x) | $" + energyPrice;
+        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + energyPrice;
         return
     }
 }
@@ -183,7 +183,7 @@ async function openSettingsMenu() {
 }
 
 async function givePaper() {
-    papers += 1;
+    papers += (1 * (coffeeMult + energyMult));
     paperCount.innerText = "Papers Written: " + papers.toFixed(0);
 }
 
