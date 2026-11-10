@@ -14,6 +14,69 @@ goldenModeToggle.onclick = () => themeSwitch("goldenTheme");
 returnToMMSettings.onclick = settingsReturn;
 btmmolg.onclick = lfsreturn;
 goToClickingTab.onclick = goToClickingTabFunc;
+buyCoffee.onclick = buyCoffeeFunc;
+buyEngDrink.onclick = buyEnergyFunc;
+reduceMultTimers();
+
+function buyCoffeeFunc () {
+    if (coffeesBought === 0 && money >= 10) {
+        money -= 10;
+        coffeesBought += 1;
+        coffeeMult += .5;
+        coffeeTimer += 30;
+        coffeePrice *= 1.25;
+        buyCoffee.innerText = "Buy Coffee (+.5x) | $" + coffeePrice;
+        return
+    } 
+    if (coffeePrice <= money) {
+        coffeesBought += 1;
+        coffeeMult += .5;
+        coffeeTimer += 30;
+        money -= coffeePrice;
+        coffeePrice *= 1.25;
+        buyCoffee.innerText = "Buy Coffee (+.5x) | $" + coffeePrice;
+        return
+    }
+}
+
+function buyEnergyFunc () {
+    if (energyDrinksBought === 0 && money >= 10) {
+        money -= 10;
+        energyDrinksBought += 1;
+        energyMult += .5;
+        energyTimer += 30;
+        energyPrice *= 1.25;
+        buyEngDrink.innerText = "Buy Energy Drink (+2.5x) | $" + energyPrice;
+        return
+    } 
+    if (energyPrice <= money) {
+        energyDrinksBought += 1;
+        energyMult += .5;
+        energyTimer += 30;
+        money -= energyPrice;
+        energyPrice *= 1.25;
+        buyEngDrink.innerText = "Buy Energy Drink (+2.5x) | $" + energyPrice;
+        return
+    }
+}
+
+async function reduceMultTimers () {
+    while (true) {
+        await sleep(1000);
+        if (coffeeTimer === 0) {
+            coffeeTimer -= 0;
+            coffeeMult = 1;
+            return
+        }
+        if (energyTimer === 0) {
+            energyTimer -= 0;
+            energyMult = 1;
+            return
+        }
+        coffeeTimer -= 1;
+        energyTimer -= 1;
+    }
+}
 
 function goToClickingTabFunc() {
     clickMenu.style.display = "grid";
