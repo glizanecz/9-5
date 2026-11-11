@@ -198,6 +198,43 @@ body {
     background-color: rgb(255, 204, 212);
 }
 
+.inputBox {
+    background-color: var(--gameButtons);
+    border-radius: 5px;
+    border: black solid 1px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submitInput {
+    background-color: var(--mmButtons);
+    border: none;
+    width: 5%;
+    height: 4%;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;    
+    margin-bottom: 10px;
+    margin-top: 0px;
+    transition: transform 0.1s ease;
+}
+
+.submitInput:hover {
+    background-color: var(--mmButtonsHoA);
+    transform: scale(1.05); 
+}
+
+.submitInput:active {
+    background-color: var(--mmButtonsHoA);
+    transform: scale(1.05); 
+    transform: translateY(2px);     
+}
+
 .moneyCount {
     -webkit-user-select: none; 
     -moz-user-select: none;    

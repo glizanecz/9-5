@@ -1,3 +1,5 @@
+
+
 function saveGame(method, saveNumber) {
     let saveObject = {
         papers: papers,
@@ -16,16 +18,20 @@ function saveGame(method, saveNumber) {
         energyMult: energyMult,
     }
     if (method === "localStorage") {
-        let saveLocation = saveNumber == 1 ? "save1" : saveNumber == 2 ? "save2" : saveNumber == 3 ? "save3" : "save4"
+        let saveLocation = saveNumber == 1 ? "save1" : saveNumber == 2 ? "save2" : saveNumber == 3 ? "save3" : "auto"
         localStorage.setItem(saveLocation, JSON.stringify(saveObject));
     } else if (method === "saveCode") {
         return JSON.stringify(saveObject)
     }
 };
 
+loadSaveOne.onclick = () => loadGame("localStorage", 1);
+loadSaveTwo.onclick = () => loadGame("localStorage", 2);
+loadSaveThree.onclick = () => loadGame("localStorage", 3);
+
 function loadGame(method, saveNumber) {
     if (method === "localStorage") {
-        let saveLocation = saveNumber == 1 ? "save1" : saveNumber == 2 ? "save2" : saveNumber == 3 ? "save3" : "save4"
+        let saveLocation = saveNumber == 1 ? "save1" : saveNumber == 2 ? "save2" : saveNumber == 3 ? "save3" : "auto"
         let savedVersion = JSON.parse(localStorage.getItem(saveLocation));
         insertLoadedData(savedVersion);
     }
@@ -96,3 +102,11 @@ function translateData (translation) {
         }
     }
 }
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") {
+    saveGame("localStorage", "auto");
+  }
+});
+
+loadGame("localStorage", "auto");
