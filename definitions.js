@@ -30,6 +30,7 @@ const btmmolg = document.getElementById("btmmolg");
 const cofShopMultiDisplay = document.getElementById("cofShopMultiDisplay");
 const buyWorkersCoffee = document.getElementById("buyWorkersCoffee");
 const buyProductivityBurst = document.getElementById("buyProductivityBurst");
+const clickSound = new Audio('clickSound2.mp3');
 loadFromSaveMenu.style.display = "none";
 resumeGame.style.display = "none";
 let workerLoopEnabled = false;

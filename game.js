@@ -213,6 +213,8 @@ async function openSettingsMenu() {
 }
 
 async function givePaper() {
+    let clickSoundClone = clickSound.cloneNode();
+    clickSoundClone.play();
     let papersGained = Number((1 * (drinkMultiplierTotal + 1)).toFixed(2));
     papers += papersGained;
     convMoney(papersGained);
