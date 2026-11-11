@@ -197,6 +197,7 @@ body {
 .spamClickButton {
     background-color: rgb(255, 204, 212);
 }
+
 .moneyCount {
     -webkit-user-select: none; 
     -moz-user-select: none;    
@@ -206,6 +207,7 @@ body {
     font-size: xx-large;
     margin-top: 0px;  
 }
+
 
 .writePaperBtn {
     background-color: var(--gameButtons);

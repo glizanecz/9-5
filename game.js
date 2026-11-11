@@ -83,12 +83,8 @@ function buyEnergyFunc () {
     }
 }
 
-function buyWorkersCoffeeFunc () {
-    //next update :=)
-}
-
-function buyProductivityBurstFunc () {
-    //next update :3
+function buyWorkersCoffeeFunc () {  
+    //
 }
 
 async function reduceMultTimers () {

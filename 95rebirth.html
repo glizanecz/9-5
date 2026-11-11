@@ -24,7 +24,7 @@
         <div id="settingsMenu" class="mainMenuDisplay">
             <h3 class="h3Title">Settings</h3>
             <h4 class="h3Title">Volume</h4>
-            <input step=".05" value=".75" id="volumeSlider" type="range" min="0" max="1">
+            <input step=".05" value="0" id="volumeSlider" type="range" min="0" max="1">
             <br>
             <h4 class="h3Title">Themes</h4>
             <button id="darkModeToggle" class="mainMenuDecisions">Toggle Dark Mode</button>
@@ -37,9 +37,9 @@
 
         <div id="loadFromSaveMenu" class="mainMenuDisplay">
             <h3 class="h3Title">Load Game</h3>
+            <input id="loadFromSaveInput">
+            <button id="submitSaveLoad">Submit</button>
             <button id="btmmolg" class="mainMenuDecisions">Return to Main Menu</button>
-            <input>
-            <button>Submit</button>
         </div>
 
         <div id="gameDisplay" class="gameDisplayTab">
@@ -56,17 +56,15 @@
                     <h2 class="fancyText" id="cofShopMultiDisplay">Coffee Shop (No Multipliers Currently Active)</h2>
                     <button id="buyCoffee" class="buyWorkerBtn">Buy Coffee (+.5x papers [30 seconds]) | $10</button>
                     <button id="buyEngDrink" class="buyWorkerBtn">Buy Energy Drink (+2.5x papers [30 seconds]) | $75</button>
-                    <h5>COMING SOON!</h5>
-                    <button id="buyWorkersCoffee" class="greyedOutBtn">Buy Workers Coffee (+.25x papers [30 seconds]) | $500</button>
-                    <button id="buyProductivityBurst" class="greyedOutBtn">Productivity Burst (+15x [5 seconds]) | $500</button>
+                    <button id="buyWorkersCoffee" class="greyedOutBtn">Buy Workers Coffee (+.25x papers [30 seconds]) | $50</button>
                 </div>
             </div>
 
         </div> 
     </main>
     <script src="definitions.js"></script>
-    <script src="saveGame.js"></script>
     <script src="game.js"></script>
+    <script src="saveGame.js"></script>
     
   </body>
 </html>
