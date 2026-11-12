@@ -28,9 +28,9 @@ function buyCoffeeFunc () {
             timer: 30,
             multi: .5,
         });
-        coffeePrice *= 1.2;
+        coffeePrice *= 1.5;
         coffeePrice = coffeePrice.toFixed(2);
-        buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + autoSuffixer(coffeePrice);
+        buyCoffee.innerText = "Buy Coffee (+.25x papers) | $" + autoSuffixer(coffeePrice);
         return
     } 
     if (coffeePrice <= money) {
@@ -43,9 +43,9 @@ function buyCoffeeFunc () {
         });
         money -= coffeePrice;
         displayMoney();
-        coffeePrice *= 1.2;
+        coffeePrice *= 1.5;
         coffeePrice = coffeePrice.toFixed(2);
-        buyCoffee.innerText = "Buy Coffee (+.5x papers) | $" + autoSuffixer(coffeePrice);
+        buyCoffee.innerText = "Buy Coffee (+.25x papers) | $" + autoSuffixer(coffeePrice);
         return
     }
 }
@@ -63,7 +63,7 @@ function buyEnergyFunc () {
         });
         energyPrice *= 1.5;
         energyPrice = energyPrice.toFixed(2)
-        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + autoSuffixer(energyPrice);
+        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers [15 seconds]) | $" + autoSuffixer(energyPrice);
         return
     } 
     if (energyPrice <= money) {
@@ -78,7 +78,7 @@ function buyEnergyFunc () {
         displayMoney();
         energyPrice *= 1.5;
         energyPrice = energyPrice.toFixed(2)
-        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers) | $" + autoSuffixer(energyPrice);
+        buyEngDrink.innerText = "Buy Energy Drink (+2.5x papers [15 seconds]) | $" + autoSuffixer(energyPrice);
         return
     }
 }
