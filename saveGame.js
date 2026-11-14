@@ -18,7 +18,7 @@ function saveGame(method, saveNumber) {
         energyMult: energyMult,
     }
     if (method === "localStorage") {
-        let saveLocation = saveNumber == 1 ? "save1" : saveNumber == 2 ? "save2" : saveNumber == 3 ? "save3" : "auto"
+        let saveLocation = saveNumber === 1 ? "save1" : saveNumber === 2 ? "save2" : saveNumber === 3 ? "save3" : "auto"
         localStorage.setItem(saveLocation, JSON.stringify(saveObject));
     } else if (method === "saveCode") {
         return JSON.stringify(saveObject)
