@@ -26,7 +26,7 @@ function buyCoffeeFunc () {
         multiTimeObject.push({
             type: "coffee",
             timer: 30,
-            multi: .5,
+            multi: .25,
         });
         coffeePrice *= 1.5;
         coffeePrice = coffeePrice.toFixed(2);
@@ -39,7 +39,7 @@ function buyCoffeeFunc () {
         multiTimeObject.push({
             type: "coffee",
             timer: 30,
-            multi: .5,
+            multi: .25,
         });
         money -= coffeePrice;
         displayMoney();
